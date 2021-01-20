@@ -120,16 +120,38 @@ namespace SA_Downgrader_RW2
 				if (er == 0)
 				{
 				   // 3. Check files
-					
+				   if (gv != 1) // not a Steam version
+				   {
+				   	   // List:
+				   }
+				   else // other versions
+				   {
+				   	  // List:
+				   }
+				   
 				   // 4. Scan MD5 | Full game files
 				
-				   // if version != Steam
-				
-				   // if version == Steam
+				   if (gv != 1) // not a Steam version
+				   {
+				   	   // List:
+				   }
+				   else // other versions
+				   {
+				   	  // List:
+				   }
 				
 				   // 5. Downgrade
 				
 				   // 6. Scan MD5 & Comparison
+				   
+				   if (gv != 1) // not a Steam version
+				   {
+				   	   // List:
+				   }
+				   else // other versions
+				   {
+				   	  // List:
+				   }
 				}
 			}
 			else { Console.WriteLine("Status: 2"); Logger("App", "Path", "false"); }
