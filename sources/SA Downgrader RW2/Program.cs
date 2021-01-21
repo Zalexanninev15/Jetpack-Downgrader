@@ -22,7 +22,7 @@ namespace SA_Downgrader_RW2
 		    bool[] settings = new bool[2];
 			string path = "";
 			Console.Title = "SADRW2";
-			Console.WriteLine("[App] SA Downgrader RW2 version 0.1.3.2 by Zalexanninev15");
+			Console.WriteLine("[App] SA Downgrader RW2 version 0.1.3.3 by Zalexanninev15");
 			try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
 			try 
 			{
@@ -68,12 +68,12 @@ namespace SA_Downgrader_RW2
 					       	  gv = 3;
 					       	  Logger("Game", "Version", "Rockstar Games Launcher"); 
 					       }
-					       if (OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373")
+					       if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F") || (OtherEXEmd5 == "25405921D1C47747FD01FD0BFE0A05AE"))
 					       { 
 					       	  gv = 2; 
 					       	  Logger("Game", "Version", "2.0");
 					       }
-				           if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373"))
+					       if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
 					       { 
 				           	  gv = 4; 
 				           	  Logger("Game", "Version", "Unknown"); 
@@ -96,12 +96,12 @@ namespace SA_Downgrader_RW2
 					       gv = 3; 
 					       Logger("Game", "Version", "Rockstar Games Launcher"); 
 					  }
-					  if (OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373")
+					  if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F") || (OtherEXEmd5 == "25405921D1C47747FD01FD0BFE0A05AE"))
 					  { 
 					       gv = 2; 
 					       Logger("Game", "Version", "2.0");
 					  }
-				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373"))
+				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
 					  { 
 				           gv = 4; 
 				           Logger("Game", "Version", "Unknown"); 
@@ -121,8 +121,8 @@ namespace SA_Downgrader_RW2
 						   Logger("GameFiles", @path + fl[i], "true");
 						else
 						{
-							   er = 1;
-							   Logger("GameFiles", @path + fl[i], "false");
+						  er = 1;
+						  Logger("GameFiles", @path + fl[i], "false");
 						}
 					}
 				   }
