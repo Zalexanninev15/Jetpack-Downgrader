@@ -9,10 +9,19 @@ namespace SA_Downgrader_RW2
 	{	
 		public static void Main(string[] args)
 		{
+			string[] fl = new string[17];
+			
+			// List of files, gta-sa.exe - only for Steam:
+			fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
+            fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
+            fl[8] = @"\audio\streams\MH"; fl[9] = @"\audio\streams\MR"; fl[10] = @"\audio\streams\RE"; fl[11] = @"\audio\streams\RG";
+            fl[12] = @"\anim\anim.img"; fl[13] = @"\data\script\main.scm"; fl[14] = @"\data\script\script.img"; fl[15] = @"\models\gta_int.img";
+            fl[16] = @"\models\gta3.img";
+			
 		    int er = 0, gv = 0;
 		    bool[] settings = new bool[2];
 			string path = "";
-			Console.Title = "SA Downgrader RW2 v0.1 | Author: Zalexanninev15";
+			Console.Title = "SA Downgrader RW2 v0.1.3 | Author: Zalexanninev15";
 			if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log"))
 			   File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log");
 			try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
@@ -119,47 +128,92 @@ namespace SA_Downgrader_RW2
 				}
 				if (er == 0)
 				{
-				   // 3. Check files
+				   // Check files
+				   Logger("Downgrader", "Process", "Check files...");
+				   if (settings[1] == false)
+				      Console.WriteLine("Check files...");
 				   if (gv != 1) // not a Steam version
 				   {
-				   	   // List:
+				   	for (int i = 1; i < fl.Length; i++)
+                       {
+						   if (File.Exists(@path + fl[i]))
+						   {
+							  if (settings[1] == false)
+				                  Console.WriteLine(@path + fl[i] + ": true");
+							  Logger("GameFile", @path + fl[i], "true");
+						   }
+						   else
+						   {
+							   er = 1;
+							   if (settings[1] == false)
+				                      Console.WriteLine(@path + fl[i] + ": false");
+							   Logger("GameFile", @path + fl[i], "false");
+						   }
+					   }
 				   }
-				   else // other versions
+				   else // Steam version
 				   {
-				   	  // List:
+				   	   for (int i = 0; i < fl.Length; i++)
+                       {
+						   if (i != 1)
+						   {
+							    if (File.Exists(@path + fl[i]))
+						        {
+							        if (settings[1] == false)
+				                       Console.WriteLine(@path + fl[i] + ": true");
+							        Logger("GameFiles", @path + fl[i], "true");
+						        }
+						        else
+						        {
+							        er = 1;
+							        if (settings[1] == false)
+				                      Console.WriteLine(@path + fl[i] + ": false");
+							        Logger("GameFiles", @path + fl[i], "false");
+						        }
+						   }
+					    }
 				   }
-				   
-				   // 4. Scan MD5 | Full game files
+				   if (er == 0)
+				   {
+				   	  if (settings[1] == false)
+				         Console.WriteLine("All GameFiles: true");
+					  Logger("GameFiles", "All", "true");
+				        // 4. Scan MD5 | Full game files
+				       if (gv != 1) // not a Steam version
+				       {
+				   	      // List:
+				       }
+				       else // other versions
+				      {
+				   	     // List:
+				       } 
 				
-				   if (gv != 1) // not a Steam version
-				   {
-				   	   // List:
-				   }
-				   else // other versions
-				   {
-				   	  // List:
-				   }
+				        // 5. Downgrade
 				
-				   // 5. Downgrade
-				
-				   // 6. Scan MD5 & Comparison
-				   
-				   if (gv != 1) // not a Steam version
-				   {
-				   	   // List:
-				   }
-				   else // other versions
-				   {
-				   	  // List:
-				   }
+				       // 6. Scan MD5 & Comparison
+				       if (gv != 1) // not a Steam version
+				      {
+				   	       // List:
+				       }
+				       else // other versions
+				      {
+				   	      // List:
+				      }
+				 }
+				else 
+				{
+					if (settings[1] == false)
+				        Console.WriteLine("All GameFiles: false");
+					Logger("GameFiles", "All", "false");   
 				}
+		      }
 			}
 			else { Console.WriteLine("Status: 2"); Logger("App", "Path", "false"); }
 		}
 		
 		public static void Logger(string type, string ido, string status)
 		{
-			string old = "SA Downgrader RW2 v0.1 | Author: Zalexanninev15";
+			string old = "SA Downgrader RW2 v0.1.3 | Author: Zalexanninev15";
 			try { old = File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log"); } catch { }
 			File.WriteAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log", old + "\r\n[" + type + "] " + ido + "=" + status);
 		}
