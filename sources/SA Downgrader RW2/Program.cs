@@ -21,24 +21,21 @@ namespace SA_Downgrader_RW2
 		    int er = 0, gv = 0;
 		    bool[] settings = new bool[2];
 			string path = "";
-			Console.Title = "SA Downgrader RW2 v0.1.3 | Author: Zalexanninev15";
-			if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log"))
-			   File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log");
+			Console.Title = "SADRW2";
+			Console.WriteLine("[App] SA Downgrader RW2 v0.1.3.1 by Zalexanninev15");
 			try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
 			try 
 			{
 				IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
 				settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ReadOnly"));
-				settings[1] = Convert.ToBoolean(cfg.GetValue("Downgrader", "StatusOnly"));
+				settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
 				Logger("App", "config.ini", "true");
 			} 
-			catch { Console.WriteLine("Status: 3"); Logger("App", "config.ini", "false"); }
+			catch { Logger("App", "config.ini", "false"); }
 			if (path != "")
 			{
 				string SaEXE = @path + @"\gta-sa.exe";
 				Logger("Downgrader", "Process", "Get version (EXE)...");
-				if (settings[1] == false)
-				   Console.WriteLine("Get version (EXE)...");
 				
 				// 0 - 1.0
 				// 1 - Steam
@@ -56,8 +53,6 @@ namespace SA_Downgrader_RW2
 					  if ((SteamEXEmd5 == "170B3A9108687B26DA2D8901C6948A18") || (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD"))
 					  { 
 					  	gv = 1; 
-					  	if (settings[1] == false)
-				           Console.WriteLine("Game version: Steam");
 					  	Logger("Game", "Version", "Steam");					  	
 					  }
 					  else 
@@ -70,23 +65,17 @@ namespace SA_Downgrader_RW2
 					       string OtherEXEmd5 = Cache(SaEXE);
 					       if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
 					       { 
-					       	  gv = 3; 
-					       	  if (settings[1] == false)
-				                  Console.WriteLine("Game version: Rockstar Games Launcher");
+					       	  gv = 3;
 					       	  Logger("Game", "Version", "Rockstar Games Launcher"); 
 					       }
 					       if (OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373")
 					       { 
 					       	  gv = 2; 
-					       	  if (settings[1] == false)
-				                 Console.WriteLine("Game version: 2.0");
 					       	  Logger("Game", "Version", "2.0");
 					       }
 				           if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373"))
 					       { 
 				           	  gv = 4; 
-				           	  if (settings[1] == false)
-				                 Console.WriteLine("Game version: Unknown");
 				           	  Logger("Game", "Version", "Unknown"); 
 				           }
 					    }
@@ -105,22 +94,16 @@ namespace SA_Downgrader_RW2
 					  if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
 					  { 
 					       gv = 3; 
-					       if (settings[1] == false)
-				               Console.WriteLine("Game version: Rockstar Games Launcher");
 					       Logger("Game", "Version", "Rockstar Games Launcher"); 
 					  }
 					  if (OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373")
 					  { 
 					       gv = 2; 
-					       if (settings[1] == false)
-				              Console.WriteLine("Game version: 2.0");
 					       Logger("Game", "Version", "2.0");
 					  }
 				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373"))
 					  { 
 				           gv = 4; 
-				           if (settings[1] == false)
-				               Console.WriteLine("Game version: Unknown");
 				           Logger("Game", "Version", "Unknown"); 
 				      }
 					}
@@ -130,24 +113,16 @@ namespace SA_Downgrader_RW2
 				{
 				   // Check files
 				   Logger("Downgrader", "Process", "Check files...");
-				   if (settings[1] == false)
-				      Console.WriteLine("Check files...");
 				   if (gv != 1) // not a Steam version
 				   {
 				   	for (int i = 1; i < fl.Length; i++)
                        {
 						   if (File.Exists(@path + fl[i]))
-						   {
-							  if (settings[1] == false)
-				                  Console.WriteLine(@path + fl[i] + ": true");
-							  Logger("GameFile", @path + fl[i], "true");
-						   }
+							  Logger("GameFiles", @path + fl[i], "true");
 						   else
 						   {
 							   er = 1;
-							   if (settings[1] == false)
-				                      Console.WriteLine(@path + fl[i] + ": false");
-							   Logger("GameFile", @path + fl[i], "false");
+							   Logger("GameFiles", @path + fl[i], "false");
 						   }
 					   }
 				   }
@@ -158,16 +133,10 @@ namespace SA_Downgrader_RW2
 						   if (i != 1)
 						   {
 							    if (File.Exists(@path + fl[i]))
-						        {
-							        if (settings[1] == false)
-				                       Console.WriteLine(@path + fl[i] + ": true");
 							        Logger("GameFiles", @path + fl[i], "true");
-						        }
 						        else
 						        {
 							        er = 1;
-							        if (settings[1] == false)
-				                      Console.WriteLine(@path + fl[i] + ": false");
 							        Logger("GameFiles", @path + fl[i], "false");
 						        }
 						   }
@@ -175,8 +144,6 @@ namespace SA_Downgrader_RW2
 				   }
 				   if (er == 0)
 				   {
-				   	  if (settings[1] == false)
-				         Console.WriteLine("All GameFiles: true");
 					  Logger("GameFiles", "All", "true");
 				        // 4. Scan MD5 | Full game files
 				       if (gv != 1) // not a Steam version
@@ -202,20 +169,22 @@ namespace SA_Downgrader_RW2
 				 }
 				else 
 				{
-					if (settings[1] == false)
-				        Console.WriteLine("All GameFiles: false");
 					Logger("GameFiles", "All", "false");   
 				}
 		      }
 			}
-			else { Console.WriteLine("Status: 2"); Logger("App", "Path", "false"); }
+			else { Logger("App", "Path", "false"); }
+			if (settings[1] == false)
+			{
+				Console.WriteLine("Press Enter to Exit");
+				Console.ReadLine();
+			}
 		}
 		
-		public static void Logger(string type, string ido, string status)
+		public static string Logger(string type, string ido, string status)
 		{
-			string old = "SA Downgrader RW2 v0.1.3 | Author: Zalexanninev15";
-			try { old = File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log"); } catch { }
-			File.WriteAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SA Downgrader RW2.log", old + "\r\n[" + type + "] " + ido + "=" + status);
+			Console.WriteLine("[" + type + "] " + ido + "=" + status);
+			return "";
 		}
 		
 		public static string Cache(string file)
