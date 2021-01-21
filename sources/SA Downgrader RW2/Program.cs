@@ -22,7 +22,7 @@ namespace SA_Downgrader_RW2
 		    bool[] settings = new bool[2];
 			string path = "";
 			Console.Title = "SADRW2";
-			Console.WriteLine("[App] SA Downgrader RW2 version 0.1.3.5 by Zalexanninev15");
+			Console.WriteLine("[App] SA Downgrader RW2 version 0.1.3.6 by Vadim M & Zalexanninev15");
 			try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
 			try 
 			{
@@ -51,7 +51,7 @@ namespace SA_Downgrader_RW2
 					try 
 					{
 					  string SteamEXEmd5 = Cache(SaEXE);
-					  if ((SteamEXEmd5 == "170B3A9108687B26DA2D8901C6948A18") || (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD"))
+					  if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
 					  { 
 					  	gv = 1; 
 					  	Logger("Game", "Version", "Steam");					  	
@@ -76,7 +76,7 @@ namespace SA_Downgrader_RW2
 					       }
 					       if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
 					       { 
-				           	 if (OtherEXEmd5 != "E7697A085336F974A4A6102A51223960")
+				           	 if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
 				      	     {
 				      	        gv = 4; 
 				                Logger("Game", "Version", "Unknown"); 
@@ -112,7 +112,7 @@ namespace SA_Downgrader_RW2
 					  }
 				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
 					  { 
-				      	if (OtherEXEmd5 != "E7697A085336F974A4A6102A51223960")
+				      	if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
 				      	{
 				      	   gv = 4; 
 				           Logger("Game", "Version", "Unknown"); 
@@ -130,7 +130,7 @@ namespace SA_Downgrader_RW2
 				{
 				   // Check files
 				   Logger("Downgrader", "Process", "Check files...");
-				   if ((gv == 3) || (gv == 4)) // RGL/Unknown
+				   if (gv == 3) // RGL/Unknown
 				   {
 				   	for (int i = 1; i < fl.Length; i++)
                     {
@@ -175,16 +175,18 @@ namespace SA_Downgrader_RW2
 						   }
 					    }
 				   }
+				   if (gv == 4)
+				   	  Logger("Downgrader", "Process", "Downgrade is not possible!");
 				   if (er == 0)
 				   {
 					  Logger("Game", "AllFiles", "true");
-				        // 4. Scan MD5 | Full game files
+				      // 4. Scan MD5 | Full game files
 				       if (gv != 1) // not a Steam version
 				       {
 				   	      // List:
 				       }
 				       else // other versions
-				      {
+				       {
 				   	     // List:
 				       } 
 				
