@@ -1,0 +1,5 @@
+SA Downgrader RW2 v0.1 | Author: Zalexanninev15
+[App] path.txt=true
+[App] config.ini=true
+[Downgrader] Process=Get version (EXE)...
+[Game] Version=2.0
