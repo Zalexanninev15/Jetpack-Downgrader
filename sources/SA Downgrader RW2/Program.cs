@@ -26,7 +26,7 @@ namespace SA_Downgrader_RW2
 			catch { Console.WriteLine("Status: 3"); Logger("App", "config.ini", "false"); }
 			if (path != "")
 			{
-				string SaEXE = @path + @"\gta-sa.exe.exe";
+				string SaEXE = @path + @"\gta-sa.exe";
 				Logger("Downgrader", "Process", "Get version (EXE)...");
 				if (settings[1] == false)
 				   Console.WriteLine("Get version (EXE)...");
@@ -55,7 +55,7 @@ namespace SA_Downgrader_RW2
 					  { 
 				        gv = 4; 
 						//not a Steam, this is other
-                        SaEXE = @path + @"\sa_game.exe";
+                        SaEXE = @path + @"\gta_sa.exe";
 					    try
 					    {
 					       string OtherEXEmd5 = Cache(SaEXE);
@@ -89,7 +89,7 @@ namespace SA_Downgrader_RW2
 				else
 				{
 					// Others
-					SaEXE = @path + @"\sa_game.exe";
+					SaEXE = @path + @"\gta_sa.exe";
 					try
 					{
 					  string OtherEXEmd5 = Cache(SaEXE);
@@ -168,7 +168,7 @@ namespace SA_Downgrader_RW2
         {
             using (var md5 = MD5.Create())
             {
-                using (var stream = File.OpenRead(file))
+                using (var stream = File.OpenRead(@file))
                 {
                     var hashBytes = md5.ComputeHash(stream);
                     var sb = new StringBuilder();
