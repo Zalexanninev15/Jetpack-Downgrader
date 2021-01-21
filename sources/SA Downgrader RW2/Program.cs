@@ -69,12 +69,12 @@ namespace SA_Downgrader_RW2
 					       	  gv = 3;
 					       	  Logger("Game", "Version", "Rockstar Games Launcher"); 
 					       }
-					       if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F") || (OtherEXEmd5 == "25405921D1C47747FD01FD0BFE0A05AE"))
+					       if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
 					       { 
 					       	  gv = 2; 
 					       	  Logger("Game", "Version", "2.0");
 					       }
-					       if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
+					       if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
 					       { 
 				           	 if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
 				      	     {
@@ -105,12 +105,12 @@ namespace SA_Downgrader_RW2
 					       gv = 3; 
 					       Logger("Game", "Version", "Rockstar Games Launcher"); 
 					  }
-					  if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F") || (OtherEXEmd5 == "25405921D1C47747FD01FD0BFE0A05AE"))
+					  if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
 					  { 
 					       gv = 2; 
 					       Logger("Game", "Version", "2.0");
 					  }
-				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
+				      if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
 					  { 
 				      	if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
 				      	{
@@ -129,7 +129,7 @@ namespace SA_Downgrader_RW2
 				if ((gv != 0) && (er == 0))
 				{
 				   // Check files
-				   Logger("Downgrader", "Process", "Check files...");
+				   Logger("Downgrader", "Process", "Scanning files...");
 				   if (gv == 3) // RGL/Unknown
 				   {
 				   	for (int i = 1; i < fl.Length; i++)
@@ -180,19 +180,23 @@ namespace SA_Downgrader_RW2
 				   if (er == 0)
 				   {
 					  Logger("Game", "AllFiles", "true");
-				      // 4. Scan MD5 | Full game files
-				       if (gv != 1) // not a Steam version
-				       {
-				   	      // List:
-				       }
-				       else // other versions
-				       {
-				   	     // List:
-				       } 
+				      Logger("Downgrader", "Process", "Checking files (MD5)...");
+				      if (gv == 3) // RGL
+				      {
+				   	      
+				      }
+				      if (gv == 2) // 2.0
+				      {
+				   	     
+				      } 
+				      if (gv == 1) // Steam
+				      {
+				       	
+				      }
+				      
+				      // 5. Downgrade
 				
-				        // 5. Downgrade
-				
-				       // 6. Scan MD5 & Comparison
+				      // 6. Scan MD5 & Comparison
 				       if (gv != 1) // not a Steam version
 				      {
 				   	       // List:
