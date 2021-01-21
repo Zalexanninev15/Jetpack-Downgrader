@@ -22,7 +22,7 @@ namespace SA_Downgrader_RW2
 		    bool[] settings = new bool[2];
 			string path = "";
 			Console.Title = "SADRW2";
-			Console.WriteLine("[App] SA Downgrader RW2 v0.1.3.1 by Zalexanninev15");
+			Console.WriteLine("[App] SA Downgrader RW2 version 0.1.3.2 by Zalexanninev15");
 			try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
 			try 
 			{
@@ -37,7 +37,7 @@ namespace SA_Downgrader_RW2
 				string SaEXE = @path + @"\gta-sa.exe";
 				Logger("Downgrader", "Process", "Get version (EXE)...");
 				
-				// 0 - 1.0
+				// 0 - 1.0 {not usage, but soon}
 				// 1 - Steam
 				// 2 - 2.0
 				// 3 - Rockstar Games Launcher
@@ -113,20 +113,36 @@ namespace SA_Downgrader_RW2
 				{
 				   // Check files
 				   Logger("Downgrader", "Process", "Check files...");
-				   if (gv != 1) // not a Steam version
+				   if ((gv == 3) || (gv == 4)) // RGL/Unknown
 				   {
 				   	for (int i = 1; i < fl.Length; i++)
-                       {
-						   if (File.Exists(@path + fl[i]))
-							  Logger("GameFiles", @path + fl[i], "true");
-						   else
-						   {
+                    {
+					    if (File.Exists(@path + fl[i]))
+						   Logger("GameFiles", @path + fl[i], "true");
+						else
+						{
 							   er = 1;
 							   Logger("GameFiles", @path + fl[i], "false");
-						   }
-					   }
+						}
+					}
 				   }
-				   else // Steam version
+				   if (gv == 2) // Version 2.0
+				   {
+				   	  for (int i = 1; i < fl.Length; i++)
+                      {
+				   	  	if ((i >= 1) && (i > 11))
+				   	  	{
+					      if (File.Exists(@path + fl[i]))
+						   Logger("GameFiles", @path + fl[i], "true");
+						  else
+						  {
+							   er = 1;
+							   Logger("GameFiles", @path + fl[i], "false");
+						  }
+				   	    }
+					  }
+				   }
+				   if (gv == 1) // Steam version
 				   {
 				   	   for (int i = 0; i < fl.Length; i++)
                        {
