@@ -29,8 +29,8 @@ namespace SA_Downgrader_RW2
             int er = 0, gv = 0;
             bool[] settings = new bool[3];
             string path = "";
-            Console.Title = "SADRW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version 0.1.4 by Vadim M & Zalexanninev15");
+            Console.Title = "SA Downgrader RW2";
+            Console.WriteLine("[App] SA Downgrader RW2 version 0.1.4.1 by Vadim M & Zalexanninev15");
             try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
             try
             {
@@ -248,9 +248,6 @@ namespace SA_Downgrader_RW2
                         }
                         if (fisv == false)
                         {
-
-                            //
-                            //
                             // 5. Downgrade
 
                             // 6. Check for downgraded
