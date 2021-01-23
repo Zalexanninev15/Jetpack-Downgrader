@@ -30,17 +30,19 @@ namespace SA_Downgrader_RW2
             bool[] settings = new bool[3];
             string path = "";
             Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version 0.1.4.1 by Vadim M & Zalexanninev15");
-            try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Console.WriteLine("Status: 1"); Logger("App", "path.txt", "false"); }
+            Console.WriteLine("[App] SA Downgrader RW2 version 0.1.4.2 by Vadim M & Zalexanninev15");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
-                //settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ReadOnly"));
+                settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ReadOnly"));
                 settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
-                //settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallCrack"));
                 Logger("App", "config.ini", "true");
             }
             catch { Logger("App", "config.ini", "false"); }
+            if (settings[1] == false)
+            { try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Logger("App", "path.txt", "false"); } }
+            if (settings[1] == true)
+                path = args[0];
             if ((path != "") && (Directory.Exists(@path)))
             {
                 Logger("Game", "Directory", "true");
@@ -252,7 +254,6 @@ namespace SA_Downgrader_RW2
 
                             // 6. Check for downgraded
 
-                            // 7. Install EXE crack 1.0
                         }
                         else
                         {
