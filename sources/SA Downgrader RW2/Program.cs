@@ -30,12 +30,13 @@ namespace SA_Downgrader_RW2
             bool[] settings = new bool[3];
             string path = "";
             Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version 0.1.4.2 by Vadim M & Zalexanninev15");
+            Console.WriteLine("[App] SA Downgrader RW2 version 0.2 by Vadim M & Zalexanninev15");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
-                settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ReadOnly"));
+                settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
                 settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
+                settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackup"));
                 Logger("App", "config.ini", "true");
             }
             catch { Logger("App", "config.ini", "false"); }
@@ -250,10 +251,76 @@ namespace SA_Downgrader_RW2
                         }
                         if (fisv == false)
                         {
-                            // 5. Downgrade
+                            // Backup
+                            Logger("Downgrader", "Process", "Create backups...");
+                            if (settings[2] == true)
+                            {
+                                if (gv == 3) // RGL
+                                {
+                                    for (int i = 2; i < fl.Length; i++)
+                                    {
+                                        if (File.Exists(@path + fl[i] + ".bak"))
+                                            File.Delete(@path + fl[i] + ".bak");
+                                        try
+                                        {
+                                            File.Copy(@path + fl[i], @path + fl[i] + ".bak");
+                                            // File.Delete(@path + fl[i]);
+                                            Logger("GameBackup", @path + fl[i], "generated");
+                                        }
+                                        catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
+                                    }
+                                }
+                                if (gv == 2) // Version 2.0
+                                {
+                                    for (int i = 2; i < fl.Length; i++)
+                                    {
+                                        if ((i >= 2) && (i > 11))
+                                        {
+                                            if (File.Exists(@path + fl[i] + ".bak"))
+                                                File.Delete(@path + fl[i] + ".bak");
+                                            try
+                                            {
+                                                File.Copy(@path + fl[i], @path + fl[i] + ".bak");
+                                                // File.Delete(@path + fl[i]);
+                                                Logger("GameBackup", @path + fl[i], "generated");
+                                            }
+                                            catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
+                                        }
+                                    }
+                                }
+                                if (gv == 1) // Steam version
+                                {
+                                    for (int i = 2; i < fl.Length; i++)
+                                    {
+                                        if (i >= 2)
+                                        {
+                                            if (File.Exists(@path + fl[i] + ".bak"))
+                                                File.Delete(@path + fl[i] + ".bak");
+                                            try
+                                            {
+                                                File.Copy(@path + fl[i], @path + fl[i] + ".bak");
+                                                // File.Delete(@path + fl[i]);
+                                                Logger("GameBackup", @path + fl[i], "generated");
+                                            }
+                                            catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
+                                        }
+                                    }
+                                }
+                            }
+                            if (er == 0)
+                            {
 
-                            // 6. Check for downgraded
 
+                                // 5. Downgrade
+
+                                // 6. Check for downgraded files
+
+                            }
+                            else
+                            {
+                                Logger("GameBackup", "AllFiles", "some game files were not found, so it is not possible to continue working");
+                                Logger("Downgrader", "Game", "please check the original files and, if necessary, reinstall the game");
+                            }
                         }
                         else
                         {
@@ -262,7 +329,10 @@ namespace SA_Downgrader_RW2
                         }
                     }
                     else
-                        Logger("Game", "AllFiles", "false");
+                    {
+                        Logger("Game", "AllFiles", "some game files were not found, so it is not possible to continue working");
+                        Logger("Downgrader", "Game", "please check the original files and, if necessary, reinstall the game");
+                    }
                 }
                 if (gv == 0)
                     Logger("Downgrader", "Process", "Downgrade is not required!");
