@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -251,10 +252,10 @@ namespace SA_Downgrader_RW2
                         }
                         if (fisv == false)
                         {
-                            // Backup
-                            Logger("Downgrader", "Process", "Create backups...");
+                            // Backup (optional)
                             if (settings[2] == true)
                             {
+                                Logger("Downgrader", "Process", "Create backups...");
                                 if (gv == 3) // RGL
                                 {
                                     for (int i = 2; i < fl.Length; i++)
@@ -264,7 +265,7 @@ namespace SA_Downgrader_RW2
                                         try
                                         {
                                             File.Copy(@path + fl[i], @path + fl[i] + ".bak");
-                                            // File.Delete(@path + fl[i]);
+                                            File.Delete(@path + fl[i]);
                                             Logger("GameBackup", @path + fl[i], "generated");
                                         }
                                         catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
@@ -281,7 +282,7 @@ namespace SA_Downgrader_RW2
                                             try
                                             {
                                                 File.Copy(@path + fl[i], @path + fl[i] + ".bak");
-                                                // File.Delete(@path + fl[i]);
+                                                File.Delete(@path + fl[i]);
                                                 Logger("GameBackup", @path + fl[i], "generated");
                                             }
                                             catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
@@ -299,7 +300,7 @@ namespace SA_Downgrader_RW2
                                             try
                                             {
                                                 File.Copy(@path + fl[i], @path + fl[i] + ".bak");
-                                                // File.Delete(@path + fl[i]);
+                                                File.Delete(@path + fl[i]);
                                                 Logger("GameBackup", @path + fl[i], "generated");
                                             }
                                             catch { er = 1; Logger("GameBackup", @path + fl[i], "file for backup wasn't found"); }
@@ -309,9 +310,24 @@ namespace SA_Downgrader_RW2
                             }
                             if (er == 0)
                             {
+                                // 5. Downgrade [Alpha]
+                                Logger("Downgrader", "Process", "Downgrading...");
+                                if (gv == 3)
+                                {
 
+                                    
+                                }
+                                if (gv == 2)
+                                {
 
-                                // 5. Downgrade
+                                    
+                                }
+                                if (gv == 1)
+                                {
+
+                                    
+                                }
+
 
                                 // 6. Check for downgraded files
 
@@ -346,6 +362,51 @@ namespace SA_Downgrader_RW2
             }
         }
 
+        void DFiles(string file, int index)
+        {
+            string[] fl = new string[17];
+            string[] flmd5 = new string[17];
+
+            // A list of files:
+            fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
+            fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
+            fl[8] = @"\audio\streams\MH"; fl[9] = @"\audio\streams\MR"; fl[10] = @"\audio\streams\RE"; fl[11] = @"\audio\streams\RG";
+            fl[12] = @"\anim\anim.img"; fl[13] = @"\data\script\main.scm"; fl[14] = @"\data\script\script.img"; fl[15] = @"\models\gta_int.img";
+            fl[16] = @"\models\gta3.img";
+
+            // A list of hashes of various files of the game; 0 & 1 - only for final MD5 checks:
+            flmd5[0] = "E7697A085336F974A4A6102A51223960"; flmd5[1] = "E7697A085336F974A4A6102A51223960"; flmd5[2] = "528E75D663B8BAE072A01351081A2145"; flmd5[3] = "E26D86C7805D090D8210086876D6C35C";
+            flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F"; flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B"; flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D"; flmd5[7] = "9B4C18E4F3E82F0FEE41E30B2EA2246A";
+            flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
+            flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
+            flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
+
+            int error = 0; string error_message = "";
+            string cmds = "-d -v -s \"" + @file + "\" \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\SADowngraderPatches\" + fl[index] + "\" \"" + @file + ".temp\"";
+            ProcessStartInfo start_info = new ProcessStartInfo("xdelta.exe", cmds);
+            start_info.UseShellExecute = false;
+            start_info.CreateNoWindow = true;
+            start_info.RedirectStandardOutput = true;
+            start_info.RedirectStandardError = true;
+            Process proc = new Process();
+            proc.StartInfo = start_info;
+            proc.Start();
+            StreamReader std_out = proc.StandardOutput;
+            StreamReader std_err = proc.StandardError;
+            string resultStr = std_err.ReadToEnd().ToString();
+            bool flag = resultStr.Contains("finished");
+            if (flag)
+            {
+                error_message = "OK!";
+                error = 0;
+            }
+            else
+            {
+                error_message += resultStr;
+                error = 1;
+            }
+            //return error_message;
+        }
         public static string Logger(string type, string ido, string status)
         {
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
