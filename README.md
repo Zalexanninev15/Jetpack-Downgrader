@@ -8,7 +8,7 @@ Application for downgrading the version of the game Grand Theft Auto: San Andrea
 1. To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
 2. Download [cache.exe](https://drive.google.com/file/d/1LnuJBKXT2mLJsPGk4_6WBtRjewbr3n8d/view) and copy this file to SADRW2 folder. Run this file and wait...
 
-In **config.ini**, you can specify some parameters for the app, it is not recommended to change something if you do not know what each variable is responsible for and what are the values
+In **config.ini**, you can specify some settings for this app, it is not recommended to change something if you do not know what each variable is responsible for and what are the values
 
 ### Settings in config.ini
 
@@ -19,7 +19,7 @@ In **config.ini**, you can specify some parameters for the app, it is not recomm
 
 #### [SADRW2]
 
-* **Component** - this setting is **only** necessary if you decide to use SADRW2 in your projects (the setting will help you skip the "user-interface" and remove the waiting for input after the end of the application)
+* **Component** - this setting is **only** necessary if you decide to use SA Downgrader RW2 in your projects (the setting will help you skip the "user-interface" and removes the waiting for input after the processes in the app are completed)
 
 #### [Only]
 
