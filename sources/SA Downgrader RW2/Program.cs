@@ -252,7 +252,7 @@ namespace SA_Downgrader_RW2
                             {
                                 GameMD5 = Cache(@path + fl[1]);
                                 Logger("GameMD5", @path + fl[1], GameMD5);
-                                if (GameMD5 == flmd5[1])
+                                if (GameMD5 == flmd5[0])
                                 {
                                     fisv = true;
                                     Logger("GameMD5", @path + fl[1], "1.0");
