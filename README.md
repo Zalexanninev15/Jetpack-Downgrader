@@ -12,8 +12,7 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas from R
 
 ## Configuration
 
-1. To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
-2. Download [cache.exe](https://drive.google.com/file/d/11zLQ_HKTXjQzsiJUN7yecGJGXymhgIy0/view) and copy this file to SADRW2 folder. Run this file and wait...
+Download [cache.exe](https://drive.google.com/file/d/11zLQ_HKTXjQzsiJUN7yecGJGXymhgIy0/view) and copy this file to SADRW2 folder. Run this file and wait...
 
 In **config.ini**, you can specify some settings for this app, it is not recommended to change something if you do not know what each variable is responsible for and what are the values
 
@@ -36,6 +35,10 @@ In **config.ini**, you can specify some settings for this app, it is not recomme
 * **GameVersion** - get only the game version (can be used with the setting **ResetGame**)
 * **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
 * **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scans files by MD5 and reveals which files are copied from the game version 1.0
+
+### path.txt
+
+To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
 
 ## Build
 Compile using [SharpDevelop](https://sourceforge.net/projects/sharpdevelop/)
