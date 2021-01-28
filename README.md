@@ -25,7 +25,7 @@ In **config.ini**, you can specify some parameters for the app, it is not recomm
 
 #### [Only]
 
-* **GameVersion** - get only the game version (can be used in conjunction with the setting **ResetGame**)
+* **GameVersion** - get only the game version (can be used with the setting **ResetGame**)
 * **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
 * **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scans files by MD5 and reveals which files are copied from the game version 1.0
 
