@@ -466,7 +466,7 @@ namespace SA_Downgrader_RW2
                                             File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                             Logger("NewGameReadOnly", @path + fl[1], "true");
                                         }
-                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                     }
                                     if (gv == 3)  // C_RGL
                                     {
@@ -479,7 +479,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -492,7 +492,7 @@ namespace SA_Downgrader_RW2
                                                     File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
                                                     Logger("NewGameReadOnly", @path + fl[i], "true");
                                                 }
-                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                             }
 
                                         }
@@ -508,7 +508,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -523,7 +523,7 @@ namespace SA_Downgrader_RW2
                                                         File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
                                                         Logger("NewGameReadOnly", @path + fl[i], "true");
                                                     }
-                                                    catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                                    catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                                 }
                                             }
                                         }
@@ -540,7 +540,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -553,12 +553,12 @@ namespace SA_Downgrader_RW2
                                                     File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
                                                     Logger("NewGameReadOnly", @path + fl[i], "true");
                                                 }
-                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                             }
                                         }
                                     }
                                 }
-                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                 if (er == 0)
                                 {
                                     Logger("NewGame", "All", "1.0");
