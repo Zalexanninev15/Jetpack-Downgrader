@@ -10,13 +10,15 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas from R
 * Steam [fully supported]
 * RGL [fully supported]
 
-## Configuration
+## Usage and configuration
 
-Download [cache.exe](https://drive.google.com/file/d/11zLQ_HKTXjQzsiJUN7yecGJGXymhgIy0/view) and copy this file to SADRW2 folder. Run this file and wait...
-
-In **config.ini**, you can specify some settings for this app, it is not recommended to change something if you do not know what each variable is responsible for and what are the values
+1. Download [cache.exe](https://drive.google.com/file/d/11zLQ_HKTXjQzsiJUN7yecGJGXymhgIy0/view) and copy this file to SADRW2 folder. Run this file and wait...
+2. Run **SA Downgrader RW2.exe** and select the folder (if **SelectFolderUI=true**)
+3. Wait for the end of the work...
 
 ### Settings in config.ini
+
+In **config.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are
 
 #### [Downgrader]
 
