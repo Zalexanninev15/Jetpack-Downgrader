@@ -1,4 +1,4 @@
-# SA Downgrader RW2
+# SA Downgrader RW2| [Download](https://github.com/Zalexanninev15/SADRW2/releases/latest)
 ![alt](https://image.jimcdn.com/app/cms/image/transf/dimension=117x10000:format=png/path/s876f79fd6a5f4193/image/i1971da86cd486af0/version/1610909548/image.png)
 ## Description
 Application for downgrading the version of the game Grand Theft Auto: San Andreas from Rockstar Games to version 1.0
@@ -14,8 +14,10 @@ In **config.ini**, you can specify some parameters for the app, it is not recomm
 
 #### [Downgrader]
 
-* **CreateBackups** - creating backups of files before downgrading them (recommended)
+* **CreateBackups** - creating backups (full file name + .bak) of files before downgrading them (recommended)
 * **SetReadOnly** - set the "Read-only" attribute for each file after downgrade (recommended for Steam and RGL versions)
+* **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after successfully downgrading the game version)
+* **ResetGame** - deleting the game configuration file - **gta_sa.set** (after getting the game version)
 
 #### [SADRW2]
 
@@ -23,7 +25,7 @@ In **config.ini**, you can specify some parameters for the app, it is not recomm
 
 #### [Only]
 
-* **GameVersion** - get only the game version
+* **GameVersion** - get only the game version (can be used in conjunction with the setting **ResetGame**)
 * **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
 * **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scans files by MD5 and reveals which files are copied from the game version 1.0
 

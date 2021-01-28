@@ -28,16 +28,18 @@ namespace SA_Downgrader_RW2
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
 
             int er = 0, gv = 0;
-            bool[] settings = new bool[6];
+            bool[] settings = new bool[8];
             string path = "";
             Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version 1.0-Beta by Vadim M. & Zalexanninev15");
+            Console.WriteLine("[App] SA Downgrader RW2 version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +  " by Vadim M. & Zalexanninev15");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
                 settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
                 settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
+                settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
+                settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
                 settings[3] = Convert.ToBoolean(cfg.GetValue("Only", "GameVersion"));
                 settings[4] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFiles"));
                 settings[5] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
@@ -52,10 +54,6 @@ namespace SA_Downgrader_RW2
             {
                 Logger("Game", "Directory", "true");
 
-                // Get version (EXE)
-                string SaEXE = @path + @"\gta-sa.exe";
-                Logger("Downgrader", "Process", "Get version (EXE)...");
-
                 // 0 - 1.0
                 // 1 - Steam
                 // 2 - 2.0
@@ -63,6 +61,10 @@ namespace SA_Downgrader_RW2
                 // 4 - Unknown
                 // 5 - Error
 
+
+                // Get version (EXE)
+                string SaEXE = @path + @"\gta-sa.exe";
+                Logger("Downgrader", "Process", "Get version (EXE)...");
                 if (File.Exists(SaEXE))
                 {
                     // Steam
@@ -143,6 +145,21 @@ namespace SA_Downgrader_RW2
                         }
                     }
                     catch { gv = 5; er = 1; Logger("Game", "Version", "Unknown [ERROR]"); } //error
+                }
+                if (settings[7] == true)
+                {
+                    Logger("Downgrader", "Process", "Deleting gta_sa.set file...");
+                    try
+                    {
+                        if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                        {
+                            File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
+                            Logger("ResetGameSettings", "gta_sa.set", "true");
+                        }
+                        else
+                            Logger("ResetGameSettings", "gta_sa.set", "false");
+                    }
+                    catch { Logger("ResetGameSettings", "gta_sa.set", "false"); }
                 }
                 if ((gv != 0) && (er == 0) && (settings[3] == false))
                 {
@@ -314,8 +331,7 @@ namespace SA_Downgrader_RW2
                                             File.Delete(@path + fl[i] + ".bak");
                                         try
                                         {
-                                            File.Copy(@path + fl[i], @path + fl[i] + ".bak");
-                                            File.Delete(@path + fl[i]);
+                                            File.Move(@path + fl[i], @path + fl[i] + ".bak");
                                             Logger("GameBackup", @path + fl[i], "generated");
                                         }
                                         catch { er = 1; Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); }
@@ -327,8 +343,7 @@ namespace SA_Downgrader_RW2
                                         File.Delete(@path + fl[1] + ".bak");
                                     try
                                     {
-                                        File.Copy(@path + fl[1], @path + fl[1] + ".bak");
-                                        File.Delete(@path + fl[1]);
+                                        File.Move(@path + fl[1], @path + fl[1] + ".bak");
                                         Logger("GameBackup", @path + fl[1], "generated");
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
@@ -367,8 +382,7 @@ namespace SA_Downgrader_RW2
                                                 File.Delete(@path + fl[i] + ".bak");
                                             try
                                             {
-                                                File.Copy(@path + fl[i], @path + fl[i] + ".bak");
-                                                File.Delete(@path + fl[i]);
+                                                File.Move(@path + fl[i], @path + fl[i] + ".bak");
                                                 Logger("GameBackup", @path + fl[i], "generated");
                                             }
                                             catch { er = 1; Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); }
@@ -378,13 +392,16 @@ namespace SA_Downgrader_RW2
                             }
                             if (er == 0)
                             {
-                                // 5. Downgrader [1.0]
+                                // 5. Downgrader [1.1-Beta]
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
                                     if (gv == 3)
                                     {
-                                        for (int i = 1; i < fl.Length; i++)
+                                        // C_RGL
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1] + "[" + gv + "]", @path + fl[1], true);
+                                        Logger("NewGame", @path + fl[1], "1.0");
+                                        for (int i = 2; i < fl.Length; i++)
                                         {
                                             File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
                                             Logger("NewGame", @path + fl[i], "1.0");
@@ -402,7 +419,8 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 2)
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1], @path + fl[1], true);
+                                        // C_2.0
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1] + "[" + gv + "]", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         if (settings[0] == true)
                                         {
@@ -546,6 +564,16 @@ namespace SA_Downgrader_RW2
                                     {
                                         Logger("NewGameMD5", "All", "true");
                                         Logger("Downgrader", "Game", "Downgrade completed!");
+                                        if (settings[6] == true)
+                                        {
+                                            Logger("Downgrader", "Process", "Creating a shortcut...");
+                                            try
+                                            {
+                                                Create(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe");
+                                                Logger("Downgrader", "Shortcut", "true");
+                                            }
+                                            catch { Logger("Downgrader", "Shortcut", "false"); }
+                                        }
                                     }
                                     else
                                     {
@@ -645,6 +673,14 @@ namespace SA_Downgrader_RW2
             return "";
         }
 
+        public static void Create(string ShortcutPath, string TargetPath)
+        {
+            IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut Shortcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutPath);
+            Shortcut.TargetPath = TargetPath;
+            Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
+            Shortcut.Save();
+        }
         public static string Cache(string file)
         {
             using (var md5 = MD5.Create())
