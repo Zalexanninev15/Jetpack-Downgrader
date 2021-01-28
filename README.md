@@ -6,14 +6,14 @@ Application for downgrading the version of the game Grand Theft Auto: San Andrea
 ## Versions of GTA SA
 
 * 1.01 [exe only]
-* 2.0 [in development]
-* Steam [full support]
-* RGL [full support]
+* 2.0 [supported]
+* Steam [fully supported]
+* RGL [fully supported]
 
 ## Configuration
 
 1. To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
-2. Download [cache.exe](https://drive.google.com/file/d/1LnuJBKXT2mLJsPGk4_6WBtRjewbr3n8d/view) and copy this file to SADRW2 folder. Run this file and wait...
+2. Download [cache.exe](https://drive.google.com/file/d/11zLQ_HKTXjQzsiJUN7yecGJGXymhgIy0/view) and copy this file to SADRW2 folder. Run this file and wait...
 
 In **config.ini**, you can specify some parameters for the app, it is not recommended to change something if you do not know what each variable is responsible for and what are the values
 
@@ -28,7 +28,8 @@ In **config.ini**, you can specify some parameters for the app, it is not recomm
 
 #### [SADRW2]
 
-* **Component** - this setting is **only** necessary if you decide to use SADRW2 in your projects (the setting will help you skip the "user-interface" and remove the waiting for input after the end of the application)
+* **Component** - this setting is **only** necessary if you decide to use SADRW2 in your projects (the setting will help you skip the "user-interface" and remove the waiting for input after the end of the application). This setting disables access to the file **path.txt** and adds the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. For example: start sadrw2.exe D:\TEST\STEAM_SA
+* **SelectFolderUI** - using GUI for select the folder with the game (path using **path.txt** or **Copmonent=true** are overwritten to the new)
 
 #### [Only]
 

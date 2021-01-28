@@ -1,7 +1,0 @@
-E:\Github\SADRW2\sources\SA Downgrader RW2\bin\Release\SA Downgrader RW2.exe.config
-E:\Github\SADRW2\sources\SA Downgrader RW2\bin\Release\SA Downgrader RW2.exe
-E:\Github\SADRW2\sources\SA Downgrader RW2\obj\Release\SA Downgrader RW2.csprojAssemblyReference.cache
-E:\Github\SADRW2\sources\SA Downgrader RW2\obj\Release\Interop.IWshRuntimeLibrary.dll
-E:\Github\SADRW2\sources\SA Downgrader RW2\obj\Release\SA Downgrader RW2.csproj.ResolveComReference.cache
-E:\Github\SADRW2\sources\SA Downgrader RW2\obj\Release\SA Downgrader RW2.csproj.CoreCompileInputs.cache
-E:\Github\SADRW2\sources\SA Downgrader RW2\obj\Release\SA Downgrader RW2.exe
