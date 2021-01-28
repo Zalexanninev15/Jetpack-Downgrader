@@ -3,6 +3,13 @@
 ## Description
 Application for downgrading the version of the game Grand Theft Auto: San Andreas from Rockstar Games to version 1.0
 
+## Versions of GTA SA
+
+* 1.01 [exe only]
+* 2.0 [in development]
+* Steam [full support]
+* RGL [in development]
+
 ## Configuration
 
 1. To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA

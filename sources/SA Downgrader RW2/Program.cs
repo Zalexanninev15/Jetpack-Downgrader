@@ -60,6 +60,7 @@ namespace SA_Downgrader_RW2
                 // 3 - Rockstar Games Launcher
                 // 4 - Unknown
                 // 5 - Error
+                // 6 - 1.01
 
 
                 // Get version (EXE)
@@ -98,8 +99,16 @@ namespace SA_Downgrader_RW2
                                 {
                                     if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
                                     {
-                                        gv = 4;
-                                        Logger("Game", "Version", "Unknown");
+                                        if (OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE")
+                                        {
+                                            gv = 4;
+                                            Logger("Game", "Version", "Unknown");
+                                        }
+                                        else
+                                        {
+                                            gv = 6;
+                                            Logger("Game", "Version", "1.01");
+                                        }
                                     }
                                     else
                                     {
@@ -134,8 +143,16 @@ namespace SA_Downgrader_RW2
                         {
                             if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
                             {
-                                gv = 4;
-                                Logger("Game", "Version", "Unknown");
+                                if (OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE")
+                                {
+                                    gv = 4;
+                                    Logger("Game", "Version", "Unknown");
+                                }
+                                else
+                                {
+                                    gv = 6;
+                                    Logger("Game", "Version", "1.01");
+                                }
                             }
                             else
                             {
@@ -165,6 +182,16 @@ namespace SA_Downgrader_RW2
                 {
                     // Check files
                     Logger("Downgrader", "Process", "Scanning files...");
+                    if (gv == 6) // 1.01
+                    {
+                            if (File.Exists(@path + fl[1]))
+                                Logger("Game", @path + fl[1], "true");
+                            else
+                            {
+                                er = 1;
+                                Logger("Game", @path + fl[1], "false");
+                            }
+                    }
                     if (gv == 3) // RGL
                     {
                         for (int i = 1; i < fl.Length; i++)
@@ -219,6 +246,22 @@ namespace SA_Downgrader_RW2
                         string GameMD5 = "";
                         Logger("Game", "AllFiles", "true");
                         Logger("Downgrader", "Process", "Checking files (MD5)...");
+                        if (gv == 6) // 1.01
+                        {
+                            try
+                            {
+                                GameMD5 = Cache(@path + fl[1]);
+                                Logger("GameMD5", @path + fl[1], GameMD5);
+                                if (GameMD5 == flmd5[1])
+                                {
+                                    fisv = true;
+                                    Logger("GameMD5", @path + fl[1], "1.0");
+                                }
+                                else
+                                    Logger("GameMD5", @path + fl[1], "Higher than 1.0");
+                            }
+                            catch { Logger("GameMD5", @path + fl[1], "false"); }
+                        }
                         if (gv == 3) // RGL
                         {
                             for (int i = 2; i < fl.Length; i++)
@@ -314,6 +357,18 @@ namespace SA_Downgrader_RW2
                             if (settings[2] == true)
                             {
                                 Logger("Downgrader", "Process", "Create backups...");
+                                if (gv == 6) // 1.01
+                                {
+                                    if (File.Exists(@path + fl[1] + ".bak"))
+                                        File.Delete(@path + fl[1] + ".bak");
+                                    try
+                                    {
+                                        File.Copy(@path + fl[1], @path + fl[1] + ".bak");
+                                        File.Delete(@path + fl[1]);
+                                        Logger("GameBackup", @path + fl[1], "generated");
+                                    }
+                                    catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
+                                }
                                 if (gv == 3) // RGL
                                 {
                                     if (File.Exists(@path + fl[1] + ".bak"))
@@ -396,11 +451,31 @@ namespace SA_Downgrader_RW2
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
+                                    if (gv == 6) // 1.01
+                                    {
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[1], true);
+                                        Logger("NewGame", @path + fl[1], "1.0");
+                                        try
+                                        {
+                                            File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                            Logger("NewGameReadOnly", @path + fl[1], "true");
+                                        }
+                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                    }
                                     if (gv == 3)
                                     {
                                         // C_RGL
                                         File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1] + "[" + gv + "]", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
+                                        if (settings[0] == true)
+                                        {
+                                            try
+                                            {
+                                                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                                Logger("NewGameReadOnly", @path + fl[1], "true");
+                                            }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                        }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
                                             File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
@@ -449,9 +524,20 @@ namespace SA_Downgrader_RW2
                                             }
                                         }
                                     }
-                                    if (gv == 1)
+                                    if (gv == 1) // C_Steam
                                     {
-                                        for (int i = 0; i < fl.Length; i++)
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[1], true);
+                                        Logger("NewGame", @path + fl[1], "1.0");
+                                        if (settings[0] == true)
+                                        {
+                                            try
+                                            {
+                                                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                                Logger("NewGameReadOnly", @path + fl[1], "true");
+                                            }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                        }
+                                        for (int i = 2; i < fl.Length; i++)
                                         {
                                             File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
                                             Logger("NewGame", @path + fl[i], "1.0");
@@ -475,6 +561,25 @@ namespace SA_Downgrader_RW2
                                         Logger("NewGameReadOnly", "All", "true");
                                     // 6. Check for downgraded files
                                     Logger("Downgrader", "Process", "Check for downgraded files...");
+                                    if (gv == 6) // 1.01
+                                    {
+                                        try
+                                        {
+                                            GameMD5 = Cache(@path + fl[1]);
+                                            Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                            if (GameMD5 == flmd5[0])
+                                            {
+                                                fisv = true;
+                                                Logger("NewGameMD5", @path + fl[1], "1.0");
+                                            }
+                                            else
+                                            {
+                                                fisv = false;
+                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
+                                            }
+                                        }
+                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
+                                    }
                                     if (gv == 3)
                                     {
                                         for (int i = 1; i < fl.Length; i++)
@@ -540,24 +645,40 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 1)
                                     {
-                                        for (int i = 0; i < fl.Length; i++)
+                                        try
                                         {
-                                            try
+                                            GameMD5 = Cache(@path + fl[1]);
+                                            Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                            if (GameMD5 == flmd5[0])
                                             {
-                                                GameMD5 = Cache(@path + fl[i]);
-                                                Logger("NewGameMD5", @path + fl[i], GameMD5);
-                                                if (GameMD5 == flmd5[i])
-                                                {
-                                                    fisv = true;
-                                                    Logger("NewGameMD5", @path + fl[i], "1.0");
-                                                }
-                                                else
-                                                {
-                                                    fisv = false;
-                                                    Logger("NewGameMD5", @path + fl[i], "Higher than 1.0");
-                                                }
+                                                fisv = true;
+                                                Logger("NewGameMD5", @path + fl[1], "1.0");
                                             }
-                                            catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "false"); }
+                                            else
+                                            {
+                                                fisv = false;
+                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
+                                            }
+                                        }
+                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
+                                        for (int i = 2; i < fl.Length; i++)
+                                        {
+                                                try
+                                                {
+                                                    GameMD5 = Cache(@path + fl[i]);
+                                                    Logger("NewGameMD5", @path + fl[i], GameMD5);
+                                                    if (GameMD5 == flmd5[i])
+                                                    {
+                                                        fisv = true;
+                                                        Logger("NewGameMD5", @path + fl[i], "1.0");
+                                                    }
+                                                    else
+                                                    {
+                                                        fisv = false;
+                                                        Logger("NewGameMD5", @path + fl[i], "Higher than 1.0");
+                                                    }
+                                                }
+                                                catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "false"); }
                                         }
                                     }
                                     if (fisv == true)
