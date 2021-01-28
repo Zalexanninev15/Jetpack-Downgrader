@@ -447,7 +447,7 @@ namespace SA_Downgrader_RW2
                             }
                             if (er == 0)
                             {
-                                // 5. Downgrader [1.1-Beta]
+                                // 5. Downgrader [1.1.2-Beta]
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
@@ -506,10 +506,10 @@ namespace SA_Downgrader_RW2
                                             }
                                             catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
                                         }
-                                        for (int i = 1; i < fl.Length; i++)
+                                        for (int i = 2; i < fl.Length; i++)
                                         {
-                                            if ((i >= 2) && (i > 11))
-                                            {
+                                            //if ((i >= 2) && (i > 11))
+                                            //{
                                                 File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
                                                 Logger("NewGame", @path + fl[i], "1.0");
                                                 if (settings[0] == true)
@@ -521,7 +521,7 @@ namespace SA_Downgrader_RW2
                                                     }
                                                     catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
                                                 }
-                                            }
+                                            //}
                                         }
                                     }
                                     if (gv == 1) // C_Steam
@@ -580,7 +580,7 @@ namespace SA_Downgrader_RW2
                                         }
                                         catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
                                     }
-                                    if (gv == 3)
+                                    if (gv == 3) // RGL
                                     {
                                         for (int i = 1; i < fl.Length; i++)
                                         {
@@ -602,28 +602,28 @@ namespace SA_Downgrader_RW2
                                             catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "false"); }
                                         }
                                     }
-                                    if (gv == 2)
+                                    if (gv == 2) // 2.0
                                     {
-                                        try
-                                        {
-                                            GameMD5 = Cache(@path + fl[1]);
-                                            Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                            if (GameMD5 == flmd5[1])
-                                            {
-                                                fisv = true;
-                                                Logger("NewGameMD5", @path + fl[1], "1.0");
-                                            }
-                                            else
-                                            {
-                                                fisv = false;
-                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
-                                            }
-                                        }
-                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
+                                        //try
+                                        //{
+                                        //    GameMD5 = Cache(@path + fl[1]);
+                                        //    Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                        //    if (GameMD5 == flmd5[1])
+                                        //    {
+                                        //        fisv = true;
+                                        //        Logger("NewGameMD5", @path + fl[1], "1.0");
+                                        //    }
+                                        //    else
+                                        //    {
+                                        //        fisv = false;
+                                        //        Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
+                                        //    }
+                                        //}
+                                        //catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
                                         for (int i = 1; i < fl.Length; i++)
                                         {
-                                            if ((i >= 2) && (i > 11))
-                                            {
+                                            //if ((i >= 2) && (i > 11))
+                                            //{
                                                 try
                                                 {
                                                     GameMD5 = Cache(@path + fl[i]);
@@ -640,10 +640,10 @@ namespace SA_Downgrader_RW2
                                                     }
                                                 }
                                                 catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "false"); }
-                                            }
+                                            //}
                                         }
                                     }
-                                    if (gv == 1)
+                                    if (gv == 1) // Steam
                                     {
                                         try
                                         {
