@@ -579,7 +579,23 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 3) // RGL
                                     {
-                                        for (int i = 1; i < fl.Length; i++)
+                                        try
+                                        {
+                                            GameMD5 = Cache(@path + fl[1]);
+                                            Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                            if (GameMD5 == flmd5[0])
+                                            {
+                                                fisv = true;
+                                                Logger("NewGameMD5", @path + fl[1], "1.0");
+                                            }
+                                            else
+                                            {
+                                                fisv = false;
+                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
+                                            }
+                                        }
+                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
+                                        for (int i = 2; i < fl.Length; i++)
                                         {
                                             try
                                             {
@@ -601,23 +617,23 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 2) // 2.0
                                     {
-                                        //try
-                                        //{
-                                        //    GameMD5 = Cache(@path + fl[1]);
-                                        //    Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                        //    if (GameMD5 == flmd5[1])
-                                        //    {
-                                        //        fisv = true;
-                                        //        Logger("NewGameMD5", @path + fl[1], "1.0");
-                                        //    }
-                                        //    else
-                                        //    {
-                                        //        fisv = false;
-                                        //        Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
-                                        //    }
-                                        //}
-                                        //catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
-                                        for (int i = 1; i < fl.Length; i++)
+                                        try
+                                        {
+                                            GameMD5 = Cache(@path + fl[1]);
+                                            Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                            if (GameMD5 == flmd5[0])
+                                            {
+                                                fisv = true;
+                                                Logger("NewGameMD5", @path + fl[1], "1.0");
+                                            }
+                                            else
+                                            {
+                                                fisv = false;
+                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0");
+                                            }
+                                        }
+                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "false"); }
+                                        for (int i = 2; i < fl.Length; i++)
                                         {
                                             //if ((i >= 2) && (i > 11))
                                             //{

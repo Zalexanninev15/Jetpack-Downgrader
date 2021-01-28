@@ -8,7 +8,7 @@ Application for downgrading the version of the game Grand Theft Auto: San Andrea
 * 1.01 [exe only]
 * 2.0 [in development]
 * Steam [full support]
-* RGL [in development]
+* RGL [full support]
 
 ## Configuration
 
