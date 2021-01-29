@@ -468,7 +468,7 @@ namespace SA_Downgrader_RW2
                                             File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                             Logger("NewGameReadOnly", @path + fl[1], "true");
                                         }
-                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                     }
                                     if (gv == 3)  // C_RGL
                                     {
@@ -481,7 +481,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -510,7 +510,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -532,6 +532,17 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 1) // C_Steam
                                     {
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[0], true);
+                                        Logger("NewGame", @path + fl[0], "1.0");
+                                        if (settings[0] == true)
+                                        {
+                                            try
+                                            {
+                                                File.SetAttributes(@path + fl[0], FileAttributes.ReadOnly);
+                                                Logger("NewGameReadOnly", @path + fl[0], "true");
+                                            }
+                                            catch { er = 1; Logger("NewGame", @path + fl[0], "An error occurred accessing the game file!"); }
+                                        }
                                         File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         if (settings[0] == true)
@@ -541,17 +552,7 @@ namespace SA_Downgrader_RW2
                                                 File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
                                                 Logger("NewGameReadOnly", @path + fl[1], "true");
                                             }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
-                                        }
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[0], true);
-                                        if (settings[0] == true)
-                                        {
-                                            try
-                                            {
-                                                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
-                                                Logger("NewGameReadOnly", @path + fl[1], "true");
-                                            }
-                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            catch { er = 1; Logger("NewGame", @path + fl[1], "An error occurred accessing the game file!"); }
                                         }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
@@ -679,6 +680,22 @@ namespace SA_Downgrader_RW2
                                     {
                                         try
                                         {
+                                            GameMD5 = Cache(@path + fl[0]);
+                                            Logger("NewGameMD5", @path + fl[0], GameMD5);
+                                            if (GameMD5 == flmd5[0])
+                                            {
+                                                fisv = true;
+                                                Logger("NewGameMD5", @path + fl[0], "1.0");
+                                            }
+                                            else
+                                            {
+                                                fisv = false;
+                                                Logger("NewGameMD5", @path + fl[0], "Higher than 1.0");
+                                            }
+                                        }
+                                        catch { fisv = false; Logger("NewGameMD5", @path + fl[0], "File not found!"); }
+                                        try
+                                        {
                                             GameMD5 = Cache(@path + fl[1]);
                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                             if (GameMD5 == flmd5[0])
@@ -732,8 +749,12 @@ namespace SA_Downgrader_RW2
                                             Logger("Downgrader", "Process", "Adding entries to the registry...");
                                             try
                                             {
-                                                Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation");
-                                                Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
+                                                bool is64BitOS = Environment.Is64BitOperatingSystem;
+                                                if (is64BitOS == true)
+                                                {
+                                                    Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation");
+                                                    Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
+                                                }
                                                 Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
                                                 Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
                                                 Logger("Downgrader", "Registry", "true");
