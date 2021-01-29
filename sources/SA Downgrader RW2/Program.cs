@@ -374,7 +374,7 @@ namespace SA_Downgrader_RW2
                                     try
                                     {
                                         File.Move(@path + fl[1], @path + fl[1] + ".bak");
-                                        Logger("GameBackup", @path + fl[1], "generated");
+                                        Logger("GameBackup", @path + fl[1], "Done!");
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                 }
@@ -385,7 +385,7 @@ namespace SA_Downgrader_RW2
                                     try
                                     {
                                         File.Move(@path + fl[1], @path + fl[1] + ".bak");
-                                        Logger("GameBackup", @path + fl[1], "generated");
+                                        Logger("GameBackup", @path + fl[1], "Done!");
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                     for (int i = 2; i < fl.Length; i++)
@@ -395,7 +395,7 @@ namespace SA_Downgrader_RW2
                                         try
                                         {
                                             File.Move(@path + fl[i], @path + fl[i] + ".bak");
-                                            Logger("GameBackup", @path + fl[i], "generated");
+                                            Logger("GameBackup", @path + fl[i], "Done!");
                                         }
                                         catch { er = 1; Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); }
                                     }
@@ -407,7 +407,7 @@ namespace SA_Downgrader_RW2
                                     try
                                     {
                                         File.Move(@path + fl[1], @path + fl[1] + ".bak");
-                                        Logger("GameBackup", @path + fl[1], "generated");
+                                        Logger("GameBackup", @path + fl[1], "Done!");
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                     for (int i = 2; i < fl.Length; i++)
@@ -419,7 +419,7 @@ namespace SA_Downgrader_RW2
                                             try
                                             {
                                                 File.Move(@path + fl[i], @path + fl[i] + ".bak");
-                                                Logger("GameBackup", @path + fl[i], "generated");
+                                                Logger("GameBackup", @path + fl[i], "Done!");
                                             }
                                             catch { er = 1; Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); }
                                         }
@@ -432,7 +432,7 @@ namespace SA_Downgrader_RW2
                                     try
                                     {
                                         File.Move(@path + fl[0], @path + fl[0] + ".bak");
-                                        Logger("GameBackup", @path + fl[0], "generated");
+                                        Logger("GameBackup", @path + fl[0], "Done!");
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[0], "File for backup wasn't found!"); }
                                     for (int i = 2; i < fl.Length; i++)
@@ -444,7 +444,7 @@ namespace SA_Downgrader_RW2
                                             try
                                             {
                                                 File.Move(@path + fl[i], @path + fl[i] + ".bak");
-                                                Logger("GameBackup", @path + fl[i], "generated");
+                                                Logger("GameBackup", @path + fl[i], "Done!");
                                             }
                                             catch { er = 1; Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); }
                                         }
@@ -459,7 +459,7 @@ namespace SA_Downgrader_RW2
                                 {
                                     if (gv == 6) // C_1.01
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         try
                                         {
@@ -530,8 +530,17 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 1) // C_Steam
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
+                                        if (settings[0] == true)
+                                        {
+                                            try
+                                            {
+                                                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                                Logger("NewGameReadOnly", @path + fl[1], "true");
+                                            }
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
+                                        }
                                         File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0], @path + fl[0], true);
                                         if (settings[0] == true)
                                         {
