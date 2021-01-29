@@ -18,7 +18,10 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas from R
 
 ### Settings in config.ini
 
+##### !!!THE SETTINGS CAN BE CHANGED BEFORE LAUNCHING THE APP!!!
+
 In **config.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are
+
 
 #### [Downgrader]
 
@@ -47,6 +50,8 @@ In **config.ini**, you can specify the settings for this application, it is not 
 * **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scans files by MD5 and reveals which files are copied from the game version 1.0
 
 ### path.txt
+
+##### !!!THIS FILE CAN BE CHANGED BEFORE LAUNCHING THE APP!!!
 
 To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
 
