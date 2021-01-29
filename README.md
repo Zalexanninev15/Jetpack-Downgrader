@@ -26,11 +26,18 @@ In **config.ini**, you can specify the settings for this application, it is not 
 * **SetReadOnly** - set the "Read-only" attribute for each file after downgrade (recommended for Steam and RGL versions)
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after successfully downgrading the game version)
 * **ResetGame** - deleting the game configuration file - **gta_sa.set** (after getting the game version)
-* **GamePath** - adding entries to the registry about the path to the game to improve compatibility with mods and programs [1.2-Dev]
+* **GamePath** - adding entries to the registry about the path to the game to improve compatibility with mods and programs **[1.2-Dev]**
 
 #### [SADRW2]
 
-* **Component** - this setting is **only** necessary if you decide to use SA Downgrader RW2 in your projects ((the setting will help you skip the "user-interface" and removes the waiting for input after the processes in the app are completed). This setting disables access to the file **path.txt** and adds the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. For example: start sadrw2.exe D:\TEST\STEAM_SA
+* **Component** - this setting is **only** necessary if you decide to use SA Downgrader RW2 in your projects ((the setting will help you skip the "user-interface" and removes the waiting for input after the processes in the app are completed). This setting disables access to the file **path.txt** and adds the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
+
+  For example: 
+
+  ```shell
+  start sadrw2 "E:\Games\Grand Theft Auto San Andreas"
+  ```
+
 * **SelectFolderUI** - using GUI for select the folder with the game (path using **path.txt** or **Copmonent=true** are overwritten to the new)
 
 #### [Only]
