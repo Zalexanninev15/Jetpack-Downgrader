@@ -30,7 +30,7 @@ In **config.ini**, you can specify the settings for this application, it is not 
 
 #### [SADRW2]
 
-* **Component** - this setting is **only** necessary if you decide to use SA Downgrader RW2 in your projects ((the setting will help you skip the "user-interface" and removes the waiting for input after the processes in the app are completed). This setting disables access to the file **path.txt** and adds the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
+* **Component** - this setting is **only** necessary if you decide to use SA Downgrader RW2 in your projects (this setting will help you skip the "user-interface" and removes the waiting for input after the processes in the app are completed). This setting disables access to the file **path.txt** and adds the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
 
   For example: 
 
