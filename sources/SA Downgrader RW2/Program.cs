@@ -141,35 +141,44 @@ namespace SA_Downgrader_RW2
                     try
                     {
                         string OtherEXEmd5 = Cache(SaEXE);
-                        if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
+                        if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                         {
-                            gv = 3;
-                            Logger("Game", "Version", "Rockstar Games Launcher");
+                            gv = 1;
+                            Logger("Game", "Version", "Steam");
                         }
-                        if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                        else
                         {
-                            gv = 2;
-                            Logger("Game", "Version", "2.0");
-                        }
-                        if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
-                        {
-                            if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
+                            gv = 4;
+                            if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
                             {
-                                if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
+                                gv = 3;
+                                Logger("Game", "Version", "Rockstar Games Launcher");
+                            }
+                            if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                            {
+                                gv = 2;
+                                Logger("Game", "Version", "2.0");
+                            }
+                            if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                            {
+                                if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
                                 {
-                                    gv = 4;
-                                    Logger("Game", "Version", "Unknown");
+                                    if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
+                                    {
+                                        gv = 4;
+                                        Logger("Game", "Version", "Unknown");
+                                    }
+                                    else
+                                    {
+                                        gv = 6;
+                                        Logger("Game", "Version", "1.01");
+                                    }
                                 }
                                 else
                                 {
-                                    gv = 6;
-                                    Logger("Game", "Version", "1.01");
+                                    gv = 0;
+                                    Logger("Game", "Version", "1.0");
                                 }
-                            }
-                            else
-                            {
-                                gv = 0;
-                                Logger("Game", "Version", "1.0");
                             }
                         }
                     }
