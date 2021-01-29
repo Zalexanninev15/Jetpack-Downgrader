@@ -26,6 +26,7 @@ In **config.ini**, you can specify the settings for this application, it is not 
 * **SetReadOnly** - set the "Read-only" attribute for each file after downgrade (recommended for Steam and RGL versions)
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after successfully downgrading the game version)
 * **ResetGame** - deleting the game configuration file - **gta_sa.set** (after getting the game version)
+* **GamePath** - adding entries to the registry about the path to the game to improve compatibility with mods and programs [1.2-Dev]
 
 #### [SADRW2]
 
