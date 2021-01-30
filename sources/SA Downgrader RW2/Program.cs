@@ -2,6 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 
 namespace SA_Downgrader_RW2
@@ -30,10 +31,10 @@ namespace SA_Downgrader_RW2
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
 
             int er = 0, gv = 0;
-            bool[] settings = new bool[10];
+            bool[] settings = new bool[12];
             string path = "";
             Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() +  " by Vadim M. & Zalexanninev15");
+            Console.WriteLine("[App] SA Downgrader RW2 version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " by Vadim M. & Zalexanninev15");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
@@ -42,6 +43,8 @@ namespace SA_Downgrader_RW2
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
                 settings[9] = Convert.ToBoolean(cfg.GetValue("Downgrader", "GamePath"));
+                settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CopyGame"));
+                settings[11] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
                 settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
                 settings[8] = Convert.ToBoolean(cfg.GetValue("SADRW2", "SelectFolderUI"));
                 settings[3] = Convert.ToBoolean(cfg.GetValue("Only", "GameVersion"));
@@ -58,11 +61,11 @@ namespace SA_Downgrader_RW2
             {
                 System.Windows.Forms.FolderBrowserDialog pathf = new System.Windows.Forms.FolderBrowserDialog();
                 if (pathf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    path = pathf.SelectedPath;
+                    path = @pathf.SelectedPath;
                 else
                     path = "";
             }
-            if ((path != "") && (Directory.Exists(@path)))
+            if ((path != "") && Directory.Exists(@path))
             {
                 Logger("Game", "Path", "true");
 
@@ -74,13 +77,11 @@ namespace SA_Downgrader_RW2
                 // 5 - Error
                 // 6 - 1.01
 
-
                 // Get version (EXE)
                 string SaEXE = @path + @"\gta-sa.exe";
                 Logger("Downgrader", "Process", "Get version (EXE)...");
                 if (File.Exists(SaEXE))
                 {
-                    // Steam
                     try
                     {
                         string SteamEXEmd5 = Cache(SaEXE);
@@ -92,7 +93,6 @@ namespace SA_Downgrader_RW2
                         else
                         {
                             gv = 4;
-                            //not a Steam, this is other
                             SaEXE = @path + @"\gta_sa.exe";
                             try
                             {
@@ -136,7 +136,6 @@ namespace SA_Downgrader_RW2
                 }
                 else
                 {
-                    // Others
                     SaEXE = @path + @"\gta_sa.exe";
                     try
                     {
@@ -205,15 +204,15 @@ namespace SA_Downgrader_RW2
                     Logger("Downgrader", "Process", "Scanning files...");
                     if (gv == 6) // 1.01
                     {
-                            if (File.Exists(@path + fl[1]))
-                                Logger("Game", @path + fl[1], "true");
-                            else
-                            {
-                                er = 1;
-                                Logger("Game", @path + fl[1], "false");
-                            }
+                        if (File.Exists(@path + fl[1]))
+                            Logger("Game", @path + fl[1], "true");
+                        else
+                        {
+                            er = 1;
+                            Logger("Game", @path + fl[1], "false");
+                        }
                     }
-                    if (gv == 3) // RGL
+                    if (gv == 3) // Rockstar Games Launcher
                     {
                         for (int i = 1; i < fl.Length; i++)
                         {
@@ -283,7 +282,7 @@ namespace SA_Downgrader_RW2
                             }
                             catch { Logger("GameMD5", @path + fl[1], "File not found!"); }
                         }
-                        if (gv == 3) // RGL
+                        if (gv == 3) // Rockstar Games Launcher
                         {
                             for (int i = 2; i < fl.Length; i++)
                             {
@@ -372,8 +371,18 @@ namespace SA_Downgrader_RW2
                                 }
                             }
                         }
+                        if (settings[11] == true)
+                        {
+                            Logger("Downgrader", "Process", "Forced downgrade mode is used...");
+                            fisv = false;
+                        }
                         if ((fisv == false) && (settings[5] == false))
                         {
+                            if (settings[10] == true)
+                            {
+                                Logger("Downgrader", "Process", "Copying game files before downgrading...");
+                                try { FileSystem.CopyDirectory(path, path + "_Downgraded"); path = @path + "_Downgraded"; Logger("Game", "Path", "new"); } catch { er = 0; Logger("Game", "Path", "false"); }
+                            }
                             // Backup (optional)
                             if (settings[2] == true)
                             {
@@ -389,7 +398,7 @@ namespace SA_Downgrader_RW2
                                     }
                                     catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                 }
-                                if (gv == 3) // RGL
+                                if (gv == 3) // Rockstar Games Launcher
                                 {
                                     if (File.Exists(@path + fl[1] + ".bak"))
                                         File.Delete(@path + fl[1] + ".bak");
@@ -464,13 +473,24 @@ namespace SA_Downgrader_RW2
                             }
                             if (er == 0)
                             {
-                                // 5. Downgrader [1.1.3-Beta]
+                                
+                                if (settings[2] == false)
+                                {
+                                    for (int i = 0; i < fl.Length; i++)
+                                    {
+                                        try { File.Delete(path + fl[i]); } catch { }
+                                    }
+                                }
+                            }
+                            if (er == 0)
+                            {
+                                // 5. Downgrader [1.3-Beta]
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
                                     if (gv == 6) // C_1.01
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         try
                                         {
@@ -481,7 +501,7 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 3)  // C_RGL
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1] + "[" + gv + "]", @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         if (settings[0] == true)
                                         {
@@ -510,7 +530,7 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 2) // C_2.0
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[1] + "[" + gv + "]", @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         if (settings[0] == true)
                                         {
@@ -541,7 +561,7 @@ namespace SA_Downgrader_RW2
                                     }
                                     if (gv == 1) // C_Steam
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[0], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[0], true);
                                         Logger("NewGame", @path + fl[0], "1.0");
                                         if (settings[0] == true)
                                         {
@@ -552,7 +572,7 @@ namespace SA_Downgrader_RW2
                                             }
                                             catch { er = 1; Logger("NewGame", @path + fl[0], "An error occurred accessing the game file!"); }
                                         }
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[0] + "[16]", @path + fl[1], true);
+                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
                                         if (settings[0] == true)
                                         {
@@ -606,7 +626,7 @@ namespace SA_Downgrader_RW2
                                         }
                                         catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "File not found!"); }
                                     }
-                                    if (gv == 3) // RGL
+                                    if (gv == 3) // Rockstar Games Launcher
                                     {
                                         try
                                         {
@@ -721,22 +741,22 @@ namespace SA_Downgrader_RW2
                                         catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "File not found!"); }
                                         for (int i = 2; i < fl.Length; i++)
                                         {
-                                                try
+                                            try
+                                            {
+                                                GameMD5 = Cache(@path + fl[i]);
+                                                Logger("NewGameMD5", @path + fl[i], GameMD5);
+                                                if (GameMD5 == flmd5[i])
                                                 {
-                                                    GameMD5 = Cache(@path + fl[i]);
-                                                    Logger("NewGameMD5", @path + fl[i], GameMD5);
-                                                    if (GameMD5 == flmd5[i])
-                                                    {
-                                                        fisv = true;
-                                                        Logger("NewGameMD5", @path + fl[i], "1.0");
-                                                    }
-                                                    else
-                                                    {
-                                                        fisv = false;
-                                                        Logger("NewGameMD5", @path + fl[i], "Higher than 1.0");
-                                                    }
+                                                    fisv = true;
+                                                    Logger("NewGameMD5", @path + fl[i], "1.0");
                                                 }
-                                                catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "File not found!"); }
+                                                else
+                                                {
+                                                    fisv = false;
+                                                    Logger("NewGameMD5", @path + fl[i], "Higher than 1.0");
+                                                }
+                                            }
+                                            catch { fisv = false; Logger("NewGameMD5", @path + fl[i], "File not found!"); }
                                         }
                                     }
                                     if (fisv == true)
@@ -859,7 +879,7 @@ namespace SA_Downgrader_RW2
         //    else
         //     Logger("NewGame", "All", "An error occurred accessing the game files!");
         //
-        
+
         public static string Logger(string type, string ido, string status)
         {
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
