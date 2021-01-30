@@ -13,7 +13,7 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas from R
 ## Usage and configuration
 
 1. Download [cache.exe](https://drive.google.com/file/d/1XLe4paTDixkgULMuvpbxJUGufDpcIQIn/view) and copy this file to SADRW2 folder. Run this file and wait...
-2. Run **SA Downgrader RW2.exe** and select the folder (if **SelectFolderUI=true**)
+2. Run **sadrw2.exe** and select the folder (if **SelectFolderUI=true**)
 3. Wait for the end of the work...
 
 ### Settings in config.ini
