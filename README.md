@@ -54,6 +54,3 @@ In **config.ini**, you can specify the settings for this application, it is not 
 ##### !!!THIS FILE CAN BE CHANGED BEFORE LAUNCHING THE APP!!!
 
 To a file **path.txt** you must specify the path to the game. For example: D:\TEST\STEAM_SA
-
-## Build
-Compile using [SharpDevelop](https://sourceforge.net/projects/sharpdevelop/)
