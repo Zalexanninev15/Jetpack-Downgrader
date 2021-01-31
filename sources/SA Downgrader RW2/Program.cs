@@ -34,7 +34,7 @@ namespace SA_Downgrader_RW2
             bool[] settings = new bool[12];
             string path = "";
             Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + " by Vadim M. & Zalexanninev15");
+            Console.WriteLine("[App] SA Downgrader RW2 v" +  "1.0-PublicBeta"/*System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()*/ + "\n\nAuthors:\nZalexanninev15 - programmer and creator\nVadim M. - consultant\nDreD - technical expert\n");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
