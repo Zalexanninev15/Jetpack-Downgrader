@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 #endregion
 
 [assembly: AssemblyTitle("SA Downgrader RW2")]
-[assembly: AssemblyDescription("Application for downgrading the version of the game Grand Theft Auto: San Andreas from Rockstar Games to version 1.0")]
+[assembly: AssemblyDescription("Application for downgrading the version of the game Grand Theft Auto - San Andreas from Rockstar Games to version 1.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zalexanninev15")]
 [assembly: AssemblyProduct("SA Downgrader RW2")]
@@ -17,5 +17,5 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("1.3.0.0")]
-[assembly: AssemblyFileVersion("1.3.0.0")]
+[assembly: AssemblyVersion("1.3.0.1")]
+[assembly: AssemblyFileVersion("1.3.0.1")]

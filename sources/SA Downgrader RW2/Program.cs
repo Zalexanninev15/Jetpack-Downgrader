@@ -84,7 +84,7 @@ namespace SA_Downgrader_RW2
                 {
                     try
                     {
-                        string SteamEXEmd5 = Cache(SaEXE);
+                        string SteamEXEmd5 = GetMD5(SaEXE);
                         if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                         {
                             gv = 1;
@@ -96,7 +96,7 @@ namespace SA_Downgrader_RW2
                             SaEXE = @path + @"\gta_sa.exe";
                             try
                             {
-                                string OtherEXEmd5 = Cache(SaEXE);
+                                string OtherEXEmd5 = GetMD5(SaEXE);
                                 if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
                                 {
                                     gv = 3;
@@ -139,7 +139,7 @@ namespace SA_Downgrader_RW2
                     SaEXE = @path + @"\gta_sa.exe";
                     try
                     {
-                        string OtherEXEmd5 = Cache(SaEXE);
+                        string OtherEXEmd5 = GetMD5(SaEXE);
                         if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                         {
                             gv = 1;
@@ -270,7 +270,7 @@ namespace SA_Downgrader_RW2
                         {
                             try
                             {
-                                GameMD5 = Cache(@path + fl[1]);
+                                GameMD5 = GetMD5(@path + fl[1]);
                                 Logger("GameMD5", @path + fl[1], GameMD5);
                                 if (GameMD5 == flmd5[0])
                                 {
@@ -288,7 +288,7 @@ namespace SA_Downgrader_RW2
                             {
                                 try
                                 {
-                                    GameMD5 = Cache(@path + fl[i]);
+                                    GameMD5 = GetMD5(@path + fl[i]);
                                     Logger("GameMD5", @path + fl[i], GameMD5);
                                     if (GameMD5 == flmd5[i])
                                     {
@@ -309,7 +309,7 @@ namespace SA_Downgrader_RW2
                                 {
                                     try
                                     {
-                                        GameMD5 = Cache(@path + fl[i]);
+                                        GameMD5 = GetMD5(@path + fl[i]);
                                         Logger("GameMD5", @path + fl[i], GameMD5);
                                         if (GameMD5 == flmd5[i])
                                         {
@@ -327,7 +327,7 @@ namespace SA_Downgrader_RW2
                         {
                             try
                             {
-                                GameMD5 = Cache(@path + fl[0]);
+                                GameMD5 = GetMD5(@path + fl[0]);
                                 Logger("GameMD5", @path + fl[0], GameMD5);
                                 if (GameMD5 == flmd5[0])
                                 {
@@ -340,7 +340,7 @@ namespace SA_Downgrader_RW2
                             catch { Logger("GameMD5", @path + fl[0], "File not found!"); }
                             try
                             {
-                                GameMD5 = Cache(@path + fl[1]);
+                                GameMD5 = GetMD5(@path + fl[1]);
                                 Logger("GameMD5", @path + fl[1], GameMD5);
                                 if (GameMD5 == flmd5[1])
                                 {
@@ -357,7 +357,7 @@ namespace SA_Downgrader_RW2
                                 {
                                     try
                                     {
-                                        GameMD5 = Cache(@path + fl[i]);
+                                        GameMD5 = GetMD5(@path + fl[i]);
                                         Logger("GameMD5", @path + fl[i], GameMD5);
                                         if (GameMD5 == flmd5[i])
                                         {
@@ -611,7 +611,7 @@ namespace SA_Downgrader_RW2
                                     {
                                         try
                                         {
-                                            GameMD5 = Cache(@path + fl[1]);
+                                            GameMD5 = GetMD5(@path + fl[1]);
                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                             if (GameMD5 == flmd5[0])
                                             {
@@ -630,7 +630,7 @@ namespace SA_Downgrader_RW2
                                     {
                                         try
                                         {
-                                            GameMD5 = Cache(@path + fl[1]);
+                                            GameMD5 = GetMD5(@path + fl[1]);
                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                             if (GameMD5 == flmd5[0])
                                             {
@@ -648,7 +648,7 @@ namespace SA_Downgrader_RW2
                                         {
                                             try
                                             {
-                                                GameMD5 = Cache(@path + fl[i]);
+                                                GameMD5 = GetMD5(@path + fl[i]);
                                                 Logger("NewGameMD5", @path + fl[i], GameMD5);
                                                 if (GameMD5 == flmd5[i])
                                                 {
@@ -668,7 +668,7 @@ namespace SA_Downgrader_RW2
                                     {
                                         try
                                         {
-                                            GameMD5 = Cache(@path + fl[1]);
+                                            GameMD5 = GetMD5(@path + fl[1]);
                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                             if (GameMD5 == flmd5[0])
                                             {
@@ -688,7 +688,7 @@ namespace SA_Downgrader_RW2
                                             {
                                                 try
                                                 {
-                                                    GameMD5 = Cache(@path + fl[i]);
+                                                    GameMD5 = GetMD5(@path + fl[i]);
                                                     Logger("NewGameMD5", @path + fl[i], GameMD5);
                                                     if (GameMD5 == flmd5[i])
                                                     {
@@ -709,7 +709,7 @@ namespace SA_Downgrader_RW2
                                     {
                                         try
                                         {
-                                            GameMD5 = Cache(@path + fl[0]);
+                                            GameMD5 = GetMD5(@path + fl[0]);
                                             Logger("NewGameMD5", @path + fl[0], GameMD5);
                                             if (GameMD5 == flmd5[0])
                                             {
@@ -725,7 +725,7 @@ namespace SA_Downgrader_RW2
                                         catch { fisv = false; Logger("NewGameMD5", @path + fl[0], "File not found!"); }
                                         try
                                         {
-                                            GameMD5 = Cache(@path + fl[1]);
+                                            GameMD5 = GetMD5(@path + fl[1]);
                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                             if (GameMD5 == flmd5[0])
                                             {
@@ -743,7 +743,7 @@ namespace SA_Downgrader_RW2
                                         {
                                             try
                                             {
-                                                GameMD5 = Cache(@path + fl[i]);
+                                                GameMD5 = GetMD5(@path + fl[i]);
                                                 Logger("NewGameMD5", @path + fl[i], GameMD5);
                                                 if (GameMD5 == flmd5[i])
                                                 {
@@ -894,7 +894,7 @@ namespace SA_Downgrader_RW2
             Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
             Shortcut.Save();
         }
-        public static string Cache(string file)
+        public static string GetMD5(string file)
         {
             using (var md5 = MD5.Create())
             {
@@ -906,6 +906,18 @@ namespace SA_Downgrader_RW2
                         sb.Append(t.ToString("X2"));
                     return Convert.ToString(sb);
                 }
+            }
+        }
+
+        public string Corona(string file)
+        {
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(File.ReadAllBytes(file));
+                var sb = new StringBuilder(hash.Length * 2);
+                foreach (byte b in hash)
+                    sb.Append(b.ToString("X2"));
+                return sb.ToString();
             }
         }
     }
