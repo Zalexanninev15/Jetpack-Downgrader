@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SA Downgrader RW2", "SA Downgrader RW2.csproj", "{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jetpack Downgrader", "Jetpack Downgrader.csproj", "{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
