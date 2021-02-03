@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SA_Downgrader_RW2
+namespace JetpackDowngrader
 {
 	public class IniLoader
 {

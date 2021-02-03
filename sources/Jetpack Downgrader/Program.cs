@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 
-namespace SA_Downgrader_RW2
+namespace JetpackDowngrader
 {
     class Program
     {
@@ -15,8 +15,9 @@ namespace SA_Downgrader_RW2
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache.exe"); } catch { }
             string[] fl = new string[17];
             string[] flmd5 = new string[17];
+            string[] flsha1 = new string[17];
 
-            // A list of files:
+            // A list of all files:
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
             fl[8] = @"\audio\streams\MH"; fl[9] = @"\audio\streams\MR"; fl[10] = @"\audio\streams\RE"; fl[11] = @"\audio\streams\RG";
@@ -30,11 +31,18 @@ namespace SA_Downgrader_RW2
             flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
 
+            // A list of all SHA1 hashes [PATCH | ONLY FOR DEV]:
+            flsha1[0] = "15E3CFEDBA9A841DF67D8194E7249AFB493B0E10D6138FB8EBAB2C136E543EFB"; flsha1[1] = "7555288D603FD56D144835267A95CC4C1D5E5F995CCB0FDE8EEFCA5ED242A150"; flsha1[2] = "A0C644F82FF24626303D7E1F0E8D60A0DFEED0977859E23306571433D9CAED29"; flsha1[3] = "F02CDA63CD3A0BD55C2C2A18EFA7DB775593DF20C915EDAD18084A1878FD12BF";
+            flsha1[4] = "A0356897879B439788BF91CE39E6B113419D4AEE546C00D074906BBC9CCE184F"; flsha1[5] = "2743D59E4B86AB0044C2F7902BE2FFB3499BD83CC4E185142D868008372EA871"; flsha1[6] = "DD44B17B81D9FE28164D9A0CE6C8B0E7A715E1A90CC4787E5B2645BB5B16D35C"; flsha1[7] = "53140291AE8AF076EA9B2035867F12DFFBAD0FCA4212ED18FDB585330FB62343";
+            flsha1[8] = "6CF25BFE5DC286D30979596CE6A2AF78ECEA3C15823DDF5342C1C733FE386550"; flsha1[9] = "8D4EA5439465D74F4DD482927B9E17822579A5249E4C4A2BE9296F1A06744E60"; flsha1[10] = "EABC34ED12300BE694D95BD409F48ED23920722730F3BCE0F89162B50D26C7BE"; flsha1[11] = "D93087FC77EA633772D557C825B016F346077E380625640BECE0D1798EB81D57";
+            flsha1[12] = "AF05A54D525095719B74F658CE88E529BCFA3796E3873806C0DCD8536DAED5AF"; flsha1[13] = "C06162725BBC5429F7A871A29633AE5FAA5B1F6A23DDBAA42C8D2FED70021B3E"; flsha1[14] = "4CE0CDDE60B95B4676D392685B0440A391F1E4BB8AC79DB6ABB35E379FF82FDE"; flsha1[15] = "B54A61DDBCD3914D309E951BA87534BAD569A505F38E7936DD5BFDE7266D2591";
+            flsha1[16] = "EFEB84043C37053B53CABB50702AB6D36FCAB6620FEFFFDC19E3156BD590B46C";
+
             int er = 0, gv = 0;
             bool[] settings = new bool[12];
             string path = "";
-            Console.Title = "SA Downgrader RW2";
-            Console.WriteLine("[App] SA Downgrader RW2 v" +  "1.0-PublicBeta"/*System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()*/ + "\n\nAuthors:\nZalexanninev15 - programmer and creator\nVadim M. - consultant\nDreD - technical expert\n");
+            Console.Title = "Jetpack Downgrader";
+            Console.WriteLine("[App] Jetpack Downgrader version " +  System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n\nAuthors:\nZalexanninev15 - programmer and creator\nVadim M. - consultant\nDreD - technical expert\n");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
@@ -43,10 +51,10 @@ namespace SA_Downgrader_RW2
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
                 settings[9] = Convert.ToBoolean(cfg.GetValue("Downgrader", "GamePath"));
-                settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CopyGame"));
+                settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[11] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
-                settings[1] = Convert.ToBoolean(cfg.GetValue("SADRW2", "Component"));
-                settings[8] = Convert.ToBoolean(cfg.GetValue("SADRW2", "SelectFolderUI"));
+                settings[1] = Convert.ToBoolean(cfg.GetValue("JPD", "Component"));
+                settings[8] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolderUI"));
                 settings[3] = Convert.ToBoolean(cfg.GetValue("Only", "GameVersion"));
                 settings[4] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFiles"));
                 settings[5] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
