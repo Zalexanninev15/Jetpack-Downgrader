@@ -492,7 +492,7 @@ namespace JetpackDowngrader
                             }
                             if (er == 0)
                             {
-                                // 5. Downgrader [1.3-Beta]
+                                // 5. Downgrader [2.0-Alpha]
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
@@ -845,13 +845,17 @@ namespace JetpackDowngrader
 
         // For future :D
         //
-        // xdelta patcher [0.1-Dev 1.1]
+        // xdelta patcher [0.2-Dev]
         //   
-        //  
+        //  Old: -d -v -s
+        //
+        // Original file -> patch -> New File
+        //
+        //
         //  for (int i = 2; i < fl.Length; i++)
         //  {
         //    int error = 0; string error_message = "Error: ";
-        //    string cmds = "-d -v -s \"" + @file + "\" \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\" + fl[i] + "\" \"" + @path + fl[i] + ".temp\"";
+        //    string cmds = "-d -s \"" + @path + fl[i] + ".bak" + "\" \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\" + fl[i] + "\" \"" + @path + fl[i] + ".temp\"";
         //    ProcessStartInfo start_info = new ProcessStartInfo("xdelta.exe", cmds);
         //    start_info.UseShellExecute = false;
         //    start_info.CreateNoWindow = true;
@@ -880,8 +884,17 @@ namespace JetpackDowngrader
         //    if (error == 0)
         //    {
         //        for (int i = 2; i < fl.Length; i++)
-        //          File.Move(@path + fl[i] + ".temp",@path + fl[i]);
+        //          File.Move(@path + fl[i] + ".temp", @path + fl[i]);
         //        Logger("NewGame", "All", "1.0");
+        //        if (settings[0] == true)
+        //        {
+        //            try
+        //            {
+        //                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+        //                Logger("NewGameReadOnly", @path + fl[1], "true");
+        //            }
+        //            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
+        //         }
         //     }
         //        
         //    else
