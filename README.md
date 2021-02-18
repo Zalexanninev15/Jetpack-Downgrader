@@ -5,10 +5,10 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas from R
 
 ## Versions of GTA SA
 
-* 1.01 [exe only]
-* 2.0 [not supported]
-* Steam [not supported]
-* Rockstar Games Launcher [not supported, but soon]
+* 1.01 [exe only] [1.5-Dev 2]
+* 2.0 [not supported] [1.5-Dev 3]
+* Steam [not supported] [1.5-Dev 3]
+* Rockstar Games Launcher [not supported, but soon] [1.5-Dev 3]
 
 ## Usage and configuration
 
@@ -33,14 +33,14 @@ In **config.ini**, you can specify the settings for this application, it is not 
 * **CopyGame** - make a copy of the game folder to prevent accidental updates to the game (after MD5-scan)
 * **Forced** - force the app to continue running even if some non-EXE files are already use from the game version 1.0 (MD5)
 
-#### [SADRW2]
+#### [JPD]
 
-* **Component** - this setting is **only** necessary if you decide to use Jetpack Downgrader in your projects (this setting will help you skip the UI and removes the waiting for input after the processes in the app are completed). This setting add the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
+* **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI and removes the waiting for input after the processes in the app are completed). This setting add the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
 
- Example for cmd: 
+ Example for CMD: 
 
   ```shell
-  start sadrw2 "E:\Games\Grand Theft Auto San Andreas"
+jpd "E:\Games\Grand Theft Auto San Andreas"
   ```
 
 * **SelectFolderUI** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
