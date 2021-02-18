@@ -20,8 +20,8 @@ namespace Jetpack_GUI
 
         void JetpackUIMod(object sender, PaintEventArgs e)
         {
-            //e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            //e.Graphics.Clear(Parent.BackColor);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.Clear(Parent.BackColor);
             Control control = this;
             int radius = 30;
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
