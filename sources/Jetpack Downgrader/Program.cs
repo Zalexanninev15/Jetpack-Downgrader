@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -42,10 +43,10 @@ namespace JetpackDowngrader
             bool[] settings = new bool[12];
             string path = "";
             Console.Title = "Jetpack Downgrader";
-            Console.WriteLine("[App] Jetpack Downgrader version " +  System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n\nAuthors:\nZalexanninev15 - programmer and creator\nVadim M. - consultant\nDreD - technical expert\n");
+            Console.WriteLine("[App] Jetpack Downgrader\n[APP] Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[APP] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)");
             try
             {
-                IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\config.ini");
+                IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
                 settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
@@ -58,13 +59,9 @@ namespace JetpackDowngrader
                 settings[3] = Convert.ToBoolean(cfg.GetValue("Only", "GameVersion"));
                 settings[4] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFiles"));
                 settings[5] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
-                Logger("App", "config.ini", "true");
+                Logger("App", "jpd.ini", "true");
             }
-            catch { Logger("App", "config.ini", "false"); }
-            if (settings[1] == false)
-            { try { string[] fpath = File.ReadAllLines(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\path.txt"); path = fpath[0]; Logger("App", "path.txt", "true"); } catch { Logger("App", "path.txt", "false"); } }
-            if (settings[1] == true)
-                path = args[0];
+            catch { Logger("App", "jpd.ini", "false"); }
             if (settings[8] == true)
             {
                 System.Windows.Forms.FolderBrowserDialog pathf = new System.Windows.Forms.FolderBrowserDialog();
@@ -73,6 +70,7 @@ namespace JetpackDowngrader
                 else
                     path = "";
             }
+            if ((settings[1] == true) && (settings[8] == false)) { path = args[0]; }
             if ((path != "") && Directory.Exists(@path))
             {
                 Logger("Game", "Path", "true");
@@ -127,7 +125,7 @@ namespace JetpackDowngrader
                                         else
                                         {
                                             gv = 6;
-                                            Logger("Game", "Version", "1.01");
+                                            Logger("Game", "Version", "1.01 [NOT SUPPORTED]");
                                         }
                                     }
                                     else
@@ -178,7 +176,7 @@ namespace JetpackDowngrader
                                     else
                                     {
                                         gv = 6;
-                                        Logger("Game", "Version", "1.01");
+                                        Logger("Game", "Version", "1.01 [NOT SUPPORTED]");
                                     }
                                 }
                                 else
@@ -481,36 +479,86 @@ namespace JetpackDowngrader
                             }
                             if (er == 0)
                             {
-                                
-                                if (settings[2] == false)
-                                {
-                                    for (int i = 0; i < fl.Length; i++)
-                                    {
-                                        try { File.Delete(path + fl[i]); } catch { }
-                                    }
-                                }
-                            }
-                            if (er == 0)
-                            {
                                 // 5. Downgrader [2.0-Alpha]
+
+                                // xdelta patcher [1.0-Dev]
+                                //   
+                                //  Old: -d -v -s
+                                //
+                                // Original file -> patch -> New File
+                                //
+                                //
+                                //  for (int i = 2; i < fl.Length; i++)
+                                //  {
+                                //    int error = 0; string error_message = "Error: ";
+                                //    string cmds = "-d -v -s \"" + @path + fl[i] + ".bak" + "\" \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\" + fl[i] + "\" \"" + @path + fl[i] + ".temp\"";
+                                //    ProcessStartInfo start_info = new ProcessStartInfo("patcher.exe", cmds);
+                                //    start_info.UseShellExecute = false;
+                                //    start_info.CreateNoWindow = true;
+                                //    start_info.WindowStyle = ProcessWindowStyle.Hidden;
+                                //    start_info.RedirectStandardOutput = true;
+                                //    start_info.RedirectStandardError = true;
+                                //    Process proc = new Process();
+                                //    proc.StartInfo = start_info;
+                                //    proc.Start();
+                                //    StreamReader std_out = proc.StandardOutput;
+                                //    StreamReader std_err = proc.StandardError;
+                                //    string resultStr = std_err.ReadToEnd().ToString();
+                                //    bool flag = resultStr.Contains("finished");
+                                //    if (flag)
+                                //    {
+                                //        Logger("NewGame", @path + fl[i], "1.0");
+                                //        error = 0;
+                                //    }
+                                //    else
+                                //    {
+                                //        error_message += resultStr;
+                                //        Logger("NewGame", @path + fl[i], error_message);
+                                //        error = 1;
+                                //    }
+                                //   }
+                                //    if (error == 0)
+                                //    {
+                                //        for (int i = 2; i < fl.Length; i++)
+                                //          File.Move(@path + fl[i] + ".temp", @path + fl[i]);
+                                //        Logger("NewGame", "All", "1.0");
+                                //        if (settings[0] == true)
+                                //        {
+                                //            try
+                                //            {
+                                //                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                //                Logger("NewGameReadOnly", @path + fl[1], "true");
+                                //            }
+                                //            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
+                                //         }
+                                //     }
+                                //        
+                                //    else
+                                //     Logger("NewGame", "All", "An error occurred accessing the game files!");
+                                //
+
+
                                 Logger("Downgrader", "Process", "Downgrading...");
                                 try
                                 {
-                                    if (gv == 6) // C_1.01
+                                    if (gv == 6) // 1.01
                                     {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
+                                        string par = " -d -s " + '"' + path + fl[1] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\gta_sa.exe.jpp01" + '"' + " " + '"' + path + fl[1] + ".temp" + '"';
+                                        if (settings[2] == true)
+                                            par = " -d -s " + '"' + path + fl[1] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\gta_sa.exe.jpp01" + '"' + " " + '"' + path + fl[1] + ".temp" + '"';
+                                        Process start_info = new Process();
+                                        start_info.StartInfo.FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe";
+                                        start_info.StartInfo.Arguments = @par;
+                                        start_info.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                        start_info.StartInfo.CreateNoWindow = true;
+                                        start_info.StartInfo.UseShellExecute = false;
+                                        start_info.Start();
+                                        start_info.WaitForExit();
                                         Logger("NewGame", @path + fl[1], "1.0");
-                                        try
-                                        {
-                                            File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
-                                            Logger("NewGameReadOnly", @path + fl[1], "true");
-                                        }
-                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
-                                    }
-                                    if (gv == 3)  // C_RGL
-                                    {
-                                        File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
-                                        Logger("NewGame", @path + fl[1], "1.0");
+                                        if (settings[2] == false)
+                                            File.Delete(@path + fl[1]);
+                                        File.Move(@path + fl[1] + ".temp", @path + fl[1]);
+                                        Logger("NewGame", "All", "1.0");
                                         if (settings[0] == true)
                                         {
                                             try
@@ -520,20 +568,70 @@ namespace JetpackDowngrader
                                             }
                                             catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                         }
-                                        for (int i = 2; i < fl.Length; i++)
-                                        {
-                                            File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
+                                    }
+                                    if (gv == 3)  // C_RGL
+                                    {
+                                        //File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + @"\game.bin", @path + fl[1], true);
+                                        //Logger("NewGame", @path + fl[1], "1.0");
+                                        //if (settings[0] == true)
+                                        //{
+                                        //    try
+                                        //    {
+                                        //        File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
+                                        //        Logger("NewGameReadOnly", @path + fl[1], "true");
+                                        //    }
+                                        //    catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
+                                        //}
+                                        //for (int i = 2; i < fl.Length; i++)
+                                        //{
+                                        //    File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache [!!!DO NOT DELETE!!!]" + fl[i], @path + fl[i], true);
+                                        //    Logger("NewGame", @path + fl[i], "1.0");
+                                        //    if (settings[0] == true)
+                                        //    {
+                                        //        try
+                                        //        {
+                                        //            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
+                                        //            Logger("NewGameReadOnly", @path + fl[i], "true");
+                                        //        }
+                                        //        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                        //    }
+
+                                        //}
+                                        //
+                                        // Soon!
+                                        for (int i = 1; i < fl.Length; i++)
+                                        { 
+                                            string par = " -d -s " + '"' + path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                            if (settings[2] == true)
+                                                par = " -d -s " + '"' + path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                            Process start_info = new Process();
+                                            start_info.StartInfo.FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe";
+                                            start_info.StartInfo.Arguments = @par;
+                                            start_info.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                            start_info.StartInfo.CreateNoWindow = true;
+                                            start_info.StartInfo.UseShellExecute = false;
+                                            start_info.Start();
+                                            start_info.WaitForExit();
+                                            if (settings[2] == false)
+                                                File.Delete(@path + fl[i]);
+                                            File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                             Logger("NewGame", @path + fl[i], "1.0");
-                                            if (settings[0] == true)
+                                        }
+                                        Logger("NewGame", "All", "1.0");
+                                        if (settings[0] == true)
+                                        {
+                                            for (int i = 1; i < fl.Length; i++)
                                             {
                                                 try
                                                 {
-                                                    File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
-                                                    Logger("NewGameReadOnly", @path + fl[i], "true");
+                                                    if (er == 0)
+                                                    {
+                                                        File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
+                                                        Logger("NewGameReadOnly", @path + fl[i], "true");
+                                                    }
                                                 }
-                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                                catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
                                             }
-
                                         }
                                     }
                                     if (gv == 2) // C_2.0
@@ -842,64 +940,6 @@ namespace JetpackDowngrader
                 Console.ReadLine();
             }
         }
-
-        // For future :D
-        //
-        // xdelta patcher [0.2-Dev]
-        //   
-        //  Old: -d -v -s
-        //
-        // Original file -> patch -> New File
-        //
-        //
-        //  for (int i = 2; i < fl.Length; i++)
-        //  {
-        //    int error = 0; string error_message = "Error: ";
-        //    string cmds = "-d -s \"" + @path + fl[i] + ".bak" + "\" \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\" + fl[i] + "\" \"" + @path + fl[i] + ".temp\"";
-        //    ProcessStartInfo start_info = new ProcessStartInfo("xdelta.exe", cmds);
-        //    start_info.UseShellExecute = false;
-        //    start_info.CreateNoWindow = true;
-        //    start_info.WindowStyle = ProcessWindowStyle.Hidden;
-        //    start_info.RedirectStandardOutput = true;
-        //    start_info.RedirectStandardError = true;
-        //    Process proc = new Process();
-        //    proc.StartInfo = start_info;
-        //    proc.Start();
-        //    StreamReader std_out = proc.StandardOutput;
-        //    StreamReader std_err = proc.StandardError;
-        //    string resultStr = std_err.ReadToEnd().ToString();
-        //    bool flag = resultStr.Contains("finished");
-        //    if (flag)
-        //    {
-        //        Logger("NewGame", @path + fl[i], "1.0");
-        //        error = 0;
-        //    }
-        //    else
-        //    {
-        //        error_message += resultStr;
-        //        Logger("NewGame", @path + fl[i], error_message);
-        //        error = 1;
-        //    }
-        //   }
-        //    if (error == 0)
-        //    {
-        //        for (int i = 2; i < fl.Length; i++)
-        //          File.Move(@path + fl[i] + ".temp", @path + fl[i]);
-        //        Logger("NewGame", "All", "1.0");
-        //        if (settings[0] == true)
-        //        {
-        //            try
-        //            {
-        //                File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly);
-        //                Logger("NewGameReadOnly", @path + fl[1], "true");
-        //            }
-        //            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); }
-        //         }
-        //     }
-        //        
-        //    else
-        //     Logger("NewGame", "All", "An error occurred accessing the game files!");
-        //
 
         public static string Logger(string type, string ido, string status)
         {
