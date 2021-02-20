@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 #endregion
 
 [assembly: AssemblyTitle("Jetpack Downgrader")]
-[assembly: AssemblyDescription("Application for downgrading the version of the game Grand Theft Auto - San Andreas from Rockstar Games to version 1.0")]
+[assembly: AssemblyDescription("Application for downgrading the version of the game Grand Theft Auto - San Andreas to version 1.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zalexanninev15")]
 [assembly: AssemblyProduct("Jetpack Downgrader")]
@@ -17,5 +17,5 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("1.5.0.2")]
-[assembly: AssemblyFileVersion("1.5.0.2")]
+[assembly: AssemblyVersion("1.8.0.0")]
+[assembly: AssemblyFileVersion("1.8.0.0")]
