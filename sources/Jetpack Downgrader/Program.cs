@@ -53,7 +53,7 @@ namespace JetpackDowngrader
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache.exe"); } catch { } // For old versions (SADRW2)
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches.exe"); } catch { }
 
-            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[14]; string path = ""; DialogResult result = DialogResult.No;
+            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[15]; string path = ""; DialogResult result = DialogResult.No;
 
             // A list of all files:
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -75,9 +75,10 @@ namespace JetpackDowngrader
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
-                settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
+                //settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
+                settings[14] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RGLGarbage"));
                 settings[9] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RegisterGamePath"));
                 settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[12] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
@@ -237,12 +238,40 @@ namespace JetpackDowngrader
                         if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
                         {
                             File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
-                            Logger("ResetGameSettings", "gta_sa.set", "true");
+                            Logger("ResetGame", "gta_sa.set", "true");
                         }
                         else
-                            Logger("ResetGameSettings", "gta_sa.set", "false");
+                            Logger("ResetGame", "gta_sa.set", "false");
                     }
-                    catch { Logger("ResetGameSettings", "gta_sa.set", "false"); }
+                    catch { Logger("ResetGame", "gta_sa.set", "false"); }
+                }
+                if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want to delete unnecessary files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
+                {
+                    Logger("Downgrader", "Process", "Deleting index.bin file...");
+                    try
+                    {
+                        if (File.Exists(@path + @"\index.bin"))
+                        {
+                            File.Delete(@path + @"\index.bin");
+                            Logger("RGLGarbage", "index.bin", "true");
+                        }
+                        else
+                            Logger("RGLGarbage", "index.bin", "false");
+                    }
+                    catch { Logger("RGLGarbage", "index.bin", "false"); }
+                    Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
+                    try
+                    {
+                        if (File.Exists(@path + @"\MTLX.dll"))
+                        {
+                            File.Delete(@path + @"\MTLX.dll");
+                            Logger("RGLGarbage", "MTLX.dll", "true");
+                        }
+                        else
+                            Logger("RGLGarbage", "MTLX.dll", "false");
+                    }
+                    catch { Logger("RGLGarbage", "MTLX.dll", "false"); }
                 }
                 if ((gv != 0) && (er == 0) && (settings[3] == false))
                 {
@@ -417,7 +446,7 @@ namespace JetpackDowngrader
                         }
                         if ((fisv == false) && (settings[5] == false))
                         {
-                            if (settings[13] == true) { result = MessageBox.Show("Would you like to create a copy of the game folder to prevent accidental updates to the game?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                            if (settings[13] == true) { result = MessageBox.Show("Would you like to create a copy of the game folder to prevent accidental updates to the game?\nIf you have a game from Steam/Rockstar Games Launcher - we strongly recommend choosing Yes (Да)!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                             if ((result == DialogResult.Yes) || (settings[10] == true))
                             {
                                 settings[10] = true;
@@ -518,21 +547,21 @@ namespace JetpackDowngrader
                             {
                                 if (Directory.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"))
                                 {
-                                    // Downgrader [2.4-Dev]
+                                    // Downgrader [2.5-Beta]
                                     Logger("Downgrader", "Process", "Downgrading...");
                                     try
                                     {
                                         // For All Versions | EXE
-                                        if (settings[13] == true) { result = MessageBox.Show("Would you like to apply the \"Read-only\" attribute to files that are downgraded ? ", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                                        if ((result == DialogResult.Yes) || (settings[0] == true)) { settings[0] = true; }
+                                        //if (settings[13] == true) { result = MessageBox.Show("Would you like to apply the \"Read-only\" attribute to files that are downgraded ? ", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                        //if ((result == DialogResult.Yes) || (settings[0] == true)) { settings[0] = true; }
                                         File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + @"\game.jpp", @path + fl[1], true);
                                         Logger("NewGame", @path + fl[1], "1.0");
-                                        if (settings[0] == true) { try { File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[1], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
+                                        //if (settings[0] == true) { try { File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[1], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
                                         if (gv == 1)
                                         {
                                             File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + @"\game.jpp", @path + fl[0], true);
                                             Logger("NewGame", @path + fl[1], "1.0");
-                                            if (settings[0] == true) { try { File.SetAttributes(@path + fl[0], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[0], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
+                                            //if (settings[0] == true) { try { File.SetAttributes(@path + fl[0], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[0], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
                                         }
 
                                         if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
@@ -547,20 +576,20 @@ namespace JetpackDowngrader
                                                     File.Delete(@path + fl[i]);
                                                 File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                 Logger("NewGame", @path + fl[i], "1.0");
-                                                if (settings[0] == true)
-                                                {
-                                                    try
-                                                    {
-                                                        if (er == 0)
-                                                        {
-                                                            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
-                                                            Logger("NewGameReadOnly", @path + fl[i], "true");
-                                                        }
-                                                        else
-                                                            Logger("NewGameReadOnly", @path + fl[i], "false");
-                                                    }
-                                                    catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
-                                                }
+                                                //if (settings[0] == true)
+                                                //{
+                                                //    try
+                                                //    {
+                                                //        if (er == 0)
+                                                //        {
+                                                //            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
+                                                //            Logger("NewGameReadOnly", @path + fl[i], "true");
+                                                //        }
+                                                //        else
+                                                //            Logger("NewGameReadOnly", @path + fl[i], "false");
+                                                //    }
+                                                //    catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
+                                                //}
                                             }
                                         }
                                         if (gv == 2) // 2.0
@@ -577,20 +606,20 @@ namespace JetpackDowngrader
                                                         File.Delete(@path + fl[i]);
                                                     File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                     Logger("NewGame", @path + fl[i], "1.0");
-                                                    if (settings[0] == true)
-                                                    {
-                                                        try
-                                                        {
-                                                            if (er == 0)
-                                                            {
-                                                                File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
-                                                                Logger("NewGameReadOnly", @path + fl[i], "true");
-                                                            }
-                                                            else
-                                                                Logger("NewGameReadOnly", @path + fl[i], "false");
-                                                        }
-                                                        catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
-                                                    }
+                                                    //if (settings[0] == true)
+                                                    //{
+                                                    //    try
+                                                    //    {
+                                                    //        if (er == 0)
+                                                    //        {
+                                                    //            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
+                                                    //            Logger("NewGameReadOnly", @path + fl[i], "true");
+                                                    //        }
+                                                    //        else
+                                                    //            Logger("NewGameReadOnly", @path + fl[i], "false");
+                                                    //    }
+                                                    //    catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
+                                                    //}
                                                 }
                                             }
                                         }
@@ -765,22 +794,27 @@ namespace JetpackDowngrader
                                                 try
                                                 {
                                                     Create(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe");
-                                                    Logger("Downgrader", "Shortcut", "true");
+                                                    Logger("Downgrader", "CreateShortcut", "true");
                                                 }
-                                                catch { Logger("Downgrader", "Shortcut", "false"); }
+                                                catch { Logger("Downgrader", "CreateShortcut", "false"); }
                                             }
-                                            if (settings[13] == true) { result = MessageBox.Show("Would you like to register the game in the system?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                            if (settings[13] == true) { result = MessageBox.Show("Would you like to register the game in the system?\n(for launchers, SAMP and other projects)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                                             if ((result == DialogResult.Yes) || (settings[9] == true))
                                             {
                                                 Logger("Downgrader", "Process", "Adding entries to the registry...");
                                                 try
                                                 {
-                                                    bool is64BitOS = Environment.Is64BitOperatingSystem; if (is64BitOS == true) { Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation"); Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\""); }
+                                                    bool is64BitOS = Environment.Is64BitOperatingSystem;
+                                                    if (is64BitOS == true)
+                                                    {
+                                                        Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation");
+                                                        Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
+                                                    }
                                                     Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
                                                     Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
-                                                    Logger("Downgrader", "Registry", "true");
+                                                    Logger("Downgrader", "RegisterGamePath", "true");
                                                 }
-                                                catch { Logger("Downgrader", "Registry", "false"); }
+                                                catch { Logger("Downgrader", "RegisterGamePath", "false"); }
                                             }
                                             if (settings[13] == true) { MessageBox.Show("Work completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                                         }

@@ -27,18 +27,18 @@ In **jpd.ini**, you can specify the settings for this application, it is not rec
 #### [Downgrader]
 
 * **CreateBackups** - creating backups (full file name + .bak) of files before downgrading them
-* **SetReadOnly** - set the "Read-only" attribute for each file after downgrade
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after a successful downgrade)
 * **ResetGame** - deleting the game configuration file - **gta_sa.set** (after getting the game version)
-* **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs
-* **CreateNewGamePath** - make a copy of the game folder (folder name + _Downgraded) to prevent accidental updates to the game (after MD5-scan)
+ * **RGLGarbage** - remove unnecessary files from the Rockstar Games Launcher version of the game
+* **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects)
+* **CreateNewGamePath** - make a copy of the game folder (folder name + _Downgraded) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable the Steam / Rockstar Games Launcher versions of the game!!!
 * **Forced** - force the app to continue running even if EXE file are already use from the game version 1.0 (MD5). Downgrader will only work with the EXE file, the rest of the game files will just be checked, so they must be original.
 
 #### [JPD]
 
 * **SelectFolder** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
 * **ConsoleTransparency** - use transparency for the console
-* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This parameter can apply values instead of settings: **CreateBackups**, **SetReadOnly**, **CreateShortcut**, **ResetGame**, **RegisterGamePath** and **CreateNewGamePath**
+* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This parameter can apply values instead of settings: **CreateBackups**, **SetReadOnly**, **CreateShortcut**, **ResetGame**, **RegisterGamePath**,  **CreateNewGamePath** and **RGLGarbage**
 * **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI and removes the waiting for input after the processes in the app are completed). This setting add the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
 
  Example for CMD: 
