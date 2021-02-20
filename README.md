@@ -5,6 +5,7 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas to ver
 
 ## Versions of GTA SA
 
+* 1.0 [exe only] (if **Forced=true**)
 * 1.01 [exe only] 
 * 2.0 [fully supported]
 * Steam [fully supported]
@@ -12,8 +13,8 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas to ver
 
 ## Usage and configuration
 
-1. Download [patches.exe](https://drive.google.com/file/d/1EtG9ORe7SlD1E2T42quEQ46BEmedTDoM/view) and copy this file to JPD folder. Run this file and wait...
-2. Run **jpd.exe** and select the folder with the game (if **SelectFolderUI=true**)
+1. Download [patches.exe](https://drive.google.com/file/d/1x_qi7bKRaMymfRTfvt5F4unOTtIclqGT/view) and copy this file to JPD folder. Run this file and wait...
+2. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
 3. Wait for the end of the work...
 
 ### Settings in jpd.ini
