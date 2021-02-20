@@ -149,7 +149,7 @@ namespace JetpackDowngrader
                                 }
                                 if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
                                 {
-                                    if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
+                                    if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") && (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84"))
                                     {
                                         if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
                                         {
@@ -202,7 +202,7 @@ namespace JetpackDowngrader
                             }
                             if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
                             {
-                                if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18"))
+                                if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") && (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84"))
                                 {
                                     if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
                                     {
@@ -227,6 +227,7 @@ namespace JetpackDowngrader
                     }
                     catch { gv = 5; er = 1; Logger("Game", "Version", "Unknown [ERROR]"); }
                 }
+                if ((gv == 4) || (gv == 5)) { Logger("Downgrader", "Process", "Downgrade is not possible!"); }
                 if ((settings[13] == true) && (gv != 4) && (gv != 5)) { result = MessageBox.Show("Would you like to reset the game settings to prevent possible difficulties in starting the game?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                 if (((result == DialogResult.Yes) || (settings[7] == true)) && (gv != 4) && (gv != 5))
                 {
@@ -302,7 +303,6 @@ namespace JetpackDowngrader
                             }
                         }
                     }
-                    if (gv == 4) { Logger("Downgrader", "Process", "Downgrade is not possible!"); }
                     bool fisv = false;
                     if ((er == 0) && (settings[4] == false))
                     {
@@ -562,7 +562,6 @@ namespace JetpackDowngrader
                                                     catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
                                                 }
                                             }
-                                            Logger("NewGame", "All", "1.0");
                                         }
                                         if (gv == 2) // 2.0
                                         {
@@ -594,7 +593,6 @@ namespace JetpackDowngrader
                                                     }
                                                 }
                                             }
-                                            Logger("NewGame", "All", "1.0");
                                         }
                                     }
                                     catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
