@@ -71,7 +71,7 @@ namespace JetpackDowngrader
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
 
             Console.Title = "Jetpack Downgrader";
-            Console.WriteLine("[JPD] Jetpack Downgrader\n[JPD] Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] Support: zalexanninev15.support@etlgr.com\n[JPD] Donate: https://qiwi.com/n/ZALEXANNINEV15\n");
+            Console.WriteLine("[JPD] Jetpack Downgrader\n[JPD] Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] Support: maks.shabarchin@yandex.ru\n[JPD] Donate: https://qiwi.com/n/ZALEXANNINEV15\n");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
