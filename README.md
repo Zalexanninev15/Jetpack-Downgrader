@@ -1,5 +1,5 @@
-# Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/SADRW2/releases/tag/1.8-Beta)
-![alt](https://image.jimcdn.com/app/cms/image/transf/dimension=117x10000:format=png/path/s876f79fd6a5f4193/image/i1971da86cd486af0/version/1610909548/image.png)
+# Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/SADRW2/releases/tag/1.9-Beta)
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 ## Description
 App for downgrading the version of the game Grand Theft Auto: San Andreas to version 1.0
 
@@ -29,17 +29,18 @@ In **jpd.ini**, you can specify the settings for this application, it is not rec
 * **CreateBackups** - creating backups (full file name + .bak) of files before downgrading them
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after a successful downgrade)
 * **ResetGame** - deleting the game configuration file - **gta_sa.set** (after getting the game version)
- * **RGLGarbage** - remove unnecessary files from the Rockstar Games Launcher version of the game
+ * **RGLGarbage** - remove unnecessary files from the Rockstar Games Launcher version of the game (after getting the game version)
 * **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects)
-* **CreateNewGamePath** - make a copy of the game folder (folder name + _Downgraded) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable the Steam / Rockstar Games Launcher versions of the game!!!
-* **Forced** - force the app to continue running even if EXE file are already use from the game version 1.0 (MD5). Downgrader will only work with the EXE file, the rest of the game files will just be checked, so they must be original.
+* **CreateNewGamePath** - make a copy of the game folder (folder name + _Downgraded) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable the Steam/Rockstar Games Launcher versions of the game!!!
+* **Forced** - force the app to continue running even if EXE file are already use from the game version 1.0 (MD5), **only** for version 1.0. Downgrader will only work with the EXE file, the rest of the game files will just be checked, so they must be original. For non-1.0 versions, only the EXE file will be patched
 
 #### [JPD]
 
 * **SelectFolder** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
 * **ConsoleTransparency** - use transparency for the console
-* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This parameter can apply values instead of settings: **CreateBackups**, **SetReadOnly**, **CreateShortcut**, **ResetGame**, **RegisterGamePath**,  **CreateNewGamePath** and **RGLGarbage**
-* **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI and removes the waiting for input after the processes in the app are completed). This setting add the ability to specify, as a parameter for running the EXE application, the path to the folder with the game. 
+* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This parameter can apply values instead of settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **RGLGarbage**, **RegisterGamePath**,  **CreateNewGamePath** and **Forced** 
+* **UseProgressBar** - use the progress bar to indicate the progress of each of the downgrader stages. During operation, all logs of the current stage of work are ignored!!!
+* **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI (in console) and removes the waiting for input after the processes in the app are completed). This setting add the ability to specify, as a parameter for running the EXE application, the path to the folder with the game 
 
  Example for CMD: 
 
