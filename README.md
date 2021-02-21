@@ -1,4 +1,4 @@
-# Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/SADRW2/releases/tag/1.9-Beta)
+# Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/SADRW2/releases/tag/1.9-PublicBeta)
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 ## Description
 App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
