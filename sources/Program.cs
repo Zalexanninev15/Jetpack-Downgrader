@@ -401,10 +401,10 @@ namespace JetpackDowngrader
                         bool fisv = false;
                         if ((er == 0) && (settings[4] == false))
                         {
-                            // Checking files (MD5)
+                            // Checking files before downgrade (MD5)
                             string GameMD5 = "";
                             Logger("Game", "All", "true");
-                            Logger("Downgrader", "Process", "Checking files (MD5)...");
+                            Logger("Downgrader", "Process", "Checking files before downgrade (MD5)...");
                             if (gv == 3) // Rockstar Games Launcher
                             {
                                 using (var progress = new ProgressBar())
@@ -525,11 +525,12 @@ namespace JetpackDowngrader
                                 if (((result == DialogResult.Yes) || (settings[10] == true)) && ((gv == 1) || (gv == 3)))
                                 {
                                     settings[10] = true;
-                                    Logger("Downgrader", "Process", "Copying game files before downgrading...");
+                                    Logger("Downgrader", "Process", "Copying the game folder before downgrading...");
                                     Logger("Downgrader", "Process", "The app is not frozen, just busy right now...");
                                     try
                                     {
-                                        FileSystem.CopyDirectory(path, path + "_Downgraded");
+                                        try { Directory.Delete(@path + "_Downgraded", true); } catch { }
+                                        FileSystem.CopyDirectory(@path, @path + "_Downgraded");
                                         path = @path + "_Downgraded";
                                         Logger("Game", "Path", "new");
                                     }
@@ -752,8 +753,8 @@ namespace JetpackDowngrader
                                         {
                                             Logger("NewGame", "All", "1.0");
                                             if (settings[0] == true) { Logger("NewGameReadOnly", "All", "true"); }
-                                            // Check for downgraded files
-                                            Logger("Downgrader", "Process", "Check for downgraded files...");
+                                            // Checking files after downgrade (MD5)
+                                            Logger("Downgrader", "Process", "Checking files after downgrade (MD5)...");
                                             if (gv == 6) // 1.01
                                             {
                                                 try
