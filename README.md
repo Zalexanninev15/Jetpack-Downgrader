@@ -1,7 +1,7 @@
 # Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/SADRW2/releases/tag/1.9-Beta)
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 ## Description
-App for downgrading the version of the game Grand Theft Auto: San Andreas to version 1.0
+App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Versions of GTA SA
 
@@ -19,9 +19,9 @@ App for downgrading the version of the game Grand Theft Auto: San Andreas to ver
 
 ### Settings in jpd.ini
 
-##### !!!THE SETTINGS CAN BE CHANGED BEFORE LAUNCHING THE APP!!!
+##### !!!THE SETTINGS ARE CHANGED BEFORE LAUNCHING THE APP!!!
 
-In **jpd.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are
+In **jpd.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are!!!
 
 
 #### [Downgrader]
