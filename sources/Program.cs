@@ -49,6 +49,7 @@ namespace JetpackDowngrader
         [STAThread]
         public static void Main(string[] args)
         {
+			Console.ForegroundColor = ConsoleColor.White;
             Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false);
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache.exe"); } catch { } // For old versions (SADRW2)
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches.exe"); } catch { }
@@ -96,6 +97,7 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
+                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { Logger("Game", "Path", "false"); } }
                 if (settings[8] == true)
                 {
                     FolderBrowserDialog pathf = new FolderBrowserDialog();
@@ -104,7 +106,6 @@ namespace JetpackDowngrader
                     else
                         path = "";
                 }
-                if ((settings[1] == true) && (settings[8] == false)) { path = args[0]; }
                 if ((path != "") && Directory.Exists(@path))
                 {
                     Logger("Game", "Path", "true");
@@ -653,7 +654,7 @@ namespace JetpackDowngrader
                                 {
                                     if (Directory.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"))
                                     {
-                                        // Downgrader [2.6-Beta]
+                                        // Downgrader [2.6.5-Beta]
                                         Logger("Downgrader", "Process", "Downgrading...");
                                         try
                                         {
