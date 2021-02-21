@@ -77,7 +77,6 @@ public class ProgressBar : IDisposable, IProgress<double>
 			outputBuilder.Append(' ', overlapCount);
 			outputBuilder.Append('\b', overlapCount);
 		}
-
 		Console.Write(outputBuilder);
 		currentText = text;
 	}
