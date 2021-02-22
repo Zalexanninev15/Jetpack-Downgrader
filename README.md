@@ -1,7 +1,13 @@
 # Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/1.10-PublicBeta)
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 ## Description
-App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
+App for downgrading the game Grand Theft Auto: San Andreas to version 1.0. 
+Is required .NET Framework 4.8 and Windows 7/8/8.1/10
+
+## Authors
+
+* Zalexanninev15 - programmer and creator ([Donate on QIWI](https://qiwi.com/n/ZALEXANNINEV15))
+* Vadim M. - consultant ([Donate on Patreon](https://www.patreon.com/NationalPepper))
 
 ## Versions of GTA SA
 
