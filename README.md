@@ -19,9 +19,8 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 
 ## Usage and configuration
 
-1. Download [patches.exe](https://drive.google.com/file/d/1EtG9ORe7SlD1E2T42quEQ46BEmedTDoM/view) and copy this file to JPD folder. Run this file and wait...
-2. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
-3. Wait for the end of the work...
+1. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
+2. Wait for the end of the work...
 
 ### Settings in jpd.ini
 
