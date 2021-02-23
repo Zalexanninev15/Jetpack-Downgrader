@@ -9,7 +9,7 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 * Zalexanninev15 - programmer and creator ([Donate on QIWI](https://qiwi.com/n/ZALEXANNINEV15))
 * Vadim M. - consultant ([Donate on Patreon](https://www.patreon.com/NationalPepper))
 
-## Versions of GTA SA
+## Supported versions
 
 * 1.0 [exe only] (if **Forced=true**)
 * 1.01 [exe only] 
