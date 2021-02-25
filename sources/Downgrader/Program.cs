@@ -78,7 +78,6 @@ namespace JetpackDowngrader
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
-                //settings[0] = Convert.ToBoolean(cfg.GetValue("Downgrader", "SetReadOnly"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
                 settings[14] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RGLGarbage"));
@@ -662,16 +661,12 @@ namespace JetpackDowngrader
                                         try
                                         {
                                             // For All Versions | EXE
-                                            //if (settings[13] == true) { result = MessageBox.Show("Would you like to apply the \"Read-only\" attribute to files that are downgraded ? ", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                                            //if ((result == DialogResult.Yes) || (settings[0] == true)) { settings[0] = true; }
                                             File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + @"\game.jpp", @path + fl[1], true);
                                             if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-                                            //if (settings[0] == true) { try { File.SetAttributes(@path + fl[1], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[1], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
                                             if (gv == 1)
                                             {
                                                 File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + @"\game.jpp", @path + fl[0], true);
                                                 if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-                                                //if (settings[0] == true) { try { File.SetAttributes(@path + fl[0], FileAttributes.ReadOnly); Logger("NewGameReadOnly", @path + fl[0], "true"); } catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game file!"); } }
                                             }
                                             if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
                                             {
@@ -687,20 +682,6 @@ namespace JetpackDowngrader
                                                             File.Delete(@path + fl[i]);
                                                         File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                         if (settings[15] == false) { progress.DoThis(false); Logger("NewGame", @path + fl[i], "1.0"); }
-                                                        //if (settings[0] == true)
-                                                        //{
-                                                        //    try
-                                                        //    {
-                                                        //        if (er == 0)
-                                                        //        {
-                                                        //            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
-                                                        //            Logger("NewGameReadOnly", @path + fl[i], "true");
-                                                        //        }
-                                                        //        else
-                                                        //            Logger("NewGameReadOnly", @path + fl[i], "false");
-                                                        //    }
-                                                        //    catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
-                                                        //}
                                                         if (settings[15] == true)
                                                         {
                                                             progress.DoText("Downgrade progress");
@@ -725,20 +706,6 @@ namespace JetpackDowngrader
                                                                 File.Delete(@path + fl[i]);
                                                             File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                             if (settings[15] == false) { progress.DoThis(false); Logger("NewGame", @path + fl[i], "1.0"); }
-                                                            //if (settings[0] == true)
-                                                            //{
-                                                            //    try
-                                                            //    {
-                                                            //        if (er == 0)
-                                                            //        {
-                                                            //            File.SetAttributes(@path + fl[i], FileAttributes.ReadOnly);
-                                                            //            Logger("NewGameReadOnly", @path + fl[i], "true");
-                                                            //        }
-                                                            //        else
-                                                            //            Logger("NewGameReadOnly", @path + fl[i], "false");
-                                                            //    }
-                                                            //    catch { Logger("NewGameReadOnly", @path + fl[i], "false"); }
-                                                            //}
                                                         }
                                                         if (settings[15] == true)
                                                         {
