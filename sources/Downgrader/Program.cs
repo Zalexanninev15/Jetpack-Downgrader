@@ -523,7 +523,7 @@ namespace JetpackDowngrader
                             }
                             if ((fisv == false) && (settings[5] == false))
                             {
-                                if ((settings[13] == true) && ((gv == 1) || (gv == 3))) { result = MessageBox.Show("Would you like to create a copy of the game folder to prevent accidental updates to the game?\nIf you have a game from Steam/Rockstar Games Launcher - we strongly recommend choosing Yes (Да)!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                if ((settings[13] == true) && ((gv == 1) || (gv == 3))) { result = MessageBox.Show("Would you like to create a copy of the game folder to prevent accidental updates to the game?\nIf you have a game from Steam/Rockstar Games Launcher - we strongly recommend choosing Yes!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                                 if (((result == DialogResult.Yes) || (settings[10] == true)) && ((gv == 1) || (gv == 3)))
                                 {
                                     settings[10] = true;
