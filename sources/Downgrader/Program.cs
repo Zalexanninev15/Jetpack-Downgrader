@@ -960,7 +960,7 @@ namespace JetpackDowngrader
                                                     }
                                                     catch { Logger("Downgrader", "RegisterGamePath", "false"); }
                                                 }
-                                                if (settings[13] == true) { MessageBox.Show("Work completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                                                if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                                             }
                                             else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                                         }
