@@ -22,8 +22,7 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 ## Usage and configuration
 
 1. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
-2. Wait for the end of the work...
-
+2. Answer the questions (if **UseMsg=true**) and wait for the end of the work...
 ### Settings in jpd.ini
 
 ##### !!!THE SETTINGS ARE CHANGED BEFORE LAUNCHING THE APP!!!
