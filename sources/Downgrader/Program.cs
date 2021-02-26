@@ -98,7 +98,13 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
-                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { Logger("Game", "Path", "false"); } }
+                if ((settings[1] == true) && (settings[8] == false)) 
+                { 
+                    try { path = args[0]; } 
+                    catch { }
+                    if (Directory.Exists(@path) == false)
+                        Logger("Game", "Path", "null");
+                }
                 if (settings[8] == true)
                 {
                     FolderBrowserDialog pathf = new FolderBrowserDialog();
@@ -975,7 +981,7 @@ namespace JetpackDowngrader
                     }
                     if (gv == 0) { Logger("Downgrader", "Process", "Downgrade is not required!"); }
                 }
-                else { Logger("Game", "Path", "Value is not found!"); }
+                else { Logger("Game", "Path", "false");  }
             }
             else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
             if (settings[1] == false) { Console.WriteLine("Press Enter to Exit"); Console.ReadLine(); }
