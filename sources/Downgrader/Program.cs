@@ -37,7 +37,6 @@ namespace JetpackDowngrader
             blur.fTransitionOnMaximized = true;
             DwmEnableBlurBehindWindow(Handle, ref blur);
         }
-
         static void MakeTransparent(byte pct)
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -52,28 +51,21 @@ namespace JetpackDowngrader
 			Console.ForegroundColor = ConsoleColor.White;
             Application.EnableVisualStyles(); 
 			Application.SetCompatibleTextRenderingDefault(false);
-            try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\cache.exe"); } catch { } // For old versions (SADRW2)
-            try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches.exe"); } catch { }
-			//
             string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[16]; string path = ""; DialogResult result = DialogResult.No;
-			//
-            // A list of all files:
-			//
+            // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
             fl[8] = @"\audio\streams\MH"; fl[9] = @"\audio\streams\MR"; fl[10] = @"\audio\streams\RE"; fl[11] = @"\audio\streams\RG";
             fl[12] = @"\anim\anim.img"; fl[13] = @"\data\script\main.scm"; fl[14] = @"\data\script\script.img"; fl[15] = @"\models\gta_int.img";
             fl[16] = @"\models\gta3.img";
-			//
-            // A list of hashes of various files of the game; 0 & 1 - only for final MD5 checks:
-			//
+            // Original MD5 for files from game version 1.0
             flmd5[0] = "170B3A9108687B26DA2D8901C6948A18"; flmd5[1] = "E7697A085336F974A4A6102A51223960"; flmd5[2] = "528E75D663B8BAE072A01351081A2145"; flmd5[3] = "E26D86C7805D090D8210086876D6C35C";
             flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F"; flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B"; flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D"; flmd5[7] = "9B4C18E4F3E82F0FEE41E30B2EA2246A";
             flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
             flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
             Console.Title = "Jetpack Downgrader";
-            Console.WriteLine("[JPD] Jetpack Downgrader\n[JPD] Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] Donate: https://qiwi.com/n/ZALEXANNINEV15\n");
+            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT License\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] Donate: https://qiwi.com/n/ZALEXANNINEV15\n");
             try
             {
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
@@ -98,20 +90,11 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
-                if ((settings[1] == true) && (settings[8] == false)) 
-                { 
-                    try { path = args[0]; } 
-                    catch { }
-                    if (Directory.Exists(@path) == false)
-                        Logger("Game", "Path", "null");
-                }
+                if ((settings[1] == true) && (settings[8] == false))  {  try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
                 if (settings[8] == true)
                 {
                     FolderBrowserDialog pathf = new FolderBrowserDialog();
-                    if (pathf.ShowDialog() == DialogResult.OK)
-                        path = @pathf.SelectedPath;
-                    else
-                        path = "";
+                    if (pathf.ShowDialog() == DialogResult.OK) { path = @pathf.SelectedPath; } else { path = ""; }
                 }
                 if ((path != "") && Directory.Exists(@path))
                 {
