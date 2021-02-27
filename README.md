@@ -58,4 +58,4 @@ jpd "E:\Games\Grand Theft Auto San Andreas"
 
 * **GameVersion** - get only the game version (can be used with the settings **ResetGame** and/or **RGLGarbage**)
 * **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
-* **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scan files by MD5 and reveals which files are used from the game version 1.0 (information will only be visible if Use **UseProgressBar=false**)
+* **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scan files by MD5 and reveals which files are used from the game version 1.0 (information will only be visible if **UseProgressBar=false**)
