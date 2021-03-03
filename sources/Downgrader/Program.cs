@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -91,11 +91,7 @@ namespace JetpackDowngrader
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
                 if ((settings[1] == true) && (settings[8] == false))  {  try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
-                if (settings[8] == true)
-                {
-                    FolderBrowserDialog pathf = new FolderBrowserDialog();
-                    if (pathf.ShowDialog() == DialogResult.OK) { path = @pathf.SelectedPath; } else { path = ""; }
-                }
+                if (settings[8] == true) { FolderBrowserDialog pathf = new FolderBrowserDialog(); if (pathf.ShowDialog() == DialogResult.OK) { path = @pathf.SelectedPath; } else { path = ""; } }
                 if ((path != "") && Directory.Exists(@path))
                 {
                     Logger("Game", "Path", "true");
@@ -223,20 +219,34 @@ namespace JetpackDowngrader
                     if ((settings[13] == true) && (gv != 4) && (gv != 5)) { result = MessageBox.Show("Would you like to reset the game settings to prevent possible difficulties in starting the game?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                     if (((result == DialogResult.Yes) || (settings[7] == true)) && (gv != 4) && (gv != 5))
                     {
-                        Logger("Downgrader", "Process", "Deleting gta_sa.set file...");
+                        Logger("Downgrader", "Process", "Deleting gta_sa.set (Documents) file...");
                         try
                         {
                             if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
                             {
                                 File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
-                                Logger("ResetGame", "gta_sa.set", "true");
+                                Logger("ResetGame", "gta_sa.set (Documents)", "true");
                             }
-                            else
-                                Logger("ResetGame", "gta_sa.set", "false");
+                            else 
+                           {
+                              Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
                         }
-                        catch { Logger("ResetGame", "gta_sa.set", "false"); }
+                        catch { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
+						Logger("Downgrader", "Process", "Deleting gta_sa.set (Public Documents) file...");
+                        try
+                        {
+                            if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                            {
+                                File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
+                                Logger("ResetGame", "gta_sa.set (Public Documents)", "true");
+                            }
+                            else 
+                           {
+                              Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
+                        }
+                        catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                     }
-                    if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want to delete unnecessary files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                    if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want to delete unnecessary files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                     if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
                     {
                         Logger("Downgrader", "Process", "Deleting index.bin file...");
