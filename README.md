@@ -2,12 +2,14 @@
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 
 <p>
-<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest" target="_blank">
-      <img alt="Latest release" src="https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/latest/total.svg?style=for-the-badge&logo=github" />
-    </a>    
 <a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/releases" target="_blank">
       <img alt="All releases" src="https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg?style=for-the-badge&logo=github" />
     </a>    
+<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest" target="_blank">
+      <img alt="Latest release" src="https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/latest/total.svg?style=for-the-badge&logo=github" />
+    </a>    
+</p>
+<p>
 <a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers" target="_blank">
       <img alt="GitHub stars" src="https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg?style=for-the-badge&logo=github" />
 <a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/master/LICENSE">
