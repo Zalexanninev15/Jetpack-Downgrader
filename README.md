@@ -18,6 +18,7 @@
 </p>
 
 ## Description
+
 App for downgrading the game Grand Theft Auto: San Andreas to version 1.0. 
 Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 
@@ -25,6 +26,15 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 
 * Zalexanninev15 - programmer and creator ([Donate on QIWI](https://qiwi.com/n/ZALEXANNINEV15))
 * Vadim M. - consultant ([Donate on Patreon](https://www.patreon.com/NationalPepper))
+
+## Features
+
+* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary parameters
+* The ability to fine-tune the downgrading process, the Jetpack Downgrader itself, and some other aspects
+* Using delta patches that weigh significantly less than the files from the game version 1.0
+* Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
+* Easy integration of the application as a separate component in your project
+* Display of downgred process and maximum speed of operation
 
 ## Supported versions
 
