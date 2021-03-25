@@ -10,6 +10,11 @@ namespace JetpackDowngrader
         [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
         private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
         public IniLoader(string aPath) { path = aPath; }
-        public string GetValue(string aSection, string aKey) { StringBuilder buffer = new StringBuilder(SIZE); GetValue(aSection, aKey, null, buffer, SIZE, path); return buffer.ToString(); }
+        public string GetValue(string aSection, string aKey) 
+        { 
+            StringBuilder buffer = new StringBuilder(SIZE); 
+            GetValue(aSection, aKey, null, buffer, SIZE, path); 
+            return buffer.ToString(); 
+        }
     }
 }
