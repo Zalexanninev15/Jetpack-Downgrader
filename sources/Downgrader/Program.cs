@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using FolderSelect;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 
@@ -44,7 +45,6 @@ namespace JetpackDowngrader
             SetWindowLong(Handle, GWL_EXSTYLE, newDwLong);
             SetLayeredWindowAttributes(Handle, 0, pct, LWA_ALPHA);
         }
-
         [STAThread]
         public static void Main(string[] args)
         {
@@ -91,7 +91,14 @@ namespace JetpackDowngrader
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
                 if ((settings[1] == true) && (settings[8] == false))  {  try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
-                if (settings[8] == true) { FolderBrowserDialog pathf = new FolderBrowserDialog(); if (pathf.ShowDialog() == DialogResult.OK) { path = @pathf.SelectedPath; } else { path = ""; } }
+                if (settings[8] == true) 
+                {
+                    var dialog = new FolderSelectDialog
+                    {
+                        InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                        Title = "Select the game folder"
+                    };
+                    if (dialog.Show()) { path = dialog.FileName; } else { path = ""; } }
                 if ((path != "") && Directory.Exists(@path))
                 {
                     Logger("Game", "Path", "true");
@@ -227,9 +234,7 @@ namespace JetpackDowngrader
                                 File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
                                 Logger("ResetGame", "gta_sa.set (Documents)", "true");
                             }
-                            else 
-                           {
-                              Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
+                            else { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
                         }
                         catch { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
 						Logger("Downgrader", "Process", "Deleting gta_sa.set (Public Documents) file...");
@@ -240,9 +245,7 @@ namespace JetpackDowngrader
                                 File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
                                 Logger("ResetGame", "gta_sa.set (Public Documents)", "true");
                             }
-                            else 
-                           {
-                              Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
+                            else { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                         }
                         catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                     }
@@ -257,8 +260,7 @@ namespace JetpackDowngrader
                                 File.Delete(@path + @"\index.bin");
                                 Logger("RGLGarbage", "index.bin", "true");
                             }
-                            else
-                                Logger("RGLGarbage", "index.bin", "false");
+                            else { Logger("RGLGarbage", "index.bin", "false"); }
                         }
                         catch { Logger("RGLGarbage", "index.bin", "false"); }
                         Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
@@ -269,8 +271,7 @@ namespace JetpackDowngrader
                                 File.Delete(@path + @"\MTLX.dll");
                                 Logger("RGLGarbage", "MTLX.dll", "true");
                             }
-                            else
-                                Logger("RGLGarbage", "MTLX.dll", "false");
+                            else { Logger("RGLGarbage", "MTLX.dll", "false"); }
                         }
                         catch { Logger("RGLGarbage", "MTLX.dll", "false"); }
                     }
