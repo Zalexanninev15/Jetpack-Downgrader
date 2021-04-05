@@ -1,21 +1,11 @@
 # Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
+
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 
-<p>
-<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/releases" target="_blank">
-      <img alt="All releases" src="https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg?style=for-the-badge&logo=github" />
-    </a>    
-<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest" target="_blank">
-      <img alt="Latest release" src="https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/latest/total.svg?style=for-the-badge&logo=github" />
-    </a>    
-</p>
-<p>
-<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers" target="_blank">
-      <img alt="GitHub stars" src="https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg?style=for-the-badge&logo=github" />
-<a href="https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/master/LICENSE">
-      <img alt="License" src="https://img.shields.io/github/license/Zalexanninev15/Jetpack-Downgrader.svg?style=for-the-badge&logo=github" />
-</a>
-</p>
+[![](https://img.shields.io/badge/platform-windows-blue.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
+[![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
+[![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
+![](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## Description
 
