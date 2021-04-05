@@ -1,4 +1,4 @@
-# Jetpack Downgrader | [Download](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
+# Jetpack Downgrader | [Latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
 
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
 
