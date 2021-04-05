@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using FolderSelect;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 
@@ -363,7 +362,7 @@ namespace JetpackDowngrader
                                 }
                             }
                         }
-                        if (gv == 1) // Steam version
+                        if (gv == 1) // Steam
                         {
                             using (var progress = new ProgressBar())
                             {
@@ -957,27 +956,17 @@ namespace JetpackDowngrader
                                                         Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
                                                         Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
                                                         Logger("Downgrader", "RegisterGamePath", "true");
-                                                    }
-                                                    catch { Logger("Downgrader", "RegisterGamePath", "false"); }
-                                                }
-                                                if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                                            }
-                                            else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
+                                                    } catch { Logger("Downgrader", "RegisterGamePath", "false"); }
+                                                } if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                                            } else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                                         }
-                                    }
-                                    else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!"); }
-                                }
-                                else { Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
-                            }
-                            else { if (settings[5] == false) { Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
-                        }
-                        else { if (settings[4] == false) { Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
-                    }
-                    if (gv == 0) { Logger("Downgrader", "Process", "Downgrade is not required!"); }
-                }
-                else { Logger("Game", "Path", "false");  }
-            }
-            else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
+                                    } else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!"); }
+                                } else { Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
+                            } else { if (settings[5] == false) { Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
+                        } else { if (settings[4] == false) { Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
+                    } if (gv == 0) { Logger("Downgrader", "Process", "Downgrade is not required!"); }
+                } else { Logger("Game", "Path", "false");  }
+            } else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
             if (settings[1] == false) { Console.WriteLine("Press Enter to Exit"); Console.ReadLine(); }
         }
 

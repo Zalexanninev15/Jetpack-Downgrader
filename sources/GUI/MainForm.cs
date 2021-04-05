@@ -2,7 +2,7 @@
 using System.Net;
 using System.Windows.Forms;
 
-namespace JetpackDowngraderGUI3
+namespace JetpackDowngraderGUI
 {
     public partial class MainForm : Form
     {
