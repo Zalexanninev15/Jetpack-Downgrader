@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace FolderSelect
+namespace JetpackDowngrader
 {
     public class FolderSelectDialog
     {
@@ -29,12 +29,7 @@ namespace FolderSelect
         }
         private static ShowDialogResult ShowXpDialog(IntPtr ownerHandle, string initialDirectory, string title)
         {
-            var folderBrowserDialog = new FolderBrowserDialog
-            {
-                Description = title,
-                SelectedPath = initialDirectory,
-                ShowNewFolderButton = false
-            };
+            var folderBrowserDialog = new FolderBrowserDialog { Description = title, SelectedPath = initialDirectory, ShowNewFolderButton = false };
             var dialogResult = new ShowDialogResult();
             if (folderBrowserDialog.ShowDialog(new WindowWrapper(ownerHandle)) == DialogResult.OK) { dialogResult.Result = true; dialogResult.FileName = folderBrowserDialog.SelectedPath; }
             return dialogResult;
