@@ -25,7 +25,7 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 
 ## Authors
 
-* Zalexanninev15 - programmer and creator ([Donate on QIWI](https://qiwi.com/n/ZALEXANNINEV15))
+* Zalexanninev15 - programmer and creator (Donate on [QIWI](https://qiwi.com/n/ZALEXANNINEV15) or [YooMoney](https://yoomoney.ru/to/410015106319420))
 * Vadim M. - consultant ([Donate on Patreon](https://www.patreon.com/NationalPepper))
 
 ## Features
