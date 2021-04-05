@@ -14,19 +14,12 @@ namespace FolderSelect
             get { return string.IsNullOrEmpty(_initialDirectory) ? Environment.CurrentDirectory : _initialDirectory; }
             set { _initialDirectory = value; }
         }
-        public string Title
-        {
-            get { return _title ?? "Select a folder"; }
-            set { _title = value; }
-        }
+        public string Title { get { return _title ?? "Select a folder"; } set { _title = value; } }
         public string FileName { get { return _fileName; } }
         public bool Show() { return Show(IntPtr.Zero); }
         public bool Show(IntPtr hWndOwner)
         {
-            var result = Environment.OSVersion.Version.Major >= 6
-                ? VistaDialog.Show(hWndOwner, InitialDirectory, Title)
-                : ShowXpDialog(hWndOwner, InitialDirectory, Title);
-            _fileName = result.FileName;
+            var result = Environment.OSVersion.Version.Major >= 6 ? VistaDialog.Show(hWndOwner, InitialDirectory, Title) : ShowXpDialog(hWndOwner, InitialDirectory, Title); _fileName = result.FileName;
             return result.Result;
         }
         private struct ShowDialogResult
@@ -43,17 +36,12 @@ namespace FolderSelect
                 ShowNewFolderButton = false
             };
             var dialogResult = new ShowDialogResult();
-            if (folderBrowserDialog.ShowDialog(new WindowWrapper(ownerHandle)) == DialogResult.OK)
-            {
-                dialogResult.Result = true;
-                dialogResult.FileName = folderBrowserDialog.SelectedPath;
-            }
+            if (folderBrowserDialog.ShowDialog(new WindowWrapper(ownerHandle)) == DialogResult.OK) { dialogResult.Result = true; dialogResult.FileName = folderBrowserDialog.SelectedPath; }
             return dialogResult;
         }
         private static class VistaDialog
         {
             private const string c_foldersFilter = "Folders|\n";
-
             private const BindingFlags c_flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
             private readonly static Assembly s_windowsFormsAssembly = typeof(FileDialog).Assembly;
             private readonly static Type s_iFileDialogType = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+IFileDialog");
@@ -61,17 +49,11 @@ namespace FolderSelect
             private readonly static MethodInfo s_onBeforeVistaDialogMethodInfo = typeof(OpenFileDialog).GetMethod("OnBeforeVistaDialog", c_flags);
             private readonly static MethodInfo s_getOptionsMethodInfo = typeof(FileDialog).GetMethod("GetOptions", c_flags);
             private readonly static MethodInfo s_setOptionsMethodInfo = s_iFileDialogType.GetMethod("SetOptions", c_flags);
-            private readonly static uint s_fosPickFoldersBitFlag = (uint)s_windowsFormsAssembly
-                .GetType("System.Windows.Forms.FileDialogNative+FOS")
-                .GetField("FOS_PICKFOLDERS")
-                .GetValue(null);
-            private readonly static ConstructorInfo s_vistaDialogEventsConstructorInfo = s_windowsFormsAssembly
-                .GetType("System.Windows.Forms.FileDialog+VistaDialogEvents")
-                .GetConstructor(c_flags, null, new[] { typeof(FileDialog) }, null);
+            private readonly static uint s_fosPickFoldersBitFlag = (uint)s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+FOS").GetField("FOS_PICKFOLDERS").GetValue(null);
+            private readonly static ConstructorInfo s_vistaDialogEventsConstructorInfo = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialog+VistaDialogEvents").GetConstructor(c_flags, null, new[] { typeof(FileDialog) }, null);
             private readonly static MethodInfo s_adviseMethodInfo = s_iFileDialogType.GetMethod("Advise");
             private readonly static MethodInfo s_unAdviseMethodInfo = s_iFileDialogType.GetMethod("Unadvise");
             private readonly static MethodInfo s_showMethodInfo = s_iFileDialogType.GetMethod("Show");
-
             public static ShowDialogResult Show(IntPtr ownerHandle, string initialDirectory, string title)
             {
                 var openFileDialog = new OpenFileDialog
@@ -94,16 +76,9 @@ namespace FolderSelect
                 try
                 {
                     int retVal = (int)s_showMethodInfo.Invoke(iFileDialog, new object[] { ownerHandle });
-                    return new ShowDialogResult
-                    {
-                        Result = retVal == 0,
-                        FileName = openFileDialog.FileName
-                    };
+                    return new ShowDialogResult { Result = retVal == 0, FileName = openFileDialog.FileName };
                 }
-                finally
-                {
-                    s_unAdviseMethodInfo.Invoke(iFileDialog, new[] { adviseParametersWithOutputConnectionToken[1] });
-                }
+                finally { s_unAdviseMethodInfo.Invoke(iFileDialog, new[] { adviseParametersWithOutputConnectionToken[1] }); }
             }
         }
         private class WindowWrapper : IWin32Window
