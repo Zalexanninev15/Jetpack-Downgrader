@@ -52,10 +52,10 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FolderSelectDialog.cs" />
-    <Compile Include="IniLoader.cs" />
+    <Compile Include="Classes\FolderSelectDialog.cs" />
+    <Compile Include="Classes\IniLoader.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProgressBar.cs" />
+    <Compile Include="Classes\ProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
