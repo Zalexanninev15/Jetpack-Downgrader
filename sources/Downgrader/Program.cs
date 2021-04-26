@@ -50,7 +50,7 @@ namespace JetpackDowngrader
 			Console.ForegroundColor = ConsoleColor.White;
             Application.EnableVisualStyles(); 
 			Application.SetCompatibleTextRenderingDefault(false);
-            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[16]; string path = ""; DialogResult result = DialogResult.No;
+            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[17]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
@@ -75,6 +75,7 @@ namespace JetpackDowngrader
                 settings[9] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RegisterGamePath"));
                 settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[12] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
+                settings[16] = Convert.ToBoolean(cfg.GetValue("Downgrader", "EnableDirectPlay"));
                 settings[8] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolder"));
                 settings[11] = Convert.ToBoolean(cfg.GetValue("JPD", "ConsoleTransparency"));
                 settings[13] = Convert.ToBoolean(cfg.GetValue("JPD", "UseMsg"));
@@ -275,6 +276,15 @@ namespace JetpackDowngrader
                         catch { Logger("RGLGarbage", "MTLX.dll", "false"); }
                     }
                     if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
+                    if (settings[13] == true) { result = MessageBox.Show("Would you like to enable DirectPlay (DirectX 9) for the game? This operation is only necessary on Windows 10, if your version is lower (7/8/8.1), then your answer is No!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                    if ((result == DialogResult.Yes) || (settings[16] == true))
+                    {
+                        Logger("DirectPlay", "DirectX 9 for Windows 10", "false");
+                        Process.Start("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart").WaitForExit();
+                        Process.Start("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all").WaitForExit();
+                        Logger("DirectPlay", "DirectX 9 for Windows 10", "true");
+                        Logger("DirectPlay", "Guide if DirectPlay not work", "https://docs.microsoft.com/en-us/answers/questions/108291/enable-windows-10-direct-play.html?childToView=111216#answer-111216");
+                    }
                     if ((gv != 0) && (er == 0) && (settings[3] == false))
                     {
                         // Check files
