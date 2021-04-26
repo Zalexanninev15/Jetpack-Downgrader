@@ -45,6 +45,7 @@ namespace JetpackDowngraderGUI
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -54,9 +55,9 @@ namespace JetpackDowngraderGUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Gadugi", 11.25F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(697, 93);
+            this.button1.Location = new System.Drawing.Point(682, 99);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 29);
+            this.button1.Size = new System.Drawing.Size(166, 29);
             this.button1.TabIndex = 2;
             this.button1.TabStop = false;
             this.button1.Text = "Downgrade";
@@ -196,11 +197,12 @@ namespace JetpackDowngraderGUI
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(650, 183);
+            this.label3.Location = new System.Drawing.Point(644, 194);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(208, 57);
+            this.label3.Size = new System.Drawing.Size(230, 57);
             this.label3.TabIndex = 4;
-            this.label3.Text = "App: Jetpack Downgrader GUI\r\nVersion: 0.2-PreAlpha\r\nAuthor: Zalexanninev15";
+            this.label3.Text = "App: Jetpack Downgrader GUI\r\nVersion: 0.2.1-PreAlpha [Concept]\r\nAuthor: Zalexanni" +
+    "nev15";
             // 
             // checkedListBox1
             // 
@@ -210,7 +212,7 @@ namespace JetpackDowngraderGUI
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(302, 88);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(326, 152);
+            this.checkedListBox1.Size = new System.Drawing.Size(326, 182);
             this.checkedListBox1.TabIndex = 7;
             // 
             // label4
@@ -231,9 +233,9 @@ namespace JetpackDowngraderGUI
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Gadugi", 11.25F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(697, 134);
+            this.button3.Location = new System.Drawing.Point(682, 140);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(139, 29);
+            this.button3.Size = new System.Drawing.Size(166, 29);
             this.button3.TabIndex = 2;
             this.button3.TabStop = false;
             this.button3.Text = "Play";
@@ -250,15 +252,29 @@ namespace JetpackDowngraderGUI
             this.label5.TabIndex = 4;
             this.label5.Text = "3. Actions";
             // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkBox7.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox7.ForeColor = System.Drawing.Color.White;
+            this.checkBox7.Location = new System.Drawing.Point(33, 246);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(193, 20);
+            this.checkBox7.TabIndex = 5;
+            this.checkBox7.Text = "DirectPlay (Windows 10 only)";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(886, 257);
+            this.ClientSize = new System.Drawing.Size(886, 287);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.checkBox7);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -302,5 +318,6 @@ namespace JetpackDowngraderGUI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox7;
     }
 }
