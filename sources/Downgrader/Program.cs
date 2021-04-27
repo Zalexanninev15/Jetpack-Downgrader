@@ -297,6 +297,7 @@ namespace JetpackDowngrader
                             try
                             {
                                 Logger("DirectX", "Process", "Installing...");
+                                Logger("DirectX", "Process", "The app is not frozen, just busy right now...");
                                 Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
                                 Logger("DirectX", "Process", "Installation completed successfully");
                             }
@@ -305,7 +306,8 @@ namespace JetpackDowngrader
                         else
                         {
                             Logger("DirectX", "Process", "Downloading data...");
-                            using (WebClient wc = new WebClient()) { wc.DownloadFile("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11-dev_1.3/DirectX_for_game.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip"); }
+                            Logger("DirectX", "Process", "The app is not frozen, just busy right now...");
+                            using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11-dev_1.3/DirectX_for_game.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip"); }
                             Logger("DirectX", "Process", "Preparing the installer...");
                             try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                             try
@@ -313,10 +315,11 @@ namespace JetpackDowngrader
                                 ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
                                 File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip");
                                 Logger("DirectX", "Process", "Installing...");
+                                Logger("DirectX", "Process", "The app is not frozen, just busy right now...");
                                 Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
                                 Logger("DirectX", "Process", "Installation completed successfully");
                             }
-                            catch { Logger("DirectX9", "Process", "Installation error"); }
+                            catch { Logger("DirectX", "Process", "Installation error"); }
                         }
                         try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                     }
