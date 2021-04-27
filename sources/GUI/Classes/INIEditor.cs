@@ -18,6 +18,15 @@ namespace JetpackDowngraderGUI
         {
             StringBuilder buffer = new StringBuilder(SIZE);
             GetValue(aSection, aKey, null, buffer, SIZE, path);
+            //
+            // Fix this for other languages!!!
+            // 
+            //Encoding utf = Encoding.Unicode;
+            //Encoding win = Encoding.Default;
+            //byte[] utfArr = utf.GetBytes(buffer.ToString());
+            //byte[] winArr = Encoding.Convert(win, utf, utfArr);
+            //
+            //return win.GetString(winArr);
             return buffer.ToString();
         }
 
