@@ -1,7 +1,7 @@
 [Interface]
-Null=null
-[Text]
-Null=null
+PathLabel=Path to the game folder:
+CButton=Choose
+LButton=Languages
 [Title]
 Info=Information
 Error=Error
