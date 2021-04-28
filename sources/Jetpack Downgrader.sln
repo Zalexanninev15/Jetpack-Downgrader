@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI.csproj", "{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jetpack Downgrader", "Downgrader\Jetpack Downgrader.csproj", "{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{D81E1838-8791-4716-B0DD-B44107FAB96D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7231A22C-71EE-4CC2-9BFD-889D603B3AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81E1838-8791-4716-B0DD-B44107FAB96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81E1838-8791-4716-B0DD-B44107FAB96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81E1838-8791-4716-B0DD-B44107FAB96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81E1838-8791-4716-B0DD-B44107FAB96D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
