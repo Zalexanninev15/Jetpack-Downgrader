@@ -3,7 +3,7 @@ using System.Text;
 
 namespace JetpackDowngraderGUI
 {
-    public class INIEditor
+    public class IniEditor
     {
         private const int SIZE = 1024;
         private string path = null;
@@ -11,23 +11,20 @@ namespace JetpackDowngraderGUI
         private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
         [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileString")]
         private static extern int WritePrivateString(string section, string key, string str, string path);
-
-        public INIEditor(string aPath) { path = aPath; }
+        public IniEditor(string aPath) { path = aPath; }
 
         public string GetValue(string aSection, string aKey)
         {
             StringBuilder buffer = new StringBuilder(SIZE);
             GetValue(aSection, aKey, null, buffer, SIZE, path);
+            // A fallback way to change the text encoding
             //
-            // Fix this for other languages!!!
-            // 
-            //Encoding utf = Encoding.Unicode;
-            //Encoding win = Encoding.Default;
-            //byte[] utfArr = utf.GetBytes(buffer.ToString());
-            //byte[] winArr = Encoding.Convert(win, utf, utfArr);
-            //
-            //return win.GetString(winArr);
-            return buffer.ToString();
+            // File.WriteAllText("text", buffer.ToString(), Encoding.Default);
+            // string rt = File.ReadAllText("text");
+            // File.Delete("text");
+            byte[] byteArray = Encoding.Default.GetBytes(buffer.ToString());
+            string rt = Encoding.UTF8.GetString(byteArray);
+            return rt;
         }
 
         public void WritePrivateString(string aSection, string aKey, string aValue)
