@@ -108,11 +108,11 @@ namespace JetpackDowngraderGUI
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox1.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(22, 92);
+            this.checkBox1.Location = new System.Drawing.Point(13, 92);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(152, 20);
+            this.checkBox1.Size = new System.Drawing.Size(255, 20);
             this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Make backups of files";
+            this.checkBox1.Text = "Backup original files before downgrade";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -121,11 +121,11 @@ namespace JetpackDowngraderGUI
             this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox2.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(22, 118);
+            this.checkBox2.Location = new System.Drawing.Point(13, 118);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(144, 20);
+            this.checkBox2.Size = new System.Drawing.Size(179, 20);
             this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "Shortcut on Desktop";
+            this.checkBox2.Text = "Make shortcut on Desktop";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -134,11 +134,11 @@ namespace JetpackDowngraderGUI
             this.checkBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox3.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox3.ForeColor = System.Drawing.Color.White;
-            this.checkBox3.Location = new System.Drawing.Point(23, 222);
+            this.checkBox3.Location = new System.Drawing.Point(14, 222);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(263, 20);
+            this.checkBox3.Size = new System.Drawing.Size(404, 20);
             this.checkBox3.TabIndex = 5;
-            this.checkBox3.Text = "Remove auto-updates to higher versions";
+            this.checkBox3.Text = "Move game to another folder (Prevents auto update and rehash)";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
@@ -147,11 +147,12 @@ namespace JetpackDowngraderGUI
             this.checkBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox4.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox4.ForeColor = System.Drawing.Color.White;
-            this.checkBox4.Location = new System.Drawing.Point(22, 170);
+            this.checkBox4.Location = new System.Drawing.Point(13, 170);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(237, 20);
+            this.checkBox4.Size = new System.Drawing.Size(556, 20);
             this.checkBox4.TabIndex = 5;
-            this.checkBox4.Text = "Remove unnecessary files (RGL only)";
+            this.checkBox4.Text = "Remove unneeded files (ONLY for the version of the game from Rockstar Games Launc" +
+    "her)";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox6
@@ -160,11 +161,11 @@ namespace JetpackDowngraderGUI
             this.checkBox6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox6.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox6.ForeColor = System.Drawing.Color.White;
-            this.checkBox6.Location = new System.Drawing.Point(23, 196);
+            this.checkBox6.Location = new System.Drawing.Point(14, 196);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(192, 20);
+            this.checkBox6.Size = new System.Drawing.Size(260, 20);
             this.checkBox6.TabIndex = 6;
-            this.checkBox6.Text = "Make the game visible (REG)";
+            this.checkBox6.Text = "Register game path (make game visible)";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -189,11 +190,11 @@ namespace JetpackDowngraderGUI
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Font = new System.Drawing.Font("Gadugi", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(644, 196);
+            this.label3.Location = new System.Drawing.Point(640, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(230, 57);
             this.label3.TabIndex = 4;
-            this.label3.Text = "App: Jetpack Downgrader GUI\r\nVersion: 0.2.3-PreAlpha [Concept]\r\nAuthor: Zalexanni" +
+            this.label3.Text = "App: Jetpack Downgrader GUI\r\nVersion: 0.2.4-PreAlpha [Concept]\r\nAuthor: Zalexanni" +
     "nev15";
             // 
             // checkedListBox1
@@ -202,9 +203,9 @@ namespace JetpackDowngraderGUI
             this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.checkedListBox1.ForeColor = System.Drawing.Color.White;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(302, 92);
+            this.checkedListBox1.Location = new System.Drawing.Point(575, 59);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(326, 227);
+            this.checkedListBox1.Size = new System.Drawing.Size(53, 77);
             this.checkedListBox1.TabIndex = 7;
             // 
             // label4
@@ -212,7 +213,7 @@ namespace JetpackDowngraderGUI
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(385, 59);
+            this.label4.Location = new System.Drawing.Point(411, 59);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(158, 20);
             this.label4.TabIndex = 4;
@@ -250,11 +251,11 @@ namespace JetpackDowngraderGUI
             this.checkBox7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox7.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox7.ForeColor = System.Drawing.Color.White;
-            this.checkBox7.Location = new System.Drawing.Point(22, 272);
+            this.checkBox7.Location = new System.Drawing.Point(13, 272);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(193, 20);
+            this.checkBox7.Size = new System.Drawing.Size(223, 20);
             this.checkBox7.TabIndex = 5;
-            this.checkBox7.Text = "DirectPlay (Windows 10 only)";
+            this.checkBox7.Text = "DirectPlay (ONLY for Windows 10)";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -295,11 +296,11 @@ namespace JetpackDowngraderGUI
             this.checkBox8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox8.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox8.ForeColor = System.Drawing.Color.White;
-            this.checkBox8.Location = new System.Drawing.Point(22, 298);
+            this.checkBox8.Location = new System.Drawing.Point(13, 298);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(152, 20);
+            this.checkBox8.Size = new System.Drawing.Size(104, 20);
             this.checkBox8.TabIndex = 5;
-            this.checkBox8.Text = "DirectX files for game";
+            this.checkBox8.Text = "Install DirectX";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox9
@@ -308,11 +309,11 @@ namespace JetpackDowngraderGUI
             this.checkBox9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox9.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox9.ForeColor = System.Drawing.Color.White;
-            this.checkBox9.Location = new System.Drawing.Point(22, 144);
+            this.checkBox9.Location = new System.Drawing.Point(13, 144);
             this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(143, 20);
+            this.checkBox9.Size = new System.Drawing.Size(395, 20);
             this.checkBox9.TabIndex = 5;
-            this.checkBox9.Text = "Reset game settings";
+            this.checkBox9.Text = "Remove GTA-SA.SET (Resets game settings and prevents crash)";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
             // checkBox5
@@ -321,11 +322,11 @@ namespace JetpackDowngraderGUI
             this.checkBox5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.checkBox5.Font = new System.Drawing.Font("Gadugi", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox5.ForeColor = System.Drawing.Color.White;
-            this.checkBox5.Location = new System.Drawing.Point(22, 246);
+            this.checkBox5.Location = new System.Drawing.Point(13, 246);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(168, 20);
+            this.checkBox5.Size = new System.Drawing.Size(198, 20);
             this.checkBox5.TabIndex = 5;
-            this.checkBox5.Text = "Forced (version 1.0 only)";
+            this.checkBox5.Text = "Forced (ONLY for version 1.0)";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // MainForm
@@ -333,7 +334,7 @@ namespace JetpackDowngraderGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(886, 336);
+            this.ClientSize = new System.Drawing.Size(886, 329);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox8);
