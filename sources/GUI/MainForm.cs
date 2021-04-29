@@ -19,11 +19,21 @@ namespace JetpackDowngraderGUI
                 IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
                 // Text (GUI) loading
                 label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
-                button2.Text = Convert.ToString(lang.GetValue("Interface", "CButton"));
-                button4.Text = Convert.ToString(lang.GetValue("Interface", "LButton"));
+                button4.Text = Convert.ToString(lang.GetValue("Interface", "AppSettings"));
+                // CheckBox loading
+                checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
+                checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
+                checkBox9.Text = Convert.ToString(lang.GetValue("CheckBox", "Reset"));
+                checkBox4.Text = Convert.ToString(lang.GetValue("CheckBox", "GarbageCleaning"));
+                checkBox6.Text = Convert.ToString(lang.GetValue("CheckBox", "GameReg"));
+                checkBox3.Text = Convert.ToString(lang.GetValue("CheckBox", "NoUpdates"));
+                checkBox5.Text = Convert.ToString(lang.GetValue("CheckBox", "Forced"));
+                checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "DirectPlay"));
+                checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectX"));
                 // Title loading
                 lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
                 lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
+                lc[6] = Convert.ToString(lang.GetValue("Title", "FolderSelectDialog"));
                 // InfoMsg loading
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
                 // ErrorMsg loading
@@ -40,7 +50,7 @@ namespace JetpackDowngraderGUI
                 checkBox1.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
                 checkBox2.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 checkBox9.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
-                checkBox4.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "RGLGarbage"));
+                checkBox4.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "GarbageCleaning"));
                 checkBox6.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "RegisterGamePath"));
                 checkBox3.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 checkBox5.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
@@ -67,18 +77,23 @@ namespace JetpackDowngraderGUI
             MsgInfo(lc[4], lc[0]);
         }
 
-        private void button5_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5], lc[1]); } }
         private void MsgInfo(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information); }
         private void MsgError(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        private void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
 
         private void button4_Click(object sender, EventArgs e)
         {
             // Change language
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            var dialog = new FolderSelectDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                Title = lc[6]
+            };
+            if (dialog.Show()) { GamePath.Text = dialog.FileName; } else { GamePath.Clear(); }
         }
     }
 }
