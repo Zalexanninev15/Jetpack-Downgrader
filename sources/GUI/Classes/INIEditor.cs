@@ -22,9 +22,9 @@ namespace JetpackDowngraderGUI
             // File.WriteAllText("text", buffer.ToString(), Encoding.Default);
             // string rt = File.ReadAllText("text");
             // File.Delete("text");
-            byte[] byteArray = Encoding.Default.GetBytes(buffer.ToString());
-            string rt = Encoding.UTF8.GetString(byteArray);
-            return rt;
+            byte[] local = Encoding.Default.GetBytes(buffer.ToString());
+            string localText = Encoding.UTF8.GetString(local);
+            return localText;
         }
 
         public void WritePrivateString(string aSection, string aKey, string aValue)
