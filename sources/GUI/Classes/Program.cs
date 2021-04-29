@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+
 namespace JetpackDowngraderGUI
 {
     static class Program
