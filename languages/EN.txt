@@ -1,10 +1,20 @@
 [Interface]
 PathLabel=Path to the game folder:
-CButton=Choose
-LButton=Languages
+AppSettings=App Settings
+[CheckBox]
+Backup=Backup original files before downgrade
+Shortcut=Make shortcut on Desktop
+Reset=Remove GTA-SA.SET (Reset game settings and prevents crash)
+GarbageCleaning=Remove unneeded files (ONLY for the version of the game from Rockstar Games Launcher)
+GameReg=Register game path (Make game visible)
+NoUpdates=Move game to another folder (Prevents auto-update and rehash)
+Forced=Forced (ONLY for version 1.0)
+DirectPlay=DirectPlay (ONLY for Windows 10)
+InstallDirectX=Install DirectX
 [Title]
 Info=Information
 Error=Error
+FolderSelectDialog=Select the game folder
 [InfoMsg]
 Succes=Downgrade completed!
 [ErrorMsg]

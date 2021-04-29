@@ -73,7 +73,7 @@ namespace JetpackDowngrader
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
                 settings[7] = Convert.ToBoolean(cfg.GetValue("Downgrader", "ResetGame"));
-                settings[14] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RGLGarbage"));
+                settings[14] = Convert.ToBoolean(cfg.GetValue("Downgrader", "GarbageCleaning"));
                 settings[9] = Convert.ToBoolean(cfg.GetValue("Downgrader", "RegisterGamePath"));
                 settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[12] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));

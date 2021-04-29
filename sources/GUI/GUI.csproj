@@ -45,6 +45,9 @@
     <StartupObject>JetpackDowngraderGUI.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -52,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\FolderSelectDialog.cs" />
     <Compile Include="Classes\IniEditor.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -75,6 +79,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
