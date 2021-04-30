@@ -19,7 +19,7 @@ Is required .NET Framework 4.8 and Windows 7/8/8.1/10
 
 ## Features
 
-* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary parameters
+* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary settings
 * The ability to fine-tune the downgrading process, the *Jetpack Downgrader* itself, and some other aspects
 * Using delta patches that weigh significantly less than the files from the game version 1.0
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
