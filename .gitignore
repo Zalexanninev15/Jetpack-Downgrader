@@ -2,3 +2,7 @@
 sources/GUI/.vs/GUI/v16/.suo
 sources/Downgrader/.vs/Jetpack Downgrader/v16/.suo
 sources/.vs/Jetpack Downgrader/v16/.suo
+sources/packages/DarkUI.2.0.2/.signature.p7s
+sources/packages/DarkUI.2.0.2/DarkUI.2.0.2.nupkg
+sources/packages/DarkUI.2.0.2/icon-64.png
+sources/packages/DarkUI.2.0.2/lib/DarkUI.dll
