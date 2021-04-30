@@ -64,7 +64,7 @@ In **jpd.ini**, you can specify the settings for this application, it is not rec
 
 * **SelectFolder** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
 * **ConsoleTransparency** - use transparency for the console
-* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This setting can take values instead of (or have no effect on) the settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **GarbageCleaning**, **RegisterGamePath**, **CreateNewGamePath**, **Forced** , **EnableDirectPlay** , **InstallDirectX** 
+* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This setting can take values instead of (or have no effect on) the settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **GarbageCleaning**, **RegisterGamePath**, **CreateNewGamePath**, **Forced**, **EnableDirectPlay**, **InstallDirectX** 
 * **UseProgressBar** - use the progress bar to indicate the progress of each of the downgrader stages. During operation, all logs of the current stage of work are ignored!!!
 * **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI (in console) and removes the waiting for input after the processes in the app are completed). This setting adds the ability to specify the path to the game folder as a parameter for launching the application
 
