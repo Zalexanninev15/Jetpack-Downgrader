@@ -49,9 +49,9 @@ namespace JetpackDowngrader
         [STAThread]
         public static void Main(string[] args)
         {
-			Console.ForegroundColor = ConsoleColor.White;
-            Application.EnableVisualStyles(); 
-			Application.SetCompatibleTextRenderingDefault(false);
+            Console.ForegroundColor = ConsoleColor.White;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -89,19 +89,20 @@ namespace JetpackDowngrader
                 settings[5] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
                 Logger("App", "jpd.ini", "true");
             }
-            catch {  Logger("App", "jpd.ini", "false"); }
+            catch { Logger("App", "jpd.ini", "false"); }
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
-                if ((settings[1] == true) && (settings[8] == false))  {  try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
-                if (settings[8] == true) 
+                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
+                if (settings[8] == true)
                 {
                     var dialog = new FolderSelectDialog
                     {
                         InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
                         Title = "Select the game folder"
                     };
-                    if (dialog.Show()) { path = dialog.FileName; } else { path = ""; } }
+                    if (dialog.Show()) { path = dialog.FileName; } else { path = ""; }
+                }
                 if ((path != "") && Directory.Exists(@path))
                 {
                     Logger("Game", "Path", "true");
@@ -226,59 +227,64 @@ namespace JetpackDowngrader
                         catch { gv = 5; er = 1; Logger("Game", "Version", "Unknown [ERROR]"); }
                     }
                     if ((gv == 4) || (gv == 5)) { Logger("Downgrader", "Process", "Downgrade is not possible!"); }
-                    if ((settings[13] == true) && (gv != 4) && (gv != 5)) { result = MessageBox.Show("Would you like to reset the game settings to prevent possible difficulties in starting the game?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                    if (((result == DialogResult.Yes) || (settings[7] == true)) && (gv != 4) && (gv != 5))
+                    if ((File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set")) || (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set")))
                     {
-                        Logger("Downgrader", "Process", "Deleting gta_sa.set (Documents) file...");
-                        try
+                        if ((settings[13] == true) && (gv != 4) && (gv != 5)) { result = MessageBox.Show("Would you like to reset the game settings to prevent possible difficulties in starting the game?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                        if (((result == DialogResult.Yes) || (settings[7] == true)) && (gv != 4) && (gv != 5))
                         {
-                            if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                            Logger("Downgrader", "Process", "Deleting gta_sa.set (Documents) file...");
+                            try
                             {
-                                File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
-                                Logger("ResetGame", "gta_sa.set (Documents)", "true");
+                                if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                                {
+                                    File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
+                                    Logger("ResetGame", "gta_sa.set (Documents)", "true");
+                                }
+                                else { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
                             }
-                            else { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
-                        }
-                        catch { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
-						Logger("Downgrader", "Process", "Deleting gta_sa.set (Public Documents) file...");
-                        try
-                        {
-                            if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                            catch { Logger("ResetGame", "gta_sa.set (Documents)", "false"); }
+                            Logger("Downgrader", "Process", "Deleting gta_sa.set (Public Documents) file...");
+                            try
                             {
-                                File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
-                                Logger("ResetGame", "gta_sa.set (Public Documents)", "true");
+                                if (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set"))
+                                {
+                                    File.Delete(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set");
+                                    Logger("ResetGame", "gta_sa.set (Public Documents)", "true");
+                                }
+                                else { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                             }
-                            else { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
+                            catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                         }
-                        catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                     }
-                    if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want to delete unnecessary files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                    if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
+                    if ((File.Exists(@path + @"\index.bin")) || (File.Exists(@path + @"\MTLX.dll")))
                     {
-                        Logger("Downgrader", "Process", "Deleting index.bin file...");
-                        try
+                        if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                        if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
                         {
-                            if (File.Exists(@path + @"\index.bin"))
+                            Logger("Downgrader", "Process", "Deleting index.bin file...");
+                            try
                             {
-                                File.Delete(@path + @"\index.bin");
-                                Logger("RGLGarbage", "index.bin", "true");
+                                if (File.Exists(@path + @"\index.bin"))
+                                {
+                                    File.Delete(@path + @"\index.bin");
+                                    Logger("GarbageCleaning", "index.bin", "true");
+                                }
+                                else { Logger("GarbageCleaning", "index.bin", "false"); }
                             }
-                            else { Logger("RGLGarbage", "index.bin", "false"); }
-                        }
-                        catch { Logger("RGLGarbage", "index.bin", "false"); }
-                        Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
-                        try
-                        {
-                            if (File.Exists(@path + @"\MTLX.dll"))
+                            catch { Logger("GarbageCleaning", "index.bin", "false"); }
+                            Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
+                            try
                             {
-                                File.Delete(@path + @"\MTLX.dll");
-                                Logger("RGLGarbage", "MTLX.dll", "true");
+                                if (File.Exists(@path + @"\MTLX.dll"))
+                                {
+                                    File.Delete(@path + @"\MTLX.dll");
+                                    Logger("GarbageCleaning", "MTLX.dll", "true");
+                                }
+                                else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
                             }
-                            else { Logger("RGLGarbage", "MTLX.dll", "false"); }
+                            catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
                         }
-                        catch { Logger("RGLGarbage", "MTLX.dll", "false"); }
                     }
-                    if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
                     if ((settings[13] == true) && (gv != 5)) { result = MessageBox.Show("Would you like to enable DirectPlay to avoid possible problems with running the game? This operation is NECESSARY ONLY on Windows 10, if your version is lower (7/8/8.1), then your answer is No!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                     if (((result == DialogResult.Yes) || (settings[16] == true)) && (gv != 5))
                     {
@@ -305,15 +311,15 @@ namespace JetpackDowngrader
                         }
                         else
                         {
-                            Logger("DirectX", "Process", "Downloading data...");
+                            Logger("DirectX", "Process", "Downloading installer...");
                             Logger("DirectX", "Process", "The app is not frozen, just busy right now...");
-                            using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11-dev_1.3/DirectX_for_game.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip"); }
-                            Logger("DirectX", "Process", "Preparing the installer...");
-                            try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                             try
                             {
-                                ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
-                                File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX.zip");
+                                using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
+                                Logger("DirectX", "Process", "Preparing installer...");
+                                try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
+                                ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
+                                File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip");
                                 Logger("DirectX", "Process", "Installing...");
                                 Logger("DirectX", "Process", "The app is not frozen, just busy right now...");
                                 Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
@@ -323,6 +329,7 @@ namespace JetpackDowngrader
                         }
                         try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                     }
+                    if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
                     if ((gv != 0) && (er == 0) && (settings[3] == false))
                     {
                         // Check files
@@ -945,7 +952,7 @@ namespace JetpackDowngrader
                                                         try
                                                         {
                                                             GameMD5 = GetMD5(@path + fl[i]);
-                                                            if (settings[15] == false) {  progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
+                                                            if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
                                                             if (GameMD5 == flmd5[i])
                                                             {
                                                                 fisv = true;
@@ -1004,17 +1011,27 @@ namespace JetpackDowngrader
                                                         Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
                                                         Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
                                                         Logger("Downgrader", "RegisterGamePath", "true");
-                                                    } catch { Logger("Downgrader", "RegisterGamePath", "false"); }
-                                                } if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                                            } else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
+                                                    }
+                                                    catch { Logger("Downgrader", "RegisterGamePath", "false"); }
+                                                }
+                                                if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                                            }
+                                            else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                                         }
-                                    } else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!"); }
-                                } else { Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
-                            } else { if (settings[5] == false) { Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
-                        } else { if (settings[4] == false) { Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
-                    } if (gv == 0) { Logger("Downgrader", "Process", "Downgrade is not required!"); }
-                } else { Logger("Game", "Path", "false");  }
-            } else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
+                                    }
+                                    else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!"); }
+                                }
+                                else { Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
+                            }
+                            else { if (settings[5] == false) { Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
+                        }
+                        else { if (settings[4] == false) { Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); } }
+                    }
+                    if (gv == 0) { Logger("Downgrader", "Process", "Downgrade is not required!"); }
+                }
+                else { Logger("Game", "Path", "false"); }
+            }
+            else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
             if (settings[1] == false) { Console.WriteLine("Press Enter to Exit"); Console.ReadLine(); }
         }
 
@@ -1030,7 +1047,7 @@ namespace JetpackDowngrader
             start_info.WaitForExit();
         }
 
-        public static string Logger(string type, string ido, string status) { Console.WriteLine("[" + type + "] " + ido + "=" + status); return ""; }
+        public static void Logger(string type, string ido, string status) { Console.WriteLine("[" + type + "] " + ido + "=" + status); }
 
         public static void Create(string ShortcutPath, string TargetPath)
         {
