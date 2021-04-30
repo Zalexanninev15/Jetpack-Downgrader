@@ -52,7 +52,7 @@ In **jpd.ini**, you can specify the settings for this application, it is not rec
 
 * **CreateBackups** - creating backups (**[full file name] + .bak**) of original files before downgrading them
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after a successful downgrade)
-* **ResetGame** - remove the game configuration file - **gta-sa.set** for prevents crash (after getting game version)
+* **ResetGame** - remove the game configuration file - **gta_sa.set** for prevents crash (after getting game version)
 * **GarbageCleaning** - remove unneeded files (**index.bin** and **MTLX.dll**) from the Rockstar Games Launcher version of the game (after getting game version). These files are not used in the game version 1.0
 * **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects) (only after a successful downgrade)
 * **CreateNewGamePath** - make a copy of the game folder (**[folder name] + _Downgraded**) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable it for the Steam/Rockstar Games Launcher versions of the game!!!
