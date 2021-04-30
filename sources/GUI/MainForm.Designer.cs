@@ -163,7 +163,7 @@ namespace JetpackDowngraderGUI
             this.checkBox9.Size = new System.Drawing.Size(413, 26);
             this.checkBox9.TabIndex = 11;
             this.checkBox9.TabStop = false;
-            this.checkBox9.Text = "Remove GTA-SA.SET (Reset game settings and prevents crash)";
+            this.checkBox9.Text = "Remove GTA_SA.SET (Reset game settings and prevents crash)";
             // 
             // checkBox4
             // 
