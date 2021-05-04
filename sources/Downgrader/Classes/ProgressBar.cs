@@ -40,8 +40,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 	{
 		int commonPrefixLength = 0;
 		int commonLength = Math.Min(currentText.Length, text.Length);
-		while (commonPrefixLength < commonLength && text[commonPrefixLength] == currentText[commonPrefixLength])
-		   commonPrefixLength++;
+		while (commonPrefixLength < commonLength && text[commonPrefixLength] == currentText[commonPrefixLength]) { commonPrefixLength++; }
 		StringBuilder outputBuilder = new StringBuilder();
 		outputBuilder.Append('\b', currentText.Length - commonPrefixLength);
 		outputBuilder.Append(text.Substring(commonPrefixLength));
@@ -51,6 +50,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 			outputBuilder.Append(' ', overlapCount);
 			outputBuilder.Append('\b', overlapCount);
 		}
+		Console.ForegroundColor = ConsoleColor.Blue;
 		Console.Write(outputBuilder);
 		currentText = text;
 	}
