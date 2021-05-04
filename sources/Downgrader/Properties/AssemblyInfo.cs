@@ -1,10 +1,5 @@
-﻿#region Using directives
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
-
-#endregion
-
 [assembly: AssemblyTitle("Jetpack Downgrader")]
 [assembly: AssemblyDescription("App for downgrading the game Grand Theft Auto: San Andreas to version 1.0")]
 [assembly: AssemblyConfiguration("")]
@@ -14,5 +9,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("Jetpack Downgrader (2020-2021)")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.12.2.0")]
-[assembly: AssemblyFileVersion("1.12.2.0")]
+[assembly: AssemblyVersion("1.12.2.1")]
+[assembly: AssemblyFileVersion("1.12.2.1")]
