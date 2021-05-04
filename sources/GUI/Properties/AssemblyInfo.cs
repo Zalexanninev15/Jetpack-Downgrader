@@ -1,10 +1,5 @@
-﻿#region Using directives
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
-
-#endregion
-
 [assembly: AssemblyTitle("Jetpack Downgrader GUI")]
 [assembly: AssemblyDescription("GUI for Jetpack Downgrader")]
 [assembly: AssemblyConfiguration("")]
