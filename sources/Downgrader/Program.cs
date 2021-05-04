@@ -69,6 +69,7 @@ namespace JetpackDowngrader
             Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT License\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n");
             try
             {
+                if (!File.Exists("jpd.ini")) { File.WriteAllText("jpd.ini", Properties.Resources.jpd); }
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
@@ -327,7 +328,6 @@ namespace JetpackDowngrader
                             }
                             catch { Logger("DirectX", "Process", "Installation error"); }
                         }
-                        try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                     }
                     if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
                     if ((gv != 0) && (er == 0) && (settings[3] == false))
@@ -1034,7 +1034,6 @@ namespace JetpackDowngrader
             else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
             if (settings[1] == false) { Console.WriteLine("Press Enter to Exit"); Console.ReadLine(); }
         }
-
         public static void Patcher(string argument)
         {
             Process start_info = new Process();
@@ -1046,9 +1045,7 @@ namespace JetpackDowngrader
             start_info.Start();
             start_info.WaitForExit();
         }
-
         public static void Logger(string type, string ido, string status) { Console.WriteLine("[" + type + "] " + ido + "=" + status); }
-
         public static void Create(string ShortcutPath, string TargetPath)
         {
             IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
@@ -1057,8 +1054,7 @@ namespace JetpackDowngrader
             Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
             Shortcut.Save();
         }
-
-        public static string GetMD5(string file)
+        private static string GetMD5(string file)
         {
             using (var md5 = MD5.Create())
             {
@@ -1066,10 +1062,7 @@ namespace JetpackDowngrader
                 {
                     var hashBytes = md5.ComputeHash(stream);
                     var sb = new StringBuilder();
-                    foreach (var t in hashBytes)
-                    {
-                        sb.Append(t.ToString("X2"));
-                    }
+                    foreach (var t in hashBytes) { sb.Append(t.ToString("X2")); }
                     return Convert.ToString(sb);
                 }
             }
