@@ -27,10 +27,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 				if (disposed) return;
 				int progressBlockCount = (int)(currentProgress * blockCount);
 				int percent = (int)(currentProgress * 100);
-				string text = string.Format(work + ": [{0}{1}] {2,3}% {3}",
-					new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount),
-					percent,
-					animation[animationIndex++ % animation.Length]);
+				string text = string.Format(work + ": [{0}{1}] {2,3}% {3}", new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount), percent, animation[animationIndex++ % animation.Length]);
 				UpdateText(text);
 				ResetTimer();
 			}
@@ -54,10 +51,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 		Console.Write(outputBuilder);
 		currentText = text;
 	}
-	private void ResetTimer()
-	{
-		timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1));
-	}
+	private void ResetTimer() { timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1)); }
 	public void Dispose()
 	{
 		lock (timer)
