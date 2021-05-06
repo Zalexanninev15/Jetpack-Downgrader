@@ -25,6 +25,7 @@ namespace JetpackDowngraderGUI
                 button2.Text = "2. " + Convert.ToString(lang.GetValue("Interface", "Tab2"));
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
                 button3.Text = "4. " + Convert.ToString(lang.GetValue("Interface", "Play"));
+                HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
@@ -129,6 +130,7 @@ namespace JetpackDowngraderGUI
         private void MsgError(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
         private void MsgWarning(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         private void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
-        private void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack Downgrader GUI\n" + lc[9] + ": " + Application.ProductVersion + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
+        private void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack Downgrader GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
+        private void button6_Click(object sender, EventArgs e) { if (DSPanel.Visible == false) { DSPanel.Visible = true; } else { DSPanel.Visible = false; } }
     }
 }
