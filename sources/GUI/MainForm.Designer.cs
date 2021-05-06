@@ -58,6 +58,7 @@ namespace JetpackDowngraderGUI
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ModsPanel = new DarkUI.Controls.DarkSectionPanel();
             this.DSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -252,9 +253,11 @@ namespace JetpackDowngraderGUI
             this.button2.TabIndex = 8;
             this.button2.TabStop = false;
             this.button2.Text = "2. Modifications";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // DSPanel
             // 
+            this.DSPanel.Controls.Add(this.ModsPanel);
             this.DSPanel.Controls.Add(this.checkBox1);
             this.DSPanel.Controls.Add(this.darkTitle2);
             this.DSPanel.Controls.Add(this.darkTitle1);
@@ -403,6 +406,16 @@ namespace JetpackDowngraderGUI
             this.pictureBox8.TabIndex = 13;
             this.pictureBox8.TabStop = false;
             // 
+            // ModsPanel
+            // 
+            this.ModsPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ModsPanel.Location = new System.Drawing.Point(1, 0);
+            this.ModsPanel.Name = "ModsPanel";
+            this.ModsPanel.SectionHeader = "Modifications";
+            this.ModsPanel.Size = new System.Drawing.Size(834, 329);
+            this.ModsPanel.TabIndex = 15;
+            this.ModsPanel.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,5 +486,6 @@ namespace JetpackDowngraderGUI
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private DarkUI.Controls.DarkSectionPanel ModsPanel;
     }
 }

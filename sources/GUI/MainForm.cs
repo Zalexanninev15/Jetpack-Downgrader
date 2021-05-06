@@ -10,6 +10,7 @@ namespace JetpackDowngraderGUI
     {
         string[] lc = new string[100];
         bool[] appset = new bool[8];
+        bool tabFix = false;
         public MainForm() { InitializeComponent(); }
         IniEditor cfg = new IniEditor(@Application.StartupPath + @"\app\jpd.ini");
         IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
@@ -22,7 +23,8 @@ namespace JetpackDowngraderGUI
                 label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
                 DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
                 button6.Text = "1. " + DSPanel.SectionHeader;
-                button2.Text = "2. " + Convert.ToString(lang.GetValue("Interface", "Tab2"));
+                ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
+                button2.Text = "2. " + ModsPanel.SectionHeader;
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
                 button3.Text = "4. " + Convert.ToString(lang.GetValue("Interface", "Play"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
@@ -89,10 +91,7 @@ namespace JetpackDowngraderGUI
                 cfg.SetValue("JPD", "Component", "true");
                 Process.Start(@Application.StartupPath + @"\app\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
                 string str = "jpd";
-                foreach (Process process2 in Process.GetProcesses())
-                {
-                    if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; }
-                }
+                foreach (Process process2 in Process.GetProcesses()) { if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; } }
                 if (d == 1)
                 {
                     // Install mods
@@ -131,6 +130,7 @@ namespace JetpackDowngraderGUI
         private void MsgWarning(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         private void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
         private void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack Downgrader GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
-        private void button6_Click(object sender, EventArgs e) { if (DSPanel.Visible == false) { DSPanel.Visible = true; } else { DSPanel.Visible = false; } }
+        private void button6_Click(object sender, EventArgs e) { if (DSPanel.Visible == false) { tabFix = false; ModsPanel.Visible = false; DSPanel.Visible = true; } else { if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; } else { tabFix = false; ModsPanel.Visible = false; } } }
+        private void button2_Click(object sender, EventArgs e) { if (ModsPanel.Visible == false) { tabFix = true; DSPanel.Visible = true; ModsPanel.Visible = true; } else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; } }
     }
 }
