@@ -53,11 +53,20 @@ namespace JetpackDowngraderGUI
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.HelloUser = new DarkUI.Controls.DarkTitle();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.DSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -67,7 +76,7 @@ namespace JetpackDowngraderGUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(366, 20);
+            this.button1.Location = new System.Drawing.Point(353, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 31);
             this.button1.TabIndex = 2;
@@ -83,7 +92,7 @@ namespace JetpackDowngraderGUI
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(538, 20);
+            this.button3.Location = new System.Drawing.Point(525, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(166, 31);
             this.button3.TabIndex = 2;
@@ -224,18 +233,19 @@ namespace JetpackDowngraderGUI
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(25, 20);
+            this.button6.Location = new System.Drawing.Point(12, 21);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(5);
             this.button6.Size = new System.Drawing.Size(176, 31);
             this.button6.TabIndex = 8;
             this.button6.TabStop = false;
             this.button6.Text = "1. Downgrader Settings";
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(207, 20);
+            this.button2.Location = new System.Drawing.Point(194, 21);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(5);
             this.button2.Size = new System.Drawing.Size(153, 31);
@@ -261,11 +271,12 @@ namespace JetpackDowngraderGUI
             this.DSPanel.Controls.Add(this.checkBox3);
             this.DSPanel.Controls.Add(this.checkBox5);
             this.DSPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DSPanel.Location = new System.Drawing.Point(25, 67);
+            this.DSPanel.Location = new System.Drawing.Point(12, 62);
             this.DSPanel.Name = "DSPanel";
             this.DSPanel.SectionHeader = "Downgrader Settings";
-            this.DSPanel.Size = new System.Drawing.Size(834, 323);
+            this.DSPanel.Size = new System.Drawing.Size(834, 329);
             this.DSPanel.TabIndex = 14;
+            this.DSPanel.Visible = false;
             // 
             // darkTitle2
             // 
@@ -291,7 +302,7 @@ namespace JetpackDowngraderGUI
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(323, 280);
+            this.button7.Location = new System.Drawing.Point(323, 283);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(5);
             this.button7.Size = new System.Drawing.Size(167, 29);
@@ -314,7 +325,7 @@ namespace JetpackDowngraderGUI
             // pictureBox4
             // 
             this.pictureBox4.Image = global::JetpackDowngraderGUI.Properties.Resources.GitHub;
-            this.pictureBox4.Location = new System.Drawing.Point(815, 16);
+            this.pictureBox4.Location = new System.Drawing.Point(802, 17);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(44, 39);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -325,7 +336,7 @@ namespace JetpackDowngraderGUI
             // pictureBox3
             // 
             this.pictureBox3.Image = global::JetpackDowngraderGUI.Properties.Resources.JPD;
-            this.pictureBox3.Location = new System.Drawing.Point(765, 16);
+            this.pictureBox3.Location = new System.Drawing.Point(752, 17);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(44, 39);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -336,23 +347,77 @@ namespace JetpackDowngraderGUI
             // pictureBox2
             // 
             this.pictureBox2.Image = global::JetpackDowngraderGUI.Properties.Resources.Settings;
-            this.pictureBox2.Location = new System.Drawing.Point(715, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(702, 17);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(44, 39);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
+            // HelloUser
+            // 
+            this.HelloUser.Font = new System.Drawing.Font("Arial", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HelloUser.Location = new System.Drawing.Point(142, 142);
+            this.HelloUser.Name = "HelloUser";
+            this.HelloUser.Size = new System.Drawing.Size(393, 46);
+            this.HelloUser.TabIndex = 12;
+            this.HelloUser.Text = "Select the desired stage";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox5.Location = new System.Drawing.Point(65, 69);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(44, 39);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 13;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox6.Location = new System.Drawing.Point(247, 69);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(44, 39);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 13;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox7.Location = new System.Drawing.Point(409, 69);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(44, 39);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 13;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox8.Location = new System.Drawing.Point(586, 69);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(44, 39);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 13;
+            this.pictureBox8.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(886, 410);
+            this.ClientSize = new System.Drawing.Size(859, 403);
+            this.Controls.Add(this.DSPanel);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.DSPanel);
+            this.Controls.Add(this.HelloUser);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button3);
@@ -371,6 +436,10 @@ namespace JetpackDowngraderGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,5 +468,10 @@ namespace JetpackDowngraderGUI
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private DarkUI.Controls.DarkTitle HelloUser;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

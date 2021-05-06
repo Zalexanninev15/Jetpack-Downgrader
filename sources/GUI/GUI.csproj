@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\Up.png" />
     <None Include="Resources\JPD.png" />
     <None Include="Resources\Settings.png" />
     <None Include="Resources\GitHub.png" />

@@ -4,6 +4,7 @@ Tab1=Downgrader Settings
 Tab2=Modifications
 Downgrade=Downgrade
 Play=Play && Test
+Stage=Select the desired stage
 [CheckBox]
 Backup=Backup original files before downgrade
 Shortcut=Make shortcut on Desktop
