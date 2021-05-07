@@ -1,6 +1,6 @@
 # Jetpack Downgrader | [Latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
 
-![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/dev/data/logo.png)
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/dev/data/Logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
