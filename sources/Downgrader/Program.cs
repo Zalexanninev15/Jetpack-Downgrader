@@ -53,7 +53,7 @@ namespace JetpackDowngrader
             Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false);
             try { ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"); } catch { }
             try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe"); } catch { }
-            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[19]; string path = ""; DialogResult result = DialogResult.No;
+            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
@@ -85,7 +85,6 @@ namespace JetpackDowngrader
                 settings[17] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectX"));
                 settings[8] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolder"));
                 settings[11] = Convert.ToBoolean(cfg.GetValue("JPD", "ConsoleTransparency"));
-                //settings[18] = Convert.ToBoolean(cfg.GetValue("JPD", "UseColors"));
                 settings[13] = Convert.ToBoolean(cfg.GetValue("JPD", "UseMsg"));
                 settings[15] = Convert.ToBoolean(cfg.GetValue("JPD", "UseProgressBar"));
                 settings[1] = Convert.ToBoolean(cfg.GetValue("JPD", "Component"));
@@ -756,7 +755,6 @@ namespace JetpackDowngrader
         }
         private static void Logger(string type, string ido, string status) 
         {
-            
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "new") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }

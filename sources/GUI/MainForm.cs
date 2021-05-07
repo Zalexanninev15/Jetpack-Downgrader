@@ -8,6 +8,11 @@ namespace JetpackDowngraderGUI
 {
     public partial class MainForm : Form
     {
+        // Dark title for Windows 10
+        [System.Runtime.InteropServices.DllImport("DwmApi")]
+        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+        protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
+        //
         string[] lc = new string[100];
         bool[] appset = new bool[8];
         bool tabFix = false;
