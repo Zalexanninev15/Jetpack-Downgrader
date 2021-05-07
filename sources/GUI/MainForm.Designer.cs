@@ -46,6 +46,7 @@ namespace JetpackDowngraderGUI
             this.button6 = new DarkUI.Controls.DarkButton();
             this.button2 = new DarkUI.Controls.DarkButton();
             this.DSPanel = new DarkUI.Controls.DarkSectionPanel();
+            this.ModsPanel = new DarkUI.Controls.DarkSectionPanel();
             this.darkTitle2 = new DarkUI.Controls.DarkTitle();
             this.darkTitle1 = new DarkUI.Controls.DarkTitle();
             this.button7 = new DarkUI.Controls.DarkButton();
@@ -58,7 +59,6 @@ namespace JetpackDowngraderGUI
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.ModsPanel = new DarkUI.Controls.DarkSectionPanel();
             this.DSPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -77,7 +77,7 @@ namespace JetpackDowngraderGUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(353, 21);
+            this.button1.Location = new System.Drawing.Point(353, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 31);
             this.button1.TabIndex = 2;
@@ -93,7 +93,7 @@ namespace JetpackDowngraderGUI
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(525, 21);
+            this.button3.Location = new System.Drawing.Point(525, 16);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(166, 31);
             this.button3.TabIndex = 2;
@@ -234,7 +234,7 @@ namespace JetpackDowngraderGUI
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(12, 21);
+            this.button6.Location = new System.Drawing.Point(12, 16);
             this.button6.Name = "button6";
             this.button6.Padding = new System.Windows.Forms.Padding(5);
             this.button6.Size = new System.Drawing.Size(176, 31);
@@ -246,7 +246,7 @@ namespace JetpackDowngraderGUI
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(194, 21);
+            this.button2.Location = new System.Drawing.Point(194, 16);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(5);
             this.button2.Size = new System.Drawing.Size(153, 31);
@@ -280,6 +280,16 @@ namespace JetpackDowngraderGUI
             this.DSPanel.Size = new System.Drawing.Size(834, 329);
             this.DSPanel.TabIndex = 14;
             this.DSPanel.Visible = false;
+            // 
+            // ModsPanel
+            // 
+            this.ModsPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ModsPanel.Location = new System.Drawing.Point(1, 0);
+            this.ModsPanel.Name = "ModsPanel";
+            this.ModsPanel.SectionHeader = "Modifications";
+            this.ModsPanel.Size = new System.Drawing.Size(834, 329);
+            this.ModsPanel.TabIndex = 15;
+            this.ModsPanel.Visible = false;
             // 
             // darkTitle2
             // 
@@ -328,7 +338,7 @@ namespace JetpackDowngraderGUI
             // pictureBox4
             // 
             this.pictureBox4.Image = global::JetpackDowngraderGUI.Properties.Resources.GitHub;
-            this.pictureBox4.Location = new System.Drawing.Point(802, 17);
+            this.pictureBox4.Location = new System.Drawing.Point(802, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(44, 39);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -339,7 +349,7 @@ namespace JetpackDowngraderGUI
             // pictureBox3
             // 
             this.pictureBox3.Image = global::JetpackDowngraderGUI.Properties.Resources.JPD;
-            this.pictureBox3.Location = new System.Drawing.Point(752, 17);
+            this.pictureBox3.Location = new System.Drawing.Point(752, 12);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(44, 39);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -350,7 +360,7 @@ namespace JetpackDowngraderGUI
             // pictureBox2
             // 
             this.pictureBox2.Image = global::JetpackDowngraderGUI.Properties.Resources.Settings;
-            this.pictureBox2.Location = new System.Drawing.Point(702, 17);
+            this.pictureBox2.Location = new System.Drawing.Point(702, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(44, 39);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -405,16 +415,6 @@ namespace JetpackDowngraderGUI
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 13;
             this.pictureBox8.TabStop = false;
-            // 
-            // ModsPanel
-            // 
-            this.ModsPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ModsPanel.Location = new System.Drawing.Point(1, 0);
-            this.ModsPanel.Name = "ModsPanel";
-            this.ModsPanel.SectionHeader = "Modifications";
-            this.ModsPanel.Size = new System.Drawing.Size(834, 329);
-            this.ModsPanel.TabIndex = 15;
-            this.ModsPanel.Visible = false;
             // 
             // MainForm
             // 
