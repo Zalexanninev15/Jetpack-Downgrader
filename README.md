@@ -14,7 +14,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 ## System requirements
 
 * **OS:** Windows 7/8/8.1/10
-* **Additional:** Microsoft .NET Framework 4.8
+* **Additional:** .NET Framework 4.8
 
 ## Authors
 
