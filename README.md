@@ -1,6 +1,6 @@
 # Jetpack Downgrader | [Latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
 
-![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/logo.png)
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/dev/data/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
@@ -9,8 +9,12 @@
 
 ## Description
 
-App for downgrading the game Grand Theft Auto: San Andreas to version 1.0. 
-Is required .NET Framework 4.8 and Windows 7/8/8.1/10
+App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
+
+## System requirements
+
+* **OS:** Windows 7/8/8.1/10
+* **Additional:** .NET Framework 4.8
 
 ## Authors
 

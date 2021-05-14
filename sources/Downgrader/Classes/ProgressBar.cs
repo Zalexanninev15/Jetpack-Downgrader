@@ -27,10 +27,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 				if (disposed) return;
 				int progressBlockCount = (int)(currentProgress * blockCount);
 				int percent = (int)(currentProgress * 100);
-				string text = string.Format(work + ": [{0}{1}] {2,3}% {3}",
-					new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount),
-					percent,
-					animation[animationIndex++ % animation.Length]);
+				string text = string.Format(work + ": [{0}{1}] {2,3}% {3}", new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount), percent, animation[animationIndex++ % animation.Length]);
 				UpdateText(text);
 				ResetTimer();
 			}
@@ -40,8 +37,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 	{
 		int commonPrefixLength = 0;
 		int commonLength = Math.Min(currentText.Length, text.Length);
-		while (commonPrefixLength < commonLength && text[commonPrefixLength] == currentText[commonPrefixLength])
-		   commonPrefixLength++;
+		while (commonPrefixLength < commonLength && text[commonPrefixLength] == currentText[commonPrefixLength]) { commonPrefixLength++; }
 		StringBuilder outputBuilder = new StringBuilder();
 		outputBuilder.Append('\b', currentText.Length - commonPrefixLength);
 		outputBuilder.Append(text.Substring(commonPrefixLength));
@@ -51,13 +47,11 @@ public class ProgressBar : IDisposable, IProgress<double>
 			outputBuilder.Append(' ', overlapCount);
 			outputBuilder.Append('\b', overlapCount);
 		}
+		Console.ForegroundColor = ConsoleColor.Blue;
 		Console.Write(outputBuilder);
 		currentText = text;
 	}
-	private void ResetTimer()
-	{
-		timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1));
-	}
+	private void ResetTimer() { timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1)); }
 	public void Dispose()
 	{
 		lock (timer)
