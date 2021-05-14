@@ -6,3 +6,16 @@ sources/packages/DarkUI.2.0.2/.signature.p7s
 sources/packages/DarkUI.2.0.2/DarkUI.2.0.2.nupkg
 sources/packages/DarkUI.2.0.2/icon-64.png
 sources/packages/DarkUI.2.0.2/lib/DarkUI.dll
+*.exe
+*.cache
+sources/GUI/obj/Release/JetpackDowngraderGUI.MainForm.resources
+sources/GUI/obj/Release/GUI.csproj.FileListAbsolute.txt
+*.dll
+sources/GUI/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+sources/GUI/bin/Release/gui.exe.config
+sources/GUI/obj/Release/GUI.csproj.CopyComplete
+sources/GUI/obj/Release/JetpackDowngraderGUI.Properties.Resources.resources
+sources/Downgrader/obj/Release/JetpackDowngrader.Properties.Resources.resources
+sources/Downgrader/obj/Release/Jetpack Downgrader.csproj.FileListAbsolute.txt
+sources/Downgrader/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+sources/Downgrader/bin/Release/jpd.exe.config

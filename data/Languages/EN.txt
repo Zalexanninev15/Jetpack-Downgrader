@@ -1,6 +1,10 @@
 [Interface]
 PathLabel=Path to the game folder:
-AppSettings=App Settings
+Tab1=Downgrader Settings
+Tab2=Modifications
+Downgrade=Downgrade
+Play=Play && Test
+Stage=Select the desired stage
 [CheckBox]
 Backup=Backup original files before downgrade
 Shortcut=Make shortcut on Desktop
@@ -14,10 +18,15 @@ InstallDirectX=Install DirectX
 [Title]
 Info=Information
 Error=Error
+Warning=Warning
 FolderSelectDialog=Select the game folder
 [InfoMsg]
 Succes=Downgrade completed!
+Version=Version
+Author=Created by
 [ErrorMsg]
 ReadINI=Error reading settings from the jpd.ini file!
 WriteINI=Error writing settings to the jpd.ini file!
+[WarningMsg]
+PathNotFound=Path to the game is not valid!
 BrowserNotFound=Browser to open the link was not found!

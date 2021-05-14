@@ -10,7 +10,7 @@ namespace JetpackDowngraderGUI
         [DllImport("kernel32.dll", EntryPoint = "GetPrivateProfileString")]
         private static extern int GetValue(string section, string key, string def, StringBuilder buffer, int size, string path);
         [DllImport("kernel32.dll", EntryPoint = "WritePrivateProfileString")]
-        private static extern int WritePrivateString(string section, string key, string str, string path);
+        private static extern int SetValue(string section, string key, string str, string path);
         public IniEditor(string aPath) { path = aPath; }
 
         public string GetValue(string aSection, string aKey)
@@ -27,9 +27,6 @@ namespace JetpackDowngraderGUI
             return localText;
         }
 
-        public void WritePrivateString(string aSection, string aKey, string aValue)
-        {
-            WritePrivateString(aSection, aKey, aValue, path);
-        }
+        public void SetValue(string aSection, string aKey, string aValue) { SetValue(aSection, aKey, aValue, path); }
     }
 }
