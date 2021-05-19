@@ -32,7 +32,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Supported versions
 
-* 1.0 [exe only] (if **Forced=true**)
+* 1.0 [exe only] (if forced)
 * 1.01 [exe only] 
 * 2.0 [fully supported]
 * Steam [fully supported]
