@@ -40,6 +40,12 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 **Only licensed versions of the game are supported, work on pirated builds is not guaranteed and will never be added!!!**
 
+## Usage
+
+Soon...
+
+**If you want to use more powerful settings for the game's upgrade/downgrader setup, then you need to read the [help](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/CUI.md) about it**
+
 ## Build
 
 Open solution *Jetpack Downgrader* and compile project *Downgrader* using [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
