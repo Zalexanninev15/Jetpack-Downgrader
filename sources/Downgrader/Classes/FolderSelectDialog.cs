@@ -6,9 +6,9 @@ namespace JetpackDowngrader
 {
     public class FolderSelectDialog
     {
-        private string _initialDirectory;
-        private string _title;
-        private string _fileName = "";
+        string _initialDirectory;
+        string _title;
+        string _fileName = "";
         public string InitialDirectory
         {
             get { return string.IsNullOrEmpty(_initialDirectory) ? Environment.CurrentDirectory : _initialDirectory; }
@@ -22,33 +22,33 @@ namespace JetpackDowngrader
             var result = Environment.OSVersion.Version.Major >= 6 ? VistaDialog.Show(hWndOwner, InitialDirectory, Title) : ShowXpDialog(hWndOwner, InitialDirectory, Title); _fileName = result.FileName;
             return result.Result;
         }
-        private struct ShowDialogResult
+        struct ShowDialogResult
         {
             public bool Result { get; set; }
             public string FileName { get; set; }
         }
-        private static ShowDialogResult ShowXpDialog(IntPtr ownerHandle, string initialDirectory, string title)
+        static ShowDialogResult ShowXpDialog(IntPtr ownerHandle, string initialDirectory, string title)
         {
             var folderBrowserDialog = new FolderBrowserDialog { Description = title, SelectedPath = initialDirectory, ShowNewFolderButton = false };
             var dialogResult = new ShowDialogResult();
             if (folderBrowserDialog.ShowDialog(new WindowWrapper(ownerHandle)) == DialogResult.OK) { dialogResult.Result = true; dialogResult.FileName = folderBrowserDialog.SelectedPath; }
             return dialogResult;
         }
-        private static class VistaDialog
+        static class VistaDialog
         {
-            private const string c_foldersFilter = "Folders|\n";
-            private const BindingFlags c_flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            private readonly static Assembly s_windowsFormsAssembly = typeof(FileDialog).Assembly;
-            private readonly static Type s_iFileDialogType = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+IFileDialog");
-            private readonly static MethodInfo s_createVistaDialogMethodInfo = typeof(OpenFileDialog).GetMethod("CreateVistaDialog", c_flags);
-            private readonly static MethodInfo s_onBeforeVistaDialogMethodInfo = typeof(OpenFileDialog).GetMethod("OnBeforeVistaDialog", c_flags);
-            private readonly static MethodInfo s_getOptionsMethodInfo = typeof(FileDialog).GetMethod("GetOptions", c_flags);
-            private readonly static MethodInfo s_setOptionsMethodInfo = s_iFileDialogType.GetMethod("SetOptions", c_flags);
-            private readonly static uint s_fosPickFoldersBitFlag = (uint)s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+FOS").GetField("FOS_PICKFOLDERS").GetValue(null);
-            private readonly static ConstructorInfo s_vistaDialogEventsConstructorInfo = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialog+VistaDialogEvents").GetConstructor(c_flags, null, new[] { typeof(FileDialog) }, null);
-            private readonly static MethodInfo s_adviseMethodInfo = s_iFileDialogType.GetMethod("Advise");
-            private readonly static MethodInfo s_unAdviseMethodInfo = s_iFileDialogType.GetMethod("Unadvise");
-            private readonly static MethodInfo s_showMethodInfo = s_iFileDialogType.GetMethod("Show");
+            const string c_foldersFilter = "Folders|\n";
+            const BindingFlags c_flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+            readonly static Assembly s_windowsFormsAssembly = typeof(FileDialog).Assembly;
+            readonly static Type s_iFileDialogType = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+IFileDialog");
+            readonly static MethodInfo s_createVistaDialogMethodInfo = typeof(OpenFileDialog).GetMethod("CreateVistaDialog", c_flags);
+            readonly static MethodInfo s_onBeforeVistaDialogMethodInfo = typeof(OpenFileDialog).GetMethod("OnBeforeVistaDialog", c_flags);
+            readonly static MethodInfo s_getOptionsMethodInfo = typeof(FileDialog).GetMethod("GetOptions", c_flags);
+            readonly static MethodInfo s_setOptionsMethodInfo = s_iFileDialogType.GetMethod("SetOptions", c_flags);
+            readonly static uint s_fosPickFoldersBitFlag = (uint)s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialogNative+FOS").GetField("FOS_PICKFOLDERS").GetValue(null);
+            readonly static ConstructorInfo s_vistaDialogEventsConstructorInfo = s_windowsFormsAssembly.GetType("System.Windows.Forms.FileDialog+VistaDialogEvents").GetConstructor(c_flags, null, new[] { typeof(FileDialog) }, null);
+            readonly static MethodInfo s_adviseMethodInfo = s_iFileDialogType.GetMethod("Advise");
+            readonly static MethodInfo s_unAdviseMethodInfo = s_iFileDialogType.GetMethod("Unadvise");
+            readonly static MethodInfo s_showMethodInfo = s_iFileDialogType.GetMethod("Show");
             public static ShowDialogResult Show(IntPtr ownerHandle, string initialDirectory, string title)
             {
                 var openFileDialog = new OpenFileDialog
@@ -75,9 +75,9 @@ namespace JetpackDowngrader
                 finally { s_unAdviseMethodInfo.Invoke(iFileDialog, new[] { adviseParametersWithOutputConnectionToken[1] }); }
             }
         }
-        private class WindowWrapper : IWin32Window
+        class WindowWrapper : IWin32Window
         {
-            private readonly IntPtr _handle;
+            readonly IntPtr _handle;
             public WindowWrapper(IntPtr handle) { _handle = handle; }
             public IntPtr Handle { get { return _handle; } }
         }
