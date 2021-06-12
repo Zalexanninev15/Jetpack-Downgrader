@@ -10,7 +10,7 @@ namespace JetpackDowngraderGUI
     {
         // Dark title for Windows 10
         [System.Runtime.InteropServices.DllImport("DwmApi")]
-        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+        static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
         //
         string[] lc = new string[100];
@@ -19,7 +19,7 @@ namespace JetpackDowngraderGUI
         public MainForm() { InitializeComponent(); }
         IniEditor cfg = new IniEditor(@Application.StartupPath + @"\app\jpd.ini");
         IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
-        private void MainForm_Load(object sender, EventArgs e)
+        void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
@@ -31,7 +31,6 @@ namespace JetpackDowngraderGUI
                 ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
                 button2.Text = "2. " + ModsPanel.SectionHeader;
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
-                button3.Text = "4. " + Convert.ToString(lang.GetValue("Interface", "Play"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
@@ -89,7 +88,6 @@ namespace JetpackDowngraderGUI
             if (Directory.Exists(@GamePath.Text))
             {
                 this.Enabled = false;
-                button3.Enabled = false;
                 int d = 0;
                 cfg.SetValue("JPD", "SelectFolder", "false");
                 cfg.SetValue("JPD", "UseMsg", "false");
@@ -104,13 +102,12 @@ namespace JetpackDowngraderGUI
                     //
                     MsgInfo(lc[4], lc[0]);
                     this.Enabled = true;
-                    button3.Enabled = true;
                 }
             }
             else { MsgWarning(lc[7], lc[8]); }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        void pictureBox1_Click(object sender, EventArgs e)
         {
             var dialog = new FolderSelectDialog
             {
@@ -120,22 +117,62 @@ namespace JetpackDowngraderGUI
             if (dialog.Show()) { GamePath.Text = dialog.FileName; } else { GamePath.Clear(); }
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateShortcut", Convert.ToString(checkBox2.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateBackups", Convert.ToString(checkBox1.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox4_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox6_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "RegisterGamePath", Convert.ToString(checkBox6.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox5_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "Forced", Convert.ToString(checkBox5.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox8_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "InstallDirectX", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox7_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "EnableDirectPlay", Convert.ToString(checkBox7.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
-        private void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5], lc[1]); } }
-        private void MsgInfo(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        private void MsgError(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        private void MsgWarning(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-        private void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
-        private void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack Downgrader GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
-        private void button6_Click(object sender, EventArgs e) { if (DSPanel.Visible == false) { tabFix = false; ModsPanel.Visible = false; DSPanel.Visible = true; } else { if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; } else { tabFix = false; ModsPanel.Visible = false; } } }
-        private void button2_Click(object sender, EventArgs e) { if (ModsPanel.Visible == false) { tabFix = true; DSPanel.Visible = true; ModsPanel.Visible = true; } else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; } }
+        void checkBox2_CheckedChanged(object sender, EventArgs e) 
+        { 
+            cfg.SetValue("Downgrader", "CreateShortcut", Convert.ToString(checkBox2.Checked).Replace("T", "t").Replace("F", "f")); 
+        }
+
+        void checkBox1_CheckedChanged(object sender, EventArgs e) 
+        { 
+            cfg.SetValue("Downgrader", "CreateBackups", Convert.ToString(checkBox1.Checked).Replace("T", "t").Replace("F", "f")); 
+        }
+
+        void checkBox4_CheckedChanged(object sender, EventArgs e) 
+        { 
+            cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f")); 
+        }
+
+        void checkBox6_CheckedChanged(object sender, EventArgs e) 
+        { 
+            cfg.SetValue("Downgrader", "RegisterGamePath", Convert.ToString(checkBox6.Checked).Replace("T", "t").Replace("F", "f")); 
+        }
+        
+        void checkBox5_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "Forced", Convert.ToString(checkBox5.Checked).Replace("T", "t").Replace("F", "f")); }
+        
+        void checkBox8_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "InstallDirectX", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f")); }
+        
+        void checkBox7_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "EnableDirectPlay", Convert.ToString(checkBox7.Checked).Replace("T", "t").Replace("F", "f")); }
+        
+        void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
+        
+        void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
+        
+        void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5], lc[1]); } }
+        
+        void MsgInfo(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        
+        void MsgError(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        
+        void MsgWarning(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        
+        void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
+        
+        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack Downgrader GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
+        
+        void button6_Click(object sender, EventArgs e)
+        { 
+            if (DSPanel.Visible == false) { tabFix = false; ModsPanel.Visible = false; DSPanel.Visible = true; } 
+            else 
+            { 
+                if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; } 
+                else { tabFix = false; ModsPanel.Visible = false; } 
+            } 
+        }
+
+        void button2_Click(object sender, EventArgs e)
+        {
+            if (ModsPanel.Visible == false) { tabFix = true; DSPanel.Visible = true; ModsPanel.Visible = true; }
+            else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+        }
     }
 }
