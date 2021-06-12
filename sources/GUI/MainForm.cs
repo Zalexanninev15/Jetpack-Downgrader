@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DarkUI.Forms;
+using DarkUI.Controls;
+using System;
 using System.Diagnostics;
-using System.Net;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,51 +15,19 @@ namespace JetpackDowngraderGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
         //
         string[] lc = new string[100];
-        bool[] appset = new bool[8];
+        bool[] appset = new bool[8]; 
         bool tabFix = false;
+        bool lpFix = false;
         public MainForm() { InitializeComponent(); }
         IniEditor cfg = new IniEditor(@Application.StartupPath + @"\app\jpd.ini");
-        IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
         void MainForm_Load(object sender, EventArgs e)
         {
-            try
+            if (!Directory.Exists(Application.StartupPath + @"\app\patches"))
             {
-                // Loading the localization
-                // Text (GUI) loading
-                label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
-                DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
-                button6.Text = "1. " + DSPanel.SectionHeader;
-                ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
-                button2.Text = "2. " + ModsPanel.SectionHeader;
-                button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
-                HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
-                // CheckBox loading
-                checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
-                checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
-                checkBox9.Text = Convert.ToString(lang.GetValue("CheckBox", "Reset"));
-                checkBox4.Text = Convert.ToString(lang.GetValue("CheckBox", "GarbageCleaning"));
-                checkBox6.Text = Convert.ToString(lang.GetValue("CheckBox", "GameReg"));
-                checkBox3.Text = Convert.ToString(lang.GetValue("CheckBox", "NoUpdates"));
-                checkBox5.Text = Convert.ToString(lang.GetValue("CheckBox", "Forced"));
-                checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "DirectPlay"));
-                checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectX"));
-                // Title loading
-                lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
-                lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
-                lc[8] = Convert.ToString(lang.GetValue("Title", "Warning"));
-                lc[6] = Convert.ToString(lang.GetValue("Title", "FolderSelectDialog"));
-                // InfoMsg loading
-                lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
-                lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
-                lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
-                // ErrorMsg loading
-                lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
-                lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
-                // WarningMsg loading
-                lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
-                lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
+                pictureBox8.Visible = true;
+                button1.Enabled = false;
             }
-            catch { MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
+            Translate();
             // Loading settings
             try
             {
@@ -81,6 +50,7 @@ namespace JetpackDowngraderGUI
                 appset[7] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
             }
             catch { MsgError(lc[2], lc[1]); }
+            darkListView1.Items.Add(new DarkListItem("SilentPatch"));
         }
 
         async void button1_Click(object sender, EventArgs e)
@@ -127,14 +97,14 @@ namespace JetpackDowngraderGUI
         void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5], lc[1]); } }
-        void MsgInfo(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        void MsgError(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        void MsgWarning(string message, string title) { MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        void MsgInfo(string message, string title) { DarkMessageBox.ShowInformation(message, title); }
+        void MsgError(string message, string title) { DarkMessageBox.ShowError(message, title); }
+        void MsgWarning(string message, string title) { DarkMessageBox.ShowWarning(message, title); }
         void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
         void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
         
         void button6_Click(object sender, EventArgs e)
-        { 
+        {
             if (DSPanel.Visible == false) { tabFix = false; ModsPanel.Visible = false; DSPanel.Visible = true; } 
             else 
             { 
@@ -147,6 +117,78 @@ namespace JetpackDowngraderGUI
         {
             if (ModsPanel.Visible == false) { tabFix = true; DSPanel.Visible = true; ModsPanel.Visible = true; }
             else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (lpFix == false)
+            {
+                LangsPanel.Visible = true;
+                lpFix = true;
+            }
+            else
+            {
+                LangsPanel.Visible = false;
+                lpFix = false;
+            }
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.LanguageCode = "EN";
+            Properties.Settings.Default.Save();
+            Translate();
+        }
+
+        void Translate()
+        {
+            try
+            {
+                IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
+                // Loading the localization
+                // Text (GUI) loading
+                label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
+                DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
+                button6.Text = "1. " + DSPanel.SectionHeader;
+                ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
+                darkLabel2.Text = ModsPanel.SectionHeader;
+                button2.Text = "2. " + ModsPanel.SectionHeader;
+                darkGroupBox1.Text = Convert.ToString(lang.GetValue("Interface", "AboutMod"));
+                button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
+                HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
+                darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
+                // CheckBox loading
+                checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
+                checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
+                checkBox9.Text = Convert.ToString(lang.GetValue("CheckBox", "Reset"));
+                checkBox4.Text = Convert.ToString(lang.GetValue("CheckBox", "GarbageCleaning"));
+                checkBox6.Text = Convert.ToString(lang.GetValue("CheckBox", "GameReg"));
+                checkBox3.Text = Convert.ToString(lang.GetValue("CheckBox", "NoUpdates"));
+                checkBox5.Text = Convert.ToString(lang.GetValue("CheckBox", "Forced"));
+                checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "DirectPlay"));
+                checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectX"));
+                // Title loading
+                lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
+                lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
+                lc[8] = Convert.ToString(lang.GetValue("Title", "Warning"));
+                lc[6] = Convert.ToString(lang.GetValue("Title", "FolderSelectDialog"));
+                // InfoMsg loading
+                lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
+                lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
+                lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
+                // ErrorMsg loading
+                lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
+                lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
+                // WarningMsg loading
+                lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
+                lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
+            }
+            catch { MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            // Download ZIP with patches
         }
     }
 }

@@ -2,8 +2,10 @@
 PathLabel=Path to the game folder:
 Tab1=Downgrader Settings
 Tab2=Modifications
+AboutMod=About
 Downgrade=Downgrade
 Stage=Select the desired stage
+Languages=Languages
 [CheckBox]
 Backup=Backup original files before downgrade
 Shortcut=Make shortcut on Desktop
