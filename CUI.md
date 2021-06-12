@@ -1,5 +1,7 @@
 # Downgrader CUI [jpd.exe]
 
+*Actions are performed in the ***files*** folder in the root of the application folder ***app.exe****
+
 ## Usage and configuration
 
 1. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
