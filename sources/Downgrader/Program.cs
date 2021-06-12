@@ -72,7 +72,7 @@ namespace JetpackDowngrader
             Console.ResetColor();
             try
             {
-                if (File.Exists("jpd.ini") == false) { File.WriteAllText("jpd.ini", Properties.Resources.jpd); }
+                if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini") == false) { File.WriteAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini", Properties.Resources.jpd); }
                 IniLoader cfg = new IniLoader(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\jpd.ini");
                 settings[2] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
                 settings[6] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateShortcut"));
@@ -97,7 +97,8 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
-                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { } if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
+                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { } 
+                if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
                 if (settings[8] == true)
                 {
                     var dialog = new FolderSelectDialog { InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), Title = "Select the game folder" };
