@@ -83,4 +83,4 @@ jpd "E:\Games\Grand Theft Auto San Andreas"
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile project *Downgrader* using Visual Studio 2019
+Open solution *Jetpack Downgrader* and compile project *Downgrader* using [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
