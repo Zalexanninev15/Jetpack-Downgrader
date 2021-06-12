@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.Win32;
 
-namespace JetpackDowngrader
+namespace Downgrader
 {
     class Program
     {
@@ -269,7 +269,8 @@ namespace JetpackDowngrader
                             Logger("DirectX", "Process", "App is not frozen, just busy right now...");
                             try
                             {
-                                using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
+                                // Old: http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip
+                                using (WebClient wc = new WebClient()) { wc.DownloadFile("https://download1583.mediafire.com/a6mcgg3kugig/dtnqqt8qyflgjc4/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
                                 Logger("DirectX", "Process", "Preparing installer...");
                                 try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                                 ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));

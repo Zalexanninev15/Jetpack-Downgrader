@@ -421,7 +421,7 @@ namespace JetpackDowngraderGUI
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Jetpack Downgrader";
+            this.Text = "Jetpack GUI";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DSPanel.ResumeLayout(false);
             this.DSPanel.PerformLayout();
