@@ -19,7 +19,7 @@ namespace JetpackDowngrader
         [DllImport("user32.dll")]
         static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
+        static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
         public const int GWL_EXSTYLE = -20;
         public const int WS_EX_LAYERED = 0x80000;
         public const int LWA_ALPHA = 0x2;
@@ -753,7 +753,7 @@ namespace JetpackDowngrader
             start_info.Start();
             start_info.WaitForExit();
         }
-        private static void Logger(string type, string ido, string status) 
+        static void Logger(string type, string ido, string status) 
         {
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "new") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
@@ -763,7 +763,7 @@ namespace JetpackDowngrader
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
         }
-        private static void Create(string ShortcutPath, string TargetPath)
+        static void Create(string ShortcutPath, string TargetPath)
         {
             IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
             IWshRuntimeLibrary.IWshShortcut Shortcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutPath);
@@ -771,7 +771,7 @@ namespace JetpackDowngrader
             Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
             Shortcut.Save();
         }
-        private static string GetMD5(string file)
+        static string GetMD5(string file)
         {
             using (var md5 = MD5.Create())
             {
