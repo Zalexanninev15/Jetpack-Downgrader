@@ -270,6 +270,7 @@ namespace Downgrader
                             try
                             {
                                 // Old: http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip
+                                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                                 using (WebClient wc = new WebClient()) { wc.DownloadFile("https://download1583.mediafire.com/a6mcgg3kugig/dtnqqt8qyflgjc4/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
                                 Logger("DirectX", "Process", "Preparing installer...");
                                 try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }

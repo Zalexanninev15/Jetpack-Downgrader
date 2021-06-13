@@ -28,6 +28,7 @@ Author=Created by
 [ErrorMsg]
 ReadINI=Error reading settings from the jpd.ini file!
 WriteINI=Error writing settings to the jpd.ini file!
+NoNetwork=Network connection is not found!
 [WarningMsg]
 PathNotFound=Path to the game is not valid!
 BrowserNotFound=Browser to open the link was not found!
