@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Net;
 
 namespace JetpackDowngraderGUI
 {
@@ -15,17 +16,24 @@ namespace JetpackDowngraderGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
         //
         string[] lc = new string[100];
-        bool[] appset = new bool[8]; 
+        string[] ms = new string[100];
+        int cm = 0; int ml = 0;
+        bool[] appset = new bool[8];
         bool tabFix = false;
         bool lpFix = false;
         public MainForm() { InitializeComponent(); }
-        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\app\jpd.ini");
+        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
         void MainForm_Load(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Application.StartupPath + @"\app\patches"))
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            if (!Directory.Exists(@Application.StartupPath + @"\files\patches"))
             {
                 pictureBox8.Visible = true;
                 button1.Enabled = false;
+            }
+            if (!Directory.Exists(@Application.StartupPath + @"\files\mods_cache"))
+            {
+                Directory.CreateDirectory(@Application.StartupPath + @"\files\mods_cache");
             }
             Translate();
             // Loading settings
@@ -50,7 +58,6 @@ namespace JetpackDowngraderGUI
                 appset[7] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
             }
             catch { MsgError(lc[2], lc[1]); }
-            darkListView1.Items.Add(new DarkListItem("SilentPatch"));
         }
 
         async void button1_Click(object sender, EventArgs e)
@@ -62,7 +69,7 @@ namespace JetpackDowngraderGUI
                 cfg.SetValue("JPD", "SelectFolder", "false");
                 cfg.SetValue("JPD", "UseMsg", "false");
                 cfg.SetValue("JPD", "Component", "true");
-                Process.Start(@Application.StartupPath + @"\app\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
+                Process.Start(@Application.StartupPath + @"\files\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
                 string str = "jpd";
                 foreach (Process process2 in Process.GetProcesses()) { if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; } }
                 if (d == 1)
@@ -87,9 +94,9 @@ namespace JetpackDowngraderGUI
             if (dialog.Show()) { GamePath.Text = dialog.FileName; } else { GamePath.Clear(); }
         }
 
-        void checkBox2_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateShortcut", Convert.ToString(checkBox2.Checked).Replace("T", "t").Replace("F", "f"));  }
+        void checkBox2_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateShortcut", Convert.ToString(checkBox2.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox1_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateBackups", Convert.ToString(checkBox1.Checked).Replace("T", "t").Replace("F", "f")); }
-        void checkBox4_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f"));  }
+        void checkBox4_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox6_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "RegisterGamePath", Convert.ToString(checkBox6.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox5_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "Forced", Convert.ToString(checkBox5.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox8_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "InstallDirectX", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f")); }
@@ -100,26 +107,76 @@ namespace JetpackDowngraderGUI
         void MsgInfo(string message, string title) { DarkMessageBox.ShowInformation(message, title); }
         void MsgError(string message, string title) { DarkMessageBox.ShowError(message, title); }
         void MsgWarning(string message, string title) { DarkMessageBox.ShowWarning(message, title); }
-        void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\app\jpd.ini"); }
+        void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
         void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
-        
+
         void button6_Click(object sender, EventArgs e)
         {
-            if (DSPanel.Visible == false) { tabFix = false; ModsPanel.Visible = false; DSPanel.Visible = true; } 
-            else 
+            if (DSPanel.Visible == false) 
             { 
-                if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; } 
-                else { tabFix = false; ModsPanel.Visible = false; } 
-            } 
+                tabFix = false; 
+                ModsPanel.Visible = false; 
+                DSPanel.Visible = true; 
+            }
+            else
+            {
+                if (tabFix == false) 
+                { 
+                    DSPanel.Visible = false; 
+                    ModsPanel.Visible = false; 
+                }
+                else 
+                { 
+                    tabFix = false; 
+                    ModsPanel.Visible = false; 
+                }
+            }
         }
 
         void button2_Click(object sender, EventArgs e)
         {
-            if (ModsPanel.Visible == false) { tabFix = true; DSPanel.Visible = true; ModsPanel.Visible = true; }
-            else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+            if (ModsPanel.Visible == false) 
+            { 
+                tabFix = true; 
+                DSPanel.Visible = true; 
+                ModsPanel.Visible = true;
+                try
+                {
+                    using (WebClient mods = new WebClient())
+                    {
+                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
+                        string[] modsl = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\list.txt", System.Text.Encoding.ASCII);
+                        for (int i = 0; i < modsl.Length; i++)
+                        {
+                            if (modsl[i] != "")
+                            {
+                                darkListView1.Items.Add(new DarkListItem(modsl[i]));
+                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/" + modsl[i] + "_data/" + modsl[i] + ".dat", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat");
+                                ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat", System.Text.Encoding.ASCII);
+                                // Name - 0
+                                // Version - 1
+                                // Author - 2
+                                // Description - 3
+                                // Web-site - 4
+                                // Link to photo 1 - 6
+                                // Link to photo 1 - 7
+                                // Link to photo 1 - 8
+                                // Link to ZIP with mod - 9
+                            }
+                        }
+                    }
+                }
+                catch { }
+            }
+            else 
+            { 
+                ModsPanel.Visible = false; 
+                DSPanel.Visible = false; 
+                tabFix = false; 
+            }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        void pictureBox2_Click(object sender, EventArgs e)
         {
             if (lpFix == false)
             {
@@ -133,7 +190,7 @@ namespace JetpackDowngraderGUI
             }
         }
 
-        private void pictureBox9_Click(object sender, EventArgs e)
+        void pictureBox9_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.LanguageCode = "EN";
             Properties.Settings.Default.Save();
@@ -179,6 +236,7 @@ namespace JetpackDowngraderGUI
                 // ErrorMsg loading
                 lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
                 lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
+                lc[11] = Convert.ToString(lang.GetValue("ErrorMsg", "NoNetwork"));
                 // WarningMsg loading
                 lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
                 lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
@@ -186,9 +244,21 @@ namespace JetpackDowngraderGUI
             catch { MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
 
-        private void pictureBox8_Click(object sender, EventArgs e)
+        void pictureBox8_Click(object sender, EventArgs e)
         {
             // Download ZIP with patches
+        }
+
+        void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (darkCheckBox1.Checked == true)
+            {
+                //ms[cm] = darkListView1.Items.
+            }
+            else
+            {
+
+            }
         }
     }
 }
