@@ -1,6 +1,6 @@
 # Downgrader CUI [jpd.exe]
 
-*Actions are performed in the ***files*** folder in the root of the application folder ***app.exe****
+*Actions are performed in the **files** folder in the root of the application folder **app.exe***
 
 ## Usage and configuration
 
