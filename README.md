@@ -42,10 +42,21 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Usage
 
-Soon...
+1. Launch **app.exe**
+2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
+3. Select the first stage and select the path to game folder and necessary settings (the recommended ones are already checked)
+4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) in the list, then read the description in the panel on the right. If you agree to the installation of this modification, select the appropriate checkbox
+5. Select stage 3. The console will appear and downgrade process will start...
+6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
+7. If you have selected the modifications, you still need to wait until they are fully unpacked
+8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
 
 **If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/CUI.md) about it**
 
+## Used libraries
+
+* [DarkUI](https://github.com/RobinPerris/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
+
 ## Build
 
-Open solution *Jetpack Downgrader* and compile project *Downgrader* using [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+Open solution *Jetpack Downgrader* and compile project *Downgrader* using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install the [*DarkUI*]( https://www.nuget.org/packages/DarkUI) package for the application to work properly
