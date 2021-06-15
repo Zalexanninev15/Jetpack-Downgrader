@@ -30,6 +30,7 @@ namespace Downgrader
         public enum DwmBlurBehindDwFlags : uint { DWM_BB_ENABLE = 0x1, DWM_BB_BLURREGION = 0x2, DWM_BB_TRANSITIONONMAXIMIZED = 0x4 }
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DWM_BLURBEHIND blurBehind);
+        
         static void EnableBlurBehind()
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -39,6 +40,7 @@ namespace Downgrader
             blur.fTransitionOnMaximized = true;
             DwmEnableBlurBehindWindow(Handle, ref blur);
         }
+
         static void MakeTransparent(byte pct)
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -46,6 +48,7 @@ namespace Downgrader
             SetWindowLong(Handle, GWL_EXSTYLE, newDwLong);
             SetLayeredWindowAttributes(Handle, 0, pct, LWA_ALPHA);
         }
+
         [STAThread]
         public static void Main(string[] args)
         {
@@ -745,6 +748,7 @@ namespace Downgrader
             else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
             if (settings[1] == false) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
         }
+
         public static void Patcher(string argument)
         {
             Process start_info = new Process();
@@ -756,6 +760,7 @@ namespace Downgrader
             start_info.Start();
             start_info.WaitForExit();
         }
+
         static void Logger(string type, string ido, string status) 
         {
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
@@ -763,9 +768,11 @@ namespace Downgrader
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
             if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "New")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
+            if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
         }
+
         static void Create(string ShortcutPath, string TargetPath)
         {
             IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
@@ -774,6 +781,7 @@ namespace Downgrader
             Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
             Shortcut.Save();
         }
+
         static string GetMD5(string file)
         {
             using (var md5 = MD5.Create())
