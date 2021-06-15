@@ -30,7 +30,7 @@ namespace Downgrader
         public enum DwmBlurBehindDwFlags : uint { DWM_BB_ENABLE = 0x1, DWM_BB_BLURREGION = 0x2, DWM_BB_TRANSITIONONMAXIMIZED = 0x4 }
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DWM_BLURBEHIND blurBehind);
-        
+
         static void EnableBlurBehind()
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -558,8 +558,9 @@ namespace Downgrader
                                                 {
                                                     for (int i = 2; i < fl.Length; i++)
                                                     {
-                                                        string par = " -d -s " + '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                        if (settings[2] == true) { par = " -d -s " + '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                        // Old: par = " -d -s " + '"' ...
+                                                        string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                        if (settings[2] == true) { par = '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
                                                         Patcher(@par);
                                                         if (settings[2] == false){ File.Delete(@path + fl[i]); }
                                                         File.Move(@path + fl[i] + ".temp", @path + fl[i]);
@@ -576,8 +577,8 @@ namespace Downgrader
                                                     {
                                                         if ((i >= 2) && (i > 11))
                                                         {
-                                                            string par = " -d -s " + '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                            if (settings[2] == true) { par = " -d -s " + '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                            string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                            if (settings[2] == true) { par = '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
                                                             Patcher(@par);
                                                             if (settings[2] == false) { File.Delete(@path + fl[i]); }
                                                             File.Move(@path + fl[i] + ".temp", @path + fl[i]);

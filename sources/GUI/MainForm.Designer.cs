@@ -110,7 +110,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox1.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.checkBox1.Location = new System.Drawing.Point(501, 140);
+            this.checkBox1.Location = new System.Drawing.Point(410, 117);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(258, 26);
             this.checkBox1.TabIndex = 11;
@@ -122,7 +122,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox2.ForeColor = System.Drawing.Color.Black;
-            this.checkBox2.Location = new System.Drawing.Point(53, 137);
+            this.checkBox2.Location = new System.Drawing.Point(142, 117);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(180, 26);
             this.checkBox2.TabIndex = 11;
@@ -144,21 +144,21 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox9.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox9.ForeColor = System.Drawing.Color.Black;
-            this.checkBox9.Location = new System.Drawing.Point(53, 163);
+            this.checkBox9.Location = new System.Drawing.Point(142, 142);
             this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(413, 26);
+            this.checkBox9.Size = new System.Drawing.Size(236, 43);
             this.checkBox9.TabIndex = 11;
             this.checkBox9.TabStop = false;
-            this.checkBox9.Text = "Remove GTA_SA.SET (Reset game settings and prevents crash)";
+            this.checkBox9.Text = "Remove GTA_SA.SET (Reset game \r\nsettings and prevents crash)";
             this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
             // checkBox4
             // 
             this.checkBox4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox4.ForeColor = System.Drawing.Color.Black;
-            this.checkBox4.Location = new System.Drawing.Point(501, 165);
+            this.checkBox4.Location = new System.Drawing.Point(410, 144);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(299, 39);
+            this.checkBox4.Size = new System.Drawing.Size(276, 39);
             this.checkBox4.TabIndex = 11;
             this.checkBox4.TabStop = false;
             this.checkBox4.Text = "Remove unneeded files (ONLY for version \r\nfrom Rockstar Games Launcher)";
@@ -168,7 +168,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox6.ForeColor = System.Drawing.Color.Black;
-            this.checkBox6.Location = new System.Drawing.Point(501, 202);
+            this.checkBox6.Location = new System.Drawing.Point(410, 189);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(258, 26);
             this.checkBox6.TabIndex = 11;
@@ -180,19 +180,19 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox3.ForeColor = System.Drawing.Color.Black;
-            this.checkBox3.Location = new System.Drawing.Point(53, 189);
+            this.checkBox3.Location = new System.Drawing.Point(142, 180);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(413, 26);
+            this.checkBox3.Size = new System.Drawing.Size(226, 44);
             this.checkBox3.TabIndex = 11;
             this.checkBox3.TabStop = false;
-            this.checkBox3.Text = "Move game to another folder (Prevents auto-update and rehash)";
+            this.checkBox3.Text = "Move game to another folder \r\n(Prevents auto-update and rehash)";
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox5
             // 
             this.checkBox5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox5.ForeColor = System.Drawing.Color.Black;
-            this.checkBox5.Location = new System.Drawing.Point(501, 228);
+            this.checkBox5.Location = new System.Drawing.Point(410, 224);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(200, 26);
             this.checkBox5.TabIndex = 11;
@@ -204,7 +204,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox7.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox7.ForeColor = System.Drawing.Color.Black;
-            this.checkBox7.Location = new System.Drawing.Point(53, 216);
+            this.checkBox7.Location = new System.Drawing.Point(142, 224);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(226, 26);
             this.checkBox7.TabIndex = 11;
@@ -216,7 +216,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox8.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox8.ForeColor = System.Drawing.Color.Black;
-            this.checkBox8.Location = new System.Drawing.Point(53, 241);
+            this.checkBox8.Location = new System.Drawing.Point(142, 251);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(104, 26);
             this.checkBox8.TabIndex = 11;
@@ -459,7 +459,7 @@ namespace JetpackDowngraderGUI
             // 
             this.darkTitle2.AutoSize = true;
             this.darkTitle2.Font = new System.Drawing.Font("Gadugi", 11.25F);
-            this.darkTitle2.Location = new System.Drawing.Point(570, 108);
+            this.darkTitle2.Location = new System.Drawing.Point(458, 86);
             this.darkTitle2.Name = "darkTitle2";
             this.darkTitle2.Size = new System.Drawing.Size(122, 19);
             this.darkTitle2.TabIndex = 12;
@@ -469,7 +469,7 @@ namespace JetpackDowngraderGUI
             // 
             this.darkTitle1.AutoSize = true;
             this.darkTitle1.Font = new System.Drawing.Font("Gadugi", 11.25F);
-            this.darkTitle1.Location = new System.Drawing.Point(133, 108);
+            this.darkTitle1.Location = new System.Drawing.Point(157, 86);
             this.darkTitle1.Name = "darkTitle1";
             this.darkTitle1.Size = new System.Drawing.Size(165, 19);
             this.darkTitle1.TabIndex = 12;
@@ -479,7 +479,7 @@ namespace JetpackDowngraderGUI
             // 
             this.button7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(323, 287);
+            this.button7.Location = new System.Drawing.Point(307, 294);
             this.button7.Name = "button7";
             this.button7.Padding = new System.Windows.Forms.Padding(5);
             this.button7.Size = new System.Drawing.Size(167, 29);
