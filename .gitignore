@@ -19,5 +19,6 @@ sources/Downgrader/obj/Release/JetpackDowngrader.Properties.Resources.resources
 sources/Downgrader/obj/Release/Jetpack Downgrader.csproj.FileListAbsolute.txt
 sources/Downgrader/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
 sources/Downgrader/bin/Release/jpd.exe.config
-*.txt
 sources/Downgrader/obj/Release/Downgrader.Properties.Resources.resources
+sources/GUI/bin/Release/app.exe.config
+sources/Downgrader/obj/Release/Downgrader.csproj.FileListAbsolute.txt
