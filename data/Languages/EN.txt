@@ -1,6 +1,9 @@
 [Interface]
 PathLabel=Path to the game folder:
 Tab1=Downgrader Settings
+CBG1=Recommended settings
+CBG2=Optional settings
+ManualEditing=Edit settings manually
 Tab2=Modifications
 AboutMod=About
 Downgrade=Downgrade

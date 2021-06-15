@@ -207,6 +207,9 @@ namespace JetpackDowngraderGUI
                 label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
                 DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
                 button6.Text = "1. " + DSPanel.SectionHeader;
+                darkTitle1.Text = Convert.ToString(lang.GetValue("Interface", "CBG1"));
+                darkTitle2.Text = Convert.ToString(lang.GetValue("Interface", "CBG2"));
+                button7.Text = Convert.ToString(lang.GetValue("Interface", "ManualEditing"));
                 ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
                 darkLabel2.Text = ModsPanel.SectionHeader;
                 button2.Text = "2. " + ModsPanel.SectionHeader;
