@@ -1,5 +1,5 @@
 ﻿
-namespace JetpackDowngraderGUI
+namespace JetpackGUI
 {
     partial class MainForm
     {
@@ -110,7 +110,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox1.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.checkBox1.Location = new System.Drawing.Point(410, 117);
+            this.checkBox1.Location = new System.Drawing.Point(449, 117);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(258, 26);
             this.checkBox1.TabIndex = 11;
@@ -156,9 +156,9 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox4.ForeColor = System.Drawing.Color.Black;
-            this.checkBox4.Location = new System.Drawing.Point(410, 144);
+            this.checkBox4.Location = new System.Drawing.Point(449, 144);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(276, 39);
+            this.checkBox4.Size = new System.Drawing.Size(276, 44);
             this.checkBox4.TabIndex = 11;
             this.checkBox4.TabStop = false;
             this.checkBox4.Text = "Remove unneeded files (ONLY for version \r\nfrom Rockstar Games Launcher)";
@@ -168,7 +168,7 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox6.ForeColor = System.Drawing.Color.Black;
-            this.checkBox6.Location = new System.Drawing.Point(410, 189);
+            this.checkBox6.Location = new System.Drawing.Point(449, 189);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(258, 26);
             this.checkBox6.TabIndex = 11;
@@ -192,36 +192,36 @@ namespace JetpackDowngraderGUI
             // 
             this.checkBox5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox5.ForeColor = System.Drawing.Color.Black;
-            this.checkBox5.Location = new System.Drawing.Point(410, 224);
+            this.checkBox5.Location = new System.Drawing.Point(449, 220);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(200, 26);
+            this.checkBox5.Size = new System.Drawing.Size(241, 26);
             this.checkBox5.TabIndex = 11;
             this.checkBox5.TabStop = false;
-            this.checkBox5.Text = "Forced (ONLY for version 1.0)";
+            this.checkBox5.Text = "Forced (ONLY for game version 1.0)";
             this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
             // checkBox7
             // 
             this.checkBox7.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox7.ForeColor = System.Drawing.Color.Black;
-            this.checkBox7.Location = new System.Drawing.Point(142, 224);
+            this.checkBox7.Location = new System.Drawing.Point(142, 221);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(226, 26);
+            this.checkBox7.Size = new System.Drawing.Size(271, 24);
             this.checkBox7.TabIndex = 11;
             this.checkBox7.TabStop = false;
-            this.checkBox7.Text = "DirectPlay (ONLY for Windows 10)";
+            this.checkBox7.Text = "Enable DirectPlay (ONLY for Windows 10)";
             this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
             // checkBox8
             // 
             this.checkBox8.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBox8.ForeColor = System.Drawing.Color.Black;
-            this.checkBox8.Location = new System.Drawing.Point(142, 251);
+            this.checkBox8.Location = new System.Drawing.Point(142, 248);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(104, 26);
+            this.checkBox8.Size = new System.Drawing.Size(180, 26);
             this.checkBox8.TabIndex = 11;
             this.checkBox8.TabStop = false;
-            this.checkBox8.Text = "Install DirectX";
+            this.checkBox8.Text = "Install DirectX components";
             this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // DSPanel
@@ -280,7 +280,7 @@ namespace JetpackDowngraderGUI
             this.darkGroupBox1.Controls.Add(this.darkLabel3);
             this.darkGroupBox1.Location = new System.Drawing.Point(418, 30);
             this.darkGroupBox1.Name = "darkGroupBox1";
-            this.darkGroupBox1.Size = new System.Drawing.Size(401, 284);
+            this.darkGroupBox1.Size = new System.Drawing.Size(401, 295);
             this.darkGroupBox1.TabIndex = 4;
             this.darkGroupBox1.TabStop = false;
             this.darkGroupBox1.Text = "About";
@@ -459,7 +459,7 @@ namespace JetpackDowngraderGUI
             // 
             this.darkTitle2.AutoSize = true;
             this.darkTitle2.Font = new System.Drawing.Font("Gadugi", 11.25F);
-            this.darkTitle2.Location = new System.Drawing.Point(458, 86);
+            this.darkTitle2.Location = new System.Drawing.Point(510, 86);
             this.darkTitle2.Name = "darkTitle2";
             this.darkTitle2.Size = new System.Drawing.Size(122, 19);
             this.darkTitle2.TabIndex = 12;
@@ -565,7 +565,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::JetpackDowngraderGUI.Properties.Resources.Language;
+            this.pictureBox2.Image = global::JetpackGUI.Properties.Resources.Language;
             this.pictureBox2.Location = new System.Drawing.Point(734, 18);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(44, 34);
@@ -576,7 +576,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::JetpackDowngraderGUI.Properties.Resources.GitHub;
+            this.pictureBox4.Image = global::JetpackGUI.Properties.Resources.GitHub;
             this.pictureBox4.Location = new System.Drawing.Point(822, 18);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(44, 34);
@@ -587,7 +587,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::JetpackDowngraderGUI.Properties.Resources.JPD;
+            this.pictureBox3.Image = global::JetpackGUI.Properties.Resources.JPD;
             this.pictureBox3.Location = new System.Drawing.Point(778, 18);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(44, 34);
@@ -598,7 +598,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::JetpackDowngraderGUI.Properties.Resources.Patches;
+            this.pictureBox8.Image = global::JetpackGUI.Properties.Resources.Patches;
             this.pictureBox8.Location = new System.Drawing.Point(694, 18);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(34, 34);
@@ -633,7 +633,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::JetpackDowngraderGUI.Properties.Resources.EN;
+            this.pictureBox9.Image = global::JetpackGUI.Properties.Resources.EN;
             this.pictureBox9.Location = new System.Drawing.Point(22, 43);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(71, 62);
@@ -644,7 +644,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox7.Image = global::JetpackGUI.Properties.Resources.Up;
             this.pictureBox7.Location = new System.Drawing.Point(514, 77);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(44, 39);
@@ -654,7 +654,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox6.Image = global::JetpackGUI.Properties.Resources.Up;
             this.pictureBox6.Location = new System.Drawing.Point(352, 77);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(44, 39);
@@ -664,7 +664,7 @@ namespace JetpackDowngraderGUI
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::JetpackDowngraderGUI.Properties.Resources.Up;
+            this.pictureBox5.Image = global::JetpackGUI.Properties.Resources.Up;
             this.pictureBox5.Location = new System.Drawing.Point(170, 77);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(44, 39);
@@ -687,12 +687,14 @@ namespace JetpackDowngraderGUI
             this.Controls.Add(this.HelloUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jetpack GUI";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.DSPanel.ResumeLayout(false);
             this.DSPanel.PerformLayout();
             this.ModsPanel.ResumeLayout(false);

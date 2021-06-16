@@ -6,23 +6,29 @@ using System.IO;
 using System.Windows.Forms;
 using System.Net;
 
-namespace JetpackDowngraderGUI
+namespace JetpackGUI
 {
     public partial class MainForm : Form
     {
         // Dark title for Windows 10
         [System.Runtime.InteropServices.DllImport("DwmApi")]
         static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
-        //
+
+        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
         string[] lc = new string[100];
-        string[] ms = new string[100];
-        int cm = 0; int ml = 0;
-        bool[] appset = new bool[8];
+        string[] mse = new string[100];
         bool tabFix = false;
         bool lpFix = false;
-        public MainForm() { InitializeComponent(); }
-        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
+        bool db = false;
+
+        public MainForm() 
+        { 
+            InitializeComponent();
+            this.KeyPreview = true;
+        }
+
         void MainForm_Load(object sender, EventArgs e)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -47,15 +53,7 @@ namespace JetpackDowngraderGUI
                 checkBox3.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 checkBox5.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
                 checkBox7.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "EnableDirectPlay"));
-                checkBox8.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectX"));
-                appset[0] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolder"));
-                appset[1] = Convert.ToBoolean(cfg.GetValue("JPD", "ConsoleTransparency"));
-                appset[2] = Convert.ToBoolean(cfg.GetValue("JPD", "UseMsg"));
-                appset[3] = Convert.ToBoolean(cfg.GetValue("JPD", "UseProgressBar"));
-                appset[4] = Convert.ToBoolean(cfg.GetValue("JPD", "Component"));
-                appset[5] = Convert.ToBoolean(cfg.GetValue("Only", "GameVersion"));
-                appset[6] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFiles"));
-                appset[7] = Convert.ToBoolean(cfg.GetValue("Only", "NextCheckFilesAndCheckMD5"));
+                checkBox8.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectXComponents"));
             }
             catch { MsgError(lc[2], lc[1]); }
         }
@@ -99,7 +97,7 @@ namespace JetpackDowngraderGUI
         void checkBox4_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox6_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "RegisterGamePath", Convert.ToString(checkBox6.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox5_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "Forced", Convert.ToString(checkBox5.Checked).Replace("T", "t").Replace("F", "f")); }
-        void checkBox8_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "InstallDirectX", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f")); }
+        void checkBox8_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "InstallDirectXComponents", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox7_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "EnableDirectPlay", Convert.ToString(checkBox7.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
@@ -144,24 +142,25 @@ namespace JetpackDowngraderGUI
                 {
                     using (WebClient mods = new WebClient())
                     {
-                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
+                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
                         string[] modsl = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\list.txt", System.Text.Encoding.ASCII);
                         for (int i = 0; i < modsl.Length; i++)
                         {
                             if (modsl[i] != "")
                             {
                                 darkListView1.Items.Add(new DarkListItem(modsl[i]));
-                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/" + modsl[i] + "_data/" + modsl[i] + ".dat", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat");
-                                ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat", System.Text.Encoding.ASCII);
+                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/" + modsl[i] + "_data/" + modsl[i] + ".dat", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat");
+                                string[] ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat", System.Text.Encoding.ASCII);
                                 // Name - 0
                                 // Version - 1
                                 // Author - 2
                                 // Description - 3
                                 // Web-site - 4
+                                // Link to photo 1 - 5
                                 // Link to photo 1 - 6
                                 // Link to photo 1 - 7
-                                // Link to photo 1 - 8
-                                // Link to ZIP with mod - 9
+                                // Link to ZIP with mod - 8
+                                mse[i] = ms[0] + "|" + ms[1] + "|" + ms[2] + "|" + ms[3] + "|" + ms[4] + "|" + ms[5] + "|" + ms[6] + "|" + ms[7] + "|" + ms[8];
                             }
                         }
                     }
@@ -201,8 +200,7 @@ namespace JetpackDowngraderGUI
         {
             try
             {
-                IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".txt");
-                // Loading the localization
+                IniEditor lang = new IniEditor(@Application.StartupPath + @"\languages\" + Properties.Settings.Default.LanguageCode + ".ini");
                 // Text (GUI) loading
                 label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel"));
                 DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
@@ -225,8 +223,8 @@ namespace JetpackDowngraderGUI
                 checkBox6.Text = Convert.ToString(lang.GetValue("CheckBox", "GameReg"));
                 checkBox3.Text = Convert.ToString(lang.GetValue("CheckBox", "NoUpdates"));
                 checkBox5.Text = Convert.ToString(lang.GetValue("CheckBox", "Forced"));
-                checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "DirectPlay"));
-                checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectX"));
+                checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "EnableDirectPlay"));
+                checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectXComponents"));
                 // Title loading
                 lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
                 lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
@@ -243,6 +241,9 @@ namespace JetpackDowngraderGUI
                 // WarningMsg loading
                 lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
                 lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
+                // DebugF12 loading
+                lc[12] = Convert.ToString(lang.GetValue("DebugF12", "Activation"));
+                lc[13] = Convert.ToString(lang.GetValue("DebugF12", "Deactivation"));
             }
             catch { MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
@@ -256,11 +257,30 @@ namespace JetpackDowngraderGUI
         {
             if (darkCheckBox1.Checked == true)
             {
-                //ms[cm] = darkListView1.Items.
+                
             }
             else
             {
 
+            }
+        }
+
+        void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F12)
+            {
+                if (db == false)
+                {
+                    MsgWarning(lc[12], lc[8]);
+                    cfg.SetValue("JPD", "UseProgressBar", "false");
+                    db = true;
+                }
+                else
+                {
+                    MsgWarning(lc[13], lc[8]);
+                    cfg.SetValue("JPD", "UseProgressBar", "true");
+                    db = false;
+                }
             }
         }
     }

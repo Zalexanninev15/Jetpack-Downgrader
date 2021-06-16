@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>JetpackDowngraderGUI</RootNamespace>
+    <RootNamespace>JetpackGUI</RootNamespace>
     <AssemblyName>app</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -42,7 +42,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JetpackDowngraderGUI.Program</StartupObject>
+    <StartupObject>JetpackGUI.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -80,13 +80,14 @@
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.ico" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="app.ico" />
+    <None Include="Resources\jpd.ini" />
     <None Include="Resources\Patches.png" />
     <None Include="Resources\EN.png" />
     <None Include="Resources\Language.png" />

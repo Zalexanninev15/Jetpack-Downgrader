@@ -21,14 +21,14 @@ In **jpd.ini**, you can specify the settings for this application, it is not rec
 * **CreateNewGamePath** - make a copy of the game folder (**[folder name] + _Downgraded**) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable it for the Steam/Rockstar Games Launcher versions of the game!!!
 * **Forced** - force the app to continue running even if EXE file are already use from the game version 1.0 (MD5). Downgrader will only work with the EXE file, the rest of the game files will just be checked, so they must be original. For non-1.0 versions, only the EXE file will be patched
 * **EnableDirectPlay** - enable the Windows DirectPlay component to run the game on Windows 10 (after getting game version)
-* **InstallDirectX** - install additional DirectX files to run the game (after getting game version)
+* **InstallDirectXComponents** - install additional DirectX files to run the game (after getting game version)
 
 ### JPD
 
 * **SelectFolder** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
 * **ConsoleTransparency** - use transparency for console
-* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This setting can take values instead of (or have no effect on) the settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **GarbageCleaning**, **RegisterGamePath**, **CreateNewGamePath**, **Forced**, **EnableDirectPlay**, **InstallDirectX** 
-* **UseProgressBar** - use the progress bar to indicate the progress of each of the downgrader stages. During operation, all logs of the current stage of work are ignored!!!
+* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. If the selection dialog appears, the selection will be placed second to the settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **GarbageCleaning**, **RegisterGamePath**, **CreateNewGamePath**, **Forced**, **EnableDirectPlay**, **InstallDirectX** 
+* **UseProgressBar** - use the progress bar to indicate the progress of each of the downgrader stages. **During operation, all logs of the current stage of work are ignored!!!**
 * **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI (in console) and removes the waiting for input after the processes in the app are completed). This setting adds the ability to specify the path to the game folder as a parameter for launching the application
 
  Example for CMD: 
