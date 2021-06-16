@@ -22,3 +22,5 @@ sources/Downgrader/bin/Release/jpd.exe.config
 sources/Downgrader/obj/Release/Downgrader.Properties.Resources.resources
 sources/GUI/bin/Release/app.exe.config
 sources/Downgrader/obj/Release/Downgrader.csproj.FileListAbsolute.txt
+sources/GUI/obj/Release/JetpackGUI.MainForm.resources
+sources/GUI/obj/Release/JetpackGUI.Properties.Resources.resources

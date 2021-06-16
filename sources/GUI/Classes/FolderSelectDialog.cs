@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace JetpackDowngraderGUI
+namespace JetpackGUI
 {
     public class FolderSelectDialog
     {
