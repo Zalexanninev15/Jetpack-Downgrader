@@ -85,7 +85,7 @@ namespace Downgrader
                 settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[12] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
                 settings[16] = Convert.ToBoolean(cfg.GetValue("Downgrader", "EnableDirectPlay"));
-                settings[17] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectX"));
+                settings[17] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectXComponents"));
                 settings[8] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolder"));
                 settings[11] = Convert.ToBoolean(cfg.GetValue("JPD", "ConsoleTransparency"));
                 settings[13] = Convert.ToBoolean(cfg.GetValue("JPD", "UseMsg"));
@@ -105,7 +105,7 @@ namespace Downgrader
                 if (settings[8] == true)
                 {
                     var dialog = new FolderSelectDialog { InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), Title = "Select the game folder" };
-                    if (dialog.Show()) { path = dialog.FileName; } else { path = ""; }
+                    if (dialog.Show()) { path = dialog.FileName; } else { path = "false"; }
                 }
                 if ((path != "") && Directory.Exists(@path))
                 {
@@ -272,9 +272,8 @@ namespace Downgrader
                             Logger("DirectX", "Process", "App is not frozen, just busy right now...");
                             try
                             {
-                                // Old: http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip
                                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-                                using (WebClient wc = new WebClient()) { wc.DownloadFile("https://download1583.mediafire.com/a6mcgg3kugig/dtnqqt8qyflgjc4/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
+                                using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
                                 Logger("DirectX", "Process", "Preparing installer...");
                                 try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
                                 ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
@@ -461,9 +460,9 @@ namespace Downgrader
                                         try { Directory.Delete(@path + "_Downgraded", true); } catch { }
                                         FileSystem.CopyDirectory(@path, @path + "_Downgraded");
                                         path = @path + "_Downgraded";
-                                        Logger("Game", "Path", "new");
+                                        Logger("NewGamePath", "Path", @path);
                                     }
-                                    catch { er = 0; Logger("Game", "Path", "false"); }
+                                    catch { er = 0; Logger("NewGamePath", "Path", "false"); }
                                 }
                                 // Backup (optional)
                                 if (settings[13] == true) { result = MessageBox.Show("Do you want to create backups of files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
@@ -765,9 +764,9 @@ namespace Downgrader
         static void Logger(string type, string ido, string status) 
         {
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
-            if ((status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "new") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
+            if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
-            if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "New")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
+            if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
             if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
