@@ -106,7 +106,7 @@ namespace JetpackGUI
         void MsgError(string message, string title) { DarkMessageBox.ShowError(message, title); }
         void MsgWarning(string message, string title) { DarkMessageBox.ShowWarning(message, title); }
         void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
-        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + " Zalexanninev15", lc[0]); }
+        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n" + lc[14], lc[0]); }
 
         void button6_Click(object sender, EventArgs e)
         {
@@ -234,6 +234,7 @@ namespace JetpackGUI
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
                 lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
+                lc[14] = Convert.ToString(lang.GetValue("InfoMsg", "Localization"));
                 // ErrorMsg loading
                 lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
                 lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
