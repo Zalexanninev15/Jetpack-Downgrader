@@ -305,19 +305,19 @@ namespace JetpackGUI
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(332, 240);
+            this.darkButton3.Location = new System.Drawing.Point(332, 252);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(173, 37);
+            this.darkButton3.Size = new System.Drawing.Size(173, 27);
             this.darkButton3.TabIndex = 16;
             this.darkButton3.TabStop = false;
-            this.darkButton3.Text = "Go to the modification website";
+            this.darkButton3.Text = "Go to the modification topic";
             this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
             // 
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(332, 198);
+            this.darkButton2.Location = new System.Drawing.Point(332, 215);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(83, 25);
@@ -329,7 +329,7 @@ namespace JetpackGUI
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(421, 198);
+            this.darkButton1.Location = new System.Drawing.Point(421, 215);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(84, 25);
@@ -340,10 +340,12 @@ namespace JetpackGUI
             // 
             // ScreenShot
             // 
+            this.ScreenShot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ScreenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ScreenShot.Location = new System.Drawing.Point(298, 24);
+            this.ScreenShot.ErrorImage = global::JetpackGUI.Properties.Resources.EN;
+            this.ScreenShot.Location = new System.Drawing.Point(305, 28);
             this.ScreenShot.Name = "ScreenShot";
-            this.ScreenShot.Size = new System.Drawing.Size(246, 164);
+            this.ScreenShot.Size = new System.Drawing.Size(233, 176);
             this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenShot.TabIndex = 16;
             this.ScreenShot.TabStop = false;
