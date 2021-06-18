@@ -142,15 +142,15 @@ namespace JetpackGUI
                 {
                     using (WebClient mods = new WebClient())
                     {
-                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
+                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/all/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
                         string[] modsl = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\list.txt", System.Text.Encoding.ASCII);
                         for (int i = 0; i < modsl.Length; i++)
                         {
                             if (modsl[i] != "")
                             {
                                 darkListView1.Items.Add(new DarkListItem(modsl[i]));
-                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/" + modsl[i] + "_data/" + modsl[i] + ".dat", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat");
-                                string[] ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".dat", System.Text.Encoding.ASCII);
+                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/" + modsl[i] + ".txt", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".txt");
+                                string[] ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".txt", System.Text.Encoding.ASCII);
                                 // Name - 0
                                 // Version - 1
                                 // Author - 2
