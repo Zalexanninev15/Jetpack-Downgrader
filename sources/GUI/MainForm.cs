@@ -277,6 +277,7 @@ namespace JetpackGUI
         {
             if (YesInstallMe.Checked == true)
             {
+                getNewFile.Visible = true;
                 if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip"))
                 {
                     if (!Directory.Exists(cache + @"\zips"))
@@ -293,7 +294,6 @@ namespace JetpackGUI
                             INodeInfo node = client.GetNodeFromLink(fileLink);
                             labelFile.Text = "Downloading cache file \"" + node.Name + "\"";
                             Downloading.Style = ProgressBarStyle.Marquee;
-                            Downloading.MarqueeAnimationSpeed = 40;
                             client.DownloadFile(fileLink, cache + "\\" + node.Name);
                             client.Logout();
                         }
@@ -302,15 +302,14 @@ namespace JetpackGUI
                             using (System.Net.WebClient wc = new System.Net.WebClient())
                             {
                                 Downloading.Style = ProgressBarStyle.Marquee;
-                                Downloading.MarqueeAnimationSpeed = 40;
                                 labelFile.Text = "Downloading cache file for modification \"" + nameLabel.Text.Replace("Name: ", "") + "\"";
                                 wc.DownloadFile(zip_link, cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
                             }
                         }
-                        getNewFile.Visible = false;
                     }
                     catch { MsgError(lc[15], lc[1]); }
                 }
+                getNewFile.Visible = false;
             }
             else
             {
