@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Net;
+using CG.Web.MegaApiClient;
 
 namespace JetpackGUI
 {
@@ -22,6 +23,10 @@ namespace JetpackGUI
         bool tabFix = false;
         bool lpFix = false;
         bool db = false;
+        string cache = @Application.StartupPath + @"\files\mods_cache";
+        string zip_link = "application/zip";
+        string[] photos_links = new string[3];
+        string site_link = "";
 
         public MainForm() 
         { 
@@ -37,9 +42,9 @@ namespace JetpackGUI
                 pictureBox8.Visible = true;
                 button1.Enabled = false;
             }
-            if (!Directory.Exists(@Application.StartupPath + @"\files\mods_cache"))
+            if (!Directory.Exists(cache))
             {
-                Directory.CreateDirectory(@Application.StartupPath + @"\files\mods_cache");
+                Directory.CreateDirectory(cache);
             }
             Translate();
             // Loading settings
@@ -72,8 +77,12 @@ namespace JetpackGUI
                 foreach (Process process2 in Process.GetProcesses()) { if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; } }
                 if (d == 1)
                 {
-                    // Install mods
-
+                    // Install mods [TEST]
+                    string[] modsZip = Directory.GetFiles(cache + @"\zips", "*.zip");
+                    for (int i = 0; i < modsZip.Length; i++)
+                    {
+                        Process.Start(@Application.StartupPath + @"\files\7z", "x \"" + modsZip[0] + "\" -ao\"" + GamePath.Text + "\"").WaitForExit();
+                     }
                     //
                     MsgInfo(lc[4], lc[0]);
                     this.Enabled = true;
@@ -101,12 +110,17 @@ namespace JetpackGUI
         void checkBox7_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "EnableDirectPlay", Convert.ToString(checkBox7.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
-        void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5], lc[1]); } }
         void MsgInfo(string message, string title) { DarkMessageBox.ShowInformation(message, title); }
         void MsgError(string message, string title) { DarkMessageBox.ShowError(message, title); }
         void MsgWarning(string message, string title) { DarkMessageBox.ShowWarning(message, title); }
         void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
         void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n" + lc[14], lc[0]); }
+
+        void pictureBox4_Click(object sender, EventArgs e) 
+        { 
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } 
+            catch { MsgError(lc[5], lc[1]); } 
+        }
 
         void button6_Click(object sender, EventArgs e)
         {
@@ -140,17 +154,20 @@ namespace JetpackGUI
                 ModsPanel.Visible = true;
                 try
                 {
-                    using (WebClient mods = new WebClient())
+                    using (System.Net.WebClient mods = new System.Net.WebClient())
                     {
-                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/all/list.txt", @Application.StartupPath + @"\files\mods_cache\list.txt");
-                        string[] modsl = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\list.txt", System.Text.Encoding.ASCII);
+                        mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/all/list.txt", cache + @"\list.txt");
+                        string[] modsl = File.ReadAllLines(cache + @"\list.txt", System.Text.Encoding.ASCII);
+                        darkListView1.Items.Clear();
+                        darkComboBox1.Items.Clear();
                         for (int i = 0; i < modsl.Length; i++)
                         {
                             if (modsl[i] != "")
                             {
                                 darkListView1.Items.Add(new DarkListItem(modsl[i]));
-                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/" + modsl[i] + ".txt", @Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".txt");
-                                string[] ms = File.ReadAllLines(@Application.StartupPath + @"\files\mods_cache\" + modsl[i] + ".txt", System.Text.Encoding.ASCII);
+                                darkComboBox1.Items.Add(modsl[i]);
+                                mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/" + modsl[i] + ".txt", cache + @"\" + modsl[i] + ".txt");
+                                string[] ms = File.ReadAllLines(cache + "\\" + modsl[i] + ".txt", System.Text.Encoding.ASCII);
                                 // Name - 0
                                 // Version - 1
                                 // Author - 2
@@ -209,8 +226,9 @@ namespace JetpackGUI
                 darkTitle2.Text = Convert.ToString(lang.GetValue("Interface", "CBG2"));
                 button7.Text = Convert.ToString(lang.GetValue("Interface", "ManualEditing"));
                 ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
-                darkLabel2.Text = ModsPanel.SectionHeader;
                 button2.Text = "2. " + ModsPanel.SectionHeader;
+                darkLabel2.Text = Convert.ToString(lang.GetValue("Interface", "List"));
+                darkLabel9.Text = Convert.ToString(lang.GetValue("Interface", "FullList"));
                 darkGroupBox1.Text = Convert.ToString(lang.GetValue("Interface", "AboutMod"));
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
@@ -234,7 +252,7 @@ namespace JetpackGUI
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
                 lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
-                lc[14] = Convert.ToString(lang.GetValue("InfoMsg", "Localization"));
+                lc[14] = Convert.ToString(lang.GetValue("InfoMsg", "LocalizationBy"));
                 // ErrorMsg loading
                 lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
                 lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
@@ -242,6 +260,7 @@ namespace JetpackGUI
                 // WarningMsg loading
                 lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
                 lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
+                lc[15] = Convert.ToString(lang.GetValue("InfoMsg", "AboutModDamaged"));
                 // DebugF12 loading
                 lc[12] = Convert.ToString(lang.GetValue("DebugF12", "Activation"));
                 lc[13] = Convert.ToString(lang.GetValue("DebugF12", "Deactivation"));
@@ -256,13 +275,49 @@ namespace JetpackGUI
 
         void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (darkCheckBox1.Checked == true)
+            if (YesInstallMe.Checked == true)
             {
-                
+                if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip"))
+                {
+                    if (!Directory.Exists(cache + @"\zips"))
+                    {
+                        Directory.CreateDirectory(cache + @"\zips");
+                    }
+                    try
+                    {
+                        if (zip_link.Contains("mega.nz"))
+                        {
+                            var client = new MegaApiClient();
+                            client.LoginAnonymous();
+                            Uri fileLink = new Uri(zip_link);
+                            INodeInfo node = client.GetNodeFromLink(fileLink);
+                            labelFile.Text = "Downloading cache file \"" + node.Name + "\"";
+                            Downloading.Style = ProgressBarStyle.Marquee;
+                            Downloading.MarqueeAnimationSpeed = 40;
+                            client.DownloadFile(fileLink, cache + "\\" + node.Name);
+                            client.Logout();
+                        }
+                        else
+                        {
+                            using (System.Net.WebClient wc = new System.Net.WebClient())
+                            {
+                                Downloading.Style = ProgressBarStyle.Marquee;
+                                Downloading.MarqueeAnimationSpeed = 40;
+                                labelFile.Text = "Downloading cache file for modification \"" + nameLabel.Text.Replace("Name: ", "") + "\"";
+                                wc.DownloadFile(zip_link, cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                            }
+                        }
+                        getNewFile.Visible = false;
+                    }
+                    catch { MsgError(lc[15], lc[1]); }
+                }
             }
             else
             {
-
+                if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip"))
+                {
+                    File.Delete(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                }
             }
         }
 
@@ -283,6 +338,91 @@ namespace JetpackGUI
                     db = false;
                 }
             }
+        }
+
+        void darkComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (darkComboBox1.Text != "")
+                {
+                    ScreenShot.Enabled = true;
+                    darkGroupBox1.Visible = true;
+                    string[] tInfo = mse[darkComboBox1.SelectedIndex].Split('|');
+                    nameLabel.Text = "Name: " + tInfo[0];
+                    darkLabel5.Text = "Version: " + tInfo[1];
+                    darkLabel6.Text = "Author: " + tInfo[2];
+                    darkLabel4.Text = "Description: " + tInfo[3];
+                    site_link = tInfo[4];
+                    ScreenShot.ImageLocation = tInfo[5];
+                    photos_links[0] = ScreenShot.ImageLocation;
+                    photos_links[1] = tInfo[6];
+                    photos_links[2] = tInfo[7];
+                    zip_link = tInfo[8];
+                    YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                }
+            }
+            catch { MsgError(lc[15], lc[1]); ScreenShot.Enabled = false; zip_link = "application/zip"; }
+        }
+
+        void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Directory.Exists(cache))
+            {
+                Directory.Delete(cache, true);
+            }
+        }
+
+        void darkButton1_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < photos_links.Length; i++)
+            {
+                try
+                {
+                    if (ScreenShot.ImageLocation == photos_links[i])
+                    {
+                        ScreenShot.ImageLocation = photos_links[i + 1];
+                        i = photos_links.Length + 1;
+                    }
+                }
+                catch 
+                {
+                    ScreenShot.ImageLocation = photos_links[i];
+                    i = photos_links.Length + 1;
+                }
+            }
+        }
+
+        void darkButton2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < photos_links.Length; i++)
+            {
+                try
+                {
+                    if (ScreenShot.ImageLocation == photos_links[i])
+                    {
+                        ScreenShot.ImageLocation = photos_links[i - 1];
+                        i = photos_links.Length + 1;
+                    }
+                }
+                catch 
+                {
+                    ScreenShot.ImageLocation = photos_links[i];
+                    i = photos_links.Length + 1;
+                }
+            }
+        }
+
+        void darkButton3_Click(object sender, EventArgs e)
+        {
+            try { Process.Start(site_link); }
+            catch { MsgError(lc[5], lc[1]); }
+        }
+
+        void ScreenShot_Click(object sender, EventArgs e)
+        {
+            try { Process.Start(ScreenShot.ImageLocation); }
+            catch { MsgError(lc[5], lc[1]); }
         }
     }
 }
