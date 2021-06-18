@@ -77,13 +77,17 @@ namespace JetpackGUI
                 foreach (Process process2 in Process.GetProcesses()) { if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; } }
                 if (d == 1)
                 {
-                    // Install mods [TEST]
                     string[] modsZip = Directory.GetFiles(cache + @"\zips", "*.zip");
                     for (int i = 0; i < modsZip.Length; i++)
                     {
-                        Process.Start(@Application.StartupPath + @"\files\7z", "x \"" + modsZip[0] + "\" -ao\"" + GamePath.Text + "\"").WaitForExit();
-                     }
-                    //
+                        try
+                        {
+                            Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
+                            FileInfo ss = new FileInfo(modsZip[i]);
+                            MsgInfo("The \"" + ss.Name.Replace(".zip", "") + "\" modification has been successfully installed!", lc[0]);
+                        }
+                        catch { try { FileInfo ss = new FileInfo(modsZip[i]); MsgError("The \"" + ss.Name.Replace(".zip", "") + "\" modification is not installed!", lc[1]); } catch { MsgError("The \"NULL\" modification is not installed!", lc[1]); } }
+                    }
                     MsgInfo(lc[4], lc[0]);
                     this.Enabled = true;
                 }
@@ -230,9 +234,13 @@ namespace JetpackGUI
                 darkLabel2.Text = Convert.ToString(lang.GetValue("Interface", "List"));
                 darkLabel9.Text = Convert.ToString(lang.GetValue("Interface", "FullList"));
                 darkGroupBox1.Text = Convert.ToString(lang.GetValue("Interface", "AboutMod"));
+                lc[16] = Convert.ToString(lang.GetValue("Interface", "Name"));
+                darkGroupBox2.Text = Convert.ToString(lang.GetValue("Interface", "DescriptionMod"));
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
+                lc[17] = Convert.ToString(lang.GetValue("Interface", "D1"));
+                lc[18] = Convert.ToString(lang.GetValue("Interface", "D2"));
                 // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
@@ -243,6 +251,7 @@ namespace JetpackGUI
                 checkBox5.Text = Convert.ToString(lang.GetValue("CheckBox", "Forced"));
                 checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "EnableDirectPlay"));
                 checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectXComponents"));
+                YesInstallMe.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallMod"));
                 // Title loading
                 lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
                 lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
@@ -278,7 +287,7 @@ namespace JetpackGUI
             if (YesInstallMe.Checked == true)
             {
                 getNewFile.Visible = true;
-                if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip"))
+                if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
                 {
                     if (!Directory.Exists(cache + @"\zips"))
                     {
@@ -292,7 +301,7 @@ namespace JetpackGUI
                             client.LoginAnonymous();
                             Uri fileLink = new Uri(zip_link);
                             INodeInfo node = client.GetNodeFromLink(fileLink);
-                            labelFile.Text = "Downloading cache file \"" + node.Name + "\"";
+                            labelFile.Text = lc[17] +  " \"" + node.Name + "\"";
                             Downloading.Style = ProgressBarStyle.Marquee;
                             client.DownloadFile(fileLink, cache + "\\" + node.Name);
                             client.Logout();
@@ -302,8 +311,8 @@ namespace JetpackGUI
                             using (System.Net.WebClient wc = new System.Net.WebClient())
                             {
                                 Downloading.Style = ProgressBarStyle.Marquee;
-                                labelFile.Text = "Downloading cache file for modification \"" + nameLabel.Text.Replace("Name: ", "") + "\"";
-                                wc.DownloadFile(zip_link, cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                                labelFile.Text = lc[17] + " " + lc[18] + " \"" + nameLabel.Text.Replace(lc[16] + ": ", "") + "\"";
+                                wc.DownloadFile(zip_link, cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                             }
                         }
                     }
@@ -313,9 +322,9 @@ namespace JetpackGUI
             }
             else
             {
-                if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip"))
+                if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
                 {
-                    File.Delete(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                    File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                 }
             }
         }
@@ -348,7 +357,7 @@ namespace JetpackGUI
                     ScreenShot.Enabled = true;
                     darkGroupBox1.Visible = true;
                     string[] tInfo = mse[darkComboBox1.SelectedIndex].Split('|');
-                    nameLabel.Text = "Name: " + tInfo[0];
+                    nameLabel.Text = lc[16] + ": " + tInfo[0];
                     darkLabel5.Text = "Version: " + tInfo[1];
                     darkLabel6.Text = "Author: " + tInfo[2];
                     darkLabel4.Text = tInfo[3];
@@ -358,7 +367,7 @@ namespace JetpackGUI
                     photos_links[1] = tInfo[6];
                     photos_links[2] = tInfo[7];
                     zip_link = tInfo[8];
-                    YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace("Name: ", "") + ".zip");
+                    YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                 }
             }
             catch { MsgError(lc[15], lc[1]); ScreenShot.Enabled = false; zip_link = "application/zip"; }
