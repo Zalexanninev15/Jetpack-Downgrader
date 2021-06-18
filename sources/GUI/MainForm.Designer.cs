@@ -43,18 +43,17 @@ namespace JetpackGUI
             this.checkBox8 = new DarkUI.Controls.DarkCheckBox();
             this.DSPanel = new DarkUI.Controls.DarkSectionPanel();
             this.ModsPanel = new DarkUI.Controls.DarkSectionPanel();
+            this.darkComboBox1 = new DarkUI.Controls.DarkComboBox();
             this.darkGroupBox1 = new DarkUI.Controls.DarkGroupBox();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.darkCheckBox1 = new DarkUI.Controls.DarkCheckBox();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
+            this.YesInstallMe = new DarkUI.Controls.DarkCheckBox();
             this.darkLabel7 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.ScreenShot = new System.Windows.Forms.PictureBox();
+            this.nameLabel = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.darkListView1 = new DarkUI.Controls.DarkListView();
             this.darkDockPanel1 = new DarkUI.Docking.DarkDockPanel();
@@ -77,10 +76,16 @@ namespace JetpackGUI
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.Downloading = new System.Windows.Forms.ProgressBar();
+            this.getNewFile = new System.Windows.Forms.Panel();
+            this.labelFile = new DarkUI.Controls.DarkLabel();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -92,6 +97,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.getNewFile.SuspendLayout();
             this.SuspendLayout();
             // 
             // GamePath
@@ -252,7 +258,9 @@ namespace JetpackGUI
             // 
             // ModsPanel
             // 
+            this.ModsPanel.Controls.Add(this.darkComboBox1);
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
+            this.ModsPanel.Controls.Add(this.darkLabel9);
             this.ModsPanel.Controls.Add(this.darkLabel2);
             this.ModsPanel.Controls.Add(this.darkListView1);
             this.ModsPanel.Controls.Add(this.darkDockPanel1);
@@ -264,128 +272,106 @@ namespace JetpackGUI
             this.ModsPanel.TabIndex = 15;
             this.ModsPanel.Visible = false;
             // 
+            // darkComboBox1
+            // 
+            this.darkComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.darkComboBox1.FormattingEnabled = true;
+            this.darkComboBox1.Location = new System.Drawing.Point(12, 58);
+            this.darkComboBox1.Name = "darkComboBox1";
+            this.darkComboBox1.Size = new System.Drawing.Size(239, 22);
+            this.darkComboBox1.TabIndex = 5;
+            this.darkComboBox1.SelectedIndexChanged += new System.EventHandler(this.darkComboBox1_SelectedIndexChanged);
+            // 
             // darkGroupBox1
             // 
             this.darkGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox1.Controls.Add(this.darkButton3);
             this.darkGroupBox1.Controls.Add(this.darkButton2);
             this.darkGroupBox1.Controls.Add(this.darkButton1);
-            this.darkGroupBox1.Controls.Add(this.linkLabel1);
-            this.darkGroupBox1.Controls.Add(this.darkCheckBox1);
+            this.darkGroupBox1.Controls.Add(this.ScreenShot);
+            this.darkGroupBox1.Controls.Add(this.YesInstallMe);
             this.darkGroupBox1.Controls.Add(this.darkLabel8);
             this.darkGroupBox1.Controls.Add(this.darkLabel7);
             this.darkGroupBox1.Controls.Add(this.darkLabel4);
             this.darkGroupBox1.Controls.Add(this.darkLabel6);
             this.darkGroupBox1.Controls.Add(this.darkLabel5);
-            this.darkGroupBox1.Controls.Add(this.pictureBox10);
-            this.darkGroupBox1.Controls.Add(this.darkLabel3);
-            this.darkGroupBox1.Location = new System.Drawing.Point(418, 30);
+            this.darkGroupBox1.Controls.Add(this.nameLabel);
+            this.darkGroupBox1.Location = new System.Drawing.Point(268, 30);
             this.darkGroupBox1.Name = "darkGroupBox1";
-            this.darkGroupBox1.Size = new System.Drawing.Size(401, 295);
+            this.darkGroupBox1.Size = new System.Drawing.Size(561, 295);
             this.darkGroupBox1.TabIndex = 4;
             this.darkGroupBox1.TabStop = false;
             this.darkGroupBox1.Text = "About";
+            this.darkGroupBox1.Visible = false;
             // 
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(304, 224);
+            this.darkButton2.Location = new System.Drawing.Point(353, 164);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(80, 31);
+            this.darkButton2.Size = new System.Drawing.Size(83, 25);
             this.darkButton2.TabIndex = 16;
             this.darkButton2.TabStop = false;
-            this.darkButton2.Text = "Back";
-            this.darkButton2.Visible = false;
-            this.darkButton2.Click += new System.EventHandler(this.button2_Click);
+            this.darkButton2.Text = "←";
+            this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(304, 180);
+            this.darkButton1.Location = new System.Drawing.Point(442, 164);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(80, 31);
+            this.darkButton1.Size = new System.Drawing.Size(84, 25);
             this.darkButton1.TabIndex = 16;
             this.darkButton1.TabStop = false;
-            this.darkButton1.Text = "Next";
-            this.darkButton1.Visible = false;
-            this.darkButton1.Click += new System.EventHandler(this.button2_Click);
+            this.darkButton1.Text = "→";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
-            // linkLabel1
+            // YesInstallMe
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(48, 121);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(54, 15);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "web-site";
-            this.linkLabel1.Visible = false;
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Firebrick;
-            // 
-            // darkCheckBox1
-            // 
-            this.darkCheckBox1.AutoSize = true;
-            this.darkCheckBox1.Location = new System.Drawing.Point(17, 251);
-            this.darkCheckBox1.Name = "darkCheckBox1";
-            this.darkCheckBox1.Size = new System.Drawing.Size(59, 19);
-            this.darkCheckBox1.TabIndex = 0;
-            this.darkCheckBox1.Text = "Install";
-            this.darkCheckBox1.Visible = false;
-            this.darkCheckBox1.CheckedChanged += new System.EventHandler(this.darkCheckBox1_CheckedChanged);
-            // 
-            // darkLabel8
-            // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(164, 145);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(49, 16);
-            this.darkLabel8.TabIndex = 3;
-            this.darkLabel8.Text = "Photos";
-            this.darkLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel8.Visible = false;
+            this.YesInstallMe.AutoSize = true;
+            this.YesInstallMe.Location = new System.Drawing.Point(271, 105);
+            this.YesInstallMe.Name = "YesInstallMe";
+            this.YesInstallMe.Size = new System.Drawing.Size(46, 19);
+            this.YesInstallMe.TabIndex = 0;
+            this.YesInstallMe.Text = "Yes";
+            this.YesInstallMe.CheckedChanged += new System.EventHandler(this.darkCheckBox1_CheckedChanged);
             // 
             // darkLabel7
             // 
             this.darkLabel7.AutoSize = true;
             this.darkLabel7.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel7.Location = new System.Drawing.Point(17, 120);
+            this.darkLabel7.Location = new System.Drawing.Point(18, 106);
             this.darkLabel7.Name = "darkLabel7";
-            this.darkLabel7.Size = new System.Drawing.Size(35, 16);
+            this.darkLabel7.Size = new System.Drawing.Size(56, 16);
             this.darkLabel7.TabIndex = 3;
-            this.darkLabel7.Text = "Site:";
+            this.darkLabel7.Text = "Actions:";
             this.darkLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel7.Visible = false;
             // 
             // darkLabel4
             // 
-            this.darkLabel4.AutoSize = true;
+            this.darkLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.darkLabel4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(17, 94);
+            this.darkLabel4.Location = new System.Drawing.Point(18, 147);
             this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(77, 16);
+            this.darkLabel4.Size = new System.Drawing.Size(308, 134);
             this.darkLabel4.TabIndex = 3;
             this.darkLabel4.Text = "Description:";
-            this.darkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel4.Visible = false;
             // 
             // darkLabel6
             // 
             this.darkLabel6.AutoSize = true;
             this.darkLabel6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(18, 70);
+            this.darkLabel6.Location = new System.Drawing.Point(18, 71);
             this.darkLabel6.Name = "darkLabel6";
             this.darkLabel6.Size = new System.Drawing.Size(50, 16);
             this.darkLabel6.TabIndex = 3;
             this.darkLabel6.Text = "Author:";
             this.darkLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel6.Visible = false;
             // 
             // darkLabel5
             // 
@@ -398,31 +384,28 @@ namespace JetpackGUI
             this.darkLabel5.TabIndex = 3;
             this.darkLabel5.Text = "Version:";
             this.darkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel5.Visible = false;
             // 
-            // pictureBox10
+            // ScreenShot
             // 
-            this.pictureBox10.Location = new System.Drawing.Point(84, 172);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(212, 95);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 16;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Visible = false;
-            this.pictureBox10.Click += new System.EventHandler(this.pictureBox8_Click);
+            this.ScreenShot.Location = new System.Drawing.Point(332, 18);
+            this.ScreenShot.Name = "ScreenShot";
+            this.ScreenShot.Size = new System.Drawing.Size(212, 138);
+            this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ScreenShot.TabIndex = 16;
+            this.ScreenShot.TabStop = false;
+            this.ScreenShot.Click += new System.EventHandler(this.ScreenShot_Click);
             // 
-            // darkLabel3
+            // nameLabel
             // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(18, 22);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(46, 16);
-            this.darkLabel3.TabIndex = 3;
-            this.darkLabel3.Text = "Name:";
-            this.darkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.darkLabel3.Visible = false;
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.nameLabel.Location = new System.Drawing.Point(19, 22);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(46, 16);
+            this.nameLabel.TabIndex = 3;
+            this.nameLabel.Text = "Name:";
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // darkLabel2
             // 
@@ -431,18 +414,18 @@ namespace JetpackGUI
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel2.Location = new System.Drawing.Point(10, 34);
             this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(84, 16);
+            this.darkLabel2.Size = new System.Drawing.Size(140, 16);
             this.darkLabel2.TabIndex = 3;
-            this.darkLabel2.Text = "Modifications";
+            this.darkLabel2.Text = "Modification for viewing";
             this.darkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // darkListView1
             // 
             this.darkListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.darkListView1.Location = new System.Drawing.Point(25, 71);
-            this.darkListView1.MultiSelect = true;
+            this.darkListView1.HideScrollBars = false;
+            this.darkListView1.Location = new System.Drawing.Point(18, 127);
             this.darkListView1.Name = "darkListView1";
-            this.darkListView1.Size = new System.Drawing.Size(366, 243);
+            this.darkListView1.Size = new System.Drawing.Size(226, 196);
             this.darkListView1.TabIndex = 0;
             this.darkListView1.Text = "darkListView1";
             // 
@@ -450,9 +433,9 @@ namespace JetpackGUI
             // 
             this.darkDockPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.darkDockPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.darkDockPanel1.Location = new System.Drawing.Point(12, 63);
+            this.darkDockPanel1.Location = new System.Drawing.Point(12, 117);
             this.darkDockPanel1.Name = "darkDockPanel1";
-            this.darkDockPanel1.Size = new System.Drawing.Size(390, 262);
+            this.darkDockPanel1.Size = new System.Drawing.Size(239, 208);
             this.darkDockPanel1.TabIndex = 1;
             // 
             // darkTitle2
@@ -672,6 +655,71 @@ namespace JetpackGUI
             this.pictureBox5.TabIndex = 13;
             this.pictureBox5.TabStop = false;
             // 
+            // darkLabel9
+            // 
+            this.darkLabel9.AutoSize = true;
+            this.darkLabel9.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel9.Location = new System.Drawing.Point(10, 89);
+            this.darkLabel9.Name = "darkLabel9";
+            this.darkLabel9.Size = new System.Drawing.Size(144, 16);
+            this.darkLabel9.TabIndex = 3;
+            this.darkLabel9.Text = "Full list of modifications";
+            this.darkLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // darkLabel8
+            // 
+            this.darkLabel8.AutoSize = true;
+            this.darkLabel8.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel8.Location = new System.Drawing.Point(191, 106);
+            this.darkLabel8.Name = "darkLabel8";
+            this.darkLabel8.Size = new System.Drawing.Size(74, 16);
+            this.darkLabel8.TabIndex = 3;
+            this.darkLabel8.Text = "Install this?";
+            this.darkLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // darkButton3
+            // 
+            this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton3.Location = new System.Drawing.Point(74, 102);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(111, 24);
+            this.darkButton3.TabIndex = 16;
+            this.darkButton3.TabStop = false;
+            this.darkButton3.Text = "Go to the website";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
+            // Downloading
+            // 
+            this.Downloading.Location = new System.Drawing.Point(232, 189);
+            this.Downloading.Name = "Downloading";
+            this.Downloading.Size = new System.Drawing.Size(335, 25);
+            this.Downloading.TabIndex = 6;
+            this.Downloading.Visible = false;
+            // 
+            // getNewFile
+            // 
+            this.getNewFile.Controls.Add(this.labelFile);
+            this.getNewFile.Controls.Add(this.Downloading);
+            this.getNewFile.Location = new System.Drawing.Point(12, 68);
+            this.getNewFile.Name = "getNewFile";
+            this.getNewFile.Size = new System.Drawing.Size(835, 336);
+            this.getNewFile.TabIndex = 7;
+            this.getNewFile.Visible = false;
+            // 
+            // labelFile
+            // 
+            this.labelFile.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.labelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.labelFile.Location = new System.Drawing.Point(232, 157);
+            this.labelFile.Name = "labelFile";
+            this.labelFile.Size = new System.Drawing.Size(335, 16);
+            this.labelFile.TabIndex = 7;
+            this.labelFile.Text = "...";
+            this.labelFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +727,7 @@ namespace JetpackGUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(859, 416);
             this.Controls.Add(this.LangsPanel);
+            this.Controls.Add(this.getNewFile);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DSPanel);
             this.Controls.Add(this.pictureBox7);
@@ -693,6 +742,7 @@ namespace JetpackGUI
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Jetpack GUI";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.DSPanel.ResumeLayout(false);
@@ -701,7 +751,7 @@ namespace JetpackGUI
             this.ModsPanel.PerformLayout();
             this.darkGroupBox1.ResumeLayout(false);
             this.darkGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -714,6 +764,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.getNewFile.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -755,16 +806,21 @@ namespace JetpackGUI
         DarkUI.Docking.DarkDockPanel darkDockPanel1;
         DarkUI.Controls.DarkGroupBox darkGroupBox1;
         System.Windows.Forms.PictureBox pictureBox8;
-        DarkUI.Controls.DarkCheckBox darkCheckBox1;
-        DarkUI.Controls.DarkLabel darkLabel3;
+        DarkUI.Controls.DarkCheckBox YesInstallMe;
+        DarkUI.Controls.DarkLabel nameLabel;
         DarkUI.Controls.DarkLabel darkLabel4;
         DarkUI.Controls.DarkLabel darkLabel5;
         DarkUI.Controls.DarkLabel darkLabel6;
         DarkUI.Controls.DarkLabel darkLabel7;
-        System.Windows.Forms.LinkLabel linkLabel1;
-        System.Windows.Forms.PictureBox pictureBox10;
+        System.Windows.Forms.PictureBox ScreenShot;
         DarkUI.Controls.DarkButton darkButton1;
-        DarkUI.Controls.DarkLabel darkLabel8;
         DarkUI.Controls.DarkButton darkButton2;
+        private DarkUI.Controls.DarkComboBox darkComboBox1;
+        private DarkUI.Controls.DarkLabel darkLabel9;
+        private DarkUI.Controls.DarkLabel darkLabel8;
+        private DarkUI.Controls.DarkButton darkButton3;
+        private System.Windows.Forms.ProgressBar Downloading;
+        private System.Windows.Forms.Panel getNewFile;
+        private DarkUI.Controls.DarkLabel labelFile;
     }
 }
