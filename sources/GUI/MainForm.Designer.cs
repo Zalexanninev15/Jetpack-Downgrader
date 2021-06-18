@@ -50,8 +50,6 @@ namespace JetpackGUI
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.ScreenShot = new System.Windows.Forms.PictureBox();
             this.YesInstallMe = new DarkUI.Controls.DarkCheckBox();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
@@ -82,6 +80,7 @@ namespace JetpackGUI
             this.Downloading = new System.Windows.Forms.ProgressBar();
             this.getNewFile = new System.Windows.Forms.Panel();
             this.labelFile = new DarkUI.Controls.DarkLabel();
+            this.darkGroupBox2 = new DarkUI.Controls.DarkGroupBox();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
@@ -98,6 +97,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.getNewFile.SuspendLayout();
+            this.darkGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // GamePath
@@ -285,14 +285,12 @@ namespace JetpackGUI
             // darkGroupBox1
             // 
             this.darkGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox1.Controls.Add(this.darkGroupBox2);
             this.darkGroupBox1.Controls.Add(this.darkButton3);
             this.darkGroupBox1.Controls.Add(this.darkButton2);
             this.darkGroupBox1.Controls.Add(this.darkButton1);
             this.darkGroupBox1.Controls.Add(this.ScreenShot);
             this.darkGroupBox1.Controls.Add(this.YesInstallMe);
-            this.darkGroupBox1.Controls.Add(this.darkLabel8);
-            this.darkGroupBox1.Controls.Add(this.darkLabel7);
-            this.darkGroupBox1.Controls.Add(this.darkLabel4);
             this.darkGroupBox1.Controls.Add(this.darkLabel6);
             this.darkGroupBox1.Controls.Add(this.darkLabel5);
             this.darkGroupBox1.Controls.Add(this.nameLabel);
@@ -307,19 +305,19 @@ namespace JetpackGUI
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(74, 102);
+            this.darkButton3.Location = new System.Drawing.Point(332, 240);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(111, 24);
+            this.darkButton3.Size = new System.Drawing.Size(173, 37);
             this.darkButton3.TabIndex = 16;
             this.darkButton3.TabStop = false;
-            this.darkButton3.Text = "Go to the website";
+            this.darkButton3.Text = "Go to the modification website";
             this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
             // 
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(353, 164);
+            this.darkButton2.Location = new System.Drawing.Point(332, 198);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(83, 25);
@@ -331,7 +329,7 @@ namespace JetpackGUI
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(442, 164);
+            this.darkButton1.Location = new System.Drawing.Point(421, 198);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(84, 25);
@@ -342,9 +340,10 @@ namespace JetpackGUI
             // 
             // ScreenShot
             // 
-            this.ScreenShot.Location = new System.Drawing.Point(332, 18);
+            this.ScreenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ScreenShot.Location = new System.Drawing.Point(298, 24);
             this.ScreenShot.Name = "ScreenShot";
-            this.ScreenShot.Size = new System.Drawing.Size(212, 138);
+            this.ScreenShot.Size = new System.Drawing.Size(246, 164);
             this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenShot.TabIndex = 16;
             this.ScreenShot.TabStop = false;
@@ -352,55 +351,32 @@ namespace JetpackGUI
             // 
             // YesInstallMe
             // 
-            this.YesInstallMe.AutoSize = true;
-            this.YesInstallMe.Location = new System.Drawing.Point(271, 105);
+            this.YesInstallMe.Location = new System.Drawing.Point(14, 246);
             this.YesInstallMe.Name = "YesInstallMe";
-            this.YesInstallMe.Size = new System.Drawing.Size(46, 19);
+            this.YesInstallMe.Size = new System.Drawing.Size(308, 30);
             this.YesInstallMe.TabIndex = 0;
-            this.YesInstallMe.Text = "Yes";
+            this.YesInstallMe.Text = "Add to the installation after downgrading the game";
             this.YesInstallMe.CheckedChanged += new System.EventHandler(this.darkCheckBox1_CheckedChanged);
-            // 
-            // darkLabel8
-            // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(191, 106);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(74, 16);
-            this.darkLabel8.TabIndex = 3;
-            this.darkLabel8.Text = "Install this?";
-            this.darkLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // darkLabel7
-            // 
-            this.darkLabel7.AutoSize = true;
-            this.darkLabel7.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel7.Location = new System.Drawing.Point(18, 106);
-            this.darkLabel7.Name = "darkLabel7";
-            this.darkLabel7.Size = new System.Drawing.Size(56, 16);
-            this.darkLabel7.TabIndex = 3;
-            this.darkLabel7.Text = "Actions:";
-            this.darkLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // darkLabel4
             // 
             this.darkLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.darkLabel4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(18, 147);
+            this.darkLabel4.Location = new System.Drawing.Point(18, 25);
             this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(308, 134);
+            this.darkLabel4.Size = new System.Drawing.Size(238, 83);
             this.darkLabel4.TabIndex = 3;
-            this.darkLabel4.Text = "Description:";
+            this.darkLabel4.Text = "Kingpin kickin back while his workers sling his rocks. \r\nComing up like a fat rat" +
+    ". Big money, big cars, big body guards on his back. \r\nSo it’s difficult to get h" +
+    "im.";
             // 
             // darkLabel6
             // 
             this.darkLabel6.AutoSize = true;
             this.darkLabel6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(18, 71);
+            this.darkLabel6.Location = new System.Drawing.Point(14, 89);
             this.darkLabel6.Name = "darkLabel6";
             this.darkLabel6.Size = new System.Drawing.Size(50, 16);
             this.darkLabel6.TabIndex = 3;
@@ -412,7 +388,7 @@ namespace JetpackGUI
             this.darkLabel5.AutoSize = true;
             this.darkLabel5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel5.Location = new System.Drawing.Point(18, 46);
+            this.darkLabel5.Location = new System.Drawing.Point(14, 64);
             this.darkLabel5.Name = "darkLabel5";
             this.darkLabel5.Size = new System.Drawing.Size(55, 16);
             this.darkLabel5.TabIndex = 3;
@@ -424,7 +400,7 @@ namespace JetpackGUI
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Arial", 9.75F);
             this.nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.nameLabel.Location = new System.Drawing.Point(19, 22);
+            this.nameLabel.Location = new System.Drawing.Point(15, 40);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(46, 16);
             this.nameLabel.TabIndex = 3;
@@ -702,9 +678,9 @@ namespace JetpackGUI
             // 
             this.getNewFile.Controls.Add(this.labelFile);
             this.getNewFile.Controls.Add(this.Downloading);
-            this.getNewFile.Location = new System.Drawing.Point(12, 68);
+            this.getNewFile.Location = new System.Drawing.Point(12, 394);
             this.getNewFile.Name = "getNewFile";
-            this.getNewFile.Size = new System.Drawing.Size(835, 336);
+            this.getNewFile.Size = new System.Drawing.Size(835, 10);
             this.getNewFile.TabIndex = 7;
             this.getNewFile.Visible = false;
             // 
@@ -718,6 +694,17 @@ namespace JetpackGUI
             this.labelFile.TabIndex = 7;
             this.labelFile.Text = "...";
             this.labelFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // darkGroupBox2
+            // 
+            this.darkGroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox2.Controls.Add(this.darkLabel4);
+            this.darkGroupBox2.Location = new System.Drawing.Point(15, 114);
+            this.darkGroupBox2.Name = "darkGroupBox2";
+            this.darkGroupBox2.Size = new System.Drawing.Size(271, 120);
+            this.darkGroupBox2.TabIndex = 17;
+            this.darkGroupBox2.TabStop = false;
+            this.darkGroupBox2.Text = "Description";
             // 
             // MainForm
             // 
@@ -764,6 +751,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.getNewFile.ResumeLayout(false);
+            this.darkGroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -810,16 +798,15 @@ namespace JetpackGUI
         DarkUI.Controls.DarkLabel darkLabel4;
         DarkUI.Controls.DarkLabel darkLabel5;
         DarkUI.Controls.DarkLabel darkLabel6;
-        DarkUI.Controls.DarkLabel darkLabel7;
         System.Windows.Forms.PictureBox ScreenShot;
         DarkUI.Controls.DarkButton darkButton1;
         DarkUI.Controls.DarkButton darkButton2;
         private DarkUI.Controls.DarkComboBox darkComboBox1;
         private DarkUI.Controls.DarkLabel darkLabel9;
-        private DarkUI.Controls.DarkLabel darkLabel8;
         private DarkUI.Controls.DarkButton darkButton3;
         private System.Windows.Forms.ProgressBar Downloading;
         private System.Windows.Forms.Panel getNewFile;
         private DarkUI.Controls.DarkLabel labelFile;
+        private DarkUI.Controls.DarkGroupBox darkGroupBox2;
     }
 }

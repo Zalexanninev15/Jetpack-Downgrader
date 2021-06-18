@@ -351,7 +351,7 @@ namespace JetpackGUI
                     nameLabel.Text = "Name: " + tInfo[0];
                     darkLabel5.Text = "Version: " + tInfo[1];
                     darkLabel6.Text = "Author: " + tInfo[2];
-                    darkLabel4.Text = "Description: " + tInfo[3];
+                    darkLabel4.Text = tInfo[3];
                     site_link = tInfo[4];
                     ScreenShot.ImageLocation = tInfo[5];
                     photos_links[0] = ScreenShot.ImageLocation;
