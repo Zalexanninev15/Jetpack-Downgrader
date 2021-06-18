@@ -1,9 +1,9 @@
 ASI Loader
 1.3
 Silent
-This is a DLL file which adds ASI plugin loading functionality to San Andreas
+This is a DLL file which adds ASI plugin loading functionality to San Andreas.
 https://www.gtagarage.com/mods/show.php?id=21709
-https://www.upload.ee/image/13246962/830715-Silent-s-ASI-Loader-v1-3-GTA-San-Andreas.jpg
-https://www.upload.ee/image/13246962/830715-Silent-s-ASI-Loader-v1-3-GTA-San-Andreas.jpg
-https://www.upload.ee/image/13246962/830715-Silent-s-ASI-Loader-v1-3-GTA-San-Andreas.jpg
-https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/zk/ASI_Loader.zip
+https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/mods/mirror/ASI_Loader_scr123.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/mods/mirror/ASI_Loader_scr123.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/mods/mirror/ASI_Loader_scr123.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/ASI_Loader.zip
