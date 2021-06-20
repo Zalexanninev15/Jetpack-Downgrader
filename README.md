@@ -59,4 +59,4 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile project *Downgrader* using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install the [*DarkUI*]( https://www.nuget.org/packages/DarkUI) package for the application to work properly
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install the [*DarkUI*]( https://www.nuget.org/packages/DarkUI) package for the application (GUI) to work properly
