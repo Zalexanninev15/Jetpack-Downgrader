@@ -25,10 +25,12 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 * As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary settings
 * The ability to fine-tune the downgrading process, the *Jetpack Downgrader* itself, and some other aspects
-* Using delta patches that weigh significantly less than the files from the game version 1.0
+* Using patches that weigh significantly less than the files from the game version 1.0
+* Support for installing modifications after downgrading the game version
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
 * Easy integration of the application as a separate component in your project
 * Display process of downgrade and maximum speed of operations
+* Support for localizations to different languages (only the application interface)
 
 ## Supported versions
 
@@ -45,8 +47,8 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 1. Launch **app.exe**
 2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
 3. Select the first stage and select the path to game folder and necessary settings (the recommended ones are already checked)
-4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) in the list, then read the description in the panel on the right. If you agree to the installation of this modification, select the appropriate checkbox
-5. Select stage 3. The console will appear and downgrade process will start...
+4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) using the drop-down list (the list below is a list of all available modifications from the repository, for more convenient display). After selecting a modification, select the checkbox and wait for downloading the cache
+5. Select stage **3** The console will appear and downgrade process will start...
 6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
 7. If you have selected the modifications, you still need to wait until they are fully unpacked
 8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
@@ -56,7 +58,9 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 ## Used libraries
 
 * [DarkUI](https://github.com/RobinPerris/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
+* [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
+* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install the [*DarkUI*]( https://www.nuget.org/packages/DarkUI) package for the application (GUI) to work properly
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*DarkUI*](https://www.nuget.org/packages/DarkUI), [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) and [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json) package for the application to work properly
