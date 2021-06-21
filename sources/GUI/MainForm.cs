@@ -36,6 +36,12 @@ namespace JetpackGUI
             if (!Directory.Exists(@Application.StartupPath + @"\files\patches")) { darkButton4.Visible = true; button1.Visible = false; }
             if (!Directory.Exists(cache)) { Directory.CreateDirectory(cache); }
             else { Directory.Delete(cache, true); Directory.CreateDirectory(cache); }
+            try
+            {
+                string[] zf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
+                for (int i = 0; i < zf.Length; i++) { File.Delete(zf[i]); }
+            }
+            catch { }
             Translate();
             // Loading settings
             try
@@ -74,9 +80,9 @@ namespace JetpackGUI
                         try
                         {
                             Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
-                            MsgInfo("The \"" + modName + "\" modification has been successfully installed!");
+                            MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]);
                         }
-                        catch { MsgError("The \"" + modName + "\" modification is not installed!"); }
+                        catch { MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
                     }
                     MsgInfo(lc[4]);
                     this.Enabled = true;
@@ -106,11 +112,10 @@ namespace JetpackGUI
 
         async void MegaDownloader(string url, string file, string label, int code)
         {
-            AllProgressBar.Value = 0;
-            if (File.Exists(@Application.StartupPath + @"\files\dpatches.zip")) { File.Delete(@Application.StartupPath + @"\files\dpatches.zip"); }
-            if (File.Exists(@Application.StartupPath + @"\files\DirectX_Installer.zip")) { File.Delete(@Application.StartupPath + @"\files\DirectX_Installer.zip"); }
             getNewFile.Visible = true;
             panel1.Visible = false;
+            AllProgressBar.Value = 0;
+            if (File.Exists(file)) { File.Delete(file); }
             var client = new MegaApiClient();
             client.LoginAnonymous();
             Uri zip_link_uri = new Uri(url);
@@ -124,8 +129,8 @@ namespace JetpackGUI
                 if (code == 0)
                 {
                     Directory.CreateDirectory(@Application.StartupPath + @"\files\patches");
-                    Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\dpatches.zip\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
-                    File.Delete(@Application.StartupPath + @"\files\dpatches.zip");
+                    Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
+                    File.Delete(file);
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + Application.StartupPath + "\\files\\patches\" -y").WaitForExit();
                     File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
                     getNewFile.Visible = false;
@@ -136,8 +141,13 @@ namespace JetpackGUI
                 if (code == 1)
                 {
                     Directory.CreateDirectory(@Application.StartupPath + @"\files\DirectX");
-                    Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\DirectX_Installer.zip\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
-                    File.Delete(@Application.StartupPath + @"\files\DirectX_Installer.zip");
+                    Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
+                    File.Delete(file);
+                    getNewFile.Visible = false;
+                    panel1.Visible = true;
+                }
+                if (code == 2)
+                {
                     getNewFile.Visible = false;
                     panel1.Visible = true;
                 }
@@ -146,25 +156,25 @@ namespace JetpackGUI
 
         void button6_Click(object sender, EventArgs e)
         {
-            if (DSPanel.Visible == false) 
-            { 
-                tabFix = false; 
-                ModsPanel.Visible = false; 
-                DSPanel.Visible = true; 
+            if (DSPanel.Visible == false)
+            {
+                tabFix = false;
+                ModsPanel.Visible = false;
+                DSPanel.Visible = true;
             }
             else
             {
-                if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; } 
-                else { tabFix = false;  ModsPanel.Visible = false;  }
+                if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; }
+                else { tabFix = false; ModsPanel.Visible = false; }
             }
         }
 
         void button2_Click(object sender, EventArgs e)
         {
-            if (ModsPanel.Visible == false) 
-            { 
-                tabFix = true; 
-                DSPanel.Visible = true; 
+            if (ModsPanel.Visible == false)
+            {
+                tabFix = true;
+                DSPanel.Visible = true;
                 ModsPanel.Visible = true;
                 try
                 {
@@ -219,7 +229,7 @@ namespace JetpackGUI
                         if (Properties.Settings.Default.LanguageCode == new FileInfo(langs[i]).Name.Replace(".ini", "")) { darkComboBox2.SelectedItem = lg; }
                     }
                 }
-             }
+            }
             else { LangsPanel.Visible = false; lpFix = false; }
         }
 
@@ -247,11 +257,18 @@ namespace JetpackGUI
                 darkLabel9.Text = Convert.ToString(lang.GetValue("Interface", "FullList"));
                 darkGroupBox1.Text = Convert.ToString(lang.GetValue("Interface", "AboutMod"));
                 lc[16] = Convert.ToString(lang.GetValue("Interface", "ModName"));
+                lc[18] = Convert.ToString(lang.GetValue("Interface", "ModVersion"));
+                lc[19] = Convert.ToString(lang.GetValue("Interface", "ModAuthor"));
                 darkGroupBox2.Text = Convert.ToString(lang.GetValue("Interface", "DescriptionMod"));
+                darkButton3.Text = Convert.ToString(lang.GetValue("Interface", "WebSiteOfMod"));
+                lc[17] = Convert.ToString(lang.GetValue("Interface", "DownloadingModCache"));
                 button1.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "Downgrade"));
+                darkButton4.Text = "3. " + Convert.ToString(lang.GetValue("Interface", "DownloadPatches"));
+                lc[21] = Convert.ToString(lang.GetValue("Interface", "DownloadingPatches"));
+                lc[22] = Convert.ToString(lang.GetValue("Interface", "DownloadingDirectXFiles"));
+                lc[23] = Convert.ToString(lang.GetValue("Interface", "ModWord"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
-                lc[17] = Convert.ToString(lang.GetValue("Interface", "DownloadingModCache"));
                 // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
@@ -269,6 +286,9 @@ namespace JetpackGUI
                 lc[8] = Convert.ToString(lang.GetValue("Title", "Warning"));
                 lc[6] = Convert.ToString(lang.GetValue("Title", "FolderSelectDialog"));
                 // InfoMsg loading
+                lc[20] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadPatches"));
+                lc[22] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadDirectXFiles"));
+                lc[24] = Convert.ToString(lang.GetValue("InfoMsg", "ModSucces"));
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
                 lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
@@ -278,6 +298,7 @@ namespace JetpackGUI
                 lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
                 lc[11] = Convert.ToString(lang.GetValue("ErrorMsg", "NoNetwork"));
                 lc[15] = Convert.ToString(lang.GetValue("ErrorMsg", "AboutModDamaged"));
+                lc[25] = Convert.ToString(lang.GetValue("ErrorMsg", "ModFailure"));
                 // WarningMsg loading
                 lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
                 lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
@@ -285,15 +306,13 @@ namespace JetpackGUI
                 lc[12] = Convert.ToString(lang.GetValue("DebugF12", "Activation"));
                 lc[13] = Convert.ToString(lang.GetValue("DebugF12", "Deactivation"));
             }
-            catch(Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
 
         void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (YesInstallMe.Checked == true)
             {
-                getNewFile.Visible = true;
-                panel1.Visible = false;
                 if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
                 {
                     if (!Directory.Exists(cache + @"\zips")) { Directory.CreateDirectory(cache + @"\zips"); }
@@ -302,14 +321,13 @@ namespace JetpackGUI
                         if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip", lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...", 2); }
                         else
                         {
+                            getNewFile.Visible = true;
+                            panel1.Visible = false;
                             labelFile.Text = lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...";
                             AllProgressBar.Value = 0;
                             using (System.Net.WebClient wc = new System.Net.WebClient())
                             {
-                                wc.DownloadProgressChanged += (s, a) =>
-                                {
-                                    AllProgressBar.Value = a.ProgressPercentage;
-                                };
+                                wc.DownloadProgressChanged += (s, a) => { AllProgressBar.Value = a.ProgressPercentage; };
                                 wc.DownloadFileCompleted += (s, a) =>
                                 {
                                     AllProgressBar.Value = 0;
@@ -320,10 +338,15 @@ namespace JetpackGUI
                             }
                         }
                     }
-                    catch(Exception ex) { MsgError(lc[15]); MessageBox.Show(ex.ToString() + "\n" + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
+                    catch (Exception ex) { MsgError(lc[15]); MessageBox.Show(ex.ToString() + "\n" + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
                 }
             }
-            else { if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip")) { File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); } }
+            else
+            {
+                getNewFile.Visible = false;
+                panel1.Visible = true;
+                if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip")) { File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
+            }
         }
 
         void checkBox8_CheckedChanged(object sender, EventArgs e)
@@ -332,9 +355,9 @@ namespace JetpackGUI
             {
                 if (!Directory.Exists(@Application.StartupPath + @"\files\DirectX"))
                 {
-                    MsgInfo("Now we will start downloading the archive with additional DirectX files, because the folder with this files was not found!");
-                    try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", "Downloading additional DirectX files...", 1); }
-                    catch{ checkBox8.Checked = false; }
+                    MsgInfo(lc[22]);
+                    try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", lc[22], 1); }
+                    catch { checkBox8.Checked = false; }
                 }
             }
             cfg.SetValue("Downgrader", "InstallDirectXComponents", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f"));
@@ -357,12 +380,12 @@ namespace JetpackGUI
                     db = false;
                 }
             }
-            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.O)) 
+            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.O))
             {
                 tabFix = false;
                 ModsPanel.Visible = false;
                 DSPanel.Visible = true;
-                SelectPathToGame(); 
+                SelectPathToGame();
             }
         }
 
@@ -376,8 +399,8 @@ namespace JetpackGUI
                     darkGroupBox1.Visible = true;
                     string[] tInfo = mse[darkComboBox1.SelectedIndex].Split('|');
                     nameLabel.Text = lc[16] + ": " + tInfo[0];
-                    darkLabel5.Text = "Version: " + tInfo[1];
-                    darkLabel6.Text = "Author: " + tInfo[2];
+                    darkLabel5.Text = lc[18] + ": " + tInfo[1];
+                    darkLabel6.Text = lc[19] + ": " + tInfo[2];
                     darkLabel4.Text = tInfo[3];
                     site_link = tInfo[4];
                     ScreenShot.ImageLocation = tInfo[5];
@@ -388,7 +411,7 @@ namespace JetpackGUI
                     YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                 }
             }
-            catch { MsgError(lc[15]); ScreenShot.Enabled = false; zip_link = "application/zip"; }
+            catch (Exception ex) { MsgError(lc[15]); MessageBox.Show(ex.ToString()); ScreenShot.Enabled = false; zip_link = "application/zip"; }
         }
 
         void darkButton1_Click(object sender, EventArgs e)
@@ -430,8 +453,8 @@ namespace JetpackGUI
         {
             try
             {
-                MsgInfo("Now we will start downloading the archive with patches, because the folder with this files was not found!");
-                MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", "Downloading patches...", 0);
+                MsgInfo(lc[20]);
+                MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0);
             }
             catch { getNewFile.Visible = false; panel1.Visible = true; button1.Visible = false; }
         }
