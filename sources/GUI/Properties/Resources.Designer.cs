@@ -12,6 +12,7 @@
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
+        
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
@@ -33,9 +34,9 @@
             }
         }
         
-        internal static System.Drawing.Bitmap EN {
+        internal static System.Drawing.Bitmap Downloading {
             get {
-                object obj = ResourceManager.GetObject("EN", resourceCulture);
+                object obj = ResourceManager.GetObject("Downloading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -53,7 +54,7 @@
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
+        
         internal static string jpd1 {
             get {
                 return ResourceManager.GetString("jpd1", resourceCulture);
