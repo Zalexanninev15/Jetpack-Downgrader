@@ -81,7 +81,6 @@ namespace JetpackGUI
             this.AllProgressBar = new System.Windows.Forms.ProgressBar();
             this.getNewFile = new System.Windows.Forms.Panel();
             this.labelFile = new DarkUI.Controls.DarkLabel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
@@ -97,7 +96,6 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.getNewFile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // GamePath
@@ -683,18 +681,16 @@ namespace JetpackGUI
             // 
             // AllProgressBar
             // 
-            this.AllProgressBar.Location = new System.Drawing.Point(229, 273);
+            this.AllProgressBar.Location = new System.Drawing.Point(233, 194);
             this.AllProgressBar.MarqueeAnimationSpeed = 200;
             this.AllProgressBar.Name = "AllProgressBar";
             this.AllProgressBar.Size = new System.Drawing.Size(335, 25);
-            this.AllProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.AllProgressBar.TabIndex = 6;
             // 
             // getNewFile
             // 
             this.getNewFile.Controls.Add(this.labelFile);
             this.getNewFile.Controls.Add(this.AllProgressBar);
-            this.getNewFile.Controls.Add(this.pictureBox8);
             this.getNewFile.Location = new System.Drawing.Point(12, 68);
             this.getNewFile.Name = "getNewFile";
             this.getNewFile.Size = new System.Drawing.Size(835, 336);
@@ -705,22 +701,12 @@ namespace JetpackGUI
             // 
             this.labelFile.Font = new System.Drawing.Font("Arial", 9.75F);
             this.labelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.labelFile.Location = new System.Drawing.Point(229, 236);
+            this.labelFile.Location = new System.Drawing.Point(230, 160);
             this.labelFile.Name = "labelFile";
-            this.labelFile.Size = new System.Drawing.Size(335, 16);
+            this.labelFile.Size = new System.Drawing.Size(338, 16);
             this.labelFile.TabIndex = 7;
             this.labelFile.Text = "...";
             this.labelFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::JetpackGUI.Properties.Resources.Downloading;
-            this.pictureBox8.Location = new System.Drawing.Point(229, 8);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(335, 216);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 13;
-            this.pictureBox8.TabStop = false;
             // 
             // MainForm
             // 
@@ -766,7 +752,6 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.getNewFile.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -823,6 +808,5 @@ namespace JetpackGUI
         private DarkUI.Controls.DarkGroupBox darkGroupBox2;
         private DarkUI.Controls.DarkComboBox darkComboBox2;
         private DarkUI.Controls.DarkButton darkButton4;
-        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }

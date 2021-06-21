@@ -89,18 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
-    <None Include="Resources\Downloading.gif" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\jpd.ini" />
-    <None Include="Resources\Patches.png" />
-    <None Include="Resources\EN.png" />
     <None Include="Resources\Language.png" />
     <None Include="Resources\Up.png" />
     <None Include="Resources\JPD.png" />
-    <None Include="Resources\Settings.png" />
     <None Include="Resources\GitHub.png" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +106,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
