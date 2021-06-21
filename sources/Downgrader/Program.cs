@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -54,8 +52,11 @@ namespace Downgrader
         {
             Console.ResetColor();
             Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false);
-            try { ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"); } catch { }
-            try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe"); } catch { }
+            try 
+            {
+              Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + Application.StartupPath + "\\files\\patches\" -y").WaitForExit(); 
+                File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
+            } catch { }
             string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -266,25 +267,7 @@ namespace Downgrader
                             }
                             catch { Logger("DirectX", "Process", "Installation error"); }
                         }
-                        else
-                        {
-                            Logger("DirectX", "Process", "Downloading installer...");
-                            Logger("DirectX", "Process", "App is not frozen, just busy right now...");
-                            try
-                            {
-                                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-                                using (WebClient wc = new WebClient()) { wc.DownloadFile("http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
-                                Logger("DirectX", "Process", "Preparing installer...");
-                                try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
-                                ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
-                                File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip");
-                                Logger("DirectX", "Process", "Installing...");
-                                Logger("DirectX", "Process", "App is not frozen, just busy right now...");
-                                Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
-                                Logger("DirectX", "Process", "Installation completed successfully");
-                            }
-                            catch { Logger("DirectX", "Process", "Installation error"); }
-                        }
+                        else { Logger("DirectX", "Process", "Installation error"); }
                     }
                     if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
                     if ((gv != 0) && (er == 0) && (settings[3] == false))
@@ -767,7 +750,7 @@ namespace Downgrader
             if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
             if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
-            if ((status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
+            if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
             if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();

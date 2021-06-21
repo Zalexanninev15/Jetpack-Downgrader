@@ -44,3 +44,4 @@ sources/packages/Newtonsoft.Json.13.0.1/Newtonsoft.Json.13.0.1.nupkg
 sources/packages/Newtonsoft.Json.13.0.1/packageIcon.png
 sources/GUI/bin/Release/MegaApiClient.xml
 sources/GUI/bin/Release/Newtonsoft.Json.xml
+sources/Downgrader/bin/Release/jpd.ini
