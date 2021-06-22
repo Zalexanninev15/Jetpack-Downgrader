@@ -732,7 +732,7 @@ namespace Downgrader
             if (settings[1] == false) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
         }
 
-        public static void Patcher(string argument)
+        static void Patcher(string argument)
         {
             Process start_info = new Process();
             start_info.StartInfo.FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe";
