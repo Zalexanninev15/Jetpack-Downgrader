@@ -768,18 +768,13 @@ namespace JetpackGUI
         static void Patcher(string argument)
         {
             Process start_info = new Process();
-            start_info.StartInfo.FileName = @Path.GetDirectoryName(Application.StartupPath + @"\files\patcher.exe");
+            start_info.StartInfo.FileName = @Path.GetDirectoryName(@Application.StartupPath + @"\files\patcher.exe");
             start_info.StartInfo.Arguments = @argument;
             start_info.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             start_info.StartInfo.CreateNoWindow = true;
             start_info.StartInfo.UseShellExecute = false;
             start_info.Start();
             start_info.WaitForExit();
-        }
-
-        void Logger(string type, string ido, string status)
-        {
-            darkListView1.Items.Add(new DarkListItem("[" + type + "] " + ido + "=" + status));
         }
 
         static void Create(string ShortcutPath, string TargetPath)
@@ -819,6 +814,7 @@ namespace JetpackGUI
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc[1]); }
         void MsgWarning(string message) { DarkMessageBox.ShowWarning(message, lc[8]); }
+        void Logger(string type, string ido, string status) { darkListView1.Items.Add(new DarkListItem("[" + type + "]    " + ido + "=" + status)); }
         void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
         void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n" + lc[14]); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5]); } }
@@ -1069,9 +1065,13 @@ namespace JetpackGUI
             {
                 if (!Directory.Exists(@Application.StartupPath + @"\files\DirectX"))
                 {
-                    MsgInfo(lc[22]);
-                    try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", lc[22], 1); }
-                    catch { checkBox8.Checked = false; }
+                    DialogResult result = DarkMessageBox.ShowInformation(lc[22], lc[0], DarkDialogButton.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", lc[22], 1); }
+                        catch { checkBox8.Checked = false; }
+                    }
+                    else { checkBox8.Checked = false; }
                 }
             }
             cfg.SetValue("Downgrader", "InstallDirectXComponents", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f"));
@@ -1165,12 +1165,13 @@ namespace JetpackGUI
 
         void darkButton4_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult result = DarkMessageBox.ShowInformation(lc[20], lc[0], DarkDialogButton.YesNo);
+            if (result == DialogResult.Yes)
             {
-                MsgInfo(lc[20]);
-                MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0);
+                try { MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0); }
+                catch { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
             }
-            catch { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
+            else { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
         }
     }
 }
