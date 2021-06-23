@@ -293,7 +293,7 @@ namespace JetpackGUI
             // 
             // darkGroupBox1
             // 
-            this.darkGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox1.BorderColor = System.Drawing.Color.Gray;
             this.darkGroupBox1.Controls.Add(this.darkGroupBox2);
             this.darkGroupBox1.Controls.Add(this.darkButton3);
             this.darkGroupBox1.Controls.Add(this.darkButton2);
@@ -313,7 +313,7 @@ namespace JetpackGUI
             // 
             // darkGroupBox2
             // 
-            this.darkGroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox2.BorderColor = System.Drawing.Color.Gray;
             this.darkGroupBox2.Controls.Add(this.darkLabel4);
             this.darkGroupBox2.Location = new System.Drawing.Point(15, 116);
             this.darkGroupBox2.Name = "darkGroupBox2";
@@ -338,7 +338,7 @@ namespace JetpackGUI
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(332, 254);
+            this.darkButton3.Location = new System.Drawing.Point(332, 230);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton3.Size = new System.Drawing.Size(173, 27);
@@ -350,7 +350,7 @@ namespace JetpackGUI
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(332, 217);
+            this.darkButton2.Location = new System.Drawing.Point(332, 194);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(83, 25);
@@ -362,7 +362,7 @@ namespace JetpackGUI
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(421, 217);
+            this.darkButton1.Location = new System.Drawing.Point(421, 194);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(84, 25);
@@ -374,12 +374,11 @@ namespace JetpackGUI
             // ScreenShot
             // 
             this.ScreenShot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ScreenShot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ScreenShot.ErrorImage = global::JetpackGUI.Properties.Resources.JPD;
             this.ScreenShot.InitialImage = global::JetpackGUI.Properties.Resources.JPD;
-            this.ScreenShot.Location = new System.Drawing.Point(305, 30);
+            this.ScreenShot.Location = new System.Drawing.Point(305, 41);
             this.ScreenShot.Name = "ScreenShot";
-            this.ScreenShot.Size = new System.Drawing.Size(233, 176);
+            this.ScreenShot.Size = new System.Drawing.Size(233, 142);
             this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenShot.TabIndex = 16;
             this.ScreenShot.TabStop = false;
@@ -700,9 +699,9 @@ namespace JetpackGUI
             this.progressPanel.Controls.Add(this.DebugInfo);
             this.progressPanel.Controls.Add(this.labelPartProgress);
             this.progressPanel.Controls.Add(this.PartProgressBar);
-            this.progressPanel.Location = new System.Drawing.Point(12, 68);
+            this.progressPanel.Location = new System.Drawing.Point(12, 383);
             this.progressPanel.Name = "progressPanel";
-            this.progressPanel.Size = new System.Drawing.Size(835, 336);
+            this.progressPanel.Size = new System.Drawing.Size(835, 21);
             this.progressPanel.TabIndex = 7;
             this.progressPanel.Visible = false;
             // 
