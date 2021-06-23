@@ -97,7 +97,9 @@ namespace JetpackGUI
 
         //void DowngradeNative()
         //{
-        //        try
+        //      progressPanel.Visible = true;
+        //       stagesPanel.Visible = false;
+        ////        try
         //        {
         //            Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + Application.StartupPath + "\\files\\patches\" -y").WaitForExit();
         //            File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
@@ -763,38 +765,31 @@ namespace JetpackGUI
         //        if (settings[1] == false) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
         //}
 
-        //static void Patcher(string argument)
-        //{
-        //    Process start_info = new Process();
-        //    start_info.StartInfo.FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe";
-        //    start_info.StartInfo.Arguments = @argument;
-        //    start_info.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-        //    start_info.StartInfo.CreateNoWindow = true;
-        //    start_info.StartInfo.UseShellExecute = false;
-        //    start_info.Start();
-        //    start_info.WaitForExit();
-        //}
+        static void Patcher(string argument)
+        {
+            Process start_info = new Process();
+            start_info.StartInfo.FileName = @Path.GetDirectoryName(Application.StartupPath + @"\files\patcher.exe");
+            start_info.StartInfo.Arguments = @argument;
+            start_info.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            start_info.StartInfo.CreateNoWindow = true;
+            start_info.StartInfo.UseShellExecute = false;
+            start_info.Start();
+            start_info.WaitForExit();
+        }
 
-        //static void Logger(string type, string ido, string status)
-        //{
-        //    if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
-        //    if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
-        //    if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
-        //    if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
-        //    if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
-        //    if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
-        //    Console.WriteLine("[" + type + "] " + ido + "=" + status);
-        //    Console.ResetColor();
-        //}
+        void Logger(string type, string ido, string status)
+        {
+            darkListView1.Items.Add(new DarkListItem("[" + type + "] " + ido + "=" + status));
+        }
 
-        //static void Create(string ShortcutPath, string TargetPath)
-        //{
-        //    IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
-        //    IWshRuntimeLibrary.IWshShortcut Shortcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutPath);
-        //    Shortcut.TargetPath = TargetPath;
-        //    Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
-        //    Shortcut.Save();
-        //}
+        static void Create(string ShortcutPath, string TargetPath)
+        {
+            IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut Shortcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutPath);
+            Shortcut.TargetPath = TargetPath;
+            Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
+            Shortcut.Save();
+        }
 
         static string GetMD5(string file)
         {
@@ -831,8 +826,8 @@ namespace JetpackGUI
 
         async void MegaDownloader(string url, string file, string label, int code)
         {
-            getNewFile.Visible = true;
-            panel1.Visible = false;
+            progressPanel.Visible = true;
+            stagesPanel.Visible = false;
             AllProgressBar.Value = 0;
             if (File.Exists(file)) { File.Delete(file); }
             var client = new MegaApiClient();
@@ -852,8 +847,8 @@ namespace JetpackGUI
                     File.Delete(file);
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + Application.StartupPath + "\\files\\patches\" -y").WaitForExit();
                     File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
-                    getNewFile.Visible = false;
-                    panel1.Visible = true;
+                    progressPanel.Visible = false;
+                    stagesPanel.Visible = true;
                     darkButton4.Visible = false;
                     button1.Visible = true;
                 }
@@ -862,13 +857,13 @@ namespace JetpackGUI
                     Directory.CreateDirectory(@Application.StartupPath + @"\files\DirectX");
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
-                    getNewFile.Visible = false;
-                    panel1.Visible = true;
+                    progressPanel.Visible = false;
+                    stagesPanel.Visible = true;
                 }
                 if (code == 2)
                 {
-                    getNewFile.Visible = false;
-                    panel1.Visible = true;
+                    progressPanel.Visible = false;
+                    stagesPanel.Visible = true;
                 }
             }
         }
@@ -1040,8 +1035,8 @@ namespace JetpackGUI
                         if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip", lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...", 2); }
                         else
                         {
-                            getNewFile.Visible = true;
-                            panel1.Visible = false;
+                            progressPanel.Visible = true;
+                            stagesPanel.Visible = false;
                             labelFile.Text = lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...";
                             AllProgressBar.Value = 0;
                             using (System.Net.WebClient wc = new System.Net.WebClient())
@@ -1050,8 +1045,8 @@ namespace JetpackGUI
                                 wc.DownloadFileCompleted += (s, a) =>
                                 {
                                     AllProgressBar.Value = 0;
-                                    getNewFile.Visible = false;
-                                    panel1.Visible = true;
+                                    progressPanel.Visible = false;
+                                    stagesPanel.Visible = true;
                                 };
                                 wc.DownloadFileAsync(new Uri(zip_link), @cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                             }
@@ -1062,8 +1057,8 @@ namespace JetpackGUI
             }
             else
             {
-                getNewFile.Visible = false;
-                panel1.Visible = true;
+                progressPanel.Visible = false;
+                stagesPanel.Visible = true;
                 if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip")) { File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
             }
         }
@@ -1175,7 +1170,7 @@ namespace JetpackGUI
                 MsgInfo(lc[20]);
                 MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0);
             }
-            catch { getNewFile.Visible = false; panel1.Visible = true; button1.Visible = false; }
+            catch { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
         }
     }
 }
