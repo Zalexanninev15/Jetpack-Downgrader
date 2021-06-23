@@ -64,7 +64,7 @@ namespace JetpackGUI
             this.button7 = new DarkUI.Controls.DarkButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.HelloUser = new DarkUI.Controls.DarkTitle();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.stagesPanel = new System.Windows.Forms.Panel();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.button2 = new DarkUI.Controls.DarkButton();
             this.button6 = new DarkUI.Controls.DarkButton();
@@ -79,17 +79,19 @@ namespace JetpackGUI
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.AllProgressBar = new System.Windows.Forms.ProgressBar();
-            this.getNewFile = new System.Windows.Forms.Panel();
-            this.labelFile = new DarkUI.Controls.DarkLabel();
+            this.progressPanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.labelFile = new DarkUI.Controls.DarkLabel();
+            this.DebugInfo = new DarkUI.Controls.DarkLabel();
+            this.darkListView2 = new DarkUI.Controls.DarkListView();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
             this.darkGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.stagesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -97,7 +99,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.getNewFile.SuspendLayout();
+            this.progressPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // GamePath
@@ -517,20 +519,20 @@ namespace JetpackGUI
             this.HelloUser.TabIndex = 12;
             this.HelloUser.Text = "Select the desired stage";
             // 
-            // panel1
+            // stagesPanel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.darkButton4);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox4);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Location = new System.Drawing.Point(-52, -10);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(939, 66);
-            this.panel1.TabIndex = 0;
+            this.stagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stagesPanel.Controls.Add(this.darkButton4);
+            this.stagesPanel.Controls.Add(this.button2);
+            this.stagesPanel.Controls.Add(this.button6);
+            this.stagesPanel.Controls.Add(this.button1);
+            this.stagesPanel.Controls.Add(this.pictureBox2);
+            this.stagesPanel.Controls.Add(this.pictureBox4);
+            this.stagesPanel.Controls.Add(this.pictureBox3);
+            this.stagesPanel.Location = new System.Drawing.Point(-52, -8);
+            this.stagesPanel.Name = "stagesPanel";
+            this.stagesPanel.Size = new System.Drawing.Size(916, 64);
+            this.stagesPanel.TabIndex = 0;
             // 
             // darkButton4
             // 
@@ -683,38 +685,29 @@ namespace JetpackGUI
             // 
             // AllProgressBar
             // 
-            this.AllProgressBar.Location = new System.Drawing.Point(233, 190);
+            this.AllProgressBar.Location = new System.Drawing.Point(233, 197);
             this.AllProgressBar.MarqueeAnimationSpeed = 200;
             this.AllProgressBar.Name = "AllProgressBar";
             this.AllProgressBar.Size = new System.Drawing.Size(335, 25);
             this.AllProgressBar.TabIndex = 6;
             // 
-            // getNewFile
+            // progressPanel
             // 
-            this.getNewFile.Controls.Add(this.progressBar1);
-            this.getNewFile.Controls.Add(this.darkLabel3);
-            this.getNewFile.Controls.Add(this.labelFile);
-            this.getNewFile.Controls.Add(this.AllProgressBar);
-            this.getNewFile.Location = new System.Drawing.Point(12, 68);
-            this.getNewFile.Name = "getNewFile";
-            this.getNewFile.Size = new System.Drawing.Size(835, 336);
-            this.getNewFile.TabIndex = 7;
-            this.getNewFile.Visible = false;
-            // 
-            // labelFile
-            // 
-            this.labelFile.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.labelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.labelFile.Location = new System.Drawing.Point(230, 156);
-            this.labelFile.Name = "labelFile";
-            this.labelFile.Size = new System.Drawing.Size(338, 16);
-            this.labelFile.TabIndex = 7;
-            this.labelFile.Text = "...";
-            this.labelFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.progressPanel.Controls.Add(this.darkListView2);
+            this.progressPanel.Controls.Add(this.progressBar1);
+            this.progressPanel.Controls.Add(this.darkLabel3);
+            this.progressPanel.Controls.Add(this.DebugInfo);
+            this.progressPanel.Controls.Add(this.labelFile);
+            this.progressPanel.Controls.Add(this.AllProgressBar);
+            this.progressPanel.Location = new System.Drawing.Point(12, 68);
+            this.progressPanel.Name = "progressPanel";
+            this.progressPanel.Size = new System.Drawing.Size(835, 336);
+            this.progressPanel.TabIndex = 7;
+            this.progressPanel.Visible = false;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(233, 259);
+            this.progressBar1.Location = new System.Drawing.Point(233, 266);
             this.progressBar1.MarqueeAnimationSpeed = 200;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(335, 25);
@@ -725,13 +718,47 @@ namespace JetpackGUI
             // 
             this.darkLabel3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(230, 232);
+            this.darkLabel3.Location = new System.Drawing.Point(230, 239);
             this.darkLabel3.Name = "darkLabel3";
             this.darkLabel3.Size = new System.Drawing.Size(338, 16);
             this.darkLabel3.TabIndex = 7;
             this.darkLabel3.Text = "...";
             this.darkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.darkLabel3.Visible = false;
+            // 
+            // labelFile
+            // 
+            this.labelFile.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.labelFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.labelFile.Location = new System.Drawing.Point(230, 163);
+            this.labelFile.Name = "labelFile";
+            this.labelFile.Size = new System.Drawing.Size(338, 16);
+            this.labelFile.TabIndex = 7;
+            this.labelFile.Text = "...";
+            this.labelFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // DebugInfo
+            // 
+            this.DebugInfo.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.DebugInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.DebugInfo.Location = new System.Drawing.Point(16, 46);
+            this.DebugInfo.Name = "DebugInfo";
+            this.DebugInfo.Size = new System.Drawing.Size(211, 23);
+            this.DebugInfo.TabIndex = 7;
+            this.DebugInfo.Text = "...";
+            this.DebugInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DebugInfo.Visible = false;
+            // 
+            // darkListView2
+            // 
+            this.darkListView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.darkListView2.HideScrollBars = false;
+            this.darkListView2.Location = new System.Drawing.Point(233, 18);
+            this.darkListView2.Name = "darkListView2";
+            this.darkListView2.Size = new System.Drawing.Size(587, 142);
+            this.darkListView2.TabIndex = 9;
+            this.darkListView2.Text = "darkListView2";
+            this.darkListView2.Visible = false;
             // 
             // MainForm
             // 
@@ -740,8 +767,8 @@ namespace JetpackGUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(859, 416);
             this.Controls.Add(this.LangsPanel);
-            this.Controls.Add(this.getNewFile);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.progressPanel);
+            this.Controls.Add(this.stagesPanel);
             this.Controls.Add(this.DSPanel);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox6);
@@ -767,7 +794,7 @@ namespace JetpackGUI
             this.darkGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.stagesPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -776,7 +803,7 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.getNewFile.ResumeLayout(false);
+            this.progressPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -805,7 +832,7 @@ namespace JetpackGUI
         System.Windows.Forms.PictureBox pictureBox6;
         System.Windows.Forms.PictureBox pictureBox7;
         DarkUI.Controls.DarkSectionPanel ModsPanel;
-        System.Windows.Forms.Panel panel1;
+        System.Windows.Forms.Panel stagesPanel;
         System.Windows.Forms.PictureBox pictureBox2;
         DarkUI.Controls.DarkButton button2;
         DarkUI.Controls.DarkButton button6;
@@ -828,12 +855,14 @@ namespace JetpackGUI
         private DarkUI.Controls.DarkLabel darkLabel9;
         private DarkUI.Controls.DarkButton darkButton3;
         private System.Windows.Forms.ProgressBar AllProgressBar;
-        private System.Windows.Forms.Panel getNewFile;
+        private System.Windows.Forms.Panel progressPanel;
         private DarkUI.Controls.DarkLabel labelFile;
         private DarkUI.Controls.DarkGroupBox darkGroupBox2;
         private DarkUI.Controls.DarkComboBox darkComboBox2;
         private DarkUI.Controls.DarkButton darkButton4;
         private System.Windows.Forms.ProgressBar progressBar1;
         private DarkUI.Controls.DarkLabel darkLabel3;
+        private DarkUI.Controls.DarkLabel DebugInfo;
+        private DarkUI.Controls.DarkListView darkListView2;
     }
 }
