@@ -1,6 +1,5 @@
 ﻿namespace JetpackGUI.Properties {
     using System;
-    
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -48,7 +47,7 @@
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-    
+        
         internal static string jpd1 {
             get {
                 return ResourceManager.GetString("jpd1", resourceCulture);
@@ -58,6 +57,13 @@
         internal static System.Drawing.Bitmap Language {
             get {
                 object obj = ResourceManager.GetObject("Language", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Right {
+            get {
+                object obj = ResourceManager.GetObject("Right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

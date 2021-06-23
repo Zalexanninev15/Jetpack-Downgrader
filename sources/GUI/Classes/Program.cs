@@ -10,7 +10,7 @@ namespace JetpackGUI
             if (File.Exists(@Application.StartupPath + @"\files\jpd.ini") == false) { File.WriteAllText(@Application.StartupPath + @"\files\jpd.ini", Properties.Resources.jpd1); }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            if (Properties.Settings.Default.FirstLaunch == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
         }
     }
 }
