@@ -8,7 +8,6 @@ using System.Net;
 using CG.Web.MegaApiClient;
 using System.Text;
 using System.Security.Cryptography;
-using Microsoft.Win32;
 
 namespace JetpackGUI
 {
@@ -991,6 +990,7 @@ namespace JetpackGUI
                 checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectXComponents"));
                 YesInstallMe.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallMod"));
                 // Title loading
+                lc[27] = Convert.ToString(lang.GetValue("Title", "Request"));
                 lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
                 lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
                 lc[8] = Convert.ToString(lang.GetValue("Title", "Warning"));
@@ -998,6 +998,7 @@ namespace JetpackGUI
                 // InfoMsg loading
                 lc[20] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadPatches"));
                 lc[22] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadDirectXFiles"));
+                lc[26] = Convert.ToString(lang.GetValue("InfoMsg", "InstallModQuestion"));
                 lc[24] = Convert.ToString(lang.GetValue("InfoMsg", "ModSucces"));
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
@@ -1023,35 +1024,40 @@ namespace JetpackGUI
         {
             if (YesInstallMe.Checked == true)
             {
-                if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
+                DialogResult result = DarkMessageBox.ShowInformation(lc[26], lc[27], DarkDialogButton.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    if (!Directory.Exists(cache + @"\zips")) { Directory.CreateDirectory(cache + @"\zips"); }
-                    try
+                    if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
                     {
-                        if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip", lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...", 2); }
-                        else
+                        if (!Directory.Exists(cache + @"\zips")) { Directory.CreateDirectory(cache + @"\zips"); }
+                        try
                         {
-                            progressPanel.Visible = true;
-                            stagesPanel.Visible = false;
-                            labelFile.Text = lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...";
-                            AllProgressBar.Value = 0;
-                            using (System.Net.WebClient wc = new System.Net.WebClient())
+                            if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip", lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...", 2); }
+                            else
                             {
-                                wc.DownloadProgressChanged += (s, a) => { AllProgressBar.Value = a.ProgressPercentage; };
-                                wc.DownloadFileCompleted += (s, a) =>
+                                progressPanel.Visible = true;
+                                stagesPanel.Visible = false;
+                                labelFile.Text = lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...";
+                                AllProgressBar.Value = 0;
+                                using (System.Net.WebClient wc = new System.Net.WebClient())
                                 {
-                                    AllProgressBar.Value = 0;
-                                    progressPanel.Visible = false;
-                                    stagesPanel.Visible = true;
-                                };
-                                wc.DownloadFileAsync(new Uri(zip_link), @cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
+                                    wc.DownloadProgressChanged += (s, a) => { AllProgressBar.Value = a.ProgressPercentage; };
+                                    wc.DownloadFileCompleted += (s, a) =>
+                                    {
+                                        AllProgressBar.Value = 0;
+                                        progressPanel.Visible = false;
+                                        stagesPanel.Visible = true;
+                                    };
+                                    wc.DownloadFileAsync(new Uri(zip_link), @cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
+                                }
                             }
                         }
+                        catch (Exception ex) { MsgError(lc[15]); MessageBox.Show(ex.ToString() + "\n" + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
                     }
-                    catch (Exception ex) { MsgError(lc[15]); MessageBox.Show(ex.ToString() + "\n" + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); }
                 }
+                else { YesInstallMe.Checked = false; }
             }
-            else
+            if (YesInstallMe.Checked == false)
             {
                 progressPanel.Visible = false;
                 stagesPanel.Visible = true;
@@ -1065,7 +1071,7 @@ namespace JetpackGUI
             {
                 if (!Directory.Exists(@Application.StartupPath + @"\files\DirectX"))
                 {
-                    DialogResult result = DarkMessageBox.ShowInformation(lc[22], lc[0], DarkDialogButton.YesNo);
+                    DialogResult result = DarkMessageBox.ShowInformation(lc[22], lc[27], DarkDialogButton.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", lc[22], 1); }
@@ -1165,7 +1171,7 @@ namespace JetpackGUI
 
         void darkButton4_Click(object sender, EventArgs e)
         {
-            DialogResult result = DarkMessageBox.ShowInformation(lc[20], lc[0], DarkDialogButton.YesNo);
+            DialogResult result = DarkMessageBox.ShowInformation(lc[20], lc[27], DarkDialogButton.YesNo);
             if (result == DialogResult.Yes)
             {
                 try { MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0); }
