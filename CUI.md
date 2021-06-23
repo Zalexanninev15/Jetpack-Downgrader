@@ -2,6 +2,15 @@
 
 *Actions are performed in the **files** folder in the root of the application folder **app.exe***
 
+## CUI features
+
+* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary settings
+* The ability to fine-tune the downgrading process, the *Jetpack Downgrader* itself, and some other aspects
+* Using delta patches that weigh significantly less than the files from the game version 1.0
+* Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
+* Easy integration of the application as a separate component in your project
+* Display process of downgrade and maximum speed of operations
+
 ## Usage and configuration
 
 1. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
