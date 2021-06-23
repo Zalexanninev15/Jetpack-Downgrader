@@ -1,4 +1,4 @@
-﻿/namespace JetpackGUI.Properties {
+﻿namespace JetpackGUI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
