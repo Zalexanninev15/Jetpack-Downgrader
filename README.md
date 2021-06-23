@@ -52,6 +52,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
 7. If you have selected the modifications, you still need to wait until they are fully unpacked
 8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
+9. If there are problems, press the **F12** key and start the downgrade process again
 
 **If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/CUI.md) about it**
 

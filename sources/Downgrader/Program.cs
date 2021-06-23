@@ -729,7 +729,10 @@ namespace Downgrader
                 else { Logger("Game", "Path", "false"); }
             }
             else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
-            if (settings[1] == false) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
+            bool IsGUI = false;
+            string str = "app";
+            foreach (Process process2 in Process.GetProcesses()) { if (process2.ProcessName.ToLower().Contains(str.ToLower())) { IsGUI = true; } }
+            if ((settings[1] == false) || (IsGUI == true)) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
         }
 
         static void Patcher(string argument)
