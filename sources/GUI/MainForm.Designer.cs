@@ -537,7 +537,7 @@ namespace JetpackGUI
             // darkButton4
             // 
             this.darkButton4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(556, 22);
+            this.darkButton4.Location = new System.Drawing.Point(556, 21);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(166, 31);
@@ -578,7 +578,7 @@ namespace JetpackGUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(556, 22);
+            this.button1.Location = new System.Drawing.Point(556, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 31);
             this.button1.TabIndex = 14;
@@ -699,9 +699,9 @@ namespace JetpackGUI
             this.progressPanel.Controls.Add(this.DebugInfo);
             this.progressPanel.Controls.Add(this.labelPartProgress);
             this.progressPanel.Controls.Add(this.PartProgressBar);
-            this.progressPanel.Location = new System.Drawing.Point(12, 383);
+            this.progressPanel.Location = new System.Drawing.Point(12, 68);
             this.progressPanel.Name = "progressPanel";
-            this.progressPanel.Size = new System.Drawing.Size(835, 21);
+            this.progressPanel.Size = new System.Drawing.Size(835, 336);
             this.progressPanel.TabIndex = 7;
             this.progressPanel.Visible = false;
             // 

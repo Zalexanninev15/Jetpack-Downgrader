@@ -6,6 +6,10 @@ namespace JetpackGUI
 {
     public partial class MyLang : Form
     {
+        [System.Runtime.InteropServices.DllImport("DwmApi")]
+        static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+        protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
+
         string[] langs = new string[10];
         public MyLang()
         {
@@ -14,9 +18,13 @@ namespace JetpackGUI
 
         void button2_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.FirstLaunch = false;
-            Properties.Settings.Default.Save();
-            Application.Restart();
+            if (AllLangs.Text != "")
+            {
+                Properties.Settings.Default.FirstLaunch = false;
+                Properties.Settings.Default.Save();
+                Application.Restart();
+            }
+            else { DarkUI.Forms.DarkMessageBox.ShowWarning("You need to select a language from the list!", "Warning"); }
         }
 
         void MyLang_Load(object sender, EventArgs e)
