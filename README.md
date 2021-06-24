@@ -23,14 +23,13 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Features
 
-* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary settings
+* Easy to use and lots of additional downgrade settings
 * The ability to fine-tune the downgrading process, the *Jetpack Downgrader* itself, and some other aspects
 * Using patches that weigh significantly less than the files from the game version 1.0
 * Support for installing modifications after downgrading the game version
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
-* Easy integration of the application as a separate component in your project
 * Display process of downgrade and maximum speed of operations
-* Support for localizations to different languages (only the application interface)
+* Support for localizations to different languages (GUI only)
 
 ## Supported versions
 
