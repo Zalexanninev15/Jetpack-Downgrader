@@ -280,16 +280,13 @@ namespace JetpackGUI
             this.listBox1.ForeColor = System.Drawing.Color.Gainsboro;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
-            "Mod1",
-            "Mod2",
-            "Mod3",
-            "Mod4"});
             this.listBox1.Location = new System.Drawing.Point(12, 62);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(241, 258);
             this.listBox1.TabIndex = 6;
+            this.listBox1.TabStop = false;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
             // darkGroupBox1
             // 
