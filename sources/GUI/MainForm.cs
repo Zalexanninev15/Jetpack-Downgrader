@@ -83,7 +83,7 @@ namespace JetpackGUI
             catch { MsgError(lc[2]); }
         }
 
-        async void button1_Click(object sender, EventArgs e)
+        void button1_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(@Application.StartupPath + @"\files\patches"))
             {
@@ -115,6 +115,12 @@ namespace JetpackGUI
                     MsgInfo(lc[4]);
                     button1.Enabled = true;
                     pictureBox10.Visible = true;
+                    DialogResult result = DarkMessageBox.ShowInformation(lc[35], lc[0], DarkDialogButton.YesNo);
+                    if (result == DialogResult.Yes) 
+                    {
+                        try { Process.Start(GamePath.Text + @"\gta_sa.exe"); }
+                        catch { try { Process.Start(GamePath.Text + @"\gta-sa.exe"); } catch { } }
+                    }
                 }
                 else { MsgWarning(lc[7]); pictureBox10.Visible = false; }
             }
@@ -1034,6 +1040,7 @@ namespace JetpackGUI
                 lc[26] = Convert.ToString(lang.GetValue("InfoMsg", "InstallModQuestion"));
                 lc[24] = Convert.ToString(lang.GetValue("InfoMsg", "ModSucces"));
                 lc[4] = Convert.ToString(lang.GetValue("InfoMsg", "Succes"));
+                lc[35] = Convert.ToString(lang.GetValue("InfoMsg", "WishPlay"));
                 lc[34] = Convert.ToString(lang.GetValue("InfoMsg", "BindingOK"));
                 lc[31] = Convert.ToString(lang.GetValue("InfoMsg", "ReturnUsingBackups"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
@@ -1085,8 +1092,9 @@ namespace JetpackGUI
                                     PartProgressBar.Value = 0;
                                     using (System.Net.WebClient wc = new System.Net.WebClient())
                                     {
-                                        wc.OpenRead(zip_link);
+                                        var r = wc.OpenRead(zip_link);
                                         labelPartProgress.Text += " (" + (Convert.ToDouble(wc.ResponseHeaders["Content-Length"]) / 1048576).ToString("#.# МБ)");
+                                        r.Close();
                                         wc.DownloadProgressChanged += (s, a) => { PartProgressBar.Value = a.ProgressPercentage; };
                                         wc.DownloadFileCompleted += (s, a) =>
                                         {
@@ -1272,7 +1280,6 @@ namespace JetpackGUI
                             File.Delete(@GamePath.Text + fl[i]);
                             File.Copy(@GamePath.Text + fl[i] + ".jpb", @GamePath.Text + fl[i]);
                             File.Delete(@GamePath.Text + fl[i] + ".jpb");
-                            
                         }
                         progressBar1.Value = i + 1;
                     }

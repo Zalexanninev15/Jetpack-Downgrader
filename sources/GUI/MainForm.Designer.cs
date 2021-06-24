@@ -274,10 +274,10 @@ namespace JetpackGUI
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
             this.ModsPanel.Controls.Add(this.darkLabel9);
             this.ModsPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ModsPanel.Location = new System.Drawing.Point(1, 280);
+            this.ModsPanel.Location = new System.Drawing.Point(1, 0);
             this.ModsPanel.Name = "ModsPanel";
             this.ModsPanel.SectionHeader = "Modifications";
-            this.ModsPanel.Size = new System.Drawing.Size(834, 56);
+            this.ModsPanel.Size = new System.Drawing.Size(834, 336);
             this.ModsPanel.TabIndex = 15;
             this.ModsPanel.Visible = false;
             // 
@@ -738,9 +738,9 @@ namespace JetpackGUI
             this.progressPanel.Controls.Add(this.DebugInfo);
             this.progressPanel.Controls.Add(this.labelPartProgress);
             this.progressPanel.Controls.Add(this.PartProgressBar);
-            this.progressPanel.Location = new System.Drawing.Point(12, 361);
+            this.progressPanel.Location = new System.Drawing.Point(12, 68);
             this.progressPanel.Name = "progressPanel";
-            this.progressPanel.Size = new System.Drawing.Size(835, 43);
+            this.progressPanel.Size = new System.Drawing.Size(835, 336);
             this.progressPanel.TabIndex = 7;
             this.progressPanel.Visible = false;
             // 
@@ -805,8 +805,8 @@ namespace JetpackGUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(859, 416);
-            this.Controls.Add(this.progressPanel);
             this.Controls.Add(this.LangsPanel);
+            this.Controls.Add(this.progressPanel);
             this.Controls.Add(this.stagesPanel);
             this.Controls.Add(this.DSPanel);
             this.Controls.Add(this.pictureBox7);
