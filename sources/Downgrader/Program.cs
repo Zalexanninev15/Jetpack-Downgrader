@@ -280,7 +280,7 @@ namespace Downgrader
                             {
                                 Logger("Game", @path + fl[1], "true");
                                 File.SetAttributes(@path + fl[1], FileAttributes.Normal);
-                                try { File.SetAttributes(@path + fl[1] + ".bak", FileAttributes.Normal); } catch { }
+                                try { File.SetAttributes(@path + fl[1] + ".jpb", FileAttributes.Normal); } catch { }
                             }
                             else { er = 1; Logger("Game", @path + fl[1], "false"); }
                         }
@@ -293,7 +293,7 @@ namespace Downgrader
                                     if (File.Exists(@path + fl[i]))
                                     {
                                         File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                        try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                        try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                         if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                     }
                                     else { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "false"); } }
@@ -312,7 +312,7 @@ namespace Downgrader
                                         if (File.Exists(@path + fl[i]))
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                            try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                            try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                         }
                                         else { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "false"); } }
@@ -332,7 +332,7 @@ namespace Downgrader
                                         if (File.Exists(@path + fl[i]))
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                            try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                            try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                         }
                                         else
@@ -455,21 +455,21 @@ namespace Downgrader
                                     Logger("Downgrader", "Process", "Create backups...");
                                     if (gv == 6) // 1.01
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); Logger("GameBackup", @path + fl[1], "Done!"); }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); Logger("GameBackup", @path + fl[1], "Done!"); }
                                         catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                     }
                                     if (gv == 3) // Rockstar Games Launcher
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); } }
                                         using (var progress = new ProgressBar())
                                         {
                                             for (int i = 2; i < fl.Length; i++)
                                             {
-                                                if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                 catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
                                             }
@@ -477,8 +477,8 @@ namespace Downgrader
                                     }
                                     if (gv == 2) // Version 2.0
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); } }
                                         using (var progress = new ProgressBar())
                                         {
@@ -486,8 +486,8 @@ namespace Downgrader
                                             {
                                                 if ((i >= 2) && (i > 11))
                                                 {
-                                                    if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                    if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                     catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
@@ -496,10 +496,10 @@ namespace Downgrader
                                     }
                                     if (gv == 1) // Steam version
                                     {
-                                        if (File.Exists(@path + fl[0] + ".bak")) { File.Delete(@path + fl[0] + ".bak"); }
+                                        if (File.Exists(@path + fl[0] + ".jpb")) { File.Delete(@path + fl[0] + ".jpb"); }
                                         try
                                         {
-                                            File.Move(@path + fl[0], @path + fl[0] + ".bak");
+                                            File.Move(@path + fl[0], @path + fl[0] + ".jpb");
                                             if (settings[15] == false) { Logger("GameBackup", @path + fl[0], "Done!"); }
                                         }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[0], "File for backup wasn't found!"); } }
@@ -509,8 +509,8 @@ namespace Downgrader
                                             {
                                                 if (i >= 2)
                                                 {
-                                                    if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                    if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                     catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
@@ -542,7 +542,7 @@ namespace Downgrader
                                                     {
                                                         // Old: par = " -d -s " + '"' ...
                                                         string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                        if (settings[2] == true) { par = '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                        if (settings[2] == true) { par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
                                                         Patcher(@par);
                                                         if (settings[2] == false){ File.Delete(@path + fl[i]); }
                                                         File.Move(@path + fl[i] + ".temp", @path + fl[i]);
@@ -560,7 +560,7 @@ namespace Downgrader
                                                         if ((i >= 2) && (i > 11))
                                                         {
                                                             string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                            if (settings[2] == true) { par = '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                            if (settings[2] == true) { par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
                                                             Patcher(@par);
                                                             if (settings[2] == false) { File.Delete(@path + fl[i]); }
                                                             File.Move(@path + fl[i] + ".temp", @path + fl[i]);
@@ -703,10 +703,11 @@ namespace Downgrader
                                                     Logger("Downgrader", "Process", "Adding entries to the registry...");
                                                     try
                                                     {
-                                                        bool is64BitOS = Environment.Is64BitOperatingSystem;
-                                                        if (is64BitOS == true) { Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation"); Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\""); }
-                                                        Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
-                                                        Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
+                                                        if (Environment.Is64BitOperatingSystem == true) { Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation"); Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", path.ToString()); }
+                                                        Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Rockstar Games\GTA San Andreas\Installation");
+                                                        Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\GTA San Andreas\Installation", "ExePath", path.ToString());
+                                                        Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Rockstar Games\Launcher");
+                                                        Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\Launcher", "Language", "en-US");
                                                         Logger("Downgrader", "RegisterGamePath", "true");
                                                     }
                                                     catch { Logger("Downgrader", "RegisterGamePath", "false"); }
@@ -752,7 +753,7 @@ namespace Downgrader
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
-            if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
+            if (((type == "GameMD5") && (status != "Higher than 1.0!") && (status != "1.0")) || (ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
             if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
