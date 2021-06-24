@@ -1,7 +1,7 @@
 GInput
 1.11
 Silent
-This modification completely rewrites GTA controls handling and ditches DirectInput in favour of XInput. This way, your PlayStation 3 and XBOX 360 pads will be handled by the game just perfectly, taking advantage of all their features, including analog triggers. If used with DualShock 3 controller and SCP Driver Package, it can go as far as making full use of SIXAXIS feature, just like some PS3 titles do!
+Your PlayStation 3 and XBOX 360 controllers will be perfectly controlled in the game, using all their functions, including analog triggers. SIXAXIS support for DualShock 3 will also be added.
 https://cookieplmonster.github.io/mods/gta-sa/
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr1.jpg
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr2.jpg
