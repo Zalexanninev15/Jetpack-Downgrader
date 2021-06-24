@@ -11,10 +11,8 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
         string[] langs = new string[10];
-        public MyLang()
-        {
-            InitializeComponent();
-        }
+
+        public MyLang() { InitializeComponent(); }
 
         void button2_Click(object sender, EventArgs e)
         {
@@ -29,6 +27,7 @@ namespace JetpackGUI
 
         void MyLang_Load(object sender, EventArgs e)
         {
+            this.Size = new System.Drawing.Size(252, 160);
             AllLangs.Items.Clear();
             langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.ini");
             for (int i = 0; i < langs.Length; i++)

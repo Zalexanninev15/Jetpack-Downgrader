@@ -11,14 +11,18 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using Microsoft.VisualBasic.FileIO;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 
 namespace JetpackGUI
 {
     public partial class MainForm : Form
     {
-        [System.Runtime.InteropServices.DllImport("DwmApi")]
+        [DllImport("DwmApi")]
         static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
+
+        [DllImport("user32.dll")]
+        extern static IntPtr SetFocus(IntPtr hWnd);
 
         IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
         string[] lc = new string[31];
@@ -31,8 +35,6 @@ namespace JetpackGUI
         string zip_link = "application/zip";
         string[] photos_links = new string[3];
         string site_link = "";
-
-        public MainForm() { InitializeComponent(); this.KeyPreview = true; }
 
         void MainForm_Load(object sender, EventArgs e)
         {
@@ -825,11 +827,13 @@ namespace JetpackGUI
         void checkBox1_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateBackups", Convert.ToString(checkBox1.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox4_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "GarbageCleaning", Convert.ToString(checkBox4.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox6_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "RegisterGamePath", Convert.ToString(checkBox6.Checked).Replace("T", "t").Replace("F", "f")); }
+        public MainForm() { InitializeComponent(); this.KeyPreview = true; }
         void checkBox5_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "Forced", Convert.ToString(checkBox5.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
         void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgError(lc[5]); } }
         void ScreenShot_Click(object sender, EventArgs e) { try { Process.Start(ScreenShot.ImageLocation); } catch { MsgError(lc[5]); } }
+        void listBox1_MouseDown(object sender, MouseEventArgs e) { SetFocus(IntPtr.Zero); }
         void MsgInfo(string message) { DarkMessageBox.ShowInformation(message, lc[0]); }
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc[1]); }
