@@ -101,6 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\Reg.png" />
+    <None Include="Resources\GoBack.png" />
     <None Include="Resources\Right.png" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
