@@ -46,3 +46,4 @@ sources/GUI/bin/Release/MegaApiClient.xml
 sources/GUI/bin/Release/Newtonsoft.Json.xml
 sources/Downgrader/bin/Release/jpd.ini
 sources/GUI/obj/Release/JetpackGUI.MyLang.resources
+sources/GUI/obj/Release/JetpackGUI.TextProgressBar.resources
