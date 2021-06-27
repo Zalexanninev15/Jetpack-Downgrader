@@ -1,9 +1,0 @@
-ASI Loader
-1.3
-Silent
-You need this if you want to use any ASI mods in the game.
-https://cookieplmonster.github.io/mods/gta-sa/
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ASI_Loader_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ASI_Loader_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ASI_Loader_scr123.jpg
-https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/ASI_Loader.zip
