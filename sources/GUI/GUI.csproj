@@ -49,7 +49,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\JPD\files\DarkUI.dll</HintPath>
     </Reference>
     <Reference Include="MegaApiClient, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0480d311efbeb4e2, processorArchitecture=MSIL">
       <HintPath>..\packages\MegaApiClient.1.9.0\lib\net46\MegaApiClient.dll</HintPath>
@@ -104,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\ASL.zip" />
     <None Include="Resources\Reg.png" />
     <None Include="Resources\GoBack.png" />
     <None Include="Resources\Right.png" />
