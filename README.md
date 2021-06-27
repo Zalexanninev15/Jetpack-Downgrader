@@ -1,6 +1,6 @@
 # Jetpack Downgrader | [Latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
 
-![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/data/logo.png)
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/data/docs/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
 [![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
@@ -46,21 +46,24 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 1. Launch **app.exe**
 2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
 3. Select the first stage and select the path to game folder (or press **Ctrl + O**) and necessary settings (the recommended ones are already checked)
-4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) using the drop-down list (the list below is a list of all available modifications from the repository, for more convenient display). After selecting a modification, select the checkbox and wait for downloading the cache
+4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) using the drop-down list (the list below is a list of all available modifications from the repository, for more convenient display). After selecting a modification, select the checkbox and wait for downloading the cache with mod's files
 5. Select stage 3. The console will appear and downgrade process will start... If we can't find the patch files, you'll need to download them first (that's why step 3 is called "Download patches"), only then the button with the title "Downgrade" will appear
 6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
 7. If you have selected the modifications, you still need to wait until they are fully unpacked
 8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
 9. If there are problems, press the **F12** key and start the downgrade process again
 
-**If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/CUI.md) about it**
+## Links
+
+* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about CUI settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/CUI.md) about it
+* [Add new data (localization(s) or modification(s))](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md)
 
 ## Used libraries
 
-* [DarkUI](https://github.com/RobinPerris/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
+* [DarkUI](https://github.com/Zalexanninev15/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
 * [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
 * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*DarkUI*](https://www.nuget.org/packages/DarkUI), [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) and [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json) package for the application to work properly
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) and [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project.
