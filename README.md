@@ -3,9 +3,16 @@
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/docs/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
-[![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
+[![](https://img.shields.io/github/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
+[![](https://img.shields.io/github/release-pre/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
+[![](https://img.shields.io/github/last-commit/Zalexanninev15/Jetpack-Downgrader/unstable.svg?logo=unstable)](https://github.com/Zalexanninev15/Jetpack-Downgrader/commits/unstable)
+[![](https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+## Screenshot
+
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/gui.png?raw=true)
 
 ## Description
 
