@@ -1,6 +1,6 @@
 # Downgrader CUI [jpd.exe]
 
-*Actions are performed in the **files** folder in the root of the application folder **app.exe***
+*Actions are performed in the **files** folder*
 
 ## CUI features
 
@@ -18,7 +18,7 @@
 
 ## Settings in jpd.ini
 
-In **jpd.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are!!! It is important to remember that settings are always more important than the answer you have chosen (if **UseMsg=true**)
+In **jpd.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are!!! It is important to remember that settings are always more important than the answer you have chosen (if **UseMsg=true**). You can also open the settings by pressing the **F4** key in the GUI
 
 ### Downgrader
 

@@ -37,6 +37,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
 * Display process of downgrade and maximum speed of operations
 * Support for localizations to different languages (GUI only)
+* Support for hotkeys (**Ctrl + O**, **F12**, **F4**, **F1**)
 
 ## Supported versions
 
@@ -49,6 +50,8 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 **Only licensed versions of the game are supported, work on pirated builds is not guaranteed and will never be added!!!**
 
 ## Usage
+
+*You can also open this document by pressing **F1***
 
 1. Launch **app.exe**
 2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
