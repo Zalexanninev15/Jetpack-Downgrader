@@ -72,7 +72,11 @@ namespace JetpackGUI
                 DialogResult result = DarkMessageBox.ShowWarning(lc[29] + " " + lc[30], lc[8], DarkDialogButton.YesNo);
                 if (result == DialogResult.No) { Application.Exit(); }
             }
-            //  Loading settings
+            SettingsLoader();
+        }
+
+        void SettingsLoader()
+        {
             try
             {
                 checkBox1.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateBackups"));
@@ -120,7 +124,8 @@ namespace JetpackGUI
                                     string modName = new FileInfo(modsZip[i]).Name.Replace(".zip", "");
                                     try
                                     {
-                                        Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
+                                        if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
+                                        else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
                                         if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" (" + lc[37] + " \"ASI Loader\") " + lc[24]); }
                                         if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
                                     }
@@ -129,7 +134,7 @@ namespace JetpackGUI
                             }
                             MsgInfo(lc[4]);
                             button1.Enabled = true;
-                            pictureBox10.Visible = true;
+                            if (checkBox3.Checked == false) { pictureBox10.Visible = true; }
                             result = DarkMessageBox.ShowInformation(lc[35], lc[0], DarkDialogButton.YesNo);
                             if (result == DialogResult.Yes)
                             { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc[7]); pictureBox10.Visible = false; } }
@@ -868,9 +873,8 @@ namespace JetpackGUI
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc[1]); }
         void MsgWarning(string message) { DarkMessageBox.ShowWarning(message, lc[8]); }
-        void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
-        void button7_Click(object sender, EventArgs e) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
-        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("Jetpack GUI\n" + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n" + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n" + lc[14]); }
+        //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
+        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("- " + lc[38] + ": Jetpack GUI\n- " + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n- " + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n- " + lc[14]); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5]); } }
         void checkBox7_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "EnableDirectPlay", Convert.ToString(checkBox7.Checked).Replace("T", "t").Replace("F", "f")); }
 
@@ -923,6 +927,7 @@ namespace JetpackGUI
         {
             if (DSPanel.Visible == false)
             {
+                SettingsLoader();
                 tabFix = false;
                 ModsPanel.Visible = false;
                 DSPanel.Visible = true;
@@ -943,9 +948,6 @@ namespace JetpackGUI
                 pingReply = ping.Send("google.com");
                 if (ModsPanel.Visible == false)
                 {
-                    tabFix = true;
-                    DSPanel.Visible = true;
-                    ModsPanel.Visible = true;
                     try
                     {
                         using (System.Net.WebClient mods = new System.Net.WebClient())
@@ -973,12 +975,15 @@ namespace JetpackGUI
                                 }
                             }
                         }
+                        tabFix = true;
+                        DSPanel.Visible = true;
+                        ModsPanel.Visible = true;
                     }
-                    catch { }
+                    catch { MsgWarning(lc[29]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
                 }
                 else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
             }
-            catch { MsgWarning(lc[29]); }
+            catch { MsgWarning(lc[29]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
         }
 
         void pictureBox2_Click(object sender, EventArgs e)
@@ -1015,12 +1020,13 @@ namespace JetpackGUI
             {
                 IniEditor lang = new IniEditor(@Application.StartupPath + @"\files\languages\" + Properties.Settings.Default.LanguageCode + ".ini");
                 //  Text(GUI) loading
-                label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel")) + ":";
+                darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
+                HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
+                label1.Text = Convert.ToString(lang.GetValue("Interface", "PathLabel")) + ":";
                 button6.Text = "1. " + DSPanel.SectionHeader;
                 darkTitle1.Text = Convert.ToString(lang.GetValue("Interface", "CBG1"));
                 darkTitle2.Text = Convert.ToString(lang.GetValue("Interface", "CBG2"));
-                button7.Text = Convert.ToString(lang.GetValue("Interface", "ManualEditing"));
                 ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
                 button2.Text = "2. " + ModsPanel.SectionHeader;
                 darkLabel9.Text = Convert.ToString(lang.GetValue("Interface", "List"));
@@ -1037,8 +1043,6 @@ namespace JetpackGUI
                 lc[28] = Convert.ToString(lang.GetValue("Interface", "DownloadingDirectXFiles"));
                 lc[23] = Convert.ToString(lang.GetValue("Interface", "ModWord"));
                 lc[37] = Convert.ToString(lang.GetValue("Interface", "WithASIL"));
-                HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
-                darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
                 //  CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
@@ -1066,6 +1070,7 @@ namespace JetpackGUI
                 lc[35] = Convert.ToString(lang.GetValue("InfoMsg", "WishPlay"));
                 lc[34] = Convert.ToString(lang.GetValue("InfoMsg", "BindingOK"));
                 lc[31] = Convert.ToString(lang.GetValue("InfoMsg", "ReturnUsingBackups"));
+                lc[38] = Convert.ToString(lang.GetValue("InfoMsg", "App"));
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
                 lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
                 lc[14] = Convert.ToString(lang.GetValue("InfoMsg", "LocalizationBy"));
@@ -1172,6 +1177,8 @@ namespace JetpackGUI
 
         void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyData == Keys.F1) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgError(lc[5]); } }
+            if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
             if (e.KeyData == Keys.F12)
             {
                 if (db == false)
