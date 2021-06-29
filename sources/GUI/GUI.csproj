@@ -105,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <Content Include="Resources\About.png" />
+    <Content Include="Resources\JPD.png" />
     <None Include="Resources\ASL.zip" />
     <None Include="Resources\Reg.png" />
     <None Include="Resources\GoBack.png" />
@@ -116,7 +118,6 @@
     <None Include="Resources\jpd.ini" />
     <None Include="Resources\Language.png" />
     <None Include="Resources\Up.png" />
-    <None Include="Resources\JPD.png" />
     <None Include="Resources\GitHub.png" />
   </ItemGroup>
   <ItemGroup>
@@ -131,8 +132,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
