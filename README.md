@@ -73,7 +73,9 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * [DarkUI](https://github.com/Zalexanninev15/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
 * [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
 * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
+* [Microsoft.WindowsAPICodePack.Shell](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
+* [Microsoft-WindowsAPICodePack-Core](https://github.com/contre/Windows-API-Code-Pack-1.1) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) and [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project.
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) and [*Microsoft.WindowsAPICodePack.Shell*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) (with [*Microsoft-WindowsAPICodePack-Core*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Core)) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project.
