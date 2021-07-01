@@ -249,16 +249,15 @@ namespace JetpackGUI
             this.DSPanel.Controls.Add(this.checkBox3);
             this.DSPanel.Controls.Add(this.checkBox5);
             this.DSPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DSPanel.Location = new System.Drawing.Point(12, 68);
+            this.DSPanel.Location = new System.Drawing.Point(12, 62);
             this.DSPanel.Name = "DSPanel";
             this.DSPanel.SectionHeader = "Downgrader Settings";
-            this.DSPanel.Size = new System.Drawing.Size(835, 336);
+            this.DSPanel.Size = new System.Drawing.Size(835, 342);
             this.DSPanel.TabIndex = 14;
             this.DSPanel.Visible = false;
             // 
             // ModsPanel
             // 
-            this.ModsPanel.Controls.Add(this.progressPanel);
             this.ModsPanel.Controls.Add(this.listBox1);
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
             this.ModsPanel.Controls.Add(this.darkLabel9);
@@ -266,7 +265,7 @@ namespace JetpackGUI
             this.ModsPanel.Location = new System.Drawing.Point(1, 0);
             this.ModsPanel.Name = "ModsPanel";
             this.ModsPanel.SectionHeader = "Modifications";
-            this.ModsPanel.Size = new System.Drawing.Size(834, 336);
+            this.ModsPanel.Size = new System.Drawing.Size(834, 342);
             this.ModsPanel.TabIndex = 15;
             this.ModsPanel.Visible = false;
             // 
@@ -278,11 +277,12 @@ namespace JetpackGUI
             this.progressPanel.Controls.Add(this.labelAllProgress);
             this.progressPanel.Controls.Add(this.DebugInfo);
             this.progressPanel.Controls.Add(this.labelPartProgress);
-            this.progressPanel.Location = new System.Drawing.Point(0, 0);
+            this.progressPanel.Location = new System.Drawing.Point(0, 55);
             this.progressPanel.Name = "progressPanel";
-            this.progressPanel.Size = new System.Drawing.Size(834, 336);
+            this.progressPanel.Size = new System.Drawing.Size(860, 361);
             this.progressPanel.TabIndex = 7;
             this.progressPanel.Visible = false;
+            this.progressPanel.VisibleChanged += new System.EventHandler(this.progressPanel_VisibleChanged);
             // 
             // darkListView2
             // 
@@ -517,7 +517,7 @@ namespace JetpackGUI
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Gadugi", 11.25F);
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(9, 44);
+            this.label1.Location = new System.Drawing.Point(9, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(171, 19);
             this.label1.TabIndex = 18;
@@ -620,7 +620,7 @@ namespace JetpackGUI
             // darkButton4
             // 
             this.darkButton4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(556, 22);
+            this.darkButton4.Location = new System.Drawing.Point(556, 21);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(166, 31);
@@ -812,6 +812,7 @@ namespace JetpackGUI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(857, 416);
             this.Controls.Add(this.LangsPanel);
+            this.Controls.Add(this.progressPanel);
             this.Controls.Add(this.stagesPanel);
             this.Controls.Add(this.DSPanel);
             this.Controls.Add(this.pictureBox7);
