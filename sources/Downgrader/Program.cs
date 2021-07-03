@@ -52,15 +52,6 @@ namespace Downgrader
         {
             Console.ResetColor();
             Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false);
-            if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe"))
-            {
-                try
-                {
-                    Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe", "x \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jppe\" -o\"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\" -y").WaitForExit();
-                    File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe");
-                }
-                catch { }
-            }
             string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -227,27 +218,6 @@ namespace Downgrader
                                 else { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                             }
                             catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
-                        }
-                    }
-                    if ((File.Exists(@path + @"\index.bin")) || (File.Exists(@path + @"\MTLX.dll")))
-                    {
-                        if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                        if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
-                        {
-                            Logger("Downgrader", "Process", "Deleting index.bin file...");
-                            try
-                            {
-                                if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
-                                else { Logger("GarbageCleaning", "index.bin", "false"); }
-                            }
-                            catch { Logger("GarbageCleaning", "index.bin", "false"); }
-                            Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
-                            try
-                            {
-                                if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
-                                else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
-                            }
-                            catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
                         }
                     }
                     if ((settings[13] == true) && (gv != 5)) { result = MessageBox.Show("Would you like to enable DirectPlay to avoid possible problems with running the game? This operation is NECESSARY ONLY on Windows 10, if your version is lower (7/8/8.1), then your answer is No!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
@@ -539,11 +509,21 @@ namespace Downgrader
                                             try
                                             {
                                                 // For All Versions | EXE
-                                                File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp", @path + fl[1], true);
+                                                var restoreRGLfiles = new ProcessStartInfo
+                                                {
+                                                    FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe",
+                                                    Arguments = "x \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + @path + "\" -y",
+                                                    UseShellExecute = false,
+                                                    CreateNoWindow = true,
+                                                };
+                                                restoreRGLfiles.WindowStyle = ProcessWindowStyle.Hidden;
+                                                Process.Start(restoreRGLfiles).WaitForExit();
+                                                File.Move(@path + @"\game.jpp", @path + fl[1]);
                                                 if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
                                                 if (gv == 1)
                                                 {
-                                                    File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp", @path + fl[0], true);
+                                                    Process.Start(restoreRGLfiles).WaitForExit();
+                                                    File.Move(@path + @"\game.jpp", @path + fl[0]);
                                                     if (settings[15] == false) { Logger("NewGame", @path + fl[0], "1.0"); }
                                                 }
                                                 if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
@@ -702,6 +682,27 @@ namespace Downgrader
                                                 {
                                                     Logger("NewGameMD5", "All", "true");
                                                     Logger("Downgrader", "Game", "Downgrade completed!");
+                                                    if (File.Exists(@path + @"\index.bin") || File.Exists(@path + @"\MTLX.dll"))
+                                                    {
+                                                        if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                                        if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
+                                                        {
+                                                            Logger("Downgrader", "Process", "Deleting index.bin file...");
+                                                            try
+                                                            {
+                                                                if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
+                                                                else { Logger("GarbageCleaning", "index.bin", "false"); }
+                                                            }
+                                                            catch { Logger("GarbageCleaning", "index.bin", "false"); }
+                                                            Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
+                                                            try
+                                                            {
+                                                                if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
+                                                                else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+                                                            }
+                                                            catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+                                                        }
+                                                    }
                                                     if (settings[13] == true) { result = MessageBox.Show("Would you like to create an game shortcut on your Desktop?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                                                     if ((result == DialogResult.Yes) || (settings[6] == true))
                                                     {
@@ -769,8 +770,8 @@ namespace Downgrader
             if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
             if (((type == "GameMD5") && (status != "Higher than 1.0!") && (status != "1.0")) || (ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
-            if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!") || (status == "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!") || (status == "Downgrade is not possible!") || (status == "An error occurred accessing the game files!")) { Console.ForegroundColor = ConsoleColor.Red; }
-            if ((type == "GameMD5") && (status == "Higher than 1.0!")) { Console.ForegroundColor = ConsoleColor.Green; }
+            if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!") || (status == "Downgrade is not possible!") || (status == "An error occurred accessing the game files!")) { Console.ForegroundColor = ConsoleColor.Red; }
+            if (((type == "GameMD5") && (status == "Higher than 1.0!")) || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
         }

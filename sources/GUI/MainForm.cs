@@ -158,12 +158,6 @@ namespace JetpackGUI
         //    progressPanel.Visible = true;
         //    stagesPanel.Visible = false;
         //    string path = GamePath.Text;
-        //    try
-        //    {
-        //        Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + @Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + @Application.StartupPath + "\\files\\patches\" -y").WaitForExit();
-        //        File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
-        //    }
-        //    catch { }
         //    string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; DialogResult result = DialogResult.No;
         //    // All files for downgrading (universal)
         //    fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -307,27 +301,6 @@ namespace JetpackGUI
         //                        else { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
         //                    }
         //                    catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
-        //                }
-        //            }
-        //            if ((File.Exists(@path + @"\index.bin")) || (File.Exists(@path + @"\MTLX.dll")))
-        //            {
-        //                if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-        //                if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
-        //                {
-        //                    Logger("Downgrader", "Process", "Deleting index.bin file...");
-        //                    try
-        //                    {
-        //                        if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
-        //                        else { Logger("GarbageCleaning", "index.bin", "false"); }
-        //                    }
-        //                    catch { Logger("GarbageCleaning", "index.bin", "false"); }
-        //                    Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
-        //                    try
-        //                    {
-        //                        if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
-        //                        else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
-        //                    }
-        //                    catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
         //                }
         //            }
         //            if ((settings[13] == true) && (gv != 5)) { result = MessageBox.Show("Would you like to enable DirectPlay to avoid possible problems with running the game? This operation is NECESSARY ONLY on Windows 10, if your version is lower (7/8/8.1), then your answer is No!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
@@ -613,15 +586,18 @@ namespace JetpackGUI
         //                                Logger("Downgrader", "Process", "Downgrading...");
         //                                try
         //                                {
-        //                                    // For All Versions | EXE
-        //                                    File.Copy(@Application.StartupPath + @"\files\patches\game.jpp", @path + fl[1], true);
-        //                                    if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-        //                                    if (gv == 1)
-        //                                    {
-        //                                        File.Copy(@Application.StartupPath + @"\files\patches\game.jpp", @path + fl[0], true);
-        //                                        if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-        //                                    }
-        //                                    if ((gv == 3) || (gv == 1)) // Rockstar Games Launcher & Steam
+        //                                        Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe", "x \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + @path + "\"" + "-y").WaitForExit();
+        //        File.Move(@path + @"\game.jpp", @path + fl[1]);
+        //                                                if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0");
+        //    }
+        //                                                if (gv == 1)
+        //                                                {
+        //                                                    Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe", "x \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + @path + "\"" + "-y").WaitForExit();
+        //    File.Move(@path + @"\game.jpp", @path + fl[0]);
+        //                                                    if (settings[15] == false) { Logger("NewGame", @path + fl[0], "1.0");
+        //}
+        //                                                }
+        //                                      if ((gv == 3) || (gv == 1)) // Rockstar Games Launcher & Steam
         //                                    {
         //                                        using (var progress = new ProgressBar())
         //                                        {
@@ -777,7 +753,28 @@ namespace JetpackGUI
         //                                    {
         //                                        Logger("NewGameMD5", "All", "true");
         //                                        Logger("Downgrader", "Game", "Downgrade completed!");
-        //                                        if (settings[13] == true) { result = MessageBox.Show("Would you like to create an game shortcut on your Desktop?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+        //                                        if (File.Exists(@path + @"\index.bin") || File.Exists(@path + @"\MTLX.dll"))
+        //                                        {
+        //                                                 if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+        //                                                 if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
+        //                                                 {
+        //                                                     Logger("Downgrader", "Process", "Deleting index.bin file...");
+        //                                                     try
+        //                                                     {
+        //                                                         if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
+        //                                                         else { Logger("GarbageCleaning", "index.bin", "false"); }
+        //                                                     }
+        //                                                     catch { Logger("GarbageCleaning", "index.bin", "false"); }
+        //                                                     Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
+        //                                                     try
+        //                                                     {
+        //                                                         if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
+        //                                                         else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+        //                                                     }
+        //                                                     catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+        //                                                 }
+        //                                        }
+        // //                                     if (settings[13] == true) { result = MessageBox.Show("Would you like to create an game shortcut on your Desktop?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
         //                                        if ((result == DialogResult.Yes) || (settings[6] == true))
         //                                        {
         //                                            Logger("Downgrader", "Process", "Creating a shortcut...");
@@ -846,19 +843,23 @@ namespace JetpackGUI
         //    Shortcut.Save();
         //}
 
-        // static string GetMD5(string file)
-        // {
-        //     using (var md5 = MD5.Create())
-        //     {
-        //         using (var stream = File.OpenRead(@file))
-        //         {
-        //             var hashBytes = md5.ComputeHash(stream);
-        //             var sb = new StringBuilder();
-        //             foreach (var t in hashBytes) { sb.Append(t.ToString("X2")); }
-        //             return Convert.ToString(sb);
-        //         }
-        //     }
-        // }
+        static string GetMD5(string file)
+        {
+            try
+            {
+                using (var md5 = MD5.Create())
+                {
+                    using (var stream = File.OpenRead(@file))
+                    {
+                        var hashBytes = md5.ComputeHash(stream);
+                        var sb = new StringBuilder();
+                        foreach (var t in hashBytes) { sb.Append(t.ToString("X2")); }
+                        return Convert.ToString(sb);
+                    }
+                }
+            }
+            catch { return "0x50 0x45"; }
+        }
 
         void pictureBox1_Click(object sender, EventArgs e) { SelectPathToGame(); }
         void checkBox2_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateShortcut", Convert.ToString(checkBox2.Checked).Replace("T", "t").Replace("F", "f")); }
@@ -905,24 +906,20 @@ namespace JetpackGUI
                 TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                 if (code == 0)
                 {
-                    Directory.CreateDirectory(@Application.StartupPath + @"\files\patches");
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
-                    Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + @Application.StartupPath + "\\files\\patches\\game.jppe\" -o\"" + @Application.StartupPath + "\\files\\patches\" -y").WaitForExit();
-                    File.Delete(@Application.StartupPath + @"\files\patches\game.jppe");
                     darkButton4.Visible = false;
                     button1.Visible = true;
                 }
                 if (code == 1)
                 {
-                    Directory.CreateDirectory(@Application.StartupPath + @"\files\DirectX");
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
                 }
                 progressPanel.Visible = false;
                 stagesPanel.Visible = true;
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             }
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
         }
 
         void button6_Click(object sender, EventArgs e)
@@ -1171,7 +1168,7 @@ namespace JetpackGUI
                         DialogResult result = DarkMessageBox.ShowInformation(lc[22], lc[27], DarkDialogButton.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            try { MegaDownloader("https://mega.nz/file/hklF0S4I#XCpKtk192-Y6wAE7Gd6EKkIdawEPxHptUVrseNYp0zA", @Application.StartupPath + @"\files\DirectX_Installer.zip", lc[28], 1); }
+                            try { MegaDownloader("https://mega.nz/file/0pFRwAqa#Arguk9cQLpXYeQgXnFfAp6cw6F5OIZFKP2tRTwNCArI", @Application.StartupPath + @"\files\ddirectx.7z", lc[28], 1); }
                             catch { checkBox8.Checked = false; }
                         }
                         else { checkBox8.Checked = false; }
@@ -1255,7 +1252,7 @@ namespace JetpackGUI
                 DialogResult result = DarkMessageBox.ShowInformation(lc[20], lc[27], DarkDialogButton.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try { MegaDownloader("https://mega.nz/file/880jHaCB#0775P1K90tfH-s2S6vJNfkR2f0sBpVLGgivjyIhWhPQ", @Application.StartupPath + @"\files\dpatches.zip", lc[21], 0); }
+                    try { MegaDownloader("https://mega.nz/file/4tcXiSqA#8JzulAC0oABzinb7914sq2xkyxE7c6atSeMval-YWms", @Application.StartupPath + @"\files\dpatches.rar", lc[21], 0); }
                     catch { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
                 }
                 else { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
@@ -1290,7 +1287,12 @@ namespace JetpackGUI
 
         void GamePath_TextChanged(object sender, EventArgs e)
         {
-            if (GamePath.Text != "") { pictureBox11.Visible = true; for (int i = 0; i < fl.Length; i++) { if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; } } }
+            if (GamePath.Text != "") 
+            {
+                pictureBox11.Visible = true; 
+                for (int i = 0; i < fl.Length; i++) { if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; } }
+                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin")))) { pictureBox10.Visible = true; }
+            }
             else { pictureBox11.Visible = false; pictureBox10.Visible = false; }
         }
 
@@ -1302,6 +1304,7 @@ namespace JetpackGUI
                 originalGameRestoreProgressBar.Visible = true;
                 System.Threading.Tasks.Task.Run(() =>
                 {
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
                     originalGameRestoreProgressBar.Maximum = fl.Length;
                     for (int i = 0; i < fl.Length; i++)
                     {
@@ -1323,7 +1326,6 @@ namespace JetpackGUI
                         }
                         if (fl[i] == @"\gta_sa.exe")
                         {
-
                             if (File.Exists(@GamePath.Text + fl[0]))
                             {
                                 try
@@ -1336,7 +1338,22 @@ namespace JetpackGUI
                             }
                         }
                         originalGameRestoreProgressBar.Value = i + 1;
+                        TaskbarManager.Instance.SetProgressValue(i + 1, fl.Length, Handle);
                     }
+                    if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin"))))
+                    {
+                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                        var restoreRGLfiles = new ProcessStartInfo
+                        {
+                            FileName = @Application.StartupPath + @"\files\7z.exe",
+                            Arguments = "x \"" + @Application.StartupPath + "\\files\\rgl.jpbc\" -o\"" + @GamePath.Text + "\" -y",
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                        };
+                        restoreRGLfiles.WindowStyle = ProcessWindowStyle.Hidden;
+                        Process.Start(restoreRGLfiles).WaitForExit();
+                    }
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                     MsgInfo(lc[31]);
                     pictureBox10.Visible = false;
                     originalGameRestoreProgressBar.Visible = false;
