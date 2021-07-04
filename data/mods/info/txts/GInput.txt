@@ -1,7 +1,7 @@
 GInput
 1.11 (10.02.2016)
 Silent
-This game has a poor gamepad support. This modification brings full XInput support for those who want to play the game with a joystick.
+This game has a poor gamepad support. This modification brings full XInput support for those who want to play the game with a joystick
 https://gtaforums.com/topic/562765-ginput/
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr1.jpg
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr2.jpg

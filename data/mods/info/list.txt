@@ -1,5 +1,6 @@
 SilentPatch
-GInput
-CLEO 4
 WidescreenFix
 SkyGfx
+GInput
+CLEO 4
+SAMP

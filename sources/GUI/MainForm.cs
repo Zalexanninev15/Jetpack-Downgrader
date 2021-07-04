@@ -23,9 +23,8 @@ namespace JetpackGUI
         [DllImport("user32.dll")]
         extern static IntPtr SetFocus(IntPtr hWnd);
 
-        TaskbarManager instanceTaskBar = TaskbarManager.Instance;
         IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
-        string[] lc = new string[40];
+        string[] lc = new string[44];
         string[] mse = new string[10];
         string[] langs = new string[10];
         bool tabFix = false;
@@ -46,8 +45,10 @@ namespace JetpackGUI
             else { Directory.Delete(cache, true); Directory.CreateDirectory(cache); }
             try
             {
-                string[] zf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
-                for (int i = 0; i < zf.Length; i++) { File.Delete(zf[i]); }
+                string[] mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
+                for (int i = 0; i < mf.Length; i++) { File.Delete(mf[i]); }
+                mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.exe");
+                for (int i = 0; i < mf.Length; i++) { File.Delete(mf[i]); }
             }
             catch { }
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -89,7 +90,7 @@ namespace JetpackGUI
                 checkBox7.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "EnableDirectPlay"));
                 checkBox8.Checked = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectXComponents"));
             }
-            catch(Exception ex) { MsgError(lc[2]); MsgError(ex.ToString()); }
+            catch (Exception ex) { MsgError(lc[2]); MsgError(ex.ToString()); }
         }
 
         void button1_Click(object sender, EventArgs e)
@@ -123,15 +124,24 @@ namespace JetpackGUI
                                 for (int i = 0; i < modsZip.Length; i++)
                                 {
                                     string modName = new FileInfo(modsZip[i]).Name.Replace(".zip", "");
-                                    try
+                                    if (IsInstaller(modsZip[i]) == false)
                                     {
-                                        TaskbarManager.Instance.SetProgressValue(i, modsZip.Length, Handle);
-                                        if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
-                                        else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
-                                        if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" (" + lc[37] + " \"ASI Loader\") " + lc[24]); }
-                                        if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
+                                        try
+                                        {
+                                            TaskbarManager.Instance.SetProgressValue(i, modsZip.Length, Handle);
+                                            if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
+                                            else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
+                                            if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" (" + lc[37] + " \"ASI Loader\") " + lc[24]); }
+                                            if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
+                                        }
+                                        catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
                                     }
-                                    catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
+                                    else
+                                    {
+                                        if (checkBox3.Checked == true) { MessageBox.Show(lc[39] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc[40], lc[8], MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification); }
+                                        File.Move(modsZip[i], modsZip[i].Replace(".zip", ".exe"));
+                                        Process.Start(modsZip[i].Replace(".zip", ".exe")).WaitForExit();
+                                    }
                                 }
                             }
                             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
@@ -991,6 +1001,13 @@ namespace JetpackGUI
             catch { MsgWarning(lc[29]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
         }
 
+        bool IsInstaller(string file)
+        {
+            var twoBytes = new byte[2];
+            using (var fileStream = File.Open(file, FileMode.Open)) { fileStream.Read(twoBytes, 0, 2); }
+            return Encoding.UTF8.GetString(twoBytes) == "MZ";
+        }
+
         void pictureBox2_Click(object sender, EventArgs e)
         {
             darkComboBox2.Items.Clear();
@@ -1092,6 +1109,8 @@ namespace JetpackGUI
                 lc[5] = Convert.ToString(lang.GetValue("WarningMsg", "BrowserNotFound"));
                 lc[29] = Convert.ToString(lang.GetValue("WarningMsg", "NetworkNotFound"));
                 lc[30] = Convert.ToString(lang.GetValue("WarningMsg", "OfflineMode"));
+                lc[39] = Convert.ToString(lang.GetValue("WarningMsg", "NewPath"));
+                lc[40] = Convert.ToString(lang.GetValue("WarningMsg", "YouCanDelete"));
                 //  Debug loading
                 lc[12] = Convert.ToString(lang.GetValue("DebugMode", "Activation"));
                 lc[13] = Convert.ToString(lang.GetValue("DebugMode", "Deactivation"));
@@ -1289,9 +1308,9 @@ namespace JetpackGUI
 
         void GamePath_TextChanged(object sender, EventArgs e)
         {
-            if (GamePath.Text != "") 
+            if (GamePath.Text != "")
             {
-                pictureBox11.Visible = true; 
+                pictureBox11.Visible = true;
                 for (int i = 0; i < fl.Length; i++) { if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; } }
                 if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin")))) { pictureBox10.Visible = true; }
             }
