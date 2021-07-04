@@ -249,7 +249,7 @@ namespace JetpackGUI
             this.DSPanel.Controls.Add(this.checkBox3);
             this.DSPanel.Controls.Add(this.checkBox5);
             this.DSPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DSPanel.Location = new System.Drawing.Point(12, 62);
+            this.DSPanel.Location = new System.Drawing.Point(11, 62);
             this.DSPanel.Name = "DSPanel";
             this.DSPanel.SectionHeader = "Downgrader Settings";
             this.DSPanel.Size = new System.Drawing.Size(835, 342);
@@ -262,7 +262,7 @@ namespace JetpackGUI
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
             this.ModsPanel.Controls.Add(this.darkLabel9);
             this.ModsPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ModsPanel.Location = new System.Drawing.Point(1, 0);
+            this.ModsPanel.Location = new System.Drawing.Point(0, 0);
             this.ModsPanel.Name = "ModsPanel";
             this.ModsPanel.SectionHeader = "Modifications";
             this.ModsPanel.Size = new System.Drawing.Size(834, 342);

@@ -1,0 +1,9 @@
+CLEO 4
+4.4.0 (24.10.2020)
+Seemann
+A hugely popular extensible plugin allowing the use of thousands of unique mods which change or expand the gameplay.
+https://cleo.li/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/CLEO4.zip

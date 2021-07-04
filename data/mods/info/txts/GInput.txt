@@ -1,8 +1,8 @@
 GInput
-1.11
+1.11 (10.02.2016)
 Silent
-Your PlayStation 3 and XBOX 360 controllers will be perfectly controlled in the game, using all their functions, including analog triggers + SIXAXIS support for DualShock 3.
-https://cookieplmonster.github.io/mods/gta-sa/
+This game has a poor gamepad support. This modification brings full XInput support for those who want to play the game with a joystick.
+https://gtaforums.com/topic/562765-ginput/
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr1.jpg
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr2.jpg
 https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr3.jpg
