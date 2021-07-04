@@ -1,2 +1,5 @@
 SilentPatch
 GInput
+CLEO 4
+WidescreenFix
+SkyGfx

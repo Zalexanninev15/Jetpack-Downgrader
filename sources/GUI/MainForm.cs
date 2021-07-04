@@ -903,23 +903,25 @@ namespace JetpackGUI
             client.Logout();
             if (client.IsLoggedIn == false)
             {
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                 if (code == 0)
                 {
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
                     darkButton4.Visible = false;
                     button1.Visible = true;
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                 }
                 if (code == 1)
                 {
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                 }
                 progressPanel.Visible = false;
                 stagesPanel.Visible = true;
             }
-            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
         }
 
         void button6_Click(object sender, EventArgs e)

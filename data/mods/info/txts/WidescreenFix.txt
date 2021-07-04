@@ -1,0 +1,9 @@
+WidescreenFix
+1.0 (16.05.2020)
+ThirteenAG
+This game has a poor widescreen support. This modification improves widescreen resolution.
+https://gtaforums.com/topic/547841-gtanfsmpother-widescreen-fixes-pack/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/WidescreenFix.zip

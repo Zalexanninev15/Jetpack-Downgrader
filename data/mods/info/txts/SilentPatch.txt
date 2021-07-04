@@ -1,9 +1,9 @@
 SilentPatch
-1.1
+1.1 (22.02.2020)
 Silent
-This game are surely great, nonetheless they have some issues. This modification attempts to fix some of them.
-https://cookieplmonster.github.io/mods/gta-sa/
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr123.jpg
+This game has tons of issues and bugs. This modification attempts to fix at least some of them.
+https://gtaforums.com/topic/669045-silentpatch/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr3.jpg
 https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SilentPatch.zip
