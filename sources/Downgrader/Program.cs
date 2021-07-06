@@ -518,11 +518,17 @@ namespace Downgrader
                                                 };
                                                 restoreRGLfiles.WindowStyle = ProcessWindowStyle.Hidden;
                                                 Process.Start(restoreRGLfiles).WaitForExit();
+                                                try { File.SetAttributes(@path + fl[1], FileAttributes.Normal); } catch { }
+                                                try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
+                                                try { File.Delete(@path + fl[1]); } catch { }
                                                 File.Move(@path + @"\game.jpp", @path + fl[1]);
                                                 if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
                                                 if (gv == 1)
                                                 {
                                                     Process.Start(restoreRGLfiles).WaitForExit();
+                                                    try { File.SetAttributes(@path + fl[0], FileAttributes.Normal); } catch { }
+                                                    try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
+                                                    try { File.Delete(@path + fl[0]); } catch { }
                                                     File.Move(@path + @"\game.jpp", @path + fl[0]);
                                                     if (settings[15] == false) { Logger("NewGame", @path + fl[0], "1.0"); }
                                                 }

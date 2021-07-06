@@ -47,8 +47,6 @@ namespace JetpackGUI
             {
                 string[] mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
                 for (int i = 0; i < mf.Length; i++) { File.Delete(mf[i]); }
-                mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.exe");
-                for (int i = 0; i < mf.Length; i++) { File.Delete(mf[i]); }
             }
             catch { }
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -61,7 +59,7 @@ namespace JetpackGUI
             {
                 Ping ping = new Ping();
                 PingReply pingReply = null;
-                pingReply = ping.Send("google.com");
+                pingReply = ping.Send("github.com");
                 if ((pingReply.Status == IPStatus.HardwareError) || (pingReply.Status == IPStatus.IcmpError))
                 {
                     DialogResult result = DarkMessageBox.ShowWarning(lc[29] + " " + lc[30], lc[8], DarkDialogButton.YesNo);
@@ -141,12 +139,15 @@ namespace JetpackGUI
                                         if (checkBox3.Checked == true) { MessageBox.Show(lc[39] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc[40], lc[8], MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification); }
                                         File.Move(modsZip[i], modsZip[i].Replace(".zip", ".exe"));
                                         Process.Start(modsZip[i].Replace(".zip", ".exe")).WaitForExit();
+                                        File.Move(modsZip[i].Replace(".zip", ".exe"), modsZip[i]);
+                                        MsgInfo(lc[23] + " \"" + modName + "\"" + lc[24]);
                                     }
                                 }
                             }
                             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
                             MsgInfo(lc[4]);
                             button1.Enabled = true;
+                            if (checkBox1.Checked == true) { pictureBox10.Visible = true; }
                             if (checkBox3.Checked == false) { pictureBox10.Visible = true; }
                             result = DarkMessageBox.ShowInformation(lc[35], lc[0], DarkDialogButton.YesNo);
                             if (result == DialogResult.Yes)
@@ -956,7 +957,7 @@ namespace JetpackGUI
             {
                 Ping ping = new Ping();
                 PingReply pingReply = null;
-                pingReply = ping.Send("google.com");
+                pingReply = ping.Send("github.com");
                 if (ModsPanel.Visible == false)
                 {
                     try
@@ -1041,7 +1042,7 @@ namespace JetpackGUI
             try
             {
                 IniEditor lang = new IniEditor(@Application.StartupPath + @"\files\languages\" + Properties.Settings.Default.LanguageCode + ".ini");
-                //  Text(GUI) loading
+                // Text(GUI) loading
                 darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
                 DSPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab1"));
@@ -1065,7 +1066,7 @@ namespace JetpackGUI
                 lc[28] = Convert.ToString(lang.GetValue("Interface", "DownloadingDirectXFiles"));
                 lc[23] = Convert.ToString(lang.GetValue("Interface", "ModWord"));
                 lc[37] = Convert.ToString(lang.GetValue("Interface", "WithASIL"));
-                //  CheckBox loading
+                // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
                 checkBox9.Text = Convert.ToString(lang.GetValue("CheckBox", "Reset"));
@@ -1076,13 +1077,13 @@ namespace JetpackGUI
                 checkBox7.Text = Convert.ToString(lang.GetValue("CheckBox", "EnableDirectPlay"));
                 checkBox8.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallDirectXComponents"));
                 YesInstallMe.Text = Convert.ToString(lang.GetValue("CheckBox", "InstallMod"));
-                //  Title loading
+                // Title loading
                 lc[27] = Convert.ToString(lang.GetValue("Title", "Request"));
                 lc[0] = Convert.ToString(lang.GetValue("Title", "Info"));
                 lc[1] = Convert.ToString(lang.GetValue("Title", "Error"));
                 lc[8] = Convert.ToString(lang.GetValue("Title", "Warning"));
                 lc[6] = Convert.ToString(lang.GetValue("Title", "FolderSelectDialog"));
-                //  InfoMsg loading
+                // InfoMsg loading
                 lc[20] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadPatches"));
                 lc[22] = Convert.ToString(lang.GetValue("InfoMsg", "WishDownloadDirectXFiles"));
                 lc[26] = Convert.ToString(lang.GetValue("InfoMsg", "InstallModQuestion"));
@@ -1096,13 +1097,13 @@ namespace JetpackGUI
                 lc[9] = Convert.ToString(lang.GetValue("InfoMsg", "Version"));
                 lc[10] = Convert.ToString(lang.GetValue("InfoMsg", "Author"));
                 lc[14] = Convert.ToString(lang.GetValue("InfoMsg", "LocalizationBy"));
-                //  ErrorMsg loading
+                // ErrorMsg loading
                 lc[2] = Convert.ToString(lang.GetValue("ErrorMsg", "ReadINI"));
                 lc[3] = Convert.ToString(lang.GetValue("ErrorMsg", "WriteINI"));
                 lc[11] = Convert.ToString(lang.GetValue("ErrorMsg", "NoNetwork"));
                 lc[15] = Convert.ToString(lang.GetValue("ErrorMsg", "AboutModDamaged"));
                 lc[25] = Convert.ToString(lang.GetValue("ErrorMsg", "ModFailure"));
-                //  WarningMsg loading
+                // WarningMsg loading
                 lc[32] = Convert.ToString(lang.GetValue("WarningMsg", "WishReturnUsingBackups"));
                 lc[33] = Convert.ToString(lang.GetValue("WarningMsg", "WishRegGame"));
                 lc[7] = Convert.ToString(lang.GetValue("WarningMsg", "PathNotFound"));
@@ -1111,7 +1112,7 @@ namespace JetpackGUI
                 lc[30] = Convert.ToString(lang.GetValue("WarningMsg", "OfflineMode"));
                 lc[39] = Convert.ToString(lang.GetValue("WarningMsg", "NewPath"));
                 lc[40] = Convert.ToString(lang.GetValue("WarningMsg", "YouCanDelete"));
-                //  Debug loading
+                // Debug loading
                 lc[12] = Convert.ToString(lang.GetValue("DebugMode", "Activation"));
                 lc[13] = Convert.ToString(lang.GetValue("DebugMode", "Deactivation"));
             }
@@ -1124,7 +1125,7 @@ namespace JetpackGUI
             {
                 Ping ping = new Ping();
                 PingReply pingReply = null;
-                pingReply = ping.Send("google.com");
+                pingReply = ping.Send("github.com");
                 if (YesInstallMe.Checked == true)
                 {
                     if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"))
@@ -1185,7 +1186,7 @@ namespace JetpackGUI
                     {
                         Ping ping = new Ping();
                         PingReply pingReply = null;
-                        pingReply = ping.Send("google.com");
+                        pingReply = ping.Send("github.com");
                         DialogResult result = DarkMessageBox.ShowInformation(lc[22], lc[27], DarkDialogButton.YesNo);
                         if (result == DialogResult.Yes)
                         {
@@ -1269,7 +1270,7 @@ namespace JetpackGUI
             {
                 Ping ping = new Ping();
                 PingReply pingReply = null;
-                pingReply = ping.Send("google.com");
+                pingReply = ping.Send("github.com");
                 DialogResult result = DarkMessageBox.ShowInformation(lc[20], lc[27], DarkDialogButton.YesNo);
                 if (result == DialogResult.Yes)
                 {
