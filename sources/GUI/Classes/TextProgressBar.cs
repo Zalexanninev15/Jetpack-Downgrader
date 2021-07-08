@@ -22,41 +22,26 @@ namespace JetpackGUI
         
         private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
         [Category("Additional Options")]
-        public Color TextColor {
-            get {
-                return _textColourBrush.Color;
-            }
-            set
-            {
-                _textColourBrush.Dispose();
-                _textColourBrush = new SolidBrush(value);
-            }
+        public Color TextColor 
+        {
+            get { return _textColourBrush.Color; }
+            set { _textColourBrush.Dispose(); _textColourBrush = new SolidBrush(value); }
         }
 
         private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
         [Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public Color ProgressColor
         {
-            get
-            {
-                return _progressColourBrush.Color;
-            }
-            set
-            {
-                _progressColourBrush.Dispose();
-                _progressColourBrush = new SolidBrush(value);
-            }
+            get { return _progressColourBrush.Color; }
+            set { _progressColourBrush.Dispose(); _progressColourBrush = new SolidBrush(value); }
         }
 
         private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
         [Category("Additional Options"), Browsable(true)]
-        public ProgressBarDisplayMode VisualMode {
+        public ProgressBarDisplayMode VisualMode 
+        {
             get { return _visualMode; }
-            set
-            {
-                _visualMode = value;
-                Invalidate();
-            }
+            set { _visualMode = value; Invalidate(); }
         }
 
         private string _text = string.Empty;
@@ -65,11 +50,7 @@ namespace JetpackGUI
         public string CustomText
         {
             get { return _text; }
-            set
-            {
-                _text = value;
-                Invalidate();
-            }
+            set { _text = value; Invalidate(); }
         }
 
         private string _textToDraw
@@ -79,16 +60,16 @@ namespace JetpackGUI
                 string text = CustomText;
                 switch (VisualMode)
                 {
-                    case (ProgressBarDisplayMode.Percentage):
+                    case ProgressBarDisplayMode.Percentage:
                         text = _percentageStr;
                         break;
-                    case (ProgressBarDisplayMode.CurrProgress):
+                    case ProgressBarDisplayMode.CurrProgress:
                         text = _currProgressStr;
                         break;
-                    case (ProgressBarDisplayMode.TextAndCurrProgress):
+                    case ProgressBarDisplayMode.TextAndCurrProgress:
                         text = $"{CustomText}: {_currProgressStr}";
                         break;
-                    case (ProgressBarDisplayMode.TextAndPercentage):
+                    case ProgressBarDisplayMode.TextAndPercentage:
                         text = $"{CustomText}: {_percentageStr}";
                         break;
                 }
@@ -97,22 +78,11 @@ namespace JetpackGUI
             set { }
         }
         
-        public TextProgressBar()
-        {
-            Value = Minimum;
-            FixComponentBlinking();
-        }
-
+        public TextProgressBar() { Value = Minimum; FixComponentBlinking(); }
         private string _currProgressStr { get { return $"{Value}/{Maximum}"; } }
         private void FixComponentBlinking() { SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true); }
         private string _percentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100 } %"; } }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            DrawProgressBar(g);
-            DrawStringIfNeeded(g);
-        }
+        protected override void OnPaint(PaintEventArgs e) { Graphics g = e.Graphics; DrawProgressBar(g); DrawStringIfNeeded(g); }
 
         private void DrawProgressBar(Graphics g)
         {
@@ -136,18 +106,7 @@ namespace JetpackGUI
             }
         }
         
-        public new void Dispose()
-        {
-            _textColourBrush.Dispose();
-            _progressColourBrush.Dispose();
-            base.Dispose();
-        }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            this.BackColor = Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
-            this.ResumeLayout(false);
-        }
+        public new void Dispose() { _textColourBrush.Dispose(); _progressColourBrush.Dispose(); base.Dispose(); }
+        private void InitializeComponent() { this.SuspendLayout(); this.BackColor = Color.FromArgb(69, 73, 74); this.ResumeLayout(false); }
     }
 }
