@@ -6,7 +6,7 @@ namespace JetpackGUI
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+       System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -27,7 +27,7 @@ namespace JetpackGUI
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+       void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyLang));
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
@@ -99,8 +99,8 @@ namespace JetpackGUI
 
         #endregion
 
-        private DarkUI.Controls.DarkLabel darkLabel1;
-        private DarkUI.Controls.DarkComboBox AllLangs;
-        private DarkUI.Controls.DarkButton button2;
+       DarkUI.Controls.DarkLabel darkLabel1;
+       DarkUI.Controls.DarkComboBox AllLangs;
+       DarkUI.Controls.DarkButton button2;
     }
 }
