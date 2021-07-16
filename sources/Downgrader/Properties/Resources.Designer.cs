@@ -3,11 +3,8 @@
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
         static global::System.Resources.ResourceManager resourceMan;
-        
         static global::System.Globalization.CultureInfo resourceCulture;
-        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledCode")]
         internal Resources() {
         }
