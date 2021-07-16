@@ -40,6 +40,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>JetpackGUI.Program</StartupObject>
@@ -105,7 +106,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Classes\TextProgressBar.cs">
+    <Compile Include="Classes\MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -117,7 +118,6 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="Resources\About.png" />
-    <Content Include="Resources\JPD.png" />
     <None Include="Resources\ASL.zip" />
     <None Include="Resources\Reg.png" />
     <None Include="Resources\GoBack.png" />
@@ -132,8 +132,8 @@
     <None Include="Resources\GitHub.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Classes\TextProgressBar.resx">
-      <DependentUpon>TextProgressBar.cs</DependentUpon>
+    <EmbeddedResource Include="Classes\MyProgressBar.resx">
+      <DependentUpon>MyProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

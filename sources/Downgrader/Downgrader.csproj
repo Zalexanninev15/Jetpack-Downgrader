@@ -42,6 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DefineConstants>TRACE</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Downgrader.Program</StartupObject>

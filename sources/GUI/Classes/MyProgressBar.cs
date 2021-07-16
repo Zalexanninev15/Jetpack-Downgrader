@@ -15,12 +15,12 @@ namespace JetpackGUI
         TextAndCurrProgress
     }
 
-    public class TextProgressBar : ProgressBar
+    public class MyProgressBar : ProgressBar
     {
         [Description("Font of the text on ProgressBar"), Category("Additional Options")]
         public Font TextFont { get; set; } = new Font(FontFamily.GenericSerif, 11, FontStyle.Bold|FontStyle.Italic);
         
-        private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
+       SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
         [Category("Additional Options")]
         public Color TextColor 
         {
@@ -28,7 +28,7 @@ namespace JetpackGUI
             set { _textColourBrush.Dispose(); _textColourBrush = new SolidBrush(value); }
         }
 
-        private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
+       SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
         [Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public Color ProgressColor
         {
@@ -36,7 +36,7 @@ namespace JetpackGUI
             set { _progressColourBrush.Dispose(); _progressColourBrush = new SolidBrush(value); }
         }
 
-        private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
+       ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
         [Category("Additional Options"), Browsable(true)]
         public ProgressBarDisplayMode VisualMode 
         {
@@ -44,7 +44,7 @@ namespace JetpackGUI
             set { _visualMode = value; Invalidate(); }
         }
 
-        private string _text = string.Empty;
+       string _text = string.Empty;
 
         [Description("If it's empty, % will be shown"), Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string CustomText
@@ -53,7 +53,7 @@ namespace JetpackGUI
             set { _text = value; Invalidate(); }
         }
 
-        private string _textToDraw
+       string _textToDraw
         {
             get
             {
@@ -78,13 +78,13 @@ namespace JetpackGUI
             set { }
         }
         
-        public TextProgressBar() { Value = Minimum; FixComponentBlinking(); }
-        private string _currProgressStr { get { return $"{Value}/{Maximum}"; } }
-        private void FixComponentBlinking() { SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true); }
-        private string _percentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100 } %"; } }
+        public MyProgressBar() { Value = Minimum; FixComponentBlinking(); }
+       string _currProgressStr { get { return $"{Value}/{Maximum}"; } }
+       void FixComponentBlinking() { SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true); }
+       string _percentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100 } %"; } }
         protected override void OnPaint(PaintEventArgs e) { Graphics g = e.Graphics; DrawProgressBar(g); DrawStringIfNeeded(g); }
 
-        private void DrawProgressBar(Graphics g)
+       void DrawProgressBar(Graphics g)
         {
             Rectangle rect = ClientRectangle;
             ProgressBarRenderer.DrawHorizontalBar(g, rect);
@@ -95,7 +95,7 @@ namespace JetpackGUI
             }
         }
 
-        private void DrawStringIfNeeded(Graphics g)
+       void DrawStringIfNeeded(Graphics g)
         {
             if (VisualMode != ProgressBarDisplayMode.NoText)
             {
@@ -107,6 +107,6 @@ namespace JetpackGUI
         }
         
         public new void Dispose() { _textColourBrush.Dispose(); _progressColourBrush.Dispose(); base.Dispose(); }
-        private void InitializeComponent() { this.SuspendLayout(); this.BackColor = Color.FromArgb(69, 73, 74); this.ResumeLayout(false); }
+       void InitializeComponent() { this.SuspendLayout(); this.BackColor = Color.FromArgb(69, 73, 74); this.ResumeLayout(false); }
     }
 }
