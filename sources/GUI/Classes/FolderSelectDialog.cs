@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace JetpackDowngraderGUI
+namespace JetpackGUI
 {
     public class FolderSelectDialog
     {
@@ -66,7 +66,6 @@ namespace JetpackDowngraderGUI
                 s_setOptionsMethodInfo.Invoke(iFileDialog, new object[] { (uint)s_getOptionsMethodInfo.Invoke(openFileDialog, new object[] { }) | s_fosPickFoldersBitFlag });
                 var adviseParametersWithOutputConnectionToken = new[] { s_vistaDialogEventsConstructorInfo.Invoke(new object[] { openFileDialog }), 0U };
                 s_adviseMethodInfo.Invoke(iFileDialog, adviseParametersWithOutputConnectionToken);
-
                 try
                 {
                     int retVal = (int)s_showMethodInfo.Invoke(iFileDialog, new object[] { ownerHandle });

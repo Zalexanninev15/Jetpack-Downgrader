@@ -1,11 +1,6 @@
-
 sources/GUI/.vs/GUI/v16/.suo
 sources/Downgrader/.vs/Jetpack Downgrader/v16/.suo
 sources/.vs/Jetpack Downgrader/v16/.suo
-sources/packages/DarkUI.2.0.2/.signature.p7s
-sources/packages/DarkUI.2.0.2/DarkUI.2.0.2.nupkg
-sources/packages/DarkUI.2.0.2/icon-64.png
-sources/packages/DarkUI.2.0.2/lib/DarkUI.dll
 *.exe
 *.cache
 sources/GUI/obj/Release/JetpackDowngraderGUI.MainForm.resources
@@ -19,3 +14,43 @@ sources/Downgrader/obj/Release/JetpackDowngrader.Properties.Resources.resources
 sources/Downgrader/obj/Release/Jetpack Downgrader.csproj.FileListAbsolute.txt
 sources/Downgrader/obj/Release/.NETFramework,Version=v4.8.AssemblyAttributes.cs
 sources/Downgrader/bin/Release/jpd.exe.config
+sources/Downgrader/obj/Release/Downgrader.Properties.Resources.resources
+sources/GUI/bin/Release/app.exe.config
+sources/Downgrader/obj/Release/Downgrader.csproj.FileListAbsolute.txt
+sources/GUI/obj/Release/JetpackGUI.MainForm.resources
+sources/GUI/obj/Release/JetpackGUI.Properties.Resources.resources
+sources/packages/MegaApiClient.1.9.0/lib/net40/MegaApiClient.xml
+sources/packages/MegaApiClient.1.9.0/lib/net45/MegaApiClient.xml
+sources/packages/MegaApiClient.1.9.0/lib/net46/MegaApiClient.xml
+sources/packages/MegaApiClient.1.9.0/lib/netstandard1.3/MegaApiClient.xml
+sources/packages/MegaApiClient.1.9.0/lib/netstandard2.0/MegaApiClient.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/net20/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/net35/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/net40/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/net45/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/netstandard1.0/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/netstandard1.3/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/lib/netstandard2.0/Newtonsoft.Json.xml
+sources/packages/Newtonsoft.Json.13.0.1/LICENSE.md
+sources/packages/Newtonsoft.Json.13.0.1/packageIcon.png
+sources/GUI/bin/Release/MegaApiClient.xml
+sources/GUI/bin/Release/Newtonsoft.Json.xml
+sources/Downgrader/bin/Release/jpd.ini
+sources/GUI/obj/Release/JetpackGUI.MyLang.resources
+sources/GUI/obj/Release/JetpackGUI.TextProgressBar.resources
+sources/GUI/bin/Release/Microsoft.WindowsAPICodePack.Shell.xml
+sources/GUI/bin/Release/Microsoft.WindowsAPICodePack.xml
+*.p7s
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/net452/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/net462/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/net472/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/net48/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/netcoreapp3.0/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Core.1.1.4/lib/netcoreapp3.1/Microsoft.WindowsAPICodePack.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/net452/Microsoft.WindowsAPICodePack.Shell.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/net462/Microsoft.WindowsAPICodePack.Shell.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/net472/Microsoft.WindowsAPICodePack.Shell.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/net48/Microsoft.WindowsAPICodePack.Shell.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/netcoreapp3.0/Microsoft.WindowsAPICodePack.Shell.xml
+sources/packages/Microsoft-WindowsAPICodePack-Shell.1.1.4/lib/netcoreapp3.1/Microsoft.WindowsAPICodePack.Shell.xml
+*.nupkg

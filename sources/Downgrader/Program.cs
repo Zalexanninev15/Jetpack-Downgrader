@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -30,6 +28,7 @@ namespace Downgrader
         public enum DwmBlurBehindDwFlags : uint { DWM_BB_ENABLE = 0x1, DWM_BB_BLURREGION = 0x2, DWM_BB_TRANSITIONONMAXIMIZED = 0x4 }
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DWM_BLURBEHIND blurBehind);
+
         static void EnableBlurBehind()
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -39,6 +38,7 @@ namespace Downgrader
             blur.fTransitionOnMaximized = true;
             DwmEnableBlurBehindWindow(Handle, ref blur);
         }
+
         static void MakeTransparent(byte pct)
         {
             IntPtr Handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -46,13 +46,12 @@ namespace Downgrader
             SetWindowLong(Handle, GWL_EXSTYLE, newDwLong);
             SetLayeredWindowAttributes(Handle, 0, pct, LWA_ALPHA);
         }
+
         [STAThread]
         public static void Main(string[] args)
         {
             Console.ResetColor();
             Application.EnableVisualStyles(); Application.SetCompatibleTextRenderingDefault(false);
-            try { ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"); } catch { }
-            try { File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jppe"); } catch { }
             string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[18]; string path = ""; DialogResult result = DialogResult.No;
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -82,7 +81,7 @@ namespace Downgrader
                 settings[10] = Convert.ToBoolean(cfg.GetValue("Downgrader", "CreateNewGamePath"));
                 settings[12] = Convert.ToBoolean(cfg.GetValue("Downgrader", "Forced"));
                 settings[16] = Convert.ToBoolean(cfg.GetValue("Downgrader", "EnableDirectPlay"));
-                settings[17] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectX"));
+                settings[17] = Convert.ToBoolean(cfg.GetValue("Downgrader", "InstallDirectXComponents"));
                 settings[8] = Convert.ToBoolean(cfg.GetValue("JPD", "SelectFolder"));
                 settings[11] = Convert.ToBoolean(cfg.GetValue("JPD", "ConsoleTransparency"));
                 settings[13] = Convert.ToBoolean(cfg.GetValue("JPD", "UseMsg"));
@@ -97,12 +96,15 @@ namespace Downgrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 if (settings[11] == true) { EnableBlurBehind(); MakeTransparent(50); }
-                if ((settings[1] == true) && (settings[8] == false)) { try { path = args[0]; } catch { } 
-                if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); } }
+                if ((settings[1] == true) && (settings[8] == false))
+                {
+                    try { path = args[0]; } catch { }
+                    if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); }
+                }
                 if (settings[8] == true)
                 {
                     var dialog = new FolderSelectDialog { InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), Title = "Select the game folder" };
-                    if (dialog.Show()) { path = dialog.FileName; } else { path = ""; }
+                    if (dialog.Show()) { path = dialog.FileName; } else { path = "false"; }
                 }
                 if ((path != "") && Directory.Exists(@path))
                 {
@@ -218,27 +220,6 @@ namespace Downgrader
                             catch { Logger("ResetGame", "gta_sa.set (Public Documents)", "false"); }
                         }
                     }
-                    if ((File.Exists(@path + @"\index.bin")) || (File.Exists(@path + @"\MTLX.dll")))
-                    {
-                        if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                        if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
-                        {
-                            Logger("Downgrader", "Process", "Deleting index.bin file...");
-                            try
-                            {
-                                if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
-                                else { Logger("GarbageCleaning", "index.bin", "false"); }
-                            }
-                            catch { Logger("GarbageCleaning", "index.bin", "false"); }
-                            Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
-                            try
-                            {
-                                if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
-                                else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
-                            }
-                            catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
-                        }
-                    }
                     if ((settings[13] == true) && (gv != 5)) { result = MessageBox.Show("Would you like to enable DirectPlay to avoid possible problems with running the game? This operation is NECESSARY ONLY on Windows 10, if your version is lower (7/8/8.1), then your answer is No!!!", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
                     if (((result == DialogResult.Yes) || (settings[16] == true)) && (gv != 5))
                     {
@@ -263,25 +244,7 @@ namespace Downgrader
                             }
                             catch { Logger("DirectX", "Process", "Installation error"); }
                         }
-                        else
-                        {
-                            Logger("DirectX", "Process", "Downloading installer...");
-                            Logger("DirectX", "Process", "App is not frozen, just busy right now...");
-                            try
-                            {
-                                // Old: http://github.com/Zalexanninev15/Jetpack-Downgrader/releases/download/1.11.6/DirectX_Installer.zip
-                                using (WebClient wc = new WebClient()) { wc.DownloadFile("https://download1583.mediafire.com/a6mcgg3kugig/dtnqqt8qyflgjc4/DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip"); }
-                                Logger("DirectX", "Process", "Preparing installer...");
-                                try { Directory.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX", true); } catch { }
-                                ZipFile.ExtractToDirectory(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip", @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location));
-                                File.Delete(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX_Installer.zip");
-                                Logger("DirectX", "Process", "Installing...");
-                                Logger("DirectX", "Process", "App is not frozen, just busy right now...");
-                                Process.Start(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
-                                Logger("DirectX", "Process", "Installation completed successfully");
-                            }
-                            catch { Logger("DirectX", "Process", "Installation error"); }
-                        }
+                        else { Logger("DirectX", "Process", "Installation error"); }
                     }
                     if ((settings[12] == true) && (gv == 0)) { gv = 6; settings[12] = true; }
                     if ((gv != 0) && (er == 0) && (settings[3] == false))
@@ -294,7 +257,7 @@ namespace Downgrader
                             {
                                 Logger("Game", @path + fl[1], "true");
                                 File.SetAttributes(@path + fl[1], FileAttributes.Normal);
-                                try { File.SetAttributes(@path + fl[1] + ".bak", FileAttributes.Normal); } catch { }
+                                try { File.SetAttributes(@path + fl[1] + ".jpb", FileAttributes.Normal); } catch { }
                             }
                             else { er = 1; Logger("Game", @path + fl[1], "false"); }
                         }
@@ -307,7 +270,7 @@ namespace Downgrader
                                     if (File.Exists(@path + fl[i]))
                                     {
                                         File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                        try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                        try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                         if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                     }
                                     else { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "false"); } }
@@ -326,7 +289,7 @@ namespace Downgrader
                                         if (File.Exists(@path + fl[i]))
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                            try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                            try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                         }
                                         else { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "false"); } }
@@ -346,7 +309,7 @@ namespace Downgrader
                                         if (File.Exists(@path + fl[i]))
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
-                                            try { File.SetAttributes(@path + fl[i] + ".bak", FileAttributes.Normal); } catch { }
+                                            try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[15] == false) { progress.DoThis(false); Logger("Game", @path + fl[i], "true"); }
                                         }
                                         else
@@ -424,7 +387,7 @@ namespace Downgrader
                                             try
                                             {
                                                 GameMD5 = GetMD5(@path + fl[i]);
-                                                if (settings[15] == false) { progress.DoThis(false); Logger("GameMD5", @path + fl[i], GameMD5);}
+                                                if (settings[15] == false) { progress.DoThis(false); Logger("GameMD5", @path + fl[i], GameMD5); }
                                                 if (GameMD5 == flmd5[i])
                                                 {
                                                     fisv = true;
@@ -457,9 +420,9 @@ namespace Downgrader
                                         try { Directory.Delete(@path + "_Downgraded", true); } catch { }
                                         FileSystem.CopyDirectory(@path, @path + "_Downgraded");
                                         path = @path + "_Downgraded";
-                                        Logger("Game", "Path", "new");
+                                        Logger("NewGamePath", "Path", @path);
                                     }
-                                    catch { er = 0; Logger("Game", "Path", "false"); }
+                                    catch { er = 0; Logger("NewGamePath", "Path", "false"); }
                                 }
                                 // Backup (optional)
                                 if (settings[13] == true) { result = MessageBox.Show("Do you want to create backups of files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
@@ -469,21 +432,21 @@ namespace Downgrader
                                     Logger("Downgrader", "Process", "Create backups...");
                                     if (gv == 6) // 1.01
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); Logger("GameBackup", @path + fl[1], "Done!"); }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); Logger("GameBackup", @path + fl[1], "Done!"); }
                                         catch { er = 1; Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); }
                                     }
                                     if (gv == 3) // Rockstar Games Launcher
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); } }
                                         using (var progress = new ProgressBar())
                                         {
                                             for (int i = 2; i < fl.Length; i++)
                                             {
-                                                if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                 catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
                                             }
@@ -491,8 +454,8 @@ namespace Downgrader
                                     }
                                     if (gv == 2) // Version 2.0
                                     {
-                                        if (File.Exists(@path + fl[1] + ".bak")) { File.Delete(@path + fl[1] + ".bak"); }
-                                        try { File.Move(@path + fl[1], @path + fl[1] + ".bak"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
+                                        if (File.Exists(@path + fl[1] + ".jpb")) { File.Delete(@path + fl[1] + ".jpb"); }
+                                        try { File.Move(@path + fl[1], @path + fl[1] + ".jpb"); if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "Done!"); } }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); } }
                                         using (var progress = new ProgressBar())
                                         {
@@ -500,8 +463,8 @@ namespace Downgrader
                                             {
                                                 if ((i >= 2) && (i > 11))
                                                 {
-                                                    if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                    if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                     catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
@@ -510,10 +473,10 @@ namespace Downgrader
                                     }
                                     if (gv == 1) // Steam version
                                     {
-                                        if (File.Exists(@path + fl[0] + ".bak")) { File.Delete(@path + fl[0] + ".bak"); }
+                                        if (File.Exists(@path + fl[0] + ".jpb")) { File.Delete(@path + fl[0] + ".jpb"); }
                                         try
                                         {
-                                            File.Move(@path + fl[0], @path + fl[0] + ".bak");
+                                            File.Move(@path + fl[0], @path + fl[0] + ".jpb");
                                             if (settings[15] == false) { Logger("GameBackup", @path + fl[0], "Done!"); }
                                         }
                                         catch { er = 1; if (settings[15] == false) { Logger("GameBackup", @path + fl[0], "File for backup wasn't found!"); } }
@@ -523,8 +486,8 @@ namespace Downgrader
                                             {
                                                 if (i >= 2)
                                                 {
-                                                    if (File.Exists(@path + fl[i] + ".bak")) { File.Delete(@path + fl[i] + ".bak"); }
-                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".bak"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
+                                                    if (File.Exists(@path + fl[i] + ".jpb")) { File.Delete(@path + fl[i] + ".jpb"); }
+                                                    try { File.Move(@path + fl[i], @path + fl[i] + ".jpb"); if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "Done!"); } }
                                                     catch { er = 1; if (settings[15] == false) { progress.DoThis(false); Logger("GameBackup", @path + fl[i], "File for backup wasn't found!"); } }
                                                 }
                                                 if (settings[15] == true) { progress.DoText("Backup progress"); progress.Report((double)i / fl.Length); }
@@ -537,120 +500,177 @@ namespace Downgrader
                                 {
                                     if (Directory.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"))
                                     {
-                                        Logger("Downgrader", "Process", "Downgrading...");
-                                        try
+                                        bool all_patches = true;
+                                        for (int i = 2; i < fl.Length; i++) { if (!File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp")) { all_patches = false; } }
+                                        if (!File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp")) { all_patches = false; }
+                                        if (all_patches == true)
                                         {
-                                            // For All Versions | EXE
-                                            File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp", @path + fl[1], true);
-                                            if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-                                            if (gv == 1)
+                                            Logger("Downgrader", "Process", "Downgrading...");
+                                            try
                                             {
-                                                File.Copy(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp", @path + fl[0], true);
+                                                // For All Versions | EXE
+                                                var restoreRGLfiles = new ProcessStartInfo
+                                                {
+                                                    FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe",
+                                                    Arguments = "x \"" + @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + @path + "\" -y",
+                                                    UseShellExecute = false,
+                                                    CreateNoWindow = true,
+                                                };
+                                                restoreRGLfiles.WindowStyle = ProcessWindowStyle.Hidden;
+                                                Process.Start(restoreRGLfiles).WaitForExit();
+                                                try { File.SetAttributes(@path + fl[1], FileAttributes.Normal); } catch { }
+                                                try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
+                                                try { File.Delete(@path + fl[1]); } catch { }
+                                                File.Move(@path + @"\game.jpp", @path + fl[1]);
                                                 if (settings[15] == false) { Logger("NewGame", @path + fl[1], "1.0"); }
-                                            }
-                                            if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
-                                            {
-                                                using (var progress = new ProgressBar())
+                                                if (gv == 1)
                                                 {
-                                                    for (int i = 2; i < fl.Length; i++)
-                                                    {
-                                                        string par = " -d -s " + '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                        if (settings[2] == true) { par = " -d -s " + '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
-                                                        Patcher(@par);
-                                                        if (settings[2] == false){ File.Delete(@path + fl[i]); }
-                                                        File.Move(@path + fl[i] + ".temp", @path + fl[i]);
-                                                        if (settings[15] == false) { progress.DoThis(false); Logger("NewGame", @path + fl[i], "1.0"); }
-                                                        if (settings[15] == true) { progress.DoText("Downgrade progress"); progress.Report((double)i / fl.Length); }
-                                                    }
+                                                    Process.Start(restoreRGLfiles).WaitForExit();
+                                                    try { File.SetAttributes(@path + fl[0], FileAttributes.Normal); } catch { }
+                                                    try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
+                                                    try { File.Delete(@path + fl[0]); } catch { }
+                                                    File.Move(@path + @"\game.jpp", @path + fl[0]);
+                                                    if (settings[15] == false) { Logger("NewGame", @path + fl[0], "1.0"); }
                                                 }
-                                            }
-                                            if (gv == 2) // 2.0
-                                            {
-                                                using (var progress = new ProgressBar())
+                                                if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
                                                 {
-                                                    for (int i = 2; i < fl.Length; i++)
+                                                    using (var progress = new ProgressBar())
                                                     {
-                                                        if ((i >= 2) && (i > 11))
+                                                        for (int i = 2; i < fl.Length; i++)
                                                         {
-                                                            string par = " -d -s " + '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                            if (settings[2] == true) { par = " -d -s " + '"' + @path + fl[i] + ".bak" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                            // Old: par = " -d -s " + '"' ...
+                                                            string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                            if (settings[2] == true) { par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
                                                             Patcher(@par);
                                                             if (settings[2] == false) { File.Delete(@path + fl[i]); }
                                                             File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                             if (settings[15] == false) { progress.DoThis(false); Logger("NewGame", @path + fl[i], "1.0"); }
+                                                            if (settings[15] == true) { progress.DoText("Downgrade progress"); progress.Report((double)i / fl.Length); }
                                                         }
-                                                        if (settings[15] == true) { progress.DoText("Downgrade progress"); progress.Report((double)i / fl.Length); }
                                                     }
                                                 }
-                                            }
-                                        }
-                                        catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
-                                        if (er == 0)
-                                        {
-                                            Logger("NewGame", "All", "1.0");
-                                            if (settings[0] == true) { Logger("NewGameReadOnly", "All", "true"); }
-                                            // Checking files after downgrade (MD5)
-                                            Logger("Downgrader", "Process", "Checking files after downgrade (MD5)...");
-                                            if (gv == 6) // 1.01
-                                            {
-                                                try
+                                                if (gv == 2) // 2.0
                                                 {
-                                                    GameMD5 = GetMD5(@path + fl[1]);
-                                                    Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                                    if (GameMD5 == flmd5[0]) { fisv = true; Logger("NewGameMD5", @path + fl[1], "1.0"); }
-                                                    else { fisv = false; Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); }
-                                                }
-                                                catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "File not found!"); }
-                                            }
-                                            if (gv == 3) // Rockstar Games Launcher
-                                            {
-                                                try
-                                                {
-                                                    GameMD5 = GetMD5(@path + fl[1]);
-                                                    if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
-                                                    if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
-                                                    else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); }}
-                                                }
-                                                catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
-                                                using (var progress = new ProgressBar())
-                                                {
-                                                    for (int i = 2; i < fl.Length; i++)
+                                                    using (var progress = new ProgressBar())
                                                     {
-                                                        try
+                                                        for (int i = 2; i < fl.Length; i++)
                                                         {
-                                                            GameMD5 = GetMD5(@path + fl[i]);
-                                                            if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
-                                                            if (GameMD5 == flmd5[i])
+                                                            if ((i >= 2) && (i > 11))
                                                             {
-                                                                fisv = true;
-                                                                if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "1.0"); }
+                                                                string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                                if (settings[2] == true) { par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; }
+                                                                Patcher(@par);
+                                                                if (settings[2] == false) { File.Delete(@path + fl[i]); }
+                                                                File.Move(@path + fl[i] + ".temp", @path + fl[i]);
+                                                                if (settings[15] == false) { progress.DoThis(false); Logger("NewGame", @path + fl[i], "1.0"); }
                                                             }
-                                                            else
-                                                            {
-                                                                fisv = false;
-                                                                if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); }
-                                                            }
+                                                            if (settings[15] == true) { progress.DoText("Downgrade progress"); progress.Report((double)i / fl.Length); }
                                                         }
-                                                        catch { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "File not found!"); } }
-                                                        if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
                                                     }
                                                 }
                                             }
-                                            if (gv == 2) // 2.0
+                                            catch { er = 1; Logger("NewGame", "All", "An error occurred accessing the game files!"); }
+                                            if (er == 0)
                                             {
-                                                try
+                                                Logger("NewGame", "All", "1.0");
+                                                if (settings[0] == true) { Logger("NewGameReadOnly", "All", "true"); }
+                                                // Checking files after downgrade (MD5)
+                                                Logger("Downgrader", "Process", "Checking files after downgrade (MD5)...");
+                                                if (gv == 6) // 1.01
                                                 {
-                                                    GameMD5 = GetMD5(@path + fl[1]);
-                                                    if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
-                                                    if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
-                                                    else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); } }
-                                                }
-                                                catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
-                                                using (var progress = new ProgressBar())
-                                                {
-                                                    for (int i = 2; i < fl.Length; i++)
+                                                    try
                                                     {
-                                                        if ((i >= 2) && (i > 11))
+                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        Logger("NewGameMD5", @path + fl[1], GameMD5);
+                                                        if (GameMD5 == flmd5[0]) { fisv = true; Logger("NewGameMD5", @path + fl[1], "1.0"); }
+                                                        else { fisv = false; Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); }
+                                                    }
+                                                    catch { fisv = false; Logger("NewGameMD5", @path + fl[1], "File not found!"); }
+                                                }
+                                                if (gv == 3) // Rockstar Games Launcher
+                                                {
+                                                    try
+                                                    {
+                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
+                                                        if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
+                                                        else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); } }
+                                                    }
+                                                    catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
+                                                    using (var progress = new ProgressBar())
+                                                    {
+                                                        for (int i = 2; i < fl.Length; i++)
+                                                        {
+                                                            try
+                                                            {
+                                                                GameMD5 = GetMD5(@path + fl[i]);
+                                                                if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
+                                                                if (GameMD5 == flmd5[i])
+                                                                {
+                                                                    fisv = true;
+                                                                    if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "1.0"); }
+                                                                }
+                                                                else
+                                                                {
+                                                                    fisv = false;
+                                                                    if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); }
+                                                                }
+                                                            }
+                                                            catch { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "File not found!"); } }
+                                                            if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
+                                                        }
+                                                    }
+                                                }
+                                                if (gv == 2) // 2.0
+                                                {
+                                                    try
+                                                    {
+                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
+                                                        if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
+                                                        else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); } }
+                                                    }
+                                                    catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
+                                                    using (var progress = new ProgressBar())
+                                                    {
+                                                        for (int i = 2; i < fl.Length; i++)
+                                                        {
+                                                            if ((i >= 2) && (i > 11))
+                                                            {
+                                                                try
+                                                                {
+                                                                    GameMD5 = GetMD5(@path + fl[i]);
+                                                                    if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
+                                                                    if (GameMD5 == flmd5[i]) { fisv = true; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "1.0"); } }
+                                                                    else { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); } }
+                                                                }
+                                                                catch { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "File not found!"); } }
+                                                            }
+                                                            if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
+                                                        }
+                                                    }
+                                                }
+                                                if (gv == 1) // Steam
+                                                {
+                                                    try
+                                                    {
+                                                        GameMD5 = GetMD5(@path + fl[0]);
+                                                        if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], GameMD5); }
+                                                        if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "1.0"); } }
+                                                        else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "Higher than 1.0!"); } }
+                                                    }
+                                                    catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "File not found!"); } }
+                                                    try
+                                                    {
+                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
+                                                        if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
+                                                        else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); } }
+                                                    }
+                                                    catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
+                                                    using (var progress = new ProgressBar())
+                                                    {
+                                                        for (int i = 2; i < fl.Length; i++)
                                                         {
                                                             try
                                                             {
@@ -660,76 +680,66 @@ namespace Downgrader
                                                                 else { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); } }
                                                             }
                                                             catch { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "File not found!"); } }
+                                                            if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
                                                         }
-                                                        if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
                                                     }
                                                 }
-                                            }
-                                            if (gv == 1) // Steam
-                                            {
-                                                try
+                                                if (fisv == true)
                                                 {
-                                                    GameMD5 = GetMD5(@path + fl[0]);
-                                                    if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], GameMD5); }
-                                                    if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "1.0"); } }
-                                                    else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "Higher than 1.0!"); }  }
-                                                }
-                                                catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[0], "File not found!"); } }
-                                                try
-                                                {
-                                                    GameMD5 = GetMD5(@path + fl[1]);
-                                                    if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], GameMD5); }
-                                                    if (GameMD5 == flmd5[0]) { fisv = true; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "1.0"); } }
-                                                    else { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); } }
-                                                }
-                                                catch { fisv = false; if (settings[15] == false) { Logger("NewGameMD5", @path + fl[1], "File not found!"); } }
-                                                using (var progress = new ProgressBar())
-                                                {
-                                                    for (int i = 2; i < fl.Length; i++)
+                                                    Logger("NewGameMD5", "All", "true");
+                                                    Logger("Downgrader", "Game", "Downgrade completed!");
+                                                    if (File.Exists(@path + @"\index.bin") || File.Exists(@path + @"\MTLX.dll"))
                                                     {
+                                                        if ((settings[13] == true) && (gv == 3)) { result = MessageBox.Show("Do you want remove unneeded files that are not used by the game version 1.0?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                                        if (((result == DialogResult.Yes) || (settings[14] == true)) && (gv == 3))
+                                                        {
+                                                            Logger("Downgrader", "Process", "Deleting index.bin file...");
+                                                            try
+                                                            {
+                                                                if (File.Exists(@path + @"\index.bin")) { File.Delete(@path + @"\index.bin"); Logger("GarbageCleaning", "index.bin", "true"); }
+                                                                else { Logger("GarbageCleaning", "index.bin", "false"); }
+                                                            }
+                                                            catch { Logger("GarbageCleaning", "index.bin", "false"); }
+                                                            Logger("Downgrader", "Process", "Deleting MTLX.dll file...");
+                                                            try
+                                                            {
+                                                                if (File.Exists(@path + @"\MTLX.dll")) { File.Delete(@path + @"\MTLX.dll"); Logger("GarbageCleaning", "MTLX.dll", "true"); }
+                                                                else { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+                                                            }
+                                                            catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
+                                                        }
+                                                    }
+                                                    if (settings[13] == true) { result = MessageBox.Show("Would you like to create an game shortcut on your Desktop?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                                    if ((result == DialogResult.Yes) || (settings[6] == true))
+                                                    {
+                                                        Logger("Downgrader", "Process", "Creating a shortcut...");
+                                                        try { Create(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe"); Logger("Downgrader", "CreateShortcut", "true"); }
+                                                        catch { Logger("Downgrader", "CreateShortcut", "false"); }
+                                                    }
+                                                    if (settings[13] == true) { result = MessageBox.Show("Would you like to register the game in the system?\n(for launchers, SAMP and other projects)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
+                                                    if ((result == DialogResult.Yes) || (settings[9] == true))
+                                                    {
+                                                        Logger("Downgrader", "Process", "Adding entries to the registry...");
                                                         try
                                                         {
-                                                            GameMD5 = GetMD5(@path + fl[i]);
-                                                            if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], GameMD5); }
-                                                            if (GameMD5 == flmd5[i]) { fisv = true; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "1.0"); } }
-                                                            else { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); } }
+                                                            if (Environment.Is64BitOperatingSystem == true) { Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation"); Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation", "ExePath", "\"" + path + "\""); }
+                                                            Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Rockstar Games\GTA San Andreas\Installation");
+                                                            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\GTA San Andreas\Installation", "ExePath", "\"" + path + "\"");
+                                                            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\GTA San Andreas\Installation", "Installed", "1");
+                                                            Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Rockstar Games\Launcher");
+                                                            Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\Launcher", "Language", "en-US");
+                                                            Logger("Downgrader", "RegisterGamePath", "true");
                                                         }
-                                                        catch { fisv = false; if (settings[15] == false) { progress.DoThis(false); Logger("NewGameMD5", @path + fl[i], "File not found!"); } }
-                                                        if (settings[15] == true) { progress.DoText("MD5 verification progress"); progress.Report((double)i / fl.Length); }
+                                                        catch { Logger("Downgrader", "RegisterGamePath", "false"); }
                                                     }
+                                                    if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                                                 }
+                                                else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                                             }
-                                            if (fisv == true)
-                                            {
-                                                Logger("NewGameMD5", "All", "true");
-                                                Logger("Downgrader", "Game", "Downgrade completed!");
-                                                if (settings[13] == true) { result = MessageBox.Show("Would you like to create an game shortcut on your Desktop?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                                                if ((result == DialogResult.Yes) || (settings[6] == true))
-                                                {
-                                                    Logger("Downgrader", "Process", "Creating a shortcut...");
-                                                    try { Create(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe"); Logger("Downgrader", "CreateShortcut", "true"); }
-                                                    catch { Logger("Downgrader", "CreateShortcut", "false"); }
-                                                }
-                                                if (settings[13] == true) { result = MessageBox.Show("Would you like to register the game in the system?\n(for launchers, SAMP and other projects)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1); }
-                                                if ((result == DialogResult.Yes) || (settings[9] == true))
-                                                {
-                                                    Logger("Downgrader", "Process", "Adding entries to the registry...");
-                                                    try
-                                                    {
-                                                        bool is64BitOS = Environment.Is64BitOperatingSystem;
-                                                        if (is64BitOS == true) { Registry.LocalMachine.CreateSubKey("SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation"); Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\""); }
-                                                        Registry.LocalMachine.CreateSubKey("SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation");
-                                                        Registry.SetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\Rockstar Games\\GTA San Andreas\\Installation", "ExePath", "\"" + path.ToString() + "\"");
-                                                        Logger("Downgrader", "RegisterGamePath", "true");
-                                                    }
-                                                    catch { Logger("Downgrader", "RegisterGamePath", "false"); }
-                                                }
-                                                if (settings[13] == true) { MessageBox.Show("Downgrade completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                                            }
-                                            else { Logger("NewGameMD5", "All", "false"); Logger("Downgrader", "Game", "Error checking files!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                                         }
+                                        else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!"); }
                                     }
-                                    else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!"); }
+                                    else { Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!"); }
                                 }
                                 else { Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!"); Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); }
                             }
@@ -742,9 +752,13 @@ namespace Downgrader
                 else { Logger("Game", "Path", "false"); }
             }
             else { Logger("Downgrader", "Process", "File patcher.exe was not found!"); }
-            if (settings[1] == false) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
+            bool IsGUI = false;
+            string str = "app";
+            foreach (Process process2 in Process.GetProcesses()) { if (process2.ProcessName.ToLower().Contains(str.ToLower())) { IsGUI = true; } }
+            if ((settings[1] == false) || (IsGUI == true)) { Logger("GamePath", "Current", @path); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Press Enter to Exit"); Console.ResetColor(); Console.ReadLine(); }
         }
-        public static void Patcher(string argument)
+
+        static void Patcher(string argument)
         {
             Process start_info = new Process();
             start_info.StartInfo.FileName = @Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe";
@@ -755,16 +769,19 @@ namespace Downgrader
             start_info.Start();
             start_info.WaitForExit();
         }
-        static void Logger(string type, string ido, string status) 
+
+        static void Logger(string type, string ido, string status)
         {
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
-            if ((status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "new") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
+            if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") || (status == "Deleting gta_sa.set (Public Documents) file...") || (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") || (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") || (status == "Downgrading...") || (status == "Create backups...") || (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") || (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") || (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") || (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) { Console.ForegroundColor = ConsoleColor.Blue; }
-            if ((ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "New")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
-            if ((status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Red; }
+            if (((type == "GameMD5") && (status != "Higher than 1.0!") && (status != "1.0")) || (ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") || (status == "2.0")) { Console.ForegroundColor = ConsoleColor.Yellow; }
+            if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) || (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") || (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") || (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") || (status == "File for backup wasn't found!") || (status == "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!") || (status == "Downgrade is not possible!") || (status == "An error occurred accessing the game files!")) { Console.ForegroundColor = ConsoleColor.Red; }
+            if (((type == "GameMD5") && (status == "Higher than 1.0!")) || (status == "Downgrade is not required!")) { Console.ForegroundColor = ConsoleColor.Green; }
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
         }
+
         static void Create(string ShortcutPath, string TargetPath)
         {
             IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
@@ -773,6 +790,7 @@ namespace Downgrader
             Shortcut.WorkingDirectory = TargetPath.Replace(@"\gta_sa.exe", "");
             Shortcut.Save();
         }
+
         static string GetMD5(string file)
         {
             using (var md5 = MD5.Create())

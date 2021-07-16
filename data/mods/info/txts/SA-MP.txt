@@ -1,0 +1,9 @@
+SA-MP
+0.3.7-R4 (01.05.2015)
+SA-MP team
+SA-MP is a free Massively Multiplayer Online game mod for the PC version of Rockstar Games Grand Theft Auto: San Andreas
+https://www.sa-mp.com/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr3.jpg
+https://files.sa-mp.com/sa-mp-0.3.7-R4-2-install.exe

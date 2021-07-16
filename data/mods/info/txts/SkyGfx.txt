@@ -1,0 +1,9 @@
+SkyGFX
+4.2 (08.05.2021)
+aap/The Hero
+Brings accurate PS2 and Xbox graphics to the PC version of San Andreas
+https://gtaforums.com/topic/750681-skygfx-ps2-xbox-and-mobile-graphics-for-pc/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr3.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SkyGfx.zip

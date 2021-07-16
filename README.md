@@ -1,11 +1,18 @@
 # Jetpack Downgrader | [Latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) | [Topic](https://gtaforums.com/topic/969056-jetpack-downgrader)
 
-![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/main/data/logo.png)
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/docs/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
-[![](https://img.shields.io/github/v/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
+[![](https://img.shields.io/github/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
+[![](https://img.shields.io/github/release-pre/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
+[![](https://img.shields.io/github/last-commit/Zalexanninev15/Jetpack-Downgrader/unstable.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/commits/unstable)
+[![](https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+## Screenshot
+
+![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/gui.png?raw=true)
 
 ## Description
 
@@ -23,12 +30,14 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Features
 
-* As simple as possible interaction (default). Specify the folder and answer the questions - you can easily get version 1.0 with the necessary settings
+* Easy to use and lots of additional downgrade settings
 * The ability to fine-tune the downgrading process, the *Jetpack Downgrader* itself, and some other aspects
-* Using delta patches that weigh significantly less than the files from the game version 1.0
+* Using patches that weigh significantly less than the files from the game version 1.0
+* Support for installing modifications after downgrading the game version
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
-* Easy integration of the application as a separate component in your project
 * Display process of downgrade and maximum speed of operations
+* Support for localizations to different languages (GUI only)
+* Support for hotkeys (**Ctrl + O**, **Ctrl + Y**, **Ctrl + Z**, **Ctrl + S**, **F12**, **F4**, **F1**)
 
 ## Supported versions
 
@@ -40,47 +49,33 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 **Only licensed versions of the game are supported, work on pirated builds is not guaranteed and will never be added!!!**
 
-## Usage and configuration
+## Usage
 
-1. Run **jpd.exe** and select the folder with the game (if **SelectFolder=true**)
-2. Answer the questions (if **UseMsg=true**) and wait end of work...
+*You can also open this document by pressing **F1***
 
-### Settings in jpd.ini
+1. Launch **app.exe**
+2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
+3. Select the first stage and select the path to game folder (or press **Ctrl + O**) and necessary settings (the recommended ones are already checked)
+4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) using the drop-down list (the list below is a list of all available modifications from the repository, for more convenient display). After selecting a modification, select the checkbox and wait for downloading the cache with mod's files
+5. Select stage 3 (or press **Ctrl + S**). The console will appear and downgrade process will start... If we can't find the patch files, you'll need to download them first (that's why step 3 is called "Download patches"), only then the button with the title "Downgrade" will appear
+6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
+7. If you have selected the modifications, you still need to wait until they are fully unpacked
+8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
+9. If there are problems, press the **F12** key and start the downgrade process again
 
-In **jpd.ini**, you can specify the settings for this application, it is not recommended to change anything if you don't know exactly what each setting is responsible for and what its values and results are!!! It is important to remember that settings are always more important than the answer you have chosen (if **UseMsg=true**)
+## Links
 
-#### [Downgrader]
+* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about CUI settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/CUI.md) about it
+* [Add new data (localization(s) or modification(s))](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md)
 
-* **CreateBackups** - creating backups (**[full file name] + .bak**) of original files before downgrading them
-* **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after a successful downgrade)
-* **ResetGame** - remove the game configuration file **gta_sa.set** for prevents crash (after getting game version)
-* **GarbageCleaning** - remove unneeded files (**index.bin** and **MTLX.dll**) from the Rockstar Games Launcher version of the game (after getting game version). These files are not used in the game version 1.0
-* **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects) (only after a successful downgrade)
-* **CreateNewGamePath** - make a copy of the game folder (**[folder name] + _Downgraded**) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable it for the Steam/Rockstar Games Launcher versions of the game!!!
-* **Forced** - force the app to continue running even if EXE file are already use from the game version 1.0 (MD5). Downgrader will only work with the EXE file, the rest of the game files will just be checked, so they must be original. For non-1.0 versions, only the EXE file will be patched
-* **EnableDirectPlay** - enable the Windows DirectPlay component to run the game on Windows 10 (after getting game version)
-* **InstallDirectX** - install additional DirectX files to run the game (after getting game version)
+## Used libraries
 
-#### [JPD]
-
-* **SelectFolder** - using UI for select the folder with the game (path using **Copmonent=true**, overwritten to a new one)
-* **ConsoleTransparency** - use transparency for console
-* **UseMsg** - use Windows message boxes to notify you when you select an action, as well as to show a positive result of the application's performance. This setting can take values instead of (or have no effect on) the settings: **CreateBackups**, **CreateShortcut**, **ResetGame**, **GarbageCleaning**, **RegisterGamePath**, **CreateNewGamePath**, **Forced**, **EnableDirectPlay**, **InstallDirectX** 
-* **UseProgressBar** - use the progress bar to indicate the progress of each of the downgrader stages. During operation, all logs of the current stage of work are ignored!!!
-* **Component** - this setting is **only** necessary if you decide to use *Jetpack Downgrader* in your projects (this setting will help you skip the UI (in console) and removes the waiting for input after the processes in the app are completed). This setting adds the ability to specify the path to the game folder as a parameter for launching the application
-
- Example for CMD: 
-
-  ```shell
-jpd "E:\Games\Grand Theft Auto San Andreas"
-  ```
-
-#### [Only]
-
-* **GameVersion** - get only the game version (can be used with the settings **ResetGame**, **GarbageCleaning**, **EnableDirectPlay**, **InstallDirectX**)
-* **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
-* **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scan files by MD5 and reveals which files are used from the game version 1.0 (information will only be visible if **UseProgressBar=false**)
+* [DarkUI](https://github.com/Zalexanninev15/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
+* [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
+* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
+* [Microsoft.WindowsAPICodePack.Shell](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
+* [Microsoft-WindowsAPICodePack-Core](https://github.com/contre/Windows-API-Code-Pack-1.1) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile project *Downgrader* using Visual Studio 2019
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) and [*Microsoft.WindowsAPICodePack.Shell*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) (with [*Microsoft-WindowsAPICodePack-Core*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Core)) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project.
