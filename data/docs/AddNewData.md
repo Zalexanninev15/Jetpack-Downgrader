@@ -11,7 +11,7 @@
 5. Save your translation under the name of the language code, but without the dash ([list of all codes](https://htmlpreview.github.io/?https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Language%20Code%20Table.html))
 6. Copy the file to the **languages** folder and open the gui. Next, select the language change icon (next to the logo) and select your language, which is indicated under the value of the **Language variable**. Or simply select a language from the language change window that appears (only the first launch)
 7. **Check your translation very carefully!**
-8. After successful tests, send a request (with file of localization) to add the localization to the repository. Localization will be added to the application itself immediately in the next update!
+8. After successful tests, send a request (in issue) with file of localization for adding the localization to the repository. Your localization will be added to the application itself immediately in the next update!
 
 ## Add new modification(s)
 
@@ -30,4 +30,4 @@
 * 8 - direct link to screenshot 3
 * 9 - direct link or link to MEGA to the ZIP archive
 
-5. Send a request (with the information file about the modification (steps 2-4)) to add the modification to the repository and list of modifications in app
+5. Send a request (in issue) for adding the modification to the repository (and list of modifications) with the file with a information about the modification (steps 2-4) 
