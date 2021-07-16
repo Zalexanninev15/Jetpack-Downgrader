@@ -18,6 +18,8 @@ public class ProgressBar : IDisposable, IProgress<double>
 	public void Report(double value) { value = Math.Max(0, Math.Min(1, value)); Interlocked.Exchange(ref currentProgress, value); }
 	public void DoText(string work1) { work = work1; }
 	public void DoThis(bool pbd) { workdo = pbd; }
+	void ResetTimer() { timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1)); }
+
 	void TimerHandler(object state)
 	{
 		lock (timer)
@@ -33,6 +35,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 			}
 		}
 	}
+
 	void UpdateText(string text)
 	{
 		int commonPrefixLength = 0;
@@ -51,7 +54,7 @@ public class ProgressBar : IDisposable, IProgress<double>
 		Console.Write(outputBuilder);
 		currentText = text;
 	}
-	void ResetTimer() { timer.Change(animationInterval, TimeSpan.FromMilliseconds(-1)); }
+
 	public void Dispose()
 	{
 		lock (timer)
