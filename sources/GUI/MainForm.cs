@@ -33,6 +33,10 @@ namespace JetpackGUI
         bool NotDone = true;
         bool IsDD = false;
         bool db = false;
+        int BrokenOrLowered = 0;
+        // 0 - normal
+        // 1 - 1.0
+        // 2 - unknown
         string cache = @Application.StartupPath + @"\files\mods_cache";
         string zip_link = "application/zip";
         string[] photos_links = new string[3];
@@ -901,6 +905,8 @@ namespace JetpackGUI
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc[1]); }
         void MsgWarning(string message) { DarkMessageBox.ShowWarning(message, lc[8]); }
+        void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
+        void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
         //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
         void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("- " + lc[38] + ": Jetpack GUI\n- " + lc[9] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n- " + lc[10] + ": Zalexanninev15 (programmer and creator) && Vadim M. (consultant)\n- " + lc[14]); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc[5]); } }
@@ -947,9 +953,6 @@ namespace JetpackGUI
                 stagesPanel.Visible = true;
             }
         }
-
-        void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
-        void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
 
         void button6_Click(object sender, EventArgs e)
         {
@@ -1228,18 +1231,8 @@ namespace JetpackGUI
             if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\jpd.ini"); }
             if (e.KeyData == Keys.F12)
             {
-                if (db == false)
-                {
-                    MsgWarning(lc[12]);
-                    cfg.SetValue("JPD", "UseProgressBar", "false");
-                    db = true;
-                }
-                else
-                {
-                    MsgWarning(lc[13]);
-                    cfg.SetValue("JPD", "UseProgressBar", "true");
-                    db = false;
-                }
+                if (db == false) { MsgWarning(lc[12]); cfg.SetValue("JPD", "UseProgressBar", "false"); db = true; }
+                else { MsgWarning(lc[13]); cfg.SetValue("JPD", "UseProgressBar", "true"); db = false; }
             }
             if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.O))
             {
@@ -1281,11 +1274,7 @@ namespace JetpackGUI
                 if (langs[i] != "")
                 {
                     IniEditor lang = new IniEditor(langs[i]);
-                    if (darkComboBox2.Text == Convert.ToString(lang.GetValue("Interface", "Language")))
-                    {
-                        cfg.SetValue("GUI", "LanguageCode", new FileInfo(langs[i]).Name.Replace(".ini", ""));
-                        Translate();
-                    }
+                    if (darkComboBox2.Text == Convert.ToString(lang.GetValue("Interface", "Language"))) { cfg.SetValue("GUI", "LanguageCode", new FileInfo(langs[i]).Name.Replace(".ini", "")); Translate(); }
                 }
             }
         }
@@ -1358,11 +1347,7 @@ namespace JetpackGUI
                     {
                         if (File.Exists(@GamePath.Text + fl[i] + ".jpb"))
                         {
-                            try
-                            {
-                                File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal);
-                                File.Delete(@GamePath.Text + fl[i]);
-                            }
+                            try { File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal); File.Delete(@GamePath.Text + fl[i]); }
                             catch { }
                             try
                             {
@@ -1376,11 +1361,7 @@ namespace JetpackGUI
                         {
                             if (File.Exists(@GamePath.Text + fl[0]))
                             {
-                                try
-                                {
-                                    File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal);
-                                    File.Delete(@GamePath.Text + fl[i]);
-                                }
+                                try { File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal); File.Delete(@GamePath.Text + fl[i]); }
                                 catch { }
                                 try { File.Copy(@GamePath.Text + fl[0], @GamePath.Text + fl[1]); } catch { }
                             }
@@ -1431,20 +1412,8 @@ namespace JetpackGUI
 
        void progressPanel_VisibleChanged(object sender, EventArgs e)
         {
-            if (progressPanel.Visible == true)
-            {
-                HelloUser.Visible = false;
-                pictureBox5.Visible = false;
-                pictureBox6.Visible = false;
-                pictureBox7.Visible = false;
-            }
-            if (progressPanel.Visible == false)
-            {
-                HelloUser.Visible = true;
-                pictureBox5.Visible = true;
-                pictureBox6.Visible = true;
-                pictureBox7.Visible = true;
-            }
+            if (progressPanel.Visible == true) { HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
+            else { HelloUser.Visible = true; pictureBox5.Visible = true; pictureBox6.Visible = true; pictureBox7.Visible = true; }
         }
     }
 }
