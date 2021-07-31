@@ -11,7 +11,6 @@ using Microsoft.Win32;
 using Microsoft.VisualBasic.FileIO;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace JetpackGUI
 {
@@ -40,6 +39,7 @@ namespace JetpackGUI
         string site_link = "";
         string[] fl = new string[17];
         bool x64 = Environment.Is64BitOperatingSystem;
+        string langcode = "EN";
 
         void MainForm_Load(object sender, EventArgs e)
         {
@@ -110,7 +110,7 @@ namespace JetpackGUI
                         DialogResult result = DarkMessageBox.ShowInformation(lc[36], lc[0], DarkDialogButton.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                            TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Indeterminate);
                             button1.Enabled = false;
                             int d = 0;
                             cfg.SetValue("JPD", "SelectFolder", "false");
@@ -131,13 +131,13 @@ namespace JetpackGUI
                                     {
                                         try
                                         {
-                                            TaskbarManager.Instance.SetProgressValue(i, modsZip.Length, Handle);
+                                            TaskBarProgressBar.SetValue(this.Handle, i, modsZip.Length);
                                             if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
                                             else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
                                             if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" (" + lc[37] + " \"ASI Loader\") " + lc[24]); }
                                             if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
                                         }
-                                        catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
+                                        catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
                                     }
                                     else
                                     {
@@ -149,7 +149,7 @@ namespace JetpackGUI
                                     }
                                 }
                             }
-                            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                            TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress);
                             MsgInfo(lc[4]);
                             button1.Enabled = true;
                             if (checkBox1.Checked == true) { pictureBox10.Visible = true; IsBak = true; }
@@ -162,6 +162,7 @@ namespace JetpackGUI
                             PartProgressBar.Visible = false;
                             label3.Visible = true;
                             button3.Visible = true;
+                            darkButton5.Visible = true;
                         }
                     }
                     else { MsgWarning(lc[7]); pictureBox10.Visible = false; IsBak = false; NotDone = true; }
@@ -892,9 +893,10 @@ namespace JetpackGUI
         void checkBox3_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "CreateNewGamePath", Convert.ToString(checkBox3.Checked).Replace("T", "t").Replace("F", "f")); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { cfg.SetValue("Downgrader", "ResetGame", Convert.ToString(checkBox9.Checked).Replace("T", "t").Replace("F", "f")); }
         void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgError(lc[5]); } }
+        void darkButton5_Click(object sender, EventArgs e) { Application.Exit(); }
         void ScreenShot_Click(object sender, EventArgs e) { try { Process.Start(ScreenShot.ImageLocation); } catch { MsgError(lc[5]); } }
         void listBox1_MouseDown(object sender, MouseEventArgs e) { SetFocus(IntPtr.Zero); }
-        private void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc[7]); pictureBox10.Visible = false; IsBak = false; } }
+        void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc[7]); pictureBox10.Visible = false; IsBak = false; } }
         void MsgInfo(string message) { DarkMessageBox.ShowInformation(message, lc[0]); }
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc[1]); }
@@ -906,7 +908,7 @@ namespace JetpackGUI
 
         async void MegaDownloader(string url, string file, string label, int code)
         {
-            try { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal, Handle); } catch { }
+            try { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Normal); } catch { }
             if (File.Exists(file)) { File.Delete(file); }
             var client = new MegaApiClient();
             client.LoginAnonymous();
@@ -919,7 +921,7 @@ namespace JetpackGUI
             IProgress<double> ph = new Progress<double>(x =>
             {
                 PartProgressBar.Value = (int)x;
-                try { TaskbarManager.Instance.SetProgressValue((int)x, 100, Handle); } catch { }
+                try { TaskBarProgressBar.SetValue(this.Handle, (int)x, 100); } catch { }
             });
             await client.DownloadFileAsync(zip_link_uri, file, ph);
             client.Logout();
@@ -927,19 +929,19 @@ namespace JetpackGUI
             {
                 if (code == 0)
                 {
-                    try { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate); } catch { }
+                    try { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Indeterminate); } catch { }
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
                     darkButton4.Visible = false;
                     button1.Visible = true;
-                    try { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); } catch { }
+                    try { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); } catch { }
                 }
                 if (code == 1)
                 {
-                    try { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate); } catch { }
+                    try { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Indeterminate); } catch { }
                     Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + @Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
-                    try { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); } catch { }
+                    try { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); } catch { }
                 }
                 progressPanel.Visible = false;
                 stagesPanel.Visible = true;
@@ -976,13 +978,13 @@ namespace JetpackGUI
                 {
                     try
                     {
-                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                        TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Indeterminate);
                         using (System.Net.WebClient mods = new System.Net.WebClient())
                         {
                             mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/list.txt", cache + @"\list.txt");
                             string[] modsl = File.ReadAllLines(cache + @"\list.txt", Encoding.ASCII);
                             listBox1.Items.Clear();
-                            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+                            TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Normal);
                             for (int i = 0; i < modsl.Length; i++)
                             {
                                 if (modsl[i] != "")
@@ -1000,7 +1002,7 @@ namespace JetpackGUI
                                     // Link to photo 1 - 7
                                     // Link to ZIP with mod - 8
                                     mse[i] = ms[0] + "|" + ms[1] + "|" + ms[2] + "|" + ms[3] + "|" + ms[4] + "|" + ms[5] + "|" + ms[6] + "|" + ms[7] + "|" + ms[8];
-                                    TaskbarManager.Instance.SetProgressValue(i, modsl.Length, Handle);
+                                    TaskBarProgressBar.SetValue(this.Handle, i, modsl.Length);
                                 }
                             }
                         }
@@ -1008,8 +1010,8 @@ namespace JetpackGUI
                         DSPanel.Visible = true;
                         ModsPanel.Visible = true;
                     }
-                    catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgWarning(lc[29]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc[29]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+                    TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress);
                 }
                 else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
             }
@@ -1038,7 +1040,7 @@ namespace JetpackGUI
                         IniEditor lang = new IniEditor(langs[i]);
                         string lg = Convert.ToString(lang.GetValue("Interface", "Language"));
                         darkComboBox2.Items.Add(lg);
-                        if (Properties.Settings.Default.LanguageCode == new FileInfo(langs[i]).Name.Replace(".ini", "")) { darkComboBox2.SelectedItem = lg; }
+                        if (langcode == new FileInfo(langs[i]).Name.Replace(".ini", "")) { darkComboBox2.SelectedItem = lg; }
                     }
                 }
             }
@@ -1053,9 +1055,10 @@ namespace JetpackGUI
 
         void Translate()
         {
+            langcode = Convert.ToString(cfg.GetValue("GUI", "LanguageCode"));
             try
             {
-                IniEditor lang = new IniEditor(@Application.StartupPath + @"\files\languages\" + Properties.Settings.Default.LanguageCode + ".ini");
+                IniEditor lang = new IniEditor(@Application.StartupPath + @"\files\languages\" + langcode + ".ini");
                 // Text(GUI) loading
                 darkLabel1.Text = Convert.ToString(lang.GetValue("Interface", "Languages"));
                 HelloUser.Text = Convert.ToString(lang.GetValue("Interface", "Stage"));
@@ -1084,6 +1087,7 @@ namespace JetpackGUI
                 lc[41] = Convert.ToString(lang.GetValue("Interface", "Mbyte"));
                 label3.Text = Convert.ToString(lang.GetValue("Interface", "WishPlay"));
                 button3.Text = Convert.ToString(lang.GetValue("Interface", "Play"));
+                darkButton5.Text = Convert.ToString(lang.GetValue("Interface", "CloseApp"));
                 // CheckBox loading
                 checkBox1.Text = Convert.ToString(lang.GetValue("CheckBox", "Backup"));
                 checkBox2.Text = Convert.ToString(lang.GetValue("CheckBox", "Shortcut"));
@@ -1156,7 +1160,7 @@ namespace JetpackGUI
                                 if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip", lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...", 2); }
                                 else
                                 {
-                                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+                                    TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Normal);
                                     progressPanel.Visible = true;
                                     stagesPanel.Visible = false;
                                     labelPartProgress.Text = lc[17] + " \"" + @nameLabel.Text.Replace(lc[16] + ": ", "") + "\"...";
@@ -1166,20 +1170,20 @@ namespace JetpackGUI
                                         var r = wc.OpenRead(zip_link);
                                         labelPartProgress.Text += " (" + (Convert.ToDouble(wc.ResponseHeaders["Content-Length"]) / 1048576).ToString("#.# " + lc[41] + ")");
                                         r.Close();
-                                        wc.DownloadProgressChanged += (s, a) => { TaskbarManager.Instance.SetProgressValue(a.ProgressPercentage, 100, Handle); PartProgressBar.Value = a.ProgressPercentage; };
+                                        wc.DownloadProgressChanged += (s, a) => { TaskBarProgressBar.SetValue(this.Handle, a.ProgressPercentage, 100); PartProgressBar.Value = a.ProgressPercentage; };
                                         wc.DownloadFileCompleted += (s, a) =>
                                         {
                                             PartProgressBar.Value = 0;
                                             progressPanel.Visible = false;
                                             stagesPanel.Visible = true;
-                                            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                                            TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress);
                                         };
                                         wc.DownloadFileAsync(new Uri(zip_link), @cache + @"\zips\" + @nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip");
                                     }
                                 }
                             }
                         }
-                        catch (Exception ex) { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgError(lc[15]); MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); }
+                        catch (Exception ex) { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc[15]); MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc[16] + ": ", "") + ".zip"); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
                     }
                     else { YesInstallMe.Checked = true; }
                 }
@@ -1212,7 +1216,7 @@ namespace JetpackGUI
                         }
                         else { checkBox8.Checked = false; }
                     }
-                    catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgWarning(lc[29]); checkBox8.Checked = false; TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); }
+                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc[29]); checkBox8.Checked = false; TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
                 }
             }
             cfg.SetValue("Downgrader", "InstallDirectXComponents", Convert.ToString(checkBox8.Checked).Replace("T", "t").Replace("F", "f"));
@@ -1279,8 +1283,7 @@ namespace JetpackGUI
                     IniEditor lang = new IniEditor(langs[i]);
                     if (darkComboBox2.Text == Convert.ToString(lang.GetValue("Interface", "Language")))
                     {
-                        Properties.Settings.Default.LanguageCode = new FileInfo(langs[i]).Name.Replace(".ini", ""); ;
-                        Properties.Settings.Default.Save();
+                        cfg.SetValue("GUI", "LanguageCode", new FileInfo(langs[i]).Name.Replace(".ini", ""));
                         Translate();
                     }
                 }
@@ -1302,7 +1305,7 @@ namespace JetpackGUI
                 }
                 else { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
             }
-            catch { TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error); MsgWarning(lc[29]); TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress); }
+            catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc[29]); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
         }
 
         void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1349,7 +1352,7 @@ namespace JetpackGUI
                 originalGameRestoreProgressBar.Visible = true;
                 System.Threading.Tasks.Task.Run(() =>
                 {
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
+                    TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Normal);
                     originalGameRestoreProgressBar.Maximum = fl.Length;
                     for (int i = 0; i < fl.Length; i++)
                     {
@@ -1383,11 +1386,11 @@ namespace JetpackGUI
                             }
                         }
                         originalGameRestoreProgressBar.Value = i + 1;
-                        TaskbarManager.Instance.SetProgressValue(i + 1, fl.Length, Handle);
+                        TaskBarProgressBar.SetValue(this.Handle, i + 1, fl.Length);
                     }
                     if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin"))))
                     {
-                        TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                        TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Indeterminate);
                         var restoreRGLfiles = new ProcessStartInfo
                         {
                             FileName = @Application.StartupPath + @"\files\7z.exe",
@@ -1398,7 +1401,7 @@ namespace JetpackGUI
                         restoreRGLfiles.WindowStyle = ProcessWindowStyle.Hidden;
                         Process.Start(restoreRGLfiles).WaitForExit();
                     }
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+                    TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress);
                     MsgInfo(lc[31]);
                     pictureBox10.Visible = false;
                     IsBak = false;

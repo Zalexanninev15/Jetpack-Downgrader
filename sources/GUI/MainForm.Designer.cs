@@ -92,6 +92,7 @@ namespace JetpackGUI
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.HelloUser = new System.Windows.Forms.Label();
+            this.darkButton5 = new DarkUI.Controls.DarkButton();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
@@ -536,6 +537,7 @@ namespace JetpackGUI
             // 
             this.progressPanel.Controls.Add(this.button3);
             this.progressPanel.Controls.Add(this.label3);
+            this.progressPanel.Controls.Add(this.darkButton5);
             this.progressPanel.Controls.Add(this.AllProgressBar);
             this.progressPanel.Controls.Add(this.PartProgressBar);
             this.progressPanel.Controls.Add(this.darkListView2);
@@ -898,6 +900,20 @@ namespace JetpackGUI
             this.HelloUser.Text = "Select the desired stage";
             this.HelloUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // darkButton5
+            // 
+            this.darkButton5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton5.Location = new System.Drawing.Point(310, 256);
+            this.darkButton5.Name = "darkButton5";
+            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton5.Size = new System.Drawing.Size(178, 31);
+            this.darkButton5.TabIndex = 16;
+            this.darkButton5.TabStop = false;
+            this.darkButton5.Text = "Close downgrader";
+            this.darkButton5.Visible = false;
+            this.darkButton5.VisibleChanged += new System.EventHandler(this.button1_VisibleChanged);
+            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1020,5 +1036,6 @@ namespace JetpackGUI
         private System.Windows.Forms.Label HelloUser;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
+        private DarkUI.Controls.DarkButton darkButton5;
     }
 }

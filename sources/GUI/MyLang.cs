@@ -11,6 +11,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
         string[] langs = new string[10];
+        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
 
         public MyLang() { InitializeComponent(); }
 
@@ -18,8 +19,7 @@ namespace JetpackGUI
         {
             if (AllLangs.Text != "")
             {
-                Properties.Settings.Default.FirstLaunch = false;
-                Properties.Settings.Default.Save();
+                cfg.SetValue("GUI", "FirstRun", "false");
                 Application.Restart();
             }
             else { DarkUI.Forms.DarkMessageBox.ShowWarning("You need to select a language from the list!", "Warning"); }
@@ -48,11 +48,7 @@ namespace JetpackGUI
                 if (langs[i] != "")
                 {
                     IniEditor lang = new IniEditor(langs[i]);
-                    if (AllLangs.Text == Convert.ToString(lang.GetValue("Interface", "Language")))
-                    {
-                        Properties.Settings.Default.LanguageCode = new FileInfo(langs[i]).Name.Replace(".ini", ""); ;
-                        Properties.Settings.Default.Save();
-                    }
+                    if (AllLangs.Text == Convert.ToString(lang.GetValue("Interface", "Language"))) { cfg.SetValue("GUI", "LanguageCode", new FileInfo(langs[i]).Name.Replace(".ini", "")); }
                 }
             }
         }

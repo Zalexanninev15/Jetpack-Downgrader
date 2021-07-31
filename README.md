@@ -37,7 +37,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
 * Display process of downgrade and maximum speed of operations
 * Support for localizations to different languages (GUI only)
-* Support for hotkeys (**Ctrl + O**, **Ctrl + Y**, **Ctrl + Z**, **Ctrl + S**, **F12**, **F4**, **F1**)
+* Support for hotkeys (**Ctrl + O**, **Ctrl + Y**, **Ctrl + Z**, **Ctrl + S**, **F1**, **F4**, **F12**)
 
 ## Supported versions
 
@@ -61,7 +61,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
 7. If you have selected the modifications, you still need to wait until they are fully unpacked
 8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
-9. If there are problems, press the **F12** key and start the downgrade process again
+9. If there are problems, press **F12** and start the downgrade process again
 
 ## Links
 
@@ -73,9 +73,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * [DarkUI](https://github.com/Zalexanninev15/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
 * [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
 * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
-* [Microsoft.WindowsAPICodePack.Shell](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
-* [Microsoft-WindowsAPICodePack-Core](https://github.com/contre/Windows-API-Code-Pack-1.1) ([MICROSOFT SOFTWARE LICENSE TERMS](https://github.com/contre/Windows-API-Code-Pack-1.1/blob/master/LICENSE))
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) and [*Microsoft.WindowsAPICodePack.Shell*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Shell) (with [*Microsoft-WindowsAPICodePack-Core*](https://www.nuget.org/packages/Microsoft-WindowsAPICodePack-Core)) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project.
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project
