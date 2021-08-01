@@ -1,0 +1,9 @@
+Remastered GUI
+1.0 (07.03.2015)
+Ash_735
+A package of improved textures of the game interface and game objects, some of the textures are taken from the mobile version of the game, in which the graphics quality is noticeably higher
+https://www.gtagarage.com/mods/show.php?id=27017
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr3.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/RemasteredGUIforSA.zip
