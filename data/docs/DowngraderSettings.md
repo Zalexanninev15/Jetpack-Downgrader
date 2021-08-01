@@ -51,3 +51,7 @@ jpd "E:\Games\Grand Theft Auto San Andreas"
 * **GameVersion** - get only the game version (can be used with the settings **ResetGame**, **EnableDirectPlay**, **InstallDirectX**)
 * **NextCheckFiles** - get only the game version and check files (only those that are used for downgrading)
 * **NextCheckFilesAndCheckMD5** - the same as **NextCheckFiles**, but it also scan files by MD5 and reveals which files are used from the game version 1.0 (information will only be visible if **UseProgressBar=false**)
+
+### GUI
+* **LanguageCode** - code of the currently used language (code is taken from the name of the file in the **languages** folder - **[language code].ini**)
+* **FirstRun** - is this the first GUI launch
