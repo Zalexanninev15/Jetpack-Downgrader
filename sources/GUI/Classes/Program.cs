@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace JetpackGUI
@@ -10,7 +11,8 @@ namespace JetpackGUI
             if (File.Exists(@Application.StartupPath + @"\files\jpd.ini") == false) { File.WriteAllText(@Application.StartupPath + @"\files\jpd.ini", Properties.Resources.jpd1); }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (Properties.Settings.Default.FirstLaunch == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
+            IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
+            if (Convert.ToBoolean(cfg.GetValue("GUI", "FirstRun")) == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
         }
     }
 }

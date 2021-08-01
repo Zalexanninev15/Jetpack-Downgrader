@@ -1,6 +1,8 @@
 SilentPatch
 WidescreenFix
 SkyGfx
+Remastered GUI
 GInput
 CLEO 4
+Mod Loader
 SA-MP
