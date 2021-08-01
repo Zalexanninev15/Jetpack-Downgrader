@@ -58,7 +58,6 @@ namespace JetpackGUI
             this.darkTitle2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.darkTitle1 = new System.Windows.Forms.Label();
-            this.originalGameRestoreProgressBar = new JetpackGUI.MyProgressBar();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -66,8 +65,6 @@ namespace JetpackGUI
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.darkButton5 = new DarkUI.Controls.DarkButton();
-            this.AllProgressBar = new JetpackGUI.MyProgressBar();
-            this.PartProgressBar = new JetpackGUI.MyProgressBar();
             this.darkListView2 = new DarkUI.Controls.DarkListView();
             this.labelAllProgress = new DarkUI.Controls.DarkLabel();
             this.DebugInfo = new DarkUI.Controls.DarkLabel();
@@ -93,6 +90,10 @@ namespace JetpackGUI
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.HelloUser = new System.Windows.Forms.Label();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.AllProgressBar = new JetpackGUI.MyProgressBar();
+            this.PartProgressBar = new JetpackGUI.MyProgressBar();
+            this.originalGameRestoreProgressBar = new JetpackGUI.MyProgressBar();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
             this.darkGroupBox1.SuspendLayout();
@@ -268,6 +269,7 @@ namespace JetpackGUI
             // 
             // ModsPanel
             // 
+            this.ModsPanel.Controls.Add(this.darkLabel2);
             this.ModsPanel.Controls.Add(this.listBox1);
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
             this.ModsPanel.Controls.Add(this.darkLabel9);
@@ -289,7 +291,7 @@ namespace JetpackGUI
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(12, 62);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(241, 258);
+            this.listBox1.Size = new System.Drawing.Size(241, 226);
             this.listBox1.TabIndex = 6;
             this.listBox1.TabStop = false;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -485,19 +487,6 @@ namespace JetpackGUI
             this.darkTitle1.Text = "Recommended settings";
             this.darkTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // originalGameRestoreProgressBar
-            // 
-            this.originalGameRestoreProgressBar.CustomText = "";
-            this.originalGameRestoreProgressBar.Location = new System.Drawing.Point(735, 126);
-            this.originalGameRestoreProgressBar.Name = "originalGameRestoreProgressBar";
-            this.originalGameRestoreProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.originalGameRestoreProgressBar.Size = new System.Drawing.Size(70, 18);
-            this.originalGameRestoreProgressBar.TabIndex = 17;
-            this.originalGameRestoreProgressBar.TextColor = System.Drawing.Color.Black;
-            this.originalGameRestoreProgressBar.TextFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.originalGameRestoreProgressBar.Visible = false;
-            this.originalGameRestoreProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.NoText;
-            // 
             // pictureBox11
             // 
             this.pictureBox11.Image = global::JetpackGUI.Properties.Resources.Reg;
@@ -559,7 +548,7 @@ namespace JetpackGUI
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(283, 206);
+            this.button3.Location = new System.Drawing.Point(283, 193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(235, 39);
             this.button3.TabIndex = 89900;
@@ -586,7 +575,7 @@ namespace JetpackGUI
             // darkButton5
             // 
             this.darkButton5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton5.Location = new System.Drawing.Point(310, 257);
+            this.darkButton5.Location = new System.Drawing.Point(310, 243);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(178, 31);
@@ -596,31 +585,6 @@ namespace JetpackGUI
             this.darkButton5.Visible = false;
             this.darkButton5.VisibleChanged += new System.EventHandler(this.button1_VisibleChanged);
             this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
-            // 
-            // AllProgressBar
-            // 
-            this.AllProgressBar.CustomText = "";
-            this.AllProgressBar.Location = new System.Drawing.Point(233, 260);
-            this.AllProgressBar.Name = "AllProgressBar";
-            this.AllProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.AllProgressBar.Size = new System.Drawing.Size(335, 28);
-            this.AllProgressBar.TabIndex = 10;
-            this.AllProgressBar.TextColor = System.Drawing.Color.Black;
-            this.AllProgressBar.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AllProgressBar.Visible = false;
-            this.AllProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.Percentage;
-            // 
-            // PartProgressBar
-            // 
-            this.PartProgressBar.CustomText = "";
-            this.PartProgressBar.Location = new System.Drawing.Point(233, 191);
-            this.PartProgressBar.Name = "PartProgressBar";
-            this.PartProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.PartProgressBar.Size = new System.Drawing.Size(335, 28);
-            this.PartProgressBar.TabIndex = 10;
-            this.PartProgressBar.TextColor = System.Drawing.Color.Black;
-            this.PartProgressBar.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PartProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.Percentage;
             // 
             // darkListView2
             // 
@@ -914,6 +878,55 @@ namespace JetpackGUI
             this.HelloUser.Text = "Select the desired stage";
             this.HelloUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // darkLabel2
+            // 
+            this.darkLabel2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(9, 291);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(241, 47);
+            this.darkLabel2.TabIndex = 3;
+            this.darkLabel2.Text = "ASI Loader is installed automatically when you select at least one modification!";
+            this.darkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AllProgressBar
+            // 
+            this.AllProgressBar.CustomText = "";
+            this.AllProgressBar.Location = new System.Drawing.Point(233, 260);
+            this.AllProgressBar.Name = "AllProgressBar";
+            this.AllProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.AllProgressBar.Size = new System.Drawing.Size(335, 28);
+            this.AllProgressBar.TabIndex = 10;
+            this.AllProgressBar.TextColor = System.Drawing.Color.Black;
+            this.AllProgressBar.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AllProgressBar.Visible = false;
+            this.AllProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.Percentage;
+            // 
+            // PartProgressBar
+            // 
+            this.PartProgressBar.CustomText = "";
+            this.PartProgressBar.Location = new System.Drawing.Point(233, 191);
+            this.PartProgressBar.Name = "PartProgressBar";
+            this.PartProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.PartProgressBar.Size = new System.Drawing.Size(335, 28);
+            this.PartProgressBar.TabIndex = 10;
+            this.PartProgressBar.TextColor = System.Drawing.Color.Black;
+            this.PartProgressBar.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PartProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.Percentage;
+            // 
+            // originalGameRestoreProgressBar
+            // 
+            this.originalGameRestoreProgressBar.CustomText = "";
+            this.originalGameRestoreProgressBar.Location = new System.Drawing.Point(735, 126);
+            this.originalGameRestoreProgressBar.Name = "originalGameRestoreProgressBar";
+            this.originalGameRestoreProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.originalGameRestoreProgressBar.Size = new System.Drawing.Size(70, 18);
+            this.originalGameRestoreProgressBar.TabIndex = 17;
+            this.originalGameRestoreProgressBar.TextColor = System.Drawing.Color.Black;
+            this.originalGameRestoreProgressBar.TextFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.originalGameRestoreProgressBar.Visible = false;
+            this.originalGameRestoreProgressBar.VisualMode = JetpackGUI.ProgressBarDisplayMode.NoText;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1037,5 +1050,6 @@ namespace JetpackGUI
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private DarkUI.Controls.DarkButton darkButton5;
+        private DarkUI.Controls.DarkLabel darkLabel2;
     }
 }
