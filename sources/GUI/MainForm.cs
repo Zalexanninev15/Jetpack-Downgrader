@@ -1074,6 +1074,7 @@ namespace JetpackGUI
                 ModsPanel.SectionHeader = Convert.ToString(lang.GetValue("Interface", "Tab2"));
                 button2.Text = "2. " + ModsPanel.SectionHeader;
                 darkLabel9.Text = Convert.ToString(lang.GetValue("Interface", "List"));
+                darkLabel2.Text = Convert.ToString(lang.GetValue("Interface", "ASILoader"));
                 darkGroupBox1.Text = Convert.ToString(lang.GetValue("Interface", "AboutMod"));
                 lc[16] = Convert.ToString(lang.GetValue("Interface", "ModName"));
                 lc[18] = Convert.ToString(lang.GetValue("Interface", "ModVersion"));
