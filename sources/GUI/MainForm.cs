@@ -138,7 +138,7 @@ namespace JetpackGUI
                                             TaskBarProgressBar.SetValue(this.Handle, i, modsZip.Length);
                                             if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
                                             else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
-                                            if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" (" + lc[37] + " \"ASI Loader\") " + lc[24]); }
+                                            if (modName != "ASI_Loader") { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
                                             if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc[23] + " \"" + modName + "\" " + lc[24]); }
                                         }
                                         catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc[23] + " \"" + modName + "\" " + lc[25]); }
@@ -1087,7 +1087,6 @@ namespace JetpackGUI
                 lc[21] = Convert.ToString(lang.GetValue("Interface", "DownloadingPatches"));
                 lc[28] = Convert.ToString(lang.GetValue("Interface", "DownloadingDirectXFiles"));
                 lc[23] = Convert.ToString(lang.GetValue("Interface", "ModWord"));
-                lc[37] = Convert.ToString(lang.GetValue("Interface", "WithASIL"));
                 lc[41] = Convert.ToString(lang.GetValue("Interface", "Mbyte"));
                 label3.Text = Convert.ToString(lang.GetValue("Interface", "WishPlay"));
                 button3.Text = Convert.ToString(lang.GetValue("Interface", "Play"));
