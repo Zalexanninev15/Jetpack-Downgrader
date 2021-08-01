@@ -67,7 +67,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Links
 
-* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about CUI settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/CUI.md) about it
+* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about Downgrader Settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/DowngraderSettings.md) about it
 * [Add new data (localization(s) or modification(s))](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md)
 
 ## Used libraries
