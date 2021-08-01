@@ -3,4 +3,5 @@ WidescreenFix
 SkyGfx
 GInput
 CLEO 4
+Mod Loader
 SA-MP
