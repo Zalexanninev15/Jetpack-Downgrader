@@ -8,6 +8,8 @@
 [![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
 [![](https://img.shields.io/github/last-commit/Zalexanninev15/Jetpack-Downgrader/unstable.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/commits/unstable)
 [![](https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers)
+[![](https://img.shields.io/github/issues/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/issues?q=is%3Aopen+is%3Aissue)
+[![](https://img.shields.io/github/issues-closed/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/issues?q=is%3Aissue+is%3Aclosed)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## Screenshot
