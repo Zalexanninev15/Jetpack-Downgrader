@@ -1,0 +1,9 @@
+Mod Loader
+0.3.7 (20.01.2018)
+Link2012
+Plugin that adds an extremely user-friendly and easy way to install and uninstall your modifications, without even messing around anything in your game installation
+https://gtaforums.com/topic/669520-mod-loader/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr3.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/ModLoader.zip
