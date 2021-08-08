@@ -48,5 +48,5 @@ If you don't see this file, it means that the current settings of the Downgrader
 
 #### All settings
 
-* **LanguageCode** - code of the currently used language (code is taken from the name of the file in the **languages** folder - **[language code].ini**)
+* **LanguageCode** - code of the currently used language (code is taken from the name of the file in the **languages** folder - **[language code].zcf**)
 * **FirstRun** - is this the first GUI launch
