@@ -40,7 +40,7 @@ namespace JetpackGUI
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(21, 14);
+            this.darkLabel1.Location = new System.Drawing.Point(18, 14);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(197, 16);
             this.darkLabel1.TabIndex = 4;
@@ -51,7 +51,7 @@ namespace JetpackGUI
             // 
             this.AllLangs.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.AllLangs.FormattingEnabled = true;
-            this.AllLangs.Location = new System.Drawing.Point(24, 41);
+            this.AllLangs.Location = new System.Drawing.Point(21, 41);
             this.AllLangs.Name = "AllLangs";
             this.AllLangs.Size = new System.Drawing.Size(194, 22);
             this.AllLangs.TabIndex = 7;
@@ -60,7 +60,7 @@ namespace JetpackGUI
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(24, 73);
+            this.button2.Location = new System.Drawing.Point(21, 73);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(5);
             this.button2.Size = new System.Drawing.Size(194, 31);
@@ -74,7 +74,7 @@ namespace JetpackGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(236, 121);
+            this.ClientSize = new System.Drawing.Size(238, 119);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AllLangs);

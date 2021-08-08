@@ -9,24 +9,29 @@ namespace JetpackGUI
         string _initialDirectory;
         string _title;
         string _fileName = "";
+
         public string InitialDirectory
         {
             get { return string.IsNullOrEmpty(_initialDirectory) ? Environment.CurrentDirectory : _initialDirectory; }
             set { _initialDirectory = value; }
         }
+
         public string Title { get { return _title ?? "Select a folder"; } set { _title = value; } }
         public string FileName { get { return _fileName; } }
         public bool Show() { return Show(IntPtr.Zero); }
+
         public bool Show(IntPtr hWndOwner)
         {
             var result = Environment.OSVersion.Version.Major >= 6 ? VistaDialog.Show(hWndOwner, InitialDirectory, Title) : ShowXpDialog(hWndOwner, InitialDirectory, Title); _fileName = result.FileName;
             return result.Result;
         }
+
         struct ShowDialogResult
         {
             public bool Result { get; set; }
             public string FileName { get; set; }
         }
+
         static ShowDialogResult ShowXpDialog(IntPtr ownerHandle, string initialDirectory, string title)
         {
             var folderBrowserDialog = new FolderBrowserDialog { Description = title, SelectedPath = initialDirectory, ShowNewFolderButton = false };
@@ -34,6 +39,7 @@ namespace JetpackGUI
             if (folderBrowserDialog.ShowDialog(new WindowWrapper(ownerHandle)) == DialogResult.OK) { dialogResult.Result = true; dialogResult.FileName = folderBrowserDialog.SelectedPath; }
             return dialogResult;
         }
+
         static class VistaDialog
         {
             const string c_foldersFilter = "Folders|\n";
@@ -74,6 +80,7 @@ namespace JetpackGUI
                 finally { s_unAdviseMethodInfo.Invoke(iFileDialog, new[] { adviseParametersWithOutputConnectionToken[1] }); }
             }
         }
+        
         class WindowWrapper : IWin32Window
         {
             readonly IntPtr _handle;

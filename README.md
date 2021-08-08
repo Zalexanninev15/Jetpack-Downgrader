@@ -27,8 +27,8 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Authors
 
-* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15) [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
-* Vadim M. - consultant [![](https://img.shields.io/badge/donate-Patreon-FF424D.svg)](https://www.patreon.com/NationalPepper)
+* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate_and_read_news-Boosty-F0672B.svg)](https://boosty.to/maxik-zalexanninev15) [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15) [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
+* Vadim M. - consultant [![](https://img.shields.io/badge/donate_and_read_news-Patreon-FF424D.svg)](https://www.patreon.com/NationalPepper)
 
 ## Features
 
@@ -67,7 +67,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Links
 
-* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about Downgrader Settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/DowngraderSettings.md) about it
+* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about other things](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/OtherThings.md) about it
 * [Add new data (localization(s) or modification(s))](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md)
 
 ## Used libraries
