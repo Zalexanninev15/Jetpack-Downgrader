@@ -38,7 +38,7 @@ In **downgrader.xml**, you can specify the settings for the Downgrader. You can 
 
 ### Old versions of Downgrader
 
-Information about the old version of the application is [here](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/DowngraderSettingsOld.md)
+Information about the old versions (1.14 and below) of the Downgrader is [here](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/DowngraderSettingsOld.md)
 
 ## GUI
 
