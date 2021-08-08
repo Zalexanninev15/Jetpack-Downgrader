@@ -10,8 +10,8 @@ namespace JetpackGUI
         static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
+        GUI mygui = new GUI();
         string[] langs = new string[10];
-        IniEditor cfg = new IniEditor(@Application.StartupPath + @"\files\jpd.ini");
 
         public MyLang() { InitializeComponent(); }
 
@@ -19,7 +19,9 @@ namespace JetpackGUI
         {
             if (AllLangs.Text != "")
             {
-                cfg.SetValue("GUI", "FirstRun", "false");
+                mygui.Fields.FirstRun = false;
+                mygui.WriteXml();
+                System.Threading.Tasks.Task.Delay(300);
                 Application.Restart();
             }
             else { DarkUI.Forms.DarkMessageBox.ShowWarning("You need to select a language from the list!", "Warning"); }
@@ -27,15 +29,15 @@ namespace JetpackGUI
 
         void MyLang_Load(object sender, EventArgs e)
         {
-            this.Size = new System.Drawing.Size(252, 160);
+            this.Size = new System.Drawing.Size(254, 158);
             AllLangs.Items.Clear();
-            langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.ini");
+            langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.zcf");
             for (int i = 0; i < langs.Length; i++)
             {
                 if (langs[i] != "")
                 {
-                    IniEditor lang = new IniEditor(langs[i]);
-                    string lg = Convert.ToString(lang.GetValue("Interface", "Language"));
+                    ZCF lang = new ZCF(langs[i]);
+                    string lg = lang.GetValue("Language");
                     AllLangs.Items.Add(lg);
                 }
             }
@@ -47,8 +49,8 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    IniEditor lang = new IniEditor(langs[i]);
-                    if (AllLangs.Text == Convert.ToString(lang.GetValue("Interface", "Language"))) { cfg.SetValue("GUI", "LanguageCode", new FileInfo(langs[i]).Name.Replace(".ini", "")); }
+                    ZCF lang = new ZCF(langs[i]);
+                    if (AllLangs.Text == lang.GetValue("Language")) { mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".zcf", ""); mygui.WriteXml(); }
                 }
             }
         }
