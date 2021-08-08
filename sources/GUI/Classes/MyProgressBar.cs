@@ -78,11 +78,11 @@ namespace JetpackGUI
             set { }
         }
         
-        public MyProgressBar() { Value = Minimum; FixComponentBlinking(); }
+       public MyProgressBar() { Value = Minimum; FixComponentBlinking(); }
        string _currProgressStr { get { return $"{Value}/{Maximum}"; } }
        void FixComponentBlinking() { SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true); }
        string _percentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100 } %"; } }
-        protected override void OnPaint(PaintEventArgs e) { Graphics g = e.Graphics; DrawProgressBar(g); DrawStringIfNeeded(g); }
+       protected override void OnPaint(PaintEventArgs e) { Graphics g = e.Graphics; DrawProgressBar(g); DrawStringIfNeeded(g); }
 
        void DrawProgressBar(Graphics g)
         {
