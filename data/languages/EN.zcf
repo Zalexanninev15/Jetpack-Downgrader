@@ -1,9 +1,10 @@
+## ================ What language is it? (write in English) ================
+Language <= English
 ## ================ First launch ================
-Title <= First launch
+FirstTitle <= First launch
 SelectLang <= Select a localization from the list
 ApplyAndLaunch <= Apply and Launch
 ## ================ Text ================
-Language <= English
 Languages <= Languages
 Stage <= Select the desired stage
 OtherActions <= Other actions
@@ -56,22 +57,14 @@ ModSucces <= modification has been successfully installed!
 Succes <= Downgrade completed!
 BindingOK <= The binding of the game is completed!
 ReturnUsingBackups <= The original version of the game was returned successfully!
-App <= App
-Version <= Version
-Authors <= Created by
-Zalexanninev15 <= programmer and creator
-Vadim M. <= consultant
-License <= License
-LocalizationBy <= English localization by Zalexanninev15
 ## ================ Error messages ================
-NoNetwork <= Network connection is not found!
 AboutModDamaged <= The modification data is damaged!
 ModFailure <= modification is not installed!
 ## ================ Warning messages ================
 WishReturnUsingBackups <= Backups of the downgrader were found (or some original files were not found) and, if you want, you can return the version of the game that was before the downgrade (installed modifications will remain). Do you want this?
 WishRegGame <= Would you like to register the path to the game in the system for the correct launch of mods and display in different launchers and stores?
 PathNotFound <= Path to the game is not found!
-BrowserNotFound <= Browser to open the link was not found!
+BrowserNotFound <= Browser to open the link was not found! The link will be copied to the clipboard
 NetworkNotFound <= App work in offline mode, so some features will not be available as long as there is no internet access!
 OfflineMode <= Do you want to continue?
 NewPath <= Game (version 1.0) is now located in
@@ -79,3 +72,15 @@ YouCanDelete <= Folder with the original game remained untouched! If everything 
 ## ================ Debug mode ================
 Activation <= Debug mode is activated when downgrading! Progressbar is disabled, detailed recording of events in the console is enabled!
 Deactivation <= Debug mode is deactivated when downgrading! Progressbar is enabled, detailed recording of events in the console is disabled!
+## ================ About ================
+AboutTitle <= About
+Version <= Version
+Authors <= Created by
+Zalexanninev15 <= programmer and creator
+Vadim M. <= consultant
+License <= License
+Localization <= Localization
+LocalizationBy <= English localization by Zalexanninev15
+AboutDonate <= Donate
+AboutClose <= Close
+AboutTopic <= Topic
