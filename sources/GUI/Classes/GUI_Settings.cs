@@ -8,7 +8,7 @@ namespace JetpackGUI
     public class GUI_Settings
     {
         public String LanguageCode = "EN";
-        public Boolean FirstRun = true;
+        public Boolean FirstLaunch = true;
     }
     
     public class GUI

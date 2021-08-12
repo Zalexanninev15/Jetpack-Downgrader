@@ -1,3 +1,7 @@
+## ================ First launch ================
+Title <= First launch
+SelectLang <= Select a localization from the list
+ApplyAndLaunch <= Apply and Launch
 ## ================ Text ================
 Language <= English
 Languages <= Languages
@@ -39,7 +43,7 @@ Forced <= Forced (ONLY for version 1.0)
 InstallMod <= Install this modification after downgrade
 ## ================ Titles ================
 Request <= Request for download
-Info <= Information
+Information <= Information
 Error <= Error
 Warning <= Warning
 FolderSelectDialog <= Select the game folder

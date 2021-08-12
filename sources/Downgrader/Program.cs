@@ -15,14 +15,7 @@ namespace JetpackDowngrader
     {
         [DllImport("user32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool SetWindowPos(
-        IntPtr hWnd,
-        IntPtr hWndInsertAfter,
-        int x,
-        int y,
-        int cx,
-        int cy,
-        int uFlags);
+        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, int uFlags);
         private const int HWND_TOPMOST = -1;
         private const int SWP_NOMOVE = 0x0002;
         private const int SWP_NOSIZE = 0x0001;
@@ -30,10 +23,11 @@ namespace JetpackDowngrader
         [STAThread]
         public static void Main(string[] args)
         {
+            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[10]; string path = "";
+
             Console.ResetColor();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[10]; string path = "";
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
@@ -48,36 +42,18 @@ namespace JetpackDowngrader
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Replace(".0", "") + "\n[JPD] License: MIT License\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n");
+            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT License\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n");
             Console.ResetColor();
             try
             {
-                settings[0] = false;
-                settings[1] = true;
-                settings[2] = true;
-                settings[3] = false;
-                settings[4] = false;
-                settings[5] = true;
-                settings[6] = true;
-                settings[7] = false;
-                settings[8] = false;
-                settings[9] = true;
+                settings[0] = false; settings[1] = true; settings[2] = true; settings[3] = false; settings[4] = false; settings[5] = true; settings[6] = true; settings[7] = false; settings[8] = false; settings[9] = true;
                 if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml"))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
                     using (StringReader reader = new StringReader(File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml")))
                     {
                         var bool_settings = (SettingsEditor)serializer.Deserialize(reader);
-                        settings[0] = bool_settings.CreateBackups;
-                        settings[1] = bool_settings.CreateShortcut;
-                        settings[2] = bool_settings.ResetGame;
-                        settings[3] = bool_settings.RGLGarbageCleaning;
-                        settings[4] = bool_settings.RegisterGamePath;
-                        settings[5] = bool_settings.CopyGameToNewPath;
-                        settings[6] = bool_settings.EnableDirectPlay;
-                        settings[7] = bool_settings.InstallDirectXComponents;
-                        settings[8] = bool_settings.Forced;
-                        settings[9] = bool_settings.UserMode;
+                        settings[0] = bool_settings.CreateBackups; settings[1] = bool_settings.CreateShortcut; settings[2] = bool_settings.ResetGame; settings[3] = bool_settings.RGLGarbageCleaning; settings[4] = bool_settings.RegisterGamePath; settings[5] = bool_settings.CopyGameToNewPath; settings[6] = bool_settings.EnableDirectPlay; settings[7] = bool_settings.InstallDirectXComponents; settings[8] = bool_settings.Forced; settings[9] = bool_settings.UserMode;
                     }
                     Logger("App", "downgrader.xml", "true");
                 }
