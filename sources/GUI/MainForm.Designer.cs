@@ -392,6 +392,7 @@ namespace JetpackGUI
             // 
             this.ScreenShot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ScreenShot.ErrorImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.ErrorImage")));
+            this.ScreenShot.Image = global::JetpackGUI.Properties.Resources.Logo;
             this.ScreenShot.InitialImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.InitialImage")));
             this.ScreenShot.Location = new System.Drawing.Point(305, 41);
             this.ScreenShot.Name = "ScreenShot";
