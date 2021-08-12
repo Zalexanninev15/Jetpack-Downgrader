@@ -5,15 +5,7 @@ using System.Windows.Forms;
 
 namespace JetpackGUI
 {
-    public enum ProgressBarDisplayMode
-    {
-        NoText,
-        Percentage,
-        CurrProgress,
-        CustomText,
-        TextAndPercentage,
-        TextAndCurrProgress
-    }
+    public enum ProgressBarDisplayMode { NoText,  Percentage,  CurrProgress,  CustomText, TextAndPercentage, TextAndCurrProgress }
 
     public class MyProgressBar : ProgressBar
     {

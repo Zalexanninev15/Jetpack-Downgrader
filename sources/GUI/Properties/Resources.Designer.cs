@@ -7,7 +7,8 @@
         private static global::System.Resources.ResourceManager resourceMan;
         private static global::System.Globalization.CultureInfo resourceCulture;
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {}
+        internal Resources() { }
+        
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
@@ -28,7 +29,7 @@
                 resourceCulture = value;
             }
         }
-    
+        
         internal static System.Drawing.Bitmap About {
             get {
                 object obj = ResourceManager.GetObject("About", resourceCulture);
@@ -43,16 +44,16 @@
             }
         }
         
-        internal static System.Drawing.Bitmap GitHub {
+        internal static System.Drawing.Bitmap GoBack {
             get {
-                object obj = ResourceManager.GetObject("GitHub", resourceCulture);
+                object obj = ResourceManager.GetObject("GoBack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap GoBack {
+        internal static System.Drawing.Bitmap Help {
             get {
-                object obj = ResourceManager.GetObject("GoBack", resourceCulture);
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

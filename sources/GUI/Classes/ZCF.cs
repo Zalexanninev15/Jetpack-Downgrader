@@ -2,9 +2,14 @@
 
 namespace JetpackGUI
 {
-    public class ZCF
+    public class Editor
     {
+        // ZCF format and class version: 1.0.0.3
+        // Author: Zalexanninev15
         // Repository of ZCF format: https://github.com/Zalexanninev15/ZCF
+        // Documentation of ZCF format: https://github.com/Zalexanninev15/ZCF/blob/main/ZCF.md
+        // Documentation of ZCF format for developers: https://github.com/Zalexanninev15/ZCF/blob/main/README.md#using
+        //
         //
         /*  MIT License
        
@@ -30,7 +35,7 @@ namespace JetpackGUI
         */
 
         string file = null;
-        public ZCF(string filename)  { file = filename; }
+        public Editor(string filename)  { file = filename; }
 
         public string GetValue(string variable)
         {
@@ -42,7 +47,7 @@ namespace JetpackGUI
                     string value = "";
                     foreach (string line in lines) 
                     { 
-                        if ((!line.StartsWith("## ")) && (!line.StartsWith(" ")) && (!line.StartsWith("[$w]")) && (!line.StartsWith("[$d]"))
+                        if ((!line.StartsWith("## ")) && (!line.StartsWith(" ")) && (!line.StartsWith("[$w]")) && (!line.StartsWith("[$d]")))
                         { 
                             if (line.StartsWith(variable + " <= ")) 
                             { 
