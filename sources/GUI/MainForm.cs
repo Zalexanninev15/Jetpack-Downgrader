@@ -748,7 +748,7 @@ namespace JetpackGUI
 
         void progressPanel_VisibleChanged(object sender, EventArgs e)
         {
-            if (progressPanel.Visible == true) { HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
+            if (progressPanel.Visible == true) { LangsPanel.Visible = false; HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
             else { HelloUser.Visible = true; pictureBox5.Visible = true; pictureBox6.Visible = true; pictureBox7.Visible = true; }
         }
     }
