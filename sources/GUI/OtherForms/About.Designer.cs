@@ -47,7 +47,7 @@ namespace JetpackGUI
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label3.Font = new System.Drawing.Font("Gadugi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(2, 115);
+            this.label3.Location = new System.Drawing.Point(4, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(472, 47);
             this.label3.TabIndex = 89902;
@@ -60,7 +60,7 @@ namespace JetpackGUI
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(3, 162);
+            this.label1.Location = new System.Drawing.Point(5, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(471, 47);
             this.label1.TabIndex = 89902;
@@ -70,7 +70,7 @@ namespace JetpackGUI
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(26, 348);
+            this.darkButton1.Location = new System.Drawing.Point(26, 340);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(96, 34);
@@ -89,14 +89,14 @@ namespace JetpackGUI
             this.darkTextBox1.Multiline = true;
             this.darkTextBox1.Name = "darkTextBox1";
             this.darkTextBox1.ReadOnly = true;
-            this.darkTextBox1.Size = new System.Drawing.Size(419, 128);
+            this.darkTextBox1.Size = new System.Drawing.Size(419, 121);
             this.darkTextBox1.TabIndex = 89904;
             this.darkTextBox1.TabStop = false;
             // 
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(128, 348);
+            this.darkButton2.Location = new System.Drawing.Point(128, 340);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(136, 34);
@@ -108,7 +108,7 @@ namespace JetpackGUI
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(270, 348);
+            this.darkButton3.Location = new System.Drawing.Point(270, 340);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton3.Size = new System.Drawing.Size(79, 34);
@@ -120,7 +120,7 @@ namespace JetpackGUI
             // darkButton4
             // 
             this.darkButton4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(355, 348);
+            this.darkButton4.Location = new System.Drawing.Point(355, 340);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(90, 34);
@@ -143,7 +143,7 @@ namespace JetpackGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(465, 393);
+            this.ClientSize = new System.Drawing.Size(469, 385);
             this.Controls.Add(this.darkTextBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton4);

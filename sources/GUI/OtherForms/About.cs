@@ -22,7 +22,7 @@ namespace JetpackGUI
         void MyLang_Load(object sender, EventArgs e)
         {
             MSG[0] = "Warning";
-            this.Size = new System.Drawing.Size(485, 436);
+            this.Size = new System.Drawing.Size(485, 424);
             GUI language = new GUI();
             language.ReadXml();
             string langcode = language.Fields.LanguageCode;
