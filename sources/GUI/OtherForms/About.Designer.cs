@@ -99,19 +99,19 @@ namespace JetpackGUI
             this.darkButton2.Location = new System.Drawing.Point(128, 348);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(112, 34);
+            this.darkButton2.Size = new System.Drawing.Size(136, 34);
             this.darkButton2.TabIndex = 89903;
             this.darkButton2.TabStop = false;
-            this.darkButton2.Text = "Close";
+            this.darkButton2.Text = "Issues (GitHub)";
             this.darkButton2.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(246, 348);
+            this.darkButton3.Location = new System.Drawing.Point(270, 348);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(89, 34);
+            this.darkButton3.Size = new System.Drawing.Size(79, 34);
             this.darkButton3.TabIndex = 89903;
             this.darkButton3.TabStop = false;
             this.darkButton3.Text = "GitHub";
@@ -120,10 +120,10 @@ namespace JetpackGUI
             // darkButton4
             // 
             this.darkButton4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(341, 348);
+            this.darkButton4.Location = new System.Drawing.Point(355, 348);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(104, 34);
+            this.darkButton4.Size = new System.Drawing.Size(90, 34);
             this.darkButton4.TabIndex = 89903;
             this.darkButton4.TabStop = false;
             this.darkButton4.Text = "Topic";
@@ -143,8 +143,7 @@ namespace JetpackGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(469, 397);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(465, 393);
             this.Controls.Add(this.darkTextBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton4);
