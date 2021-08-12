@@ -36,7 +36,7 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    ZCF lang = new ZCF(langs[i]);
+                    Editor lang = new Editor(langs[i]);
                     string lg = lang.GetValue("Language");
                     AllLangs.Items.Add(lg);
                 }
@@ -49,12 +49,12 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    ZCF lang = new ZCF(langs[i]);
+                    Editor lang = new Editor(langs[i]);
                     if (AllLangs.Text == lang.GetValue("Language")) 
                     { 
                         mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".zcf", ""); 
                         mygui.WriteXml();
-                        MyLang.ActiveForm.Text = lang.GetValue("Title");
+                        MyLang.ActiveForm.Text = lang.GetValue("FirstTitle");
                         darkLabel1.Text = lang.GetValue("SelectLang");
                         button2.Text = lang.GetValue("ApplyAndLaunch");
                     }

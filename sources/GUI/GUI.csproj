@@ -104,16 +104,16 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
-    <Compile Include="About.cs">
+    <Compile Include="OtherForms\About.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="About.Designer.cs">
+    <Compile Include="OtherForms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyLang.cs">
+    <Compile Include="OtherForms\MyLang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyLang.Designer.cs">
+    <Compile Include="OtherForms\MyLang.Designer.cs">
       <DependentUpon>MyLang.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,14 +134,13 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="Resources\About.png" />
+    <None Include="Resources\Help.png" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\ASL.zip" />
     <None Include="Resources\Reg.png" />
     <None Include="Resources\GoBack.png" />
     <None Include="Resources\Right.png" />
-    <None Include="Resources\Language.png" />
     <None Include="Resources\Up.png" />
-    <None Include="Resources\GitHub.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Classes\MyProgressBar.resx">
@@ -151,10 +150,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="About.resx">
+    <EmbeddedResource Include="OtherForms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyLang.resx">
+    <EmbeddedResource Include="OtherForms\MyLang.resx">
       <DependentUpon>MyLang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

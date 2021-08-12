@@ -21,7 +21,6 @@ namespace JetpackGUI
         [DllImport("user32.dll")]
         extern static IntPtr SetFocus(IntPtr hWnd);
 
-        string[] lc_text = new string[50];
         Props config = new Props();
         GUI language = new GUI();
         string[] mse = new string[10];
@@ -66,13 +65,13 @@ namespace JetpackGUI
                 pingReply = ping.Send("github.com");
                 if ((pingReply.Status == IPStatus.HardwareError) || (pingReply.Status == IPStatus.IcmpError))
                 {
-                    DialogResult result = DarkMessageBox.ShowWarning(lc_text[35] + " " + lc_text[36], lc_text[11], DarkDialogButton.YesNo);
+                    DialogResult result = DarkMessageBox.ShowWarning(lc_text[27] + " " + lc_text[28], lc_text[11], DarkDialogButton.YesNo);
                     if (result == DialogResult.No) { Application.Exit(); }
                 }
             }
             catch
             {
-                DialogResult result = DarkMessageBox.ShowWarning(lc_text[35] + " " + lc_text[36], lc_text[11], DarkDialogButton.YesNo);
+                DialogResult result = DarkMessageBox.ShowWarning(lc_text[27] + " " + lc_text[28], lc_text[11], DarkDialogButton.YesNo);
                 if (result == DialogResult.No) { Application.Exit(); }
             }
             SettingsLoader();
@@ -130,11 +129,11 @@ namespace JetpackGUI
                                             if (modName != "ASI_Loader") { MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]); }
                                             if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]); }
                                         }
-                                        catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc_text[6] + " \"" + modName + "\" " + lc_text[30]); }
+                                        catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc_text[6] + " \"" + modName + "\" " + lc_text[22]); }
                                     }
                                     else
                                     {
-                                        if (checkBox3.Checked == true) { MessageBox.Show(lc_text[37] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc_text[38], lc_text[11], MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification); }
+                                        if (checkBox3.Checked == true) { MessageBox.Show(lc_text[29] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc_text[30], lc_text[11], MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification); }
                                         File.Move(modsZip[i], modsZip[i].Replace(".zip", ".exe"));
                                         Process.Start(modsZip[i].Replace(".zip", ".exe")).WaitForExit();
                                         File.Move(modsZip[i].Replace(".zip", ".exe"), modsZip[i]);
@@ -158,7 +157,7 @@ namespace JetpackGUI
                             darkButton5.Visible = true;
                         }
                     }
-                    else { MsgWarning(lc_text[33]); pictureBox10.Visible = false; IsBak = false; NotDone = true; }
+                    else { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; NotDone = true; }
                 }
                 else { try { Directory.Delete(@Application.StartupPath + @"\files\patches", true); } catch { } button1.Visible = false; darkButton4.Visible = true; NotDone = true; }
             }
@@ -213,20 +212,20 @@ namespace JetpackGUI
         void checkBox5_CheckedChanged(object sender, EventArgs e) { config.Fields.Forced = checkBox5.Checked; config.WriteXml(); }
         void checkBox3_CheckedChanged(object sender, EventArgs e) { config.Fields.CopyGameToNewPath = checkBox3.Checked; config.WriteXml(); }
         void checkBox9_CheckedChanged(object sender, EventArgs e) { config.Fields.ResetGame = checkBox9.Checked; config.WriteXml(); }
-        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgError(lc_text[34]); } }
+        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(site_link); } }
         void darkButton5_Click(object sender, EventArgs e) { Application.Exit(); }
-        void ScreenShot_Click(object sender, EventArgs e) { try { Process.Start(ScreenShot.ImageLocation); } catch { MsgError(lc_text[34]); } }
+        void ScreenShot_Click(object sender, EventArgs e) { try { Process.Start(ScreenShot.ImageLocation); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(ScreenShot.ImageLocation); } }
         void listBox1_MouseDown(object sender, MouseEventArgs e) { SetFocus(IntPtr.Zero); }
-        void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc_text[33]); pictureBox10.Visible = false; IsBak = false; } }
+        void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; } }
         void MsgInfo(string message) { DarkMessageBox.ShowInformation(message, lc_text[9]); }
-        void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void MsgError(string message) { DarkMessageBox.ShowError(message, lc_text[10]); }
         void MsgWarning(string message) { DarkMessageBox.ShowWarning(message, lc_text[11]); }
+        void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
         void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
         //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
-        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("- " + lc_text[21] + ": Jetpack GUI\n- " + lc_text[22] + ": " + Convert.ToString(Application.ProductVersion) + "\n- " + lc_text[23] + ": Zalexanninev15 (" + lc_text[24] + ") && Vadim M. (" + lc_text[25] + ")\n- " + lc_text[26] + ": MIT" + "\n- " + lc_text[27]); }
-        void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc_text[34]); } }
+        void pictureBox3_Click(object sender, EventArgs e) { About about = new About(); about.ShowDialog(); }
+        void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
         void checkBox7_CheckedChanged(object sender, EventArgs e) { config.Fields.EnableDirectPlay = checkBox7.Checked; config.WriteXml(); }
 
         async void MegaDownloader(string url, string file, string label, int code)
@@ -330,12 +329,12 @@ namespace JetpackGUI
                         DSPanel.Visible = true;
                         ModsPanel.Visible = true;
                     }
-                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[35]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
                     TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress);
                 }
                 else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
             }
-            catch { MsgWarning(lc_text[35]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+            catch { MsgWarning(lc_text[27]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
         }
 
         bool IsInstaller(string file)
@@ -357,7 +356,7 @@ namespace JetpackGUI
                 {
                     if (langs[i] != "")
                     {
-                        ZCF lang = new ZCF(langs[i]);
+                        Editor lang = new Editor(langs[i]);
                         string lg = lang.GetValue("Language");
                         darkComboBox2.Items.Add(lg);
                         if (langcode == new FileInfo(langs[i]).Name.Replace(".zcf", "")) { darkComboBox2.SelectedItem = lg; }
@@ -373,13 +372,14 @@ namespace JetpackGUI
             if (dialog.Show()) { GamePath.Text = dialog.FileName; } else { GamePath.Clear(); }
         }
 
+        string[] lc_text = new string[40];
         void Translate()
         {
             language.ReadXml();
             langcode = language.Fields.LanguageCode;
             try
             {
-                ZCF lang = new ZCF(@Application.StartupPath + @"\files\languages\" + langcode + ".zcf");
+                Editor lang = new Editor(@Application.StartupPath + @"\files\languages\" + langcode + ".zcf");
                 // Text loading
                 darkLabel1.Text = lang.GetValue("Languages");
                 HelloUser.Text = lang.GetValue("Stage");
@@ -435,29 +435,21 @@ namespace JetpackGUI
                 lc_text[18] = lang.GetValue("Succes");
                 lc_text[19] = lang.GetValue("BindingOK");
                 lc_text[20] = lang.GetValue("ReturnUsingBackups");
-                lc_text[21] = lang.GetValue("App");
-                lc_text[22] = lang.GetValue("Version");
-                lc_text[23] = lang.GetValue("Authors");
-                lc_text[24] = lang.GetValue("Zalexanninev15");
-                lc_text[25] = lang.GetValue("Vadim M.");
-                lc_text[26] = lang.GetValue("License");
-                lc_text[27] = lang.GetValue("LocalizationBy");
                 // Error messages loading
-                lc_text[28] = lang.GetValue("NoNetwork");
-                lc_text[29] = lang.GetValue("AboutModDamaged");
-                lc_text[30] = lang.GetValue("ModFailure");
+                lc_text[21] = lang.GetValue("AboutModDamaged");
+                lc_text[22] = lang.GetValue("ModFailure");
                 // Warning messages loading
-                lc_text[31] = lang.GetValue("WishReturnUsingBackups");
-                lc_text[32] = lang.GetValue("WishRegGame");
-                lc_text[33] = lang.GetValue("PathNotFound");
-                lc_text[34] = lang.GetValue("BrowserNotFound");
-                lc_text[35] = lang.GetValue("NetworkNotFound");
-                lc_text[36] = lang.GetValue("OfflineMode");
-                lc_text[37] = lang.GetValue("NewPath");
-                lc_text[38] = lang.GetValue("YouCanDelete");
+                lc_text[23] = lang.GetValue("WishReturnUsingBackups");
+                lc_text[24] = lang.GetValue("WishRegGame");
+                lc_text[25] = lang.GetValue("PathNotFound");
+                lc_text[26] = lang.GetValue("BrowserNotFound");
+                lc_text[27] = lang.GetValue("NetworkNotFound");
+                lc_text[28] = lang.GetValue("OfflineMode");
+                lc_text[29] = lang.GetValue("NewPath");
+                lc_text[30] = lang.GetValue("YouCanDelete");
                 // Debug mode loading
-                lc_text[39] = lang.GetValue("Activation");
-                lc_text[40] = lang.GetValue("Deactivation");
+                lc_text[31] = lang.GetValue("Activation");
+                lc_text[32] = lang.GetValue("Deactivation");
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
@@ -505,7 +497,7 @@ namespace JetpackGUI
                                 }
                             }
                         }
-                        catch (Exception ex) { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc_text[29]); MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
+                        catch (Exception ex) { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgError(lc_text[21]); MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
                     }
                     else { YesInstallMe.Checked = true; }
                 }
@@ -516,7 +508,7 @@ namespace JetpackGUI
                     if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip")) { File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"); }
                 }
             }
-            catch { MsgWarning(lc_text[35]); YesInstallMe.Checked = false; }
+            catch { MsgWarning(lc_text[27]); YesInstallMe.Checked = false; }
         }
 
         void checkBox8_CheckedChanged(object sender, EventArgs e)
@@ -538,7 +530,7 @@ namespace JetpackGUI
                         }
                         else { checkBox8.Checked = false; }
                     }
-                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[35]); checkBox8.Checked = false; TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
+                    catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); checkBox8.Checked = false; TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
                 }
             }
             config.Fields.InstallDirectXComponents = checkBox8.Checked;
@@ -547,12 +539,12 @@ namespace JetpackGUI
 
         void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.F1) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgError(lc_text[34]); } }
+            if (e.KeyData == Keys.F1) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
             if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\downgrader.xml"); }
             if (e.KeyData == Keys.F12)
             {
-                if (db == false) { MsgWarning(lc_text[39]); config.Fields.UserMode = false; config.WriteXml(); db = true; }
-                else { MsgWarning(lc_text[40]); config.Fields.UserMode = true; config.WriteXml(); db = false; }
+                if (db == false) { MsgWarning(lc_text[31]); config.Fields.UserMode = false; config.WriteXml(); db = true; }
+                else { MsgWarning(lc_text[32]); config.Fields.UserMode = true; config.WriteXml(); db = false; }
             }
             if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.O))
             {
@@ -593,7 +585,7 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    ZCF lang = new ZCF(langs[i]);
+                    Editor lang = new Editor(langs[i]);
                     if (darkComboBox2.Text == lang.GetValue("Language")) { language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".zcf", ""); language.WriteXml(); Translate(); }
                 }
             }
@@ -614,7 +606,7 @@ namespace JetpackGUI
                 }
                 else { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
             }
-            catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[35]); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
+            catch { TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); TaskBarProgressBar.SetState(this.Handle, TaskBarProgressBar.TaskbarStates.NoProgress); }
         }
 
         void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -639,7 +631,7 @@ namespace JetpackGUI
                     YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
                 }
             }
-            catch (Exception ex) { MsgError(lc_text[29]); MsgError(ex.ToString()); ScreenShot.Enabled = false; zip_link = "application/zip"; }
+            catch (Exception ex) { MsgError(lc_text[21]); MsgError(ex.ToString()); ScreenShot.Enabled = false; zip_link = "application/zip"; }
         }
 
         void GamePath_TextChanged(object sender, EventArgs e)
@@ -655,7 +647,7 @@ namespace JetpackGUI
 
         void pictureBox10_Click(object sender, EventArgs e)
         {
-            DialogResult result = DarkMessageBox.ShowWarning(lc_text[31], lc_text[11], DarkDialogButton.YesNo);
+            DialogResult result = DarkMessageBox.ShowWarning(lc_text[23], lc_text[11], DarkDialogButton.YesNo);
             if (result == DialogResult.Yes)
             {
                 originalGameRestoreProgressBar.Visible = true;
@@ -737,7 +729,7 @@ namespace JetpackGUI
 
         void pictureBox11_Click(object sender, EventArgs e)
         {
-            DialogResult result = DarkMessageBox.ShowWarning(lc_text[32], lc_text[11], DarkDialogButton.YesNo);
+            DialogResult result = DarkMessageBox.ShowWarning(lc_text[24], lc_text[11], DarkDialogButton.YesNo);
             if (result == DialogResult.Yes)
             {
                 if (x64 == true)
