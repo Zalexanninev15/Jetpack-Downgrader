@@ -225,7 +225,7 @@ namespace JetpackGUI
         void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
         void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
         //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
-        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("- " + lc_text[21] + ": Jetpack GUI\n- " + lc_text[22] + ": " + Convert.ToString(Application.ProductVersion).Replace(".0", "") + "\n- " + lc_text[23] + ": Zalexanninev15 (" + lc_text[24] + ") && Vadim M. (" + lc_text[25] + ")\n- " + lc_text[26] + ": MIT" + "\n- " + lc_text[27]); }
+        void pictureBox3_Click(object sender, EventArgs e) { MsgInfo("- " + lc_text[21] + ": Jetpack GUI\n- " + lc_text[22] + ": " + Convert.ToString(Application.ProductVersion) + "\n- " + lc_text[23] + ": Zalexanninev15 (" + lc_text[24] + ") && Vadim M. (" + lc_text[25] + ")\n- " + lc_text[26] + ": MIT" + "\n- " + lc_text[27]); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgError(lc_text[34]); } }
         void checkBox7_CheckedChanged(object sender, EventArgs e) { config.Fields.EnableDirectPlay = checkBox7.Checked; config.WriteXml(); }
 

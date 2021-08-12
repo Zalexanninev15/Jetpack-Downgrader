@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace JetpackGUI
 {
@@ -12,7 +10,7 @@ namespace JetpackGUI
             Application.SetCompatibleTextRenderingDefault(false);
             GUI mygui = new GUI();
             mygui.ReadXml();
-            if (mygui.Fields.FirstRun == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
+            if (mygui.Fields.FirstLaunch == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
         }
     }
 }
