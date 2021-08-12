@@ -76,8 +76,7 @@ namespace JetpackGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(247, 120);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(243, 116);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AllLangs);
             this.Controls.Add(this.darkLabel1);
