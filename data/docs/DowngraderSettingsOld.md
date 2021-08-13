@@ -1,4 +1,4 @@
-# Downgrader CUI [jpd.exe]
+# Downgrader (Old versions, 1.14 and below)
 
 *Actions are performed in the **files** folder*
 
