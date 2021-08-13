@@ -422,7 +422,7 @@ namespace JetpackGUI
                 YesInstallMe.Text = lang.GetValue("InstallMod");
                 // Titles loading
                 lc_text[8] = lang.GetValue("Request");
-                lc_text[9] = lang.GetValue("Info");
+                lc_text[9] = lang.GetValue("Information");
                 lc_text[10] = lang.GetValue("Error");
                 lc_text[11] = lang.GetValue("Warning");
                 lc_text[12] = lang.GetValue("FolderSelectDialog");
@@ -650,6 +650,7 @@ namespace JetpackGUI
             DialogResult result = DarkMessageBox.ShowWarning(lc_text[23], lc_text[11], DarkDialogButton.YesNo);
             if (result == DialogResult.Yes)
             {
+                checkBox1.Checked = false;
                 originalGameRestoreProgressBar.Visible = true;
                 string exe1 = GetMD5(@GamePath.Text + @"\gta_sa.exe.jpb");
                 string exe2 = GetMD5(@GamePath.Text + @"\gta_sa.exe");
