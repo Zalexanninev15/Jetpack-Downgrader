@@ -14,7 +14,7 @@
 
 ## Screenshot
 
-![screenshot](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/GUI.png?raw=true)
+![screenshot](https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/docs/gui.png)
 
 ## Description
 
