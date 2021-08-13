@@ -14,7 +14,7 @@
 
 ## Screenshot
 
-![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/gui.png?raw=true)
+![screenshot](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/GUI.png?raw=true)
 
 ## Description
 
@@ -27,8 +27,8 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Authors
 
-* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15) [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
-* Vadim M. - consultant [![](https://img.shields.io/badge/donate-Patreon-FF424D.svg)](https://www.patreon.com/NationalPepper)
+* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate_and_read_news-Boosty-F0672B.svg)](https://boosty.to/maxik-zalexanninev15) [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15) [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
+* Vadim M. - consultant [![](https://img.shields.io/badge/donate_and_read_news-Patreon-FF424D.svg)](https://www.patreon.com/NationalPepper)
 
 ## Features
 
@@ -67,7 +67,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Links
 
-* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about Downgrader Settings](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/DowngraderSettings.md) about it
+* If you want to use more powerful settings for the game's downgrade/downgrader setup, then you need to read the [help about other things](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/OtherThings.md) about it
 * [Add new data (localization(s) or modification(s))](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md)
 
 ## Used libraries
@@ -78,4 +78,4 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package and manually compile my [fork](https://github.com/Zalexanninev15/DarkUI) of the [DarkUI](https://github.com/RobinPerris/DarkUI) library and attach to the GUI project
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*DarkUI*](https://github.com/RobinPerris/DarkUI) (I added the dark titlebar of window to the MessageBox myself, but you can also add it yourself using WinAPI from [this](https://github.com/RobinPerris/DarkUI/pull/58/commits/8ad5fb733e9ce0e365833435533ac2604ddfef71) comment or manually add reference to the library **DarkUI.dll** from the Jetpack Downgrade [latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) (in the **files** folder)) and [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package
