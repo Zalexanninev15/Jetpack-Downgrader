@@ -56,7 +56,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 *You can also open this document by pressing **F1***
 
 1. Launch **app.exe**
-2. Select language using corresponding icon (to left of the project logo). *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
+2. Select language using corresponding icon. *At the moment, list of languages is very limited. You can create a localization in your language and request it to be added to the repository, after which it will be added in the next update*
 3. Select the first stage and select the path to game folder (or press **Ctrl + O**) and necessary settings (the recommended ones are already checked)
 4. If necessary, select the second stage. Select the desired modification (correction and improvement of the game) using the drop-down list (the list below is a list of all available modifications from the repository, for more convenient display). After selecting a modification, select the checkbox and wait for downloading the cache with mod's files
 5. Select stage 3 (or press **Ctrl + S**). The console will appear and downgrade process will start... If we can't find the patch files, you'll need to download them first (that's why step 3 is called "Download patches"), only then the button with the title "Downgrade" will appear
