@@ -40,6 +40,18 @@ namespace JetpackDowngrader
             flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
             flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
+            //
+            // todo Localization
+            //string lgcode = "EN";
+            //if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\gui.xml"))
+            //{
+            //    XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
+            //    using (StringReader reader = new StringReader(File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\gui.xml")))
+            //    {
+            //        var string_gui = (GUI_Settings)serializer.Deserialize(reader);
+            //        lgcode = string_gui.LnguageCode; 
+            //    }
+            //}
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT License\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n");
