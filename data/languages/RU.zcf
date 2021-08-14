@@ -41,7 +41,7 @@ CopyGameToNewPath <= Переместить игру в другую папку 
 Forced <= Принудительно (ТОЛЬКО для версии 1.0)
 EnableDirectPlay <= Включить DirectPlay (ТОЛЬКО для Windows 10)
 InstallDirectXComponents <= Установить компоненты DirectX
-InstallMod <= Установить эту модификацию после даунгрейдера
+InstallMod <= Установить данную модификацию после даунгрейдера
 ## ================ Заголовки ================
 Request <= Запрос на скачивание
 Information <= Информация
