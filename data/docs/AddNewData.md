@@ -15,7 +15,7 @@
 
 ## Add new modification(s)
 
-1. Create a ZIP archive with the modification files. It is important to note that the contents of the archive will be simply unpacked to the game folder in the future. Therefore, do not create folders with modification files, because the folder will be unpacked, and not the modification files themselves! There is no need to add ASI Loader to the archive, it is installed automatically!
+1. Create a ZIP archive with the modification files. It is important to note that the contents of the archive will be simply unpacked to the game folder in the future. Therefore, do not create folders with modification files, because the folder will be unpacked, and not the modification files themselves! There is no need to add **ASI Loader** to the archive, it is installed automatically!
 2. Download the official plugin as a blank (for example: [GInput](https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/txts/GInput.txt), only "Save as txt"!)
 3. Rename the file name to the name of the new modification
 4. Fill in the information of modification in text editor (as [Notepad++](https://notepad-plus-plus.org/)) by lines and save file
