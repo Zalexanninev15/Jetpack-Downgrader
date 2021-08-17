@@ -29,7 +29,7 @@ In **downgrader.xml**, you can specify the settings for the Downgrader. You can 
 * **CreateShortcut** - creating a shortcut to a file **gta_sa.exe** on the desktop (only after a successful downgrade)
 * **ResetGame** - remove the game configuration file **gta_sa.set** for prevents crash
 * **RGL_GarbageCleaning** - remove unneeded files (**index.bin** and **MTLX.dll**) from the Rockstar Games Launcher version of the game (only after a successful downgrade). These files are not used in the game version 1.0
-* **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects) (only after a successful downgrade). This function is also available in GUI (downgrader settings) separately from the downgrader itself, it can also be called using a keyboard shortcut **Ctrl + Y**
+* **RegisterGamePath** - add entries to the registry so that the game is better recognized by mods and programs (e.g.: launchers, SAMP and other projects) (only after a successful downgrade). This function is also available in the GUI ("Downgrader settings") separately from the downgrader itself, it can also be called using a keyboard shortcut **Ctrl + Y**
 * **CopyGameToNewPath** - make a copy of the game folder (**[folder name] + _Downgraded**) to prevent accidental updates to the game (after MD5-scan). It is highly recommended to enable it for the Steam/Rockstar Games Launcher versions of the game!!!
 * **EnableDirectPlay** - enable the Windows DirectPlay component to run the game on Windows 10
 * **InstallDirectXComponents** - install additional DirectX files to run the game
