@@ -702,7 +702,7 @@ namespace JetpackDowngrader
                                                     if (settings[1] == true)
                                                     {
                                                         Logger("Downgrader", "Process", "Creating a shortcut...");
-                                                        try { Create(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe"); Logger("Downgrader", "CreateShortcut", "true"); }
+                                                        try { CreateLnk(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe"); Logger("Downgrader", "CreateShortcut", "true"); }
                                                         catch { Logger("Downgrader", "CreateShortcut", "false"); }
                                                     }
                                                     if (settings[4] == true)
@@ -774,7 +774,7 @@ namespace JetpackDowngrader
             Console.ResetColor();
         }
 
-        static void Create(string ShortcutPath, string TargetPath)
+        static void CreateLnk(string ShortcutPath, string TargetPath)
         {
             IWshRuntimeLibrary.WshShell wshShell = new IWshRuntimeLibrary.WshShell();
             IWshRuntimeLibrary.IWshShortcut Shortcut = (IWshRuntimeLibrary.IWshShortcut)wshShell.CreateShortcut(ShortcutPath);
