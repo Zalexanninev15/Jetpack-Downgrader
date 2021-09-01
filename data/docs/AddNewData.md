@@ -9,7 +9,7 @@
 3. As a source for translation, take the official and always timely updated English localization from **EN.zcf** open this file in text editor (as [Notepad++](https://notepad-plus-plus.org/))
 4. Copy the file to any location and translate only the values of variables. *The value of the **Language** variable must be written in English!* If some things are unclear, that is, the source code, do not hesitate to peek into it ;)
 5. Save your translation under the name of the language code ([list of all codes](https://htmlpreview.github.io/?https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Language%20Code%20Table.html)), but without the dash
-6. Copy the file to the **languages** folder and open the GUI. Next, select the language change icon (next to the logo) and select your language, which is indicated under the value of the **Language variable**. Or simply select a language from the language change window that appears (only the first launch)
+6. Copy the file to the **languages** folder and open the GUI. Next, select the language change icon and select your language, which is indicated under the value of the **Language variable**. Or simply select a language from the language change window that appears (only the first launch)
 7. **Check your translation very carefully!**
 8. After successful tests, send a request (in issue) with file of localization for adding the localization to the repository. Your localization will be added to the application itself immediately in the next update!
 
