@@ -33,7 +33,8 @@ namespace JetpackGUI
             darkTextBox1.Text += "\r\n- " + lang.GetValue("License") + ": MIT";
             darkTextBox1.Text += "\r\n- " + lang.GetValue("Localization") + ": " + lang.GetValue("LocalizationBy");
             darkButton1.Text = lang.GetValue("AboutDonate");
-            darkButton2.Text = lang.GetValue("AboutIssues") + " (GitHub)";
+            darkButton2.Text = lang.GetValue("AboutIssues");
+            darkButton3.Text = lang.GetValue("about site");
             darkButton4.Text = lang.GetValue("AboutTopic");
             MSG[0] = lang.GetValue("Warning");
             MSG[1] = lang.GetValue("BrowserNotFound");
