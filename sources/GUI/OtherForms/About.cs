@@ -14,7 +14,7 @@ namespace JetpackGUI
         void MsgWarning() { DarkMessageBox.ShowWarning(MSG[1], MSG[0]); }
         void darkButton1_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
         void darkButton1_Click_1(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
-        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
+        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start("https://zalexanninev15.github.io/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
         void darkButton4_Click(object sender, EventArgs e) { try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/"); } }
 
         string[] MSG = new string[2];
