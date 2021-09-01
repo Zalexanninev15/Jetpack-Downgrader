@@ -398,7 +398,7 @@ namespace JetpackGUI
                 lc_text[1] = lang.GetValue("ModVersion");
                 lc_text[2] = lang.GetValue("ModAuthor");
                 darkGroupBox2.Text = lang.GetValue("DescriptionMod");
-                darkButton3.Text = lang.GetValue("WebSiteOfMod");
+                darkButton3.Text = lang.GetValue("TopicOfMod");
                 lc_text[3] = lang.GetValue("DownloadingModCache");
                 button1.Text = "3. " + lang.GetValue("Downgrade");
                 darkButton4.Text = "3. " + lang.GetValue("DownloadPatches");
