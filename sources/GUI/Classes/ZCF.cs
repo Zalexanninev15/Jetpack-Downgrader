@@ -89,13 +89,13 @@ namespace ZCF
                     string value = "";
                     foreach (string line in lines) 
                     { 
-                        if ((!line.StartsWith("## ")) && (!line.StartsWith("")) && (!line.StartsWith(" ")))
-                        { 
-                            if ((line.StartsWith(variable + " <= ")) || (line.StartsWith(variable + " <=> "))) 
-                            { 
-                                value = line.Replace(variable + " <=> ", "").Replace(variable + " <= ", ""); 
+                        if ((!line.StartsWith("## ")) && (!line.StartsWith(" ")))
+                        {
+                            if (line.StartsWith(variable + " <= ") || line.StartsWith(variable + " <=> "))
+                            {
+                                value = line.Replace(variable + " <=> ", "").Replace(variable + " <= ", "");
                                 value = System.Text.RegularExpressions.Regex.Replace(value, @" ##.+$", "");
-                            } 
+                            }
                             // Access is denied!
                             else { value = "-2"; }
                         } 
