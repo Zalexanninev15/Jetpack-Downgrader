@@ -77,7 +77,6 @@
   <ItemGroup>
     <Compile Include="Classes\GUI_SettingsReader.cs" />
     <Compile Include="Classes\SettingsReader.cs" />
-    <Compile Include="Classes\ZCF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Classes\ProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
