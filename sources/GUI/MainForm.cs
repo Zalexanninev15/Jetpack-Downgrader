@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using ZCF;
 
 namespace JetpackGUI
 {
