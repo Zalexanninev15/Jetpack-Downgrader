@@ -96,7 +96,7 @@
     <Compile Include="Classes\GUI_Settings.cs" />
     <Compile Include="Classes\SettingsEditor.cs" />
     <Compile Include="Classes\TaskBarProgressBar.cs" />
-    <Compile Include="Classes\ZCF.cs" />
+    <Compile Include="Classes\TempValues.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +125,7 @@
     <Compile Include="Classes\MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\LanguagesStringReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
