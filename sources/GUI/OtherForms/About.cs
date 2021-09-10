@@ -2,7 +2,6 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using ZCF;
 
 namespace JetpackGUI
 {
@@ -26,19 +25,21 @@ namespace JetpackGUI
             this.Size = new System.Drawing.Size(485, 424);
             GUI language = new GUI();
             language.ReadXml();
-            string langcode = language.Fields.LanguageCode;
-            Editor lang = new Editor(@Application.StartupPath + @"\files\languages\" + langcode + ".zcf");
-            Text = lang.GetValue("AboutTitle");
-            darkTextBox1.Text = "- " + lang.GetValue("Version") + ": " + Convert.ToString(Application.ProductVersion);
-            darkTextBox1.Text += "\r\n- " + lang.GetValue("Authors") + ":\r\n~ Zalexanninev15 - " + lang.GetValue("Zalexanninev15") + "\r\n~ Vadim M. - " + lang.GetValue("Vadim M.");
-            darkTextBox1.Text += "\r\n- " + lang.GetValue("License") + ": MIT";
-            darkTextBox1.Text += "\r\n- " + lang.GetValue("Localization") + ": " + lang.GetValue("LocalizationBy");
-            darkButton1.Text = lang.GetValue("AboutDonate");
-            darkButton2.Text = lang.GetValue("AboutIssues");
-            darkButton3.Text = lang.GetValue("AboutSite");
-            darkButton4.Text = lang.GetValue("AboutTopic");
-            MSG[0] = lang.GetValue("Warning");
-            MSG[1] = lang.GetValue("BrowserNotFound");
+            string langcode = language.Fields.LanguageCode;            
+            TempValues.SelectedLanguage = langcode;
+            Localization language_STRINGS = new Localization();
+            language_STRINGS.ReadXml();
+            Text = language_STRINGS.Fieldss.AboutTitle;
+            darkTextBox1.Text = "- " + language_STRINGS.Fieldss.Version + ": " + Convert.ToString(Application.ProductVersion);
+            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.Authors + ":\r\n~ Zalexanninev15 - " + language_STRINGS.Fieldss.Zalexanninev15 + "\r\n~ Vadim M. - " + language_STRINGS.Fieldss.VadimM;
+            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.License + ": MIT";
+            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.Localization + ": " + language_STRINGS.Fieldss.LocalizationBy;
+            darkButton1.Text = language_STRINGS.Fieldss.AboutDonate;
+            darkButton2.Text = language_STRINGS.Fieldss.AboutIssues;
+            darkButton3.Text = language_STRINGS.Fieldss.AboutSite;
+            darkButton4.Text = language_STRINGS.Fieldss.AboutTopic;
+            MSG[0] = language_STRINGS.Fieldss.Warning;
+            MSG[1] = language_STRINGS.Fieldss.BrowserNotFound;
         }
     }
 }
