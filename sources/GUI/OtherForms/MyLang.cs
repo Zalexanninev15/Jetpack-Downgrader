@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using ZCF;
 
 namespace JetpackGUI
 {
@@ -12,6 +11,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
         GUI mygui = new GUI();
+        Localization language_STRINGS = new Localization();
         string[] langs = new string[10];
 
         public MyLang() { InitializeComponent(); }
@@ -32,13 +32,14 @@ namespace JetpackGUI
         {
             this.Size = new System.Drawing.Size(263, 159);
             AllLangs.Items.Clear();
-            langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.zcf");
+            langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.xml");
             for (int i = 0; i < langs.Length; i++)
             {
                 if (langs[i] != "")
                 {
-                    Editor lang = new Editor(langs[i]);
-                    string lg = lang.GetValue("Language");
+                    TempValues.SelectedLanguage = langs[i];
+                    language_STRINGS.ReadXml();
+                    string lg = language_STRINGS.Fieldss.Language;
                     AllLangs.Items.Add(lg);
                 }
             }
@@ -48,16 +49,18 @@ namespace JetpackGUI
         {
             for (int i = 0; i < langs.Length; i++)
             {
+                language_STRINGS.ReadXml();
                 if (langs[i] != "")
                 {
-                    Editor lang = new Editor(langs[i]);
-                    if (AllLangs.Text == lang.GetValue("Language")) 
+                    TempValues.SelectedLanguage = langs[i];
+                    language_STRINGS.ReadXml();
+                    if (AllLangs.Text == language_STRINGS.Fieldss.Language) 
                     { 
-                        mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".zcf", ""); 
+                        mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); 
                         mygui.WriteXml();
-                        MyLang.ActiveForm.Text = lang.GetValue("FirstTitle");
-                        darkLabel1.Text = lang.GetValue("SelectLang");
-                        button2.Text = lang.GetValue("ApplyAndLaunch");
+                        MyLang.ActiveForm.Text = language_STRINGS.Fieldss.FirstTitle;
+                        darkLabel1.Text = language_STRINGS.Fieldss.SelectLang;
+                        button2.Text = language_STRINGS.Fieldss.ApplyAndLaunch;
                     }
                 }
             }

@@ -10,7 +10,6 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using ZCF;
 
 namespace JetpackGUI
 {
@@ -24,6 +23,7 @@ namespace JetpackGUI
 
         Props config = new Props();
         GUI language = new GUI();
+        Localization language_STRINGS = new Localization();
         string[] mse = new string[10];
         string[] langs = new string[10];
         bool tabFix = false;
@@ -352,15 +352,16 @@ namespace JetpackGUI
             {
                 LangsPanel.Visible = true;
                 lpFix = true;
-                langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.zcf");
+                langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.xml");
                 for (int i = 0; i < langs.Length; i++)
                 {
                     if (langs[i] != "")
                     {
-                        Editor lang = new Editor(langs[i]);
-                        string lg = lang.GetValue("Language");
+                        TempValues.SelectedLanguage = langs[i];
+                        language_STRINGS.ReadXml();
+                        string lg = language_STRINGS.Fieldss.Language;
                         darkComboBox2.Items.Add(lg);
-                        if (langcode == new FileInfo(langs[i]).Name.Replace(".zcf", "")) { darkComboBox2.SelectedItem = lg; }
+                        if (langcode == new FileInfo(langs[i]).Name.Replace(".xml", "")) { darkComboBox2.SelectedItem = lg; }
                     }
                 }
             }
@@ -380,16 +381,17 @@ namespace JetpackGUI
             langcode = language.Fields.LanguageCode;
             try
             {
-                Editor lang = new Editor(@Application.StartupPath + @"\files\languages\" + langcode + ".zcf");
+                TempValues.SelectedLanguage = langcode;
+                language_STRINGS.ReadXml();
                 // Text loading
-                darkLabel1.Text = lang.GetValue("Languages");
-                HelloUser.Text = lang.GetValue("Stage");
-                label2.Text = lang.GetValue("OtherActions");
-                DSPanel.SectionHeader = lang.GetValue("Tab1");
-                label1.Text = lang.GetValue("PathLabel") + ":";
+                darkLabel1.Text = language_STRINGS.Fieldss.Languages;
+                HelloUser.Text = language_STRINGS.Fieldss.Stage;
+                label2.Text = language_STRINGS.Fieldss.OtherActions;
+                DSPanel.SectionHeader = language_STRINGS.Fieldss.Tab1;
+                label1.Text = language_STRINGS.Fieldss.PathLabel + ":";
                 button6.Text = "1. " + DSPanel.SectionHeader;
-                darkTitle1.Text = lang.GetValue("CBG1");
-                darkTitle2.Text = lang.GetValue("CBG2");
+                darkTitle1.Text = language_STRINGS.Fieldss.CBG1;
+                darkTitle2.Text = language_STRINGS.Fieldss.CBG2;
                 ModsPanel.SectionHeader = lang.GetValue("Tab2");
                 button2.Text = "2. " + ModsPanel.SectionHeader;
                 darkLabel9.Text = lang.GetValue("List");
@@ -586,8 +588,9 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    Editor lang = new Editor(langs[i]);
-                    if (darkComboBox2.Text == lang.GetValue("Language")) { language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".zcf", ""); language.WriteXml(); Translate(); }
+                    TempValues.SelectedLanguage = langs[i];
+                    language_STRINGS.ReadXml();
+                    if (darkComboBox2.Text == language_STRINGS.Fieldss.Language) { language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); language.WriteXml(); Translate(); }
                 }
             }
         }
