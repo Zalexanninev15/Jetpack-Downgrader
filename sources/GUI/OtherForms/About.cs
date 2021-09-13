@@ -1,7 +1,9 @@
 ﻿using DarkUI.Forms;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace JetpackGUI
 {
@@ -27,19 +29,22 @@ namespace JetpackGUI
             language.ReadXml();
             string langcode = language.Fields.LanguageCode;            
             TempValues.SelectedLanguage = langcode;
-            Localization language_STRINGS = new Localization();
-            language_STRINGS.ReadXml();
-            Text = language_STRINGS.Fieldss.AboutTitle;
-            darkTextBox1.Text = "- " + language_STRINGS.Fieldss.Version + ": " + Convert.ToString(Application.ProductVersion);
-            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.Authors + ":\r\n~ Zalexanninev15 - " + language_STRINGS.Fieldss.Zalexanninev15 + "\r\n~ Vadim M. - " + language_STRINGS.Fieldss.VadimM;
-            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.License + ": MIT";
-            darkTextBox1.Text += "\r\n- " + language_STRINGS.Fieldss.Localization + ": " + language_STRINGS.Fieldss.LocalizationBy;
-            darkButton1.Text = language_STRINGS.Fieldss.AboutDonate;
-            darkButton2.Text = language_STRINGS.Fieldss.AboutIssues;
-            darkButton3.Text = language_STRINGS.Fieldss.AboutSite;
-            darkButton4.Text = language_STRINGS.Fieldss.AboutTopic;
-            MSG[0] = language_STRINGS.Fieldss.Warning;
-            MSG[1] = language_STRINGS.Fieldss.BrowserNotFound;
+            XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
+            using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+            {
+                var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                Text = LOCAL.AboutTitle;
+                darkTextBox1.Text = "- " + LOCAL.Version + ": " + Convert.ToString(Application.ProductVersion);
+                darkTextBox1.Text += "\r\n- " + LOCAL.Authors + ":\r\n~ Zalexanninev15 - " + LOCAL.Zalexanninev15 + "\r\n~ Vadim M. - " + LOCAL.VadimM;
+                darkTextBox1.Text += "\r\n- " + LOCAL.License + ": MIT";
+                darkTextBox1.Text += "\r\n- " + LOCAL.Localization + ": " + LOCAL.LocalizationBy;
+                darkButton1.Text = LOCAL.AboutDonate;
+                darkButton2.Text = LOCAL.AboutIssues;
+                darkButton3.Text = LOCAL.AboutSite;
+                darkButton4.Text = LOCAL.AboutTopic;
+                MSG[0] = LOCAL.Warning;
+                MSG[1] = LOCAL.BrowserNotFound;
+            }
         }
     }
 }
