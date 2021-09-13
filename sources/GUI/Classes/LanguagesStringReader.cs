@@ -2,9 +2,9 @@
 
 namespace JetpackGUI
     {
-        [XmlRoot(ElementName = "LanguagesString")]
-        public class LanguagesString
-        {
+        [XmlRoot(ElementName = "LanguagesStringReader")]
+        public class LanguagesStringReader
+    {
             [XmlElement(ElementName = "Language")]
             public string Language { get; set; }
 
@@ -17,102 +17,231 @@ namespace JetpackGUI
             [XmlElement(ElementName = "ApplyAndLaunch")]
             public string ApplyAndLaunch { get; set; }
 
+            [XmlElement(ElementName = "Languages")]
+            public string Languages { get; set; }
 
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
-            [XmlElement(ElementName = "FirstTitle")]
-            public string FirstTitle { get; set; }
+            [XmlElement(ElementName = "Stage")]
+            public string Stage { get; set; }
 
-        /*
-    public String Languages = "null";
-    public String Stage = "null";
-    public String OtherActions = "null";
-    public String Tab1 = "null";
-    public String PathLabel = "null";
-    public String CBG1 = "null";
-    public String CBG2 = "null";
-    public String Tab2 = "null";
-    public String List = "null";
-    public String ASILoader = "null";
-    public String AboutMod = "null";
-    public String ModName = "null";
-    public String ModVersion = "null";
-    public String ModAuthor = "null";
-    public String DescriptionMod = "null";
-    public String TopicOfMod = "null";
-    public String DownloadingModCache = "null";
-    public String Downgrade = "null";
-    public String DownloadPatches = "null";
-    public String DownloadingPatches = "List";
-    public String DownloadingDirectXFiles = "null";
-    public String ModWord = "null";
-    public String Mbyte = "null";
-    public String WishPlay = "null";
-    public String Play = "null";
-    public String CloseApp = "null";
-    public String CreateBackups = "null";
-    public String CreateShortcut = "null";
-    public String ResetGame = "null";
-    public String RGL_GarbageCleaning = "null";
-    public String RegisterGamePath = "null";
-    public String CopyGameToNewPath = "null";
-    public String Forced = "null";
-    public String EnableDirectPlay = "null";
-    public String InstallDirectXComponents = "null";
-    public String InstallMod = "null";
-    public String Request = "null";
-    public String Information = "null";
-    public String Error = "null";
-    public String Warning = "null";
-    public String FolderSelectDialog = "null";
-    public String WishDownloadPatches = "null";
-    public String WishDownloadDirectXFiles = "null";
-    public String InstallModQuestion = "null";
-    public String WishDowngrader = "null";
-    public String ModSucces = "null";
-    public String Succes = "null";
-    public String BindingOK = "null";
-    public String ReturnUsingBackups = "null";
-    public String AboutModDamaged = "null";
-    public String ModFailure = "null";
-    public String WishReturnUsingBackups = "null";
-    public String WishRegGame = "null";
-    public String PathNotFound = "null";
-    public String BrowserNotFound = "null";
-    public String NetworkNotFound = "null";
-    public String OfflineMode = "null";
-    public String NewPath = "null";
-    public String YouCanDelete = "null";
-    public String Activation = "null";
-    public String Deactivation = "null";
-    public String AboutTitle = "null";
-    public String Version = "null";
-    public String Authors = "null";
-    public String Zalexanninev15 = "null";
-    public String VadimM = "null";
-    public String License = "null";
-    public String Localization = "null";
-    public String LocalizationBy = "null";
-    public String AboutDonate = "null";
-    public String AboutIssues = "null";
-    public String AboutSite = "null";
-    public String AboutTopic = "null"; */
-        [XmlAttribute(AttributeName = "xsd")]
+            [XmlElement(ElementName = "OtherActions")]
+            public string OtherActions { get; set; }
+
+            [XmlElement(ElementName = "Tab1")]
+            public string Tab1 { get; set; }
+
+            [XmlElement(ElementName = "PathLabel")]
+            public string PathLabel { get; set; }
+
+            [XmlElement(ElementName = "CBG1")]
+            public string CBG1 { get; set; }
+
+            [XmlElement(ElementName = "CBG2")]
+            public string CBG2 { get; set; }
+
+            [XmlElement(ElementName = "Tab2")]
+            public string Tab2 { get; set; }
+        
+            [XmlElement(ElementName = "List")]
+            public string List { get; set; }
+        
+            [XmlElement(ElementName = "ASILoader")]
+            public string ASILoader { get; set; }
+        
+            [XmlElement(ElementName = "AboutMod")]
+            public string AboutMod { get; set; }
+        
+            [XmlElement(ElementName = "ModName")]
+            public string ModName { get; set; }
+        
+            [XmlElement(ElementName = "ModVersion")]
+            public string ModVersion { get; set; }
+        
+            [XmlElement(ElementName = "ModAuthor")]
+            public string ModAuthor { get; set; }
+        
+            [XmlElement(ElementName = "DescriptionMod")]
+            public string DescriptionMod { get; set; }
+        
+            [XmlElement(ElementName = "TopicOfMod")]
+            public string TopicOfMod { get; set; }
+        
+            [XmlElement(ElementName = "DownloadingModCache")]
+            public string DownloadingModCache { get; set; }
+        
+            [XmlElement(ElementName = "Downgrade")]
+            public string Downgrade { get; set; }
+        
+            [XmlElement(ElementName = "DownloadPatches")]
+            public string DownloadPatches { get; set; }
+        
+            [XmlElement(ElementName = "DownloadingPatches")]
+            public string DownloadingPatches { get; set; }
+        
+            [XmlElement(ElementName = "DownloadingDirectXFiles")]
+            public string DownloadingDirectXFiles { get; set; }
+        
+            [XmlElement(ElementName = "ModWord")]
+            public string ModWord { get; set; }
+        
+            [XmlElement(ElementName = "Mbyte")]
+            public string Mbyte { get; set; }
+        
+            [XmlElement(ElementName = "WishPlay")]
+            public string WishPlay { get; set; }
+        
+            [XmlElement(ElementName = "Play")]
+            public string Play { get; set; }
+        
+            [XmlElement(ElementName = "CloseApp")]
+            public string CloseApp { get; set; }
+        
+            [XmlElement(ElementName = "CreateBackups")]
+            public string CreateBackups { get; set; }
+        
+            [XmlElement(ElementName = "CreateShortcut")]
+            public string CreateShortcut { get; set; }
+        
+            [XmlElement(ElementName = "ResetGame")]
+            public string ResetGame { get; set; }
+        
+            [XmlElement(ElementName = "RGL_GarbageCleaning")]
+            public string RGL_GarbageCleaning { get; set; } 
+        
+            [XmlElement(ElementName = "RegisterGamePath")]
+            public string RegisterGamePath { get; set; } 
+        
+            [XmlElement(ElementName = "CopyGameToNewPath")]
+            public string CopyGameToNewPath { get; set; } 
+        
+            [XmlElement(ElementName = "Forced")]
+            public string Forced { get; set; }
+        
+            [XmlElement(ElementName = "EnableDirectPlay")]
+            public string EnableDirectPlay { get; set; }
+        
+            [XmlElement(ElementName = "InstallDirectXComponents")]
+            public string InstallDirectXComponents { get; set; }
+        
+            [XmlElement(ElementName = "InstallMod")]
+            public string InstallMod { get; set; } 
+        
+            [XmlElement(ElementName = "Request")]
+            public string Request { get; set; }
+        
+            [XmlElement(ElementName = "Information")]
+            public string Information { get; set; } 
+        
+            [XmlElement(ElementName = "Error")]
+            public string Error { get; set; }
+        
+            [XmlElement(ElementName = "Warning")]
+            public string Warning { get; set; } 
+        
+            [XmlElement(ElementName = "FolderSelectDialog")]
+            public string FolderSelectDialog { get; set; } 
+        
+            [XmlElement(ElementName = "WishDownloadPatches")]
+            public string WishDownloadPatches { get; set; }
+        
+            [XmlElement(ElementName = "WishDownloadDirectXFiles")]
+            public string WishDownloadDirectXFiles { get; set; } 
+        
+            [XmlElement(ElementName = "InstallModQuestion")]
+            public string InstallModQuestion { get; set; }
+        
+            [XmlElement(ElementName = "WishDowngrader")]
+            public string WishDowngrader { get; set; }
+        
+            [XmlElement(ElementName = "ModSucces")]
+            public string ModSucces { get; set; } 
+        
+            [XmlElement(ElementName = "Succes")]
+            public string Succes { get; set; } 
+        
+            [XmlElement(ElementName = "BindingOK")]
+            public string BindingOK { get; set; }
+        
+            [XmlElement(ElementName = "ReturnUsingBackups")]
+            public string ReturnUsingBackups { get; set; }
+        
+            [XmlElement(ElementName = "AboutModDamaged")]
+            public string AboutModDamaged { get; set; }
+        
+            [XmlElement(ElementName = "ModFailure")]
+            public string ModFailure { get; set; }
+        
+            [XmlElement(ElementName = "WishReturnUsingBackups")]
+            public string WishReturnUsingBackups { get; set; }
+        
+            [XmlElement(ElementName = "WishRegGame")]
+            public string WishRegGame { get; set; } 
+        
+            [XmlElement(ElementName = "PathNotFound")]
+            public string PathNotFound { get; set; }
+        
+            [XmlElement(ElementName = "BrowserNotFound")]
+            public string BrowserNotFound { get; set; }
+        
+            [XmlElement(ElementName = "NetworkNotFound")]
+            public string NetworkNotFound { get; set; } 
+        
+            [XmlElement(ElementName = "OfflineMode")]
+            public string OfflineMode { get; set; }
+        
+            [XmlElement(ElementName = "NewPath")]
+            public string NewPath { get; set; }
+        
+            [XmlElement(ElementName = "YouCanDelete")]
+            public string YouCanDelete { get; set; }
+        
+            [XmlElement(ElementName = "Activation")]
+            public string Activation { get; set; } 
+        
+            [XmlElement(ElementName = "Deactivation")]
+            public string Deactivation { get; set; }
+        
+            [XmlElement(ElementName = "AboutTitle")]
+            public string AboutTitle { get; set; } 
+        
+            [XmlElement(ElementName = "Version")]
+            public string Version { get; set; }
+        
+            [XmlElement(ElementName = "Authors")]
+            public string Authors { get; set; }
+        
+            [XmlElement(ElementName = "Zalexanninev15")]
+            public string Zalexanninev15 { get; set; }
+        
+            [XmlElement(ElementName = "VadimM")]
+            public string VadimM { get; set; }
+        
+            [XmlElement(ElementName = "License")]
+            public string License { get; set; }
+        
+            [XmlElement(ElementName = "Localization")]
+            public string Localization { get; set; }
+        
+            [XmlElement(ElementName = "LocalizationBy")]
+            public string LocalizationBy { get; set; } 
+        
+            [XmlElement(ElementName = "AboutDonate")]
+            public string AboutDonate { get; set; }
+        
+            [XmlElement(ElementName = "AboutIssues")]
+            public string AboutIssues { get; set; }
+        
+            [XmlElement(ElementName = "AboutSite")]
+            public string AboutSite { get; set; } 
+        
+            [XmlElement(ElementName = "AboutTopic")]
+            public string AboutTopic { get; set; } 
+
+            [XmlAttribute(AttributeName = "xsd")]
             public string Xsd { get; set; }
+
             [XmlAttribute(AttributeName = "xsi")]
             public string Xsi { get; set; }
+
             [XmlText]
             public string Text { get; set; }
         }

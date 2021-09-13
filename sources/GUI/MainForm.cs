@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using Microsoft.Win32;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 
 namespace JetpackGUI
 {
@@ -23,7 +24,7 @@ namespace JetpackGUI
 
         Props config = new Props();
         GUI language = new GUI();
-        Localization language_STRINGS = new Localization();
+        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
         string[] mse = new string[10];
         string[] langs = new string[10];
         bool tabFix = false;
@@ -358,8 +359,12 @@ namespace JetpackGUI
                     if (langs[i] != "")
                     {
                         TempValues.SelectedLanguage = langs[i];
-                        language_STRINGS.ReadXml();
-                        string lg = language_STRINGS.Fieldss.Language;
+                        string lg = "English";
+                        using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                        {
+                            var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                            lg = LOCAL.Language;
+                        }
                         darkComboBox2.Items.Add(lg);
                         if (langcode == new FileInfo(langs[i]).Name.Replace(".xml", "")) { darkComboBox2.SelectedItem = lg; }
                     }
@@ -382,77 +387,80 @@ namespace JetpackGUI
             try
             {
                 TempValues.SelectedLanguage = langcode;
-                language_STRINGS.ReadXml();
-                // Text loading
-                darkLabel1.Text = language_STRINGS.Fieldss.Languages;
-                HelloUser.Text = language_STRINGS.Fieldss.Stage;
-                label2.Text = language_STRINGS.Fieldss.OtherActions;
-                DSPanel.SectionHeader = language_STRINGS.Fieldss.Tab1;
-                label1.Text = language_STRINGS.Fieldss.PathLabel + ":";
-                button6.Text = "1. " + DSPanel.SectionHeader;
-                darkTitle1.Text = language_STRINGS.Fieldss.CBG1;
-                darkTitle2.Text = language_STRINGS.Fieldss.CBG2;
-                ModsPanel.SectionHeader = language_STRINGS.Fieldss.Tab2;
-                button2.Text = "2. " + ModsPanel.SectionHeader;
-                darkLabel9.Text = language_STRINGS.Fieldss.List;
-                darkLabel2.Text = language_STRINGS.Fieldss.ASILoader;
-                darkGroupBox1.Text = language_STRINGS.Fieldss.AboutMod;
-                lc_text[0] = language_STRINGS.Fieldss.ModName;
-                lc_text[1] = language_STRINGS.Fieldss.ModVersion;
-                lc_text[2] = language_STRINGS.Fieldss.ModAuthor;
-                darkGroupBox2.Text = language_STRINGS.Fieldss.DescriptionMod;
-                darkButton3.Text = language_STRINGS.Fieldss.TopicOfMod;
-                lc_text[3] = language_STRINGS.Fieldss.DownloadingModCache;
-                button1.Text = "3. " + language_STRINGS.Fieldss.Downgrade;
-                darkButton4.Text = "3. " + language_STRINGS.Fieldss.DownloadPatches;
-                lc_text[4] = language_STRINGS.Fieldss.DownloadPatches;
-                lc_text[5] = language_STRINGS.Fieldss.DownloadingDirectXFiles;
-                lc_text[6] = language_STRINGS.Fieldss.ModWord;
-                lc_text[7] = language_STRINGS.Fieldss.Mbyte;
-                label3.Text = language_STRINGS.Fieldss.WishPlay;
-                play.Text = language_STRINGS.Fieldss.Play;
-                darkButton5.Text = language_STRINGS.Fieldss.CloseApp;
-                // CheckBoxes loading
-                checkBox1.Text = language_STRINGS.Fieldss.CreateBackups;
-                checkBox2.Text = language_STRINGS.Fieldss.CreateShortcut;
-                checkBox9.Text = language_STRINGS.Fieldss.ResetGame;
-                checkBox4.Text = language_STRINGS.Fieldss.RGL_GarbageCleaning;
-                checkBox6.Text = language_STRINGS.Fieldss.RegisterGamePath;
-                checkBox3.Text = language_STRINGS.Fieldss.CopyGameToNewPath;
-                checkBox7.Text = language_STRINGS.Fieldss.EnableDirectPlay;
-                checkBox8.Text = language_STRINGS.Fieldss.InstallDirectXComponents;
-                checkBox5.Text = language_STRINGS.Fieldss.Forced;
-                YesInstallMe.Text = language_STRINGS.Fieldss.InstallMod;
-                // Titles loading
-                lc_text[8] = language_STRINGS.Fieldss.Request;
-                lc_text[9] = language_STRINGS.Fieldss.Information;
-                lc_text[10] = language_STRINGS.Fieldss.Error;
-                lc_text[11] = language_STRINGS.Fieldss.Warning;
-                lc_text[12] = language_STRINGS.Fieldss.FolderSelectDialog;
-                // Information messages loading
-                lc_text[13] = language_STRINGS.Fieldss.WishDownloadPatches;
-                lc_text[14] = language_STRINGS.Fieldss.WishDownloadDirectXFiles;
-                lc_text[15] = language_STRINGS.Fieldss.InstallModQuestion;
-                lc_text[16] = language_STRINGS.Fieldss.WishDowngrader;
-                lc_text[17] = language_STRINGS.Fieldss.ModSucces;
-                lc_text[18] = language_STRINGS.Fieldss.Succes;
-                lc_text[19] = language_STRINGS.Fieldss.BindingOK;
-                lc_text[20] = language_STRINGS.Fieldss.ReturnUsingBackups;
-                // Error messages loading
-                lc_text[21] = language_STRINGS.Fieldss.AboutModDamaged;
-                lc_text[22] = language_STRINGS.Fieldss.ModFailure;
-                // Warning messages loading
-                lc_text[23] = language_STRINGS.Fieldss.WishReturnUsingBackups;
-                lc_text[24] = language_STRINGS.Fieldss.WishRegGame;
-                lc_text[25] = language_STRINGS.Fieldss.PathNotFound;
-                lc_text[26] = language_STRINGS.Fieldss.BrowserNotFound;
-                lc_text[27] = language_STRINGS.Fieldss.NetworkNotFound;
-                lc_text[28] = language_STRINGS.Fieldss.OfflineMode;
-                lc_text[29] = language_STRINGS.Fieldss.NewPath;
-                lc_text[30] = language_STRINGS.Fieldss.YouCanDelete;
-                // Debug mode loading
-                lc_text[31] = language_STRINGS.Fieldss.Activation;
-                lc_text[32] = language_STRINGS.Fieldss.Deactivation;
+                using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                {
+                    var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                    // Text loading
+                    darkLabel1.Text = LOCAL.Languages;
+                    HelloUser.Text = LOCAL.Stage;
+                    label2.Text = LOCAL.OtherActions;
+                    DSPanel.SectionHeader = LOCAL.Tab1;
+                    label1.Text = LOCAL.PathLabel + ":";
+                    button6.Text = "1. " + DSPanel.SectionHeader;
+                    darkTitle1.Text = LOCAL.CBG1;
+                    darkTitle2.Text = LOCAL.CBG2;
+                    ModsPanel.SectionHeader = LOCAL.Tab2;
+                    button2.Text = "2. " + ModsPanel.SectionHeader;
+                    darkLabel9.Text = LOCAL.List;
+                    darkLabel2.Text = LOCAL.ASILoader;
+                    darkGroupBox1.Text = LOCAL.AboutMod;
+                    lc_text[0] = LOCAL.ModName;
+                    lc_text[1] = LOCAL.ModVersion;
+                    lc_text[2] = LOCAL.ModAuthor;
+                    darkGroupBox2.Text = LOCAL.DescriptionMod;
+                    darkButton3.Text = LOCAL.TopicOfMod;
+                    lc_text[3] = LOCAL.DownloadingModCache;
+                    button1.Text = "3. " + LOCAL.Downgrade;
+                    darkButton4.Text = "3. " + LOCAL.DownloadPatches;
+                    lc_text[4] = LOCAL.DownloadingPatches;
+                    lc_text[5] = LOCAL.DownloadingDirectXFiles;
+                    lc_text[6] = LOCAL.ModWord;
+                    lc_text[7] = LOCAL.Mbyte;
+                    label3.Text = LOCAL.WishPlay;
+                    play.Text = LOCAL.Play;
+                    darkButton5.Text = LOCAL.CloseApp;
+                    // CheckBoxes loading
+                    checkBox1.Text = LOCAL.CreateBackups;
+                    checkBox2.Text = LOCAL.CreateShortcut;
+                    checkBox9.Text = LOCAL.ResetGame;
+                    checkBox4.Text = LOCAL.RGL_GarbageCleaning;
+                    checkBox6.Text = LOCAL.RegisterGamePath;
+                    checkBox3.Text = LOCAL.CopyGameToNewPath;
+                    checkBox7.Text = LOCAL.EnableDirectPlay;
+                    checkBox8.Text = LOCAL.InstallDirectXComponents;
+                    checkBox5.Text = LOCAL.Forced;
+                    YesInstallMe.Text = LOCAL.InstallMod;
+                    // Titles loading
+                    lc_text[8] = LOCAL.Request;
+                    lc_text[9] = LOCAL.Information;
+                    lc_text[10] = LOCAL.Error;
+                    lc_text[11] = LOCAL.Warning;
+                    lc_text[12] = LOCAL.FolderSelectDialog;
+                    // Information messages loading
+                    lc_text[13] = LOCAL.WishDownloadPatches;
+                    lc_text[14] = LOCAL.WishDownloadDirectXFiles;
+                    lc_text[15] = LOCAL.InstallModQuestion;
+                    lc_text[16] = LOCAL.WishDowngrader;
+                    lc_text[17] = LOCAL.ModSucces;
+                    lc_text[18] = LOCAL.Succes;
+                    lc_text[19] = LOCAL.BindingOK;
+                    lc_text[20] = LOCAL.ReturnUsingBackups;
+                    // Error messages loading
+                    lc_text[21] = LOCAL.AboutModDamaged;
+                    lc_text[22] = LOCAL.ModFailure;
+                    // Warning messages loading
+                    lc_text[23] = LOCAL.WishReturnUsingBackups;
+                    lc_text[24] = LOCAL.WishRegGame;
+                    lc_text[25] = LOCAL.PathNotFound;
+                    lc_text[26] = LOCAL.BrowserNotFound;
+                    lc_text[27] = LOCAL.NetworkNotFound;
+                    lc_text[28] = LOCAL.OfflineMode;
+                    lc_text[29] = LOCAL.NewPath;
+                    lc_text[30] = LOCAL.YouCanDelete;
+                    // Debug mode loading
+                    lc_text[31] = LOCAL.Activation;
+                    lc_text[32] = LOCAL.Deactivation;
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
@@ -589,8 +597,16 @@ namespace JetpackGUI
                 if (langs[i] != "")
                 {
                     TempValues.SelectedLanguage = langs[i];
-                    language_STRINGS.ReadXml();
-                    if (darkComboBox2.Text == language_STRINGS.Fieldss.Language) { language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); language.WriteXml(); Translate(); }
+                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    {
+                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                        if (darkComboBox2.Text == LOCAL.Language) 
+                        { 
+                            language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); 
+                            language.WriteXml(); 
+                            Translate(); 
+                        }
+                    }
                 }
             }
         }
