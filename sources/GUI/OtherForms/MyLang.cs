@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace JetpackGUI
 {
@@ -11,7 +12,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
         GUI mygui = new GUI();
-        Localization language_STRINGS = new Localization();
+        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
         string[] langs = new string[10];
 
         public MyLang() { InitializeComponent(); }
@@ -38,8 +39,12 @@ namespace JetpackGUI
                 if (langs[i] != "")
                 {
                     TempValues.SelectedLanguage = langs[i];
-                    language_STRINGS.ReadXml();
-                    string lg = language_STRINGS.Fieldss.Language;
+                    string lg = "English";
+                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    {
+                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                        lg = LOCAL.Language;
+                    }
                     AllLangs.Items.Add(lg);
                 }
             }
@@ -49,18 +54,20 @@ namespace JetpackGUI
         {
             for (int i = 0; i < langs.Length; i++)
             {
-                language_STRINGS.ReadXml();
                 if (langs[i] != "")
                 {
                     TempValues.SelectedLanguage = langs[i];
-                    language_STRINGS.ReadXml();
-                    if (AllLangs.Text == language_STRINGS.Fieldss.Language) 
-                    { 
-                        mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); 
-                        mygui.WriteXml();
-                        MyLang.ActiveForm.Text = language_STRINGS.Fieldss.FirstTitle;
-                        darkLabel1.Text = language_STRINGS.Fieldss.SelectLang;
-                        button2.Text = language_STRINGS.Fieldss.ApplyAndLaunch;
+                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    {
+                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                        if (AllLangs.Text == LOCAL.Language)
+                        {
+                            mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", "");
+                            mygui.WriteXml();
+                            MyLang.ActiveForm.Text = LOCAL.FirstTitle;
+                            darkLabel1.Text = LOCAL.SelectLang;
+                            button2.Text = LOCAL.ApplyAndLaunch;
+                        }
                     }
                 }
             }
