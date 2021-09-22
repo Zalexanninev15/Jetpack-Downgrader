@@ -14,6 +14,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
         public About() { InitializeComponent(); }
         void MsgWarning() { DarkMessageBox.ShowWarning(MSG[1], MSG[0]); }
+        void darkButton5_Click(object sender, EventArgs e) { panel1.Visible = false; }
         void darkButton1_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
         void darkButton1_Click_1(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
         void darkButton3_Click(object sender, EventArgs e) { try { Process.Start("https://zalexanninev15.github.io/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
@@ -24,15 +25,14 @@ namespace JetpackGUI
         void MyLang_Load(object sender, EventArgs e)
         {
             MSG[0] = "Warning";
-            this.Size = new System.Drawing.Size(485, 424);
+            this.Size = new System.Drawing.Size(485, 429);
             GUI language = new GUI();
             language.ReadXml();
             string langcode = language.Fields.LanguageCode;            
-            TempValues.SelectedLanguage = langcode;
-            XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
-            using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+            XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
+            using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + langcode + ".xml")))
             {
-                var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                 Text = LOCAL.AboutTitle;
                 darkTextBox1.Text = "- " + LOCAL.Version + ": " + Convert.ToString(Application.ProductVersion);
                 darkTextBox1.Text += "\r\n- " + LOCAL.Authors + ":\r\n~ Zalexanninev15 - " + LOCAL.Zalexanninev15 + "\r\n~ Vadim M. - " + LOCAL.VadimM;

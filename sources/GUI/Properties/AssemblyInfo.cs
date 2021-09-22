@@ -9,5 +9,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("Jetpack Downgrader (2020-2021)")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.2.3.8")]
-[assembly: AssemblyFileVersion("1.2.3.8")]
+[assembly: AssemblyVersion("1.2.3.9")]
+[assembly: AssemblyFileVersion("1.2.3.9")]

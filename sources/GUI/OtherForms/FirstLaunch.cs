@@ -12,7 +12,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
 
         GUI mygui = new GUI();
-        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
+        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
         string[] langs = new string[10];
 
         public MyLang() { InitializeComponent(); }
@@ -38,11 +38,10 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    TempValues.SelectedLanguage = langs[i];
                     string lg = "English";
-                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    using (StringReader reader = new StringReader(File.ReadAllText(langs[i])))
                     {
-                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                        var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                         lg = LOCAL.Language;
                     }
                     AllLangs.Items.Add(lg);
@@ -56,10 +55,9 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    TempValues.SelectedLanguage = langs[i];
-                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    using (StringReader reader = new StringReader(File.ReadAllText(langs[i])))
                     {
-                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                        var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                         if (AllLangs.Text == LOCAL.Language)
                         {
                             mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", "");

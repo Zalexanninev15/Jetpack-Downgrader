@@ -2,9 +2,9 @@
 
 namespace JetpackGUI
     {
-        [XmlRoot(ElementName = "LanguagesStringReader")]
-        public class LanguagesStringReader
-    {
+        [XmlRoot(ElementName = "LanguagesString")]
+        public class LanguagesString
+        {
             [XmlElement(ElementName = "Language")]
             public string Language { get; set; }
 
