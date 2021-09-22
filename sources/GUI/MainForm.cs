@@ -166,6 +166,8 @@ namespace JetpackGUI
             else { button1.Visible = false; darkButton4.Visible = true; NotDone = true; }
         }
 
+        //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
+
         //static void Patcher(string argument)
         //{
         //    Process start_info = new Process();
@@ -205,6 +207,8 @@ namespace JetpackGUI
             catch { return "0x50 0x45"; }
         }
 
+        void darkButton6_Click(object sender, EventArgs e) { ScreenShotViewer.Visible = false; darkButton1.Visible = true; darkButton2.Visible = true; }
+        void darkButton7_Click(object sender, EventArgs e) { try { Process.Start(ScreenShotInViewer.ImageLocation); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(ScreenShotInViewer.ImageLocation); } }
         void pictureBox1_Click(object sender, EventArgs e) { SelectPathToGame(); }
         void checkBox2_CheckedChanged(object sender, EventArgs e) { config.Fields.CreateShortcut = checkBox2.Checked; config.WriteXml(); }
         void checkBox1_CheckedChanged(object sender, EventArgs e) { config.Fields.CreateBackups = checkBox1.Checked; config.WriteXml(); }
@@ -216,7 +220,7 @@ namespace JetpackGUI
         void checkBox9_CheckedChanged(object sender, EventArgs e) { config.Fields.ResetGame = checkBox9.Checked; config.WriteXml(); }
         void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(site_link); } }
         void darkButton5_Click(object sender, EventArgs e) { Application.Exit(); }
-        void ScreenShot_Click(object sender, EventArgs e) { try { Process.Start(ScreenShot.ImageLocation); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(ScreenShot.ImageLocation); } }
+        void ScreenShot_Click(object sender, EventArgs e)  { darkButton1.Visible = false; darkButton2.Visible = false; ScreenShotInViewer.ImageLocation = ScreenShot.ImageLocation; ScreenShotViewer.Visible = true; }
         void listBox1_MouseDown(object sender, MouseEventArgs e) { SetFocus(IntPtr.Zero); }
         void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; } }
         void MsgInfo(string message) { DarkMessageBox.ShowInformation(message, lc_text[9]); }
@@ -225,7 +229,6 @@ namespace JetpackGUI
         void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
         void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
         void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
-        //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new DarkListItem("[" + type + "]  " + ido + "=" + status)); }
         void pictureBox3_Click(object sender, EventArgs e) { About about = new About(); about.ShowDialog(); }
         void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
         void checkBox7_CheckedChanged(object sender, EventArgs e) { config.Fields.EnableDirectPlay = checkBox7.Checked; config.WriteXml(); }
@@ -656,8 +659,8 @@ namespace JetpackGUI
             if (GamePath.Text != "")
             {
                 pictureBox11.Visible = true;
-                for (int i = 0; i < fl.Length; i++) { if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; IsBak = true; } }
-                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin")))) { pictureBox10.Visible = true; IsBak = true; }
+                for (int i = 0; i < fl.Length; i++) { Data.PathToGame = GamePath.Text; if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; IsBak = true; } }
+                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin")))) { pictureBox10.Visible = true; IsBak = true; Data.PathToGame = GamePath.Text; }
             }
             else { pictureBox11.Visible = false; pictureBox10.Visible = false; IsBak = false; }
         }
@@ -768,6 +771,24 @@ namespace JetpackGUI
         {
             if (progressPanel.Visible == true) { LangsPanel.Visible = false; HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
             else { HelloUser.Visible = true; pictureBox5.Visible = true; pictureBox6.Visible = true; pictureBox7.Visible = true; }
+        }
+
+        void darkButton8_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < photos_links.Length; i++)
+            {
+                try { if (ScreenShotInViewer.ImageLocation == photos_links[i]) { ScreenShotInViewer.ImageLocation = photos_links[i + 1]; i = photos_links.Length + 1; } }
+                catch { ScreenShotInViewer.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+            }
+        }
+
+        void darkButton9_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < photos_links.Length; i++)
+            {
+                try { if (ScreenShotInViewer.ImageLocation == photos_links[i]) { ScreenShotInViewer.ImageLocation = photos_links[i - 1]; i = photos_links.Length + 1; } }
+                catch { ScreenShotInViewer.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+            }
         }
     }
 }

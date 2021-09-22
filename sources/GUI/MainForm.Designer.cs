@@ -42,6 +42,12 @@ namespace JetpackGUI
             this.checkBox8 = new DarkUI.Controls.DarkCheckBox();
             this.DSPanel = new DarkUI.Controls.DarkSectionPanel();
             this.ModsPanel = new DarkUI.Controls.DarkSectionPanel();
+            this.ScreenShotViewer = new System.Windows.Forms.Panel();
+            this.darkButton8 = new DarkUI.Controls.DarkButton();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.darkButton7 = new DarkUI.Controls.DarkButton();
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.ScreenShotInViewer = new System.Windows.Forms.PictureBox();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.darkGroupBox1 = new DarkUI.Controls.DarkGroupBox();
@@ -96,6 +102,8 @@ namespace JetpackGUI
             this.HelloUser = new System.Windows.Forms.Label();
             this.DSPanel.SuspendLayout();
             this.ModsPanel.SuspendLayout();
+            this.ScreenShotViewer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ScreenShotInViewer)).BeginInit();
             this.darkGroupBox1.SuspendLayout();
             this.darkGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).BeginInit();
@@ -269,6 +277,7 @@ namespace JetpackGUI
             // 
             // ModsPanel
             // 
+            this.ModsPanel.Controls.Add(this.ScreenShotViewer);
             this.ModsPanel.Controls.Add(this.darkLabel2);
             this.ModsPanel.Controls.Add(this.listBox1);
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
@@ -280,6 +289,78 @@ namespace JetpackGUI
             this.ModsPanel.Size = new System.Drawing.Size(834, 342);
             this.ModsPanel.TabIndex = 15;
             this.ModsPanel.Visible = false;
+            // 
+            // ScreenShotViewer
+            // 
+            this.ScreenShotViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ScreenShotViewer.Controls.Add(this.darkButton8);
+            this.ScreenShotViewer.Controls.Add(this.darkButton9);
+            this.ScreenShotViewer.Controls.Add(this.darkButton7);
+            this.ScreenShotViewer.Controls.Add(this.darkButton6);
+            this.ScreenShotViewer.Controls.Add(this.ScreenShotInViewer);
+            this.ScreenShotViewer.Location = new System.Drawing.Point(197, 30);
+            this.ScreenShotViewer.Name = "ScreenShotViewer";
+            this.ScreenShotViewer.Size = new System.Drawing.Size(391, 295);
+            this.ScreenShotViewer.TabIndex = 7;
+            this.ScreenShotViewer.Visible = false;
+            // 
+            // darkButton8
+            // 
+            this.darkButton8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton8.Location = new System.Drawing.Point(343, 132);
+            this.darkButton8.Name = "darkButton8";
+            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton8.Size = new System.Drawing.Size(27, 25);
+            this.darkButton8.TabIndex = 17;
+            this.darkButton8.TabStop = false;
+            this.darkButton8.Text = "→";
+            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton9.Location = new System.Drawing.Point(343, 162);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(27, 25);
+            this.darkButton9.TabIndex = 17;
+            this.darkButton9.TabStop = false;
+            this.darkButton9.Text = "←";
+            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
+            // 
+            // darkButton7
+            // 
+            this.darkButton7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton7.Location = new System.Drawing.Point(343, 101);
+            this.darkButton7.Name = "darkButton7";
+            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton7.Size = new System.Drawing.Size(27, 25);
+            this.darkButton7.TabIndex = 17;
+            this.darkButton7.TabStop = false;
+            this.darkButton7.Text = "B";
+            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
+            // 
+            // darkButton6
+            // 
+            this.darkButton6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton6.Location = new System.Drawing.Point(343, 11);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(27, 25);
+            this.darkButton6.TabIndex = 17;
+            this.darkButton6.TabStop = false;
+            this.darkButton6.Text = "X";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // ScreenShotInViewer
+            // 
+            this.ScreenShotInViewer.Image = global::JetpackGUI.Properties.Resources.Logo;
+            this.ScreenShotInViewer.Location = new System.Drawing.Point(29, 23);
+            this.ScreenShotInViewer.Name = "ScreenShotInViewer";
+            this.ScreenShotInViewer.Size = new System.Drawing.Size(293, 251);
+            this.ScreenShotInViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ScreenShotInViewer.TabIndex = 0;
+            this.ScreenShotInViewer.TabStop = false;
             // 
             // darkLabel2
             // 
@@ -394,9 +475,9 @@ namespace JetpackGUI
             this.ScreenShot.ErrorImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.ErrorImage")));
             this.ScreenShot.Image = global::JetpackGUI.Properties.Resources.Logo;
             this.ScreenShot.InitialImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.InitialImage")));
-            this.ScreenShot.Location = new System.Drawing.Point(305, 41);
+            this.ScreenShot.Location = new System.Drawing.Point(332, 34);
             this.ScreenShot.Name = "ScreenShot";
-            this.ScreenShot.Size = new System.Drawing.Size(233, 142);
+            this.ScreenShot.Size = new System.Drawing.Size(173, 154);
             this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenShot.TabIndex = 16;
             this.ScreenShot.TabStop = false;
@@ -961,6 +1042,8 @@ namespace JetpackGUI
             this.DSPanel.PerformLayout();
             this.ModsPanel.ResumeLayout(false);
             this.ModsPanel.PerformLayout();
+            this.ScreenShotViewer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ScreenShotInViewer)).EndInit();
             this.darkGroupBox1.ResumeLayout(false);
             this.darkGroupBox1.PerformLayout();
             this.darkGroupBox2.ResumeLayout(false);
@@ -1052,5 +1135,11 @@ namespace JetpackGUI
         private System.Windows.Forms.Label label3;
         private DarkUI.Controls.DarkButton darkButton5;
         private DarkUI.Controls.DarkLabel darkLabel2;
+        private System.Windows.Forms.Panel ScreenShotViewer;
+        private DarkUI.Controls.DarkButton darkButton6;
+        private System.Windows.Forms.PictureBox ScreenShotInViewer;
+        private DarkUI.Controls.DarkButton darkButton7;
+        private DarkUI.Controls.DarkButton darkButton8;
+        private DarkUI.Controls.DarkButton darkButton9;
     }
 }
