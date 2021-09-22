@@ -24,7 +24,7 @@ namespace JetpackGUI
 
         Props config = new Props();
         GUI language = new GUI();
-        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesStringReader));
+        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
         string[] mse = new string[10];
         string[] langs = new string[10];
         bool tabFix = false;
@@ -358,11 +358,10 @@ namespace JetpackGUI
                 {
                     if (langs[i] != "")
                     {
-                        TempValues.SelectedLanguage = langs[i];
                         string lg = "English";
-                        using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                        using (StringReader reader = new StringReader(File.ReadAllText(langs[i])))
                         {
-                            var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                            var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                             lg = LOCAL.Language;
                         }
                         darkComboBox2.Items.Add(lg);
@@ -386,10 +385,9 @@ namespace JetpackGUI
             langcode = language.Fields.LanguageCode;
             try
             {
-                TempValues.SelectedLanguage = langcode;
-                using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + langcode + ".xml")))
                 {
-                    var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
+                    var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                     // Text loading
                     darkLabel1.Text = LOCAL.Languages;
                     HelloUser.Text = LOCAL.Stage;
@@ -596,15 +594,14 @@ namespace JetpackGUI
             {
                 if (langs[i] != "")
                 {
-                    TempValues.SelectedLanguage = langs[i];
-                    using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + TempValues.SelectedLanguage + ".xml")))
+                    using (StringReader reader = new StringReader(File.ReadAllText(langs[i])))
                     {
-                        var LOCAL = (LanguagesStringReader)lzol.Deserialize(reader);
-                        if (darkComboBox2.Text == LOCAL.Language) 
-                        { 
-                            language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", ""); 
-                            language.WriteXml(); 
-                            Translate(); 
+                        var LOCAL = (LanguagesString)lzol.Deserialize(reader);
+                        if (darkComboBox2.Text == LOCAL.Language)
+                        {
+                            language.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", "");
+                            language.WriteXml();
+                            Translate();
                         }
                     }
                 }

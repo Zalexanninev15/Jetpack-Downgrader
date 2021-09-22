@@ -1,4 +1,4 @@
-# Other things 
+# Other things
 
 *Actions are performed in the **files** folder*
 
@@ -6,9 +6,9 @@
 
 ### Usage
 
-  ```shell
+```shell
 jpd "E:\Games\Grand Theft Auto San Andreas"
-  ```
+```
 
 ### Features
 
@@ -48,5 +48,5 @@ If you don't see this file, it means that the current settings of the Downgrader
 
 #### All settings
 
-* **LanguageCode** - code of the currently used language (code is taken from the name of the file in the **languages** folder - **[language code].zcf**)
+* **LanguageCode** - code of the currently used language (code is taken from the name of the file in the **languages** folder - **[language code].xml**)
 * **FirstLaunch** - is this the first GUI launch

@@ -96,7 +96,6 @@
     <Compile Include="Classes\GUI_Settings.cs" />
     <Compile Include="Classes\SettingsEditor.cs" />
     <Compile Include="Classes\TaskBarProgressBar.cs" />
-    <Compile Include="Classes\TempValues.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,11 +109,11 @@
     <Compile Include="OtherForms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherForms\MyLang.cs">
+    <Compile Include="OtherForms\FirstLaunch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OtherForms\MyLang.Designer.cs">
-      <DependentUpon>MyLang.cs</DependentUpon>
+    <Compile Include="OtherForms\FirstLaunch.Designer.cs">
+      <DependentUpon>FirstLaunch.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -125,7 +124,7 @@
     <Compile Include="Classes\MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\LanguagesStringReader.cs" />
+    <Compile Include="Classes\LanguagesString.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -155,8 +154,8 @@
     <EmbeddedResource Include="OtherForms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OtherForms\MyLang.resx">
-      <DependentUpon>MyLang.cs</DependentUpon>
+    <EmbeddedResource Include="OtherForms\FirstLaunch.resx">
+      <DependentUpon>FirstLaunch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
