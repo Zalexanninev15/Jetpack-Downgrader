@@ -6,7 +6,7 @@
 
 1. Download the [latest available version](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
 2. Unzip the archive and go to the **files** folder, then to the **languages** folder
-3. As a source for translation, take the official and always timely updated English localization from **EN.zcf** open this file in text editor (as [Notepad++](https://notepad-plus-plus.org/))
+3. As a source for translation, take the official and always timely updated English localization from **EN.xml** open this file in text editor (as [Notepad++](https://notepad-plus-plus.org/))
 4. Copy the file to any location and translate only the values of variables. *The value of the **Language** variable must be written in English!* If some things are unclear, that is, the source code, do not hesitate to peek into it ;)
 5. Save your translation under the name of the language code ([list of all codes](https://htmlpreview.github.io/?https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Language%20Code%20Table.html)), but without the dash
 6. Copy the file to the **languages** folder and open the GUI. Next, select the language change icon and select your language, which is indicated under the value of the **Language variable**. Or simply select a language from the language change window that appears (only the first launch)
@@ -21,14 +21,22 @@
 4. Fill in the information of modification in text editor (as [Notepad++](https://notepad-plus-plus.org/)) by lines and save file
 
 **Lines:**
-* 1 - name
-* 2 - version
-* 3 - author
-* 4 - description (the maximum size can be about 174 characters)
-* 5 - link to the modification website
-* 6 - direct link to screenshot 1
-* 7 - direct link to screenshot 2
-* 8 - direct link to screenshot 3
-* 9 - direct link or link to MEGA to the ZIP archive
 
+* 1 - name
+
+* 2 - version
+
+* 3 - author
+
+* 4 - description (the maximum size can be about 174 characters)
+
+* 5 - link to the modification website
+
+* 6 - direct link to screenshot 1
+
+* 7 - direct link to screenshot 2
+
+* 8 - direct link to screenshot 3
+
+* 9 - direct link or link to MEGA to the ZIP archive
 5. Send a request (in issue) for adding the modification to the repository (and list of modifications) with the file with a information about the modification (steps 2-4). You can create your own Issue or write a message with the file in [this](https://github.com/Zalexanninev15/Jetpack-Downgrader/issues/18)

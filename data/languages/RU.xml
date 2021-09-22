@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LanguagesStringReader xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<LanguagesString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!-- Какой это язык? (писать на Английском) -->
   <Language>Russian</Language>
   <!-- Первый запуск -->
@@ -87,4 +87,4 @@
   <AboutIssues>Задачи</AboutIssues>
   <AboutSite>Сайт</AboutSite>
   <AboutTopic>На форуме</AboutTopic>
-</LanguagesStringReader>
+</LanguagesString>
