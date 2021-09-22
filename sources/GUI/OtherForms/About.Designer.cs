@@ -38,10 +38,7 @@ namespace JetpackGUI
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.darkButton5 = new DarkUI.Controls.DarkButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -140,26 +137,7 @@ namespace JetpackGUI
             this.pictureBox1.Size = new System.Drawing.Size(110, 110);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.darkButton5);
-            this.panel1.Location = new System.Drawing.Point(26, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(419, 362);
-            this.panel1.TabIndex = 89905;
-            // 
-            // darkButton5
-            // 
-            this.darkButton5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton5.Location = new System.Drawing.Point(383, 11);
-            this.darkButton5.Name = "darkButton5";
-            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton5.Size = new System.Drawing.Size(24, 24);
-            this.darkButton5.TabIndex = 89904;
-            this.darkButton5.TabStop = false;
-            this.darkButton5.Text = "X";
-            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // About
             // 
@@ -167,7 +145,6 @@ namespace JetpackGUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(469, 390);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.darkTextBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton4);
@@ -190,7 +167,6 @@ namespace JetpackGUI
             this.TopMost = true;
             this.Load += new System.EventHandler(this.MyLang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,7 +182,5 @@ namespace JetpackGUI
         private DarkUI.Controls.DarkButton darkButton2;
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton4;
-        private System.Windows.Forms.Panel panel1;
-        private DarkUI.Controls.DarkButton darkButton5;
     }
 }
