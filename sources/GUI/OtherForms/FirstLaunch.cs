@@ -26,7 +26,7 @@ namespace JetpackGUI
                 System.Threading.Tasks.Task.Delay(300);
                 Application.Restart();
             }
-            else { DarkUI.Forms.DarkMessageBox.ShowWarning("You need to select a language from the list!", "Information"); }
+            else { DarkUI.Forms.DarkMessageBox.ShowInformation("You need to select a language from the list!", "Information"); }
         }
 
         void MyLang_Load(object sender, EventArgs e)
