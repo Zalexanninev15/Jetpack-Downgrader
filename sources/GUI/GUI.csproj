@@ -43,6 +43,7 @@
     <DebugType>none</DebugType>
     <OutputPath>..\..\..\..\Desktop\JPD\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>JetpackGUI.Program</StartupObject>
@@ -103,21 +104,29 @@
     <Compile Include="Classes\GUI_Settings.cs" />
     <Compile Include="Classes\SettingsEditor.cs" />
     <Compile Include="Classes\TaskBarProgressBar.cs" />
-    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="OtherForms\About.cs" />
+    <Compile Include="OtherForms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OtherForms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
-    <Compile Include="OtherForms\WDebug.cs" />
+    <Compile Include="OtherForms\WDebug.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OtherForms\WDebug.Designer.cs">
       <DependentUpon>WDebug.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherForms\FirstLaunch.cs" />
+    <Compile Include="OtherForms\FirstLaunch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OtherForms\FirstLaunch.Designer.cs">
       <DependentUpon>FirstLaunch.cs</DependentUpon>
     </Compile>
@@ -127,7 +136,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Classes\MyProgressBar.cs" />
+    <Compile Include="Classes\MyProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\LanguagesString.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
-    <Content Include="Console.ico" />
     <Content Include="Resources\About.png" />
     <Content Include="Resources\Language.png" />
     <None Include="Resources\Help.png" />
