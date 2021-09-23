@@ -3,6 +3,7 @@
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/docs/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
+[![](https://img.shields.io/badge/.NET-Framework_4.8-4E2ACD.svg)](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 [![](https://img.shields.io/github/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
 [![](https://img.shields.io/badge/versions-changelog-7D28CC.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Changelog.md)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
