@@ -4,7 +4,7 @@
 
 #### Meet version 2.2! [A lot of changes have been made](https://github.com/Zalexanninev15/Jetpack-Downgrader/commit/5a54deb5efc9bd33889acb01e9246f5838c907be), so the update is necessary for everyone! I recommend a clean unpacking, without updating the previous version
 
-#### 👉 GUI Version 1.2.3.3 | Changes:
+#### 👉 GUI Version 1.2.3.3
 
 - Added the About window
 - The system of settings and localizations has been rewritten. Files and code have become much easier and more convenient to edit and read
@@ -21,7 +21,7 @@
 - Fixed a bug with the language selection panel when downloading files or after the Downgrader is finished
 - Removed unnecessary and outdated code
 
-#### 👉 Downgrader Version 1.15.0.2 | Changes:
+#### 👉 Downgrader Version 1.15.0.2
 
 - The system of settings has been rewritten. Files and code have become much easier and more convenient to edit and read
 - Improved user interaction
@@ -42,8 +42,6 @@
 ## [Release] Jetpack Downgrader Version 2.0
 
 #### As promised, here is a new version, this time with a graphical interface and a lot of new features. It took a really long time (2.5 months), but now I'm ready to present you a new version! 🎉 🥂 🥳 | [Official post in VK (RU)](https://vk.com/wall-119683810_15357)
-
-#### Changes
 
 - Added a full-featured graphical interface-launcher with a huge number of settings for the downgrader and the game
 - The size of the patches has decreased for the second time! From 884 MB to 517 MB. For the first time, something like this happened in [version 1.10](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/1.10-PublicBeta), in which the patch size changed from 1.75 GB to 884 MB
@@ -70,7 +68,7 @@
 
 #### [Guide](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/README.md) for the Release Candidate version
 
-#### Main changes
+#### 👉 Main changes
 
 - Added a full-featured graphical interface-launcher with a huge number of settings for the downgrader and the game
 - The size of the patches has decreased for the second time! From 884 MB to 517 MB. For the first time, something like this happened in [version 1.10](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/1.10-PublicBeta), in which the patch size changed from 1.75 GB to 884 MB
@@ -82,7 +80,7 @@
 - Work has been done to improve the code and optimize it for 64-bit systems
 - The version calculation system has been changed, which now does not rely on the version of the downgrader. Now each component (GUI and Downgrader) has its own version, and the general version of the components assembly is recorded in the release based on the list of changes
 
-#### Other changes
+#### 👉 Other changes
 
 - Added the output of a new path to the game after the end of the work
 - Folder with DirectX is not deleted, which allows you not to download the installer again when you re-use the downgrader
