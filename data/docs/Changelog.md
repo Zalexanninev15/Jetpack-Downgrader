@@ -282,7 +282,7 @@ What changed after the first public beta https://vk.com/wall-119683810_14645 ([f
 - Downgrade updated to version 1.3.0.1-Dev
 - Work on the graphical interface has begun!
 
-## [RELEASE] SADRW2 Version 1.0-PublicBeta
+## [Release] SADRW2 Version 1.0-PublicBeta
 
 #### This version is based on version 1.3-Beta, but has several changes:
 
