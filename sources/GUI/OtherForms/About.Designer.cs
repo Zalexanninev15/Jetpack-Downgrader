@@ -73,7 +73,7 @@ namespace JetpackGUI
             this.darkButton1.Location = new System.Drawing.Point(26, 340);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(96, 34);
+            this.darkButton1.Size = new System.Drawing.Size(100, 34);
             this.darkButton1.TabIndex = 89903;
             this.darkButton1.TabStop = false;
             this.darkButton1.Text = "Donate";
@@ -96,22 +96,22 @@ namespace JetpackGUI
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(128, 340);
+            this.darkButton2.Location = new System.Drawing.Point(132, 340);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(136, 34);
+            this.darkButton2.Size = new System.Drawing.Size(116, 34);
             this.darkButton2.TabIndex = 89903;
             this.darkButton2.TabStop = false;
-            this.darkButton2.Text = "Issues (GitHub)";
+            this.darkButton2.Text = "Issues";
             this.darkButton2.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(270, 340);
+            this.darkButton3.Location = new System.Drawing.Point(254, 340);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(79, 34);
+            this.darkButton3.Size = new System.Drawing.Size(95, 34);
             this.darkButton3.TabIndex = 89903;
             this.darkButton3.TabStop = false;
             this.darkButton3.Text = "GitHub";
