@@ -1,9 +1,9 @@
-﻿using DarkUI.Forms;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using VitNX.Forms;
 
 namespace JetpackGUI
 {
@@ -13,7 +13,7 @@ namespace JetpackGUI
         static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
         protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
         public About() { InitializeComponent(); }
-        void MsgWarning() { DarkMessageBox.ShowWarning(MSG[1], MSG[0]); }
+        void MsgWarning() { VitNX_MessageBox.ShowWarning(MSG[1], MSG[0]); }
         void darkButton1_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
         void darkButton1_Click_1(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
         void darkButton3_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
@@ -49,13 +49,15 @@ namespace JetpackGUI
         int db = 0;
         void pictureBox1_Click(object sender, EventArgs e)
         {
-            try
+            if (Data.DebugMode)
             {
-                db += 1;
-                if (db == 10) { WDebug wdb = new WDebug(); wdb.ShowDialog(); }
-
+                try
+                {
+                    db += 1;
+                    if (db == 10) { WDebug wdb = new WDebug(); wdb.ShowDialog(); }
+                }
+                catch { }
             }
-            catch { }
         }
     }
 }

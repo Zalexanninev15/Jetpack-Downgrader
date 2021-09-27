@@ -129,14 +129,17 @@ namespace JetpackGUI
             public string Request { get; set; }
         
             [XmlElement(ElementName = "Information")]
-            public string Information { get; set; } 
-        
+            public string Information { get; set; }
+
+            [XmlElement(ElementName = "Warning")]
+            public string Warning { get; set; }
+
             [XmlElement(ElementName = "Error")]
             public string Error { get; set; }
-        
-            [XmlElement(ElementName = "Warning")]
-            public string Warning { get; set; } 
-        
+
+            [XmlElement(ElementName = "Question")]
+            public string Question { get; set; }
+
             [XmlElement(ElementName = "FolderSelectDialog")]
             public string FolderSelectDialog { get; set; } 
         

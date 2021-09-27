@@ -28,7 +28,7 @@ namespace JetpackGUI
                             if (toolkit_version != Data.JetpackDowngraderVersion) { AvailableNewVersion = true; }
                         }
                     }
-                    catch(Exception ex) { AvailableNewVersion = false; DarkUI.Forms.DarkMessageBox.ShowError(ex.ToString(), "Error"); }
+                    catch(Exception ex) { AvailableNewVersion = false; VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
                 }
                 if (AvailableNewVersion == false)
                 {
@@ -38,11 +38,11 @@ namespace JetpackGUI
                 }
                 else
                 {
-                    DarkUI.Forms.DarkMessageBox.ShowInformation("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
-                    try { System.Diagnostics.Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); } catch { DarkUI.Forms.DarkMessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning"); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); }
+                    VitNX.Forms.VitNX_MessageBox.ShowInfo("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
+                    try { System.Diagnostics.Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); } catch { VitNX.Forms.VitNX_MessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning"); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); }
                 }
             }
-            catch(Exception ex) { DarkUI.Forms.DarkMessageBox.ShowError(ex.ToString(), "Error"); }
+            catch(Exception ex) { VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
         }
     }
 }
