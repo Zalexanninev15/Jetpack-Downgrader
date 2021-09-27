@@ -35,7 +35,8 @@ namespace JetpackGUI
             // 
             // consoleControl1
             // 
-            this.consoleControl1.BackColor = System.Drawing.Color.Sienna;
+            this.consoleControl1.BackColor = System.Drawing.Color.Black;
+            this.consoleControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.consoleControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.consoleControl1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.consoleControl1.IsInputEnabled = false;
@@ -58,7 +59,7 @@ namespace JetpackGUI
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WDebug";
-            this.Text = "Downgrader 2.0";
+            this.Text = "Debug Console";
             this.Load += new System.EventHandler(this.WDebug_Load);
             this.ResumeLayout(false);
 

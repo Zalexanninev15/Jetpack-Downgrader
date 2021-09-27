@@ -32,11 +32,11 @@ namespace JetpackGUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.darkTextBox1 = new DarkUI.Controls.DarkTextBox();
-            this.darkButton2 = new DarkUI.Controls.DarkButton();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.darkButton1 = new VitNX.Controls.VitNX_Button();
+            this.darkTextBox1 = new VitNX.Controls.VitNX_TextBox();
+            this.darkButton2 = new VitNX.Controls.VitNX_Button();
+            this.darkButton3 = new VitNX.Controls.VitNX_Button();
+            this.darkButton4 = new VitNX.Controls.VitNX_Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -177,10 +177,10 @@ namespace JetpackGUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private DarkUI.Controls.DarkButton darkButton1;
-        private DarkUI.Controls.DarkTextBox darkTextBox1;
-        private DarkUI.Controls.DarkButton darkButton2;
-        private DarkUI.Controls.DarkButton darkButton3;
-        private DarkUI.Controls.DarkButton darkButton4;
+        private VitNX.Controls.VitNX_Button darkButton1;
+        private VitNX.Controls.VitNX_TextBox darkTextBox1;
+        private VitNX.Controls.VitNX_Button darkButton2;
+        private VitNX.Controls.VitNX_Button darkButton3;
+        private VitNX.Controls.VitNX_Button darkButton4;
     }
 }
