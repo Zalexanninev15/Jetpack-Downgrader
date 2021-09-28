@@ -140,6 +140,9 @@ namespace JetpackGUI
             [XmlElement(ElementName = "Question")]
             public string Question { get; set; }
 
+            [XmlElement(ElementName = "Done")]
+            public string Done { get; set; }
+
             [XmlElement(ElementName = "FolderSelectDialog")]
             public string FolderSelectDialog { get; set; } 
         
@@ -158,12 +161,9 @@ namespace JetpackGUI
             [XmlElement(ElementName = "ModSucces")]
             public string ModSucces { get; set; } 
         
-            [XmlElement(ElementName = "Succes")]
-            public string Succes { get; set; } 
-        
             [XmlElement(ElementName = "BindingOK")]
             public string BindingOK { get; set; }
-        
+
             [XmlElement(ElementName = "ReturnUsingBackups")]
             public string ReturnUsingBackups { get; set; }
         
@@ -172,7 +172,10 @@ namespace JetpackGUI
         
             [XmlElement(ElementName = "ModFailure")]
             public string ModFailure { get; set; }
-        
+
+            [XmlElement(ElementName = "QEnableDirectPlay")]
+            public string QEnableDirectPlay { get; set; }
+
             [XmlElement(ElementName = "WishReturnUsingBackups")]
             public string WishReturnUsingBackups { get; set; }
         
