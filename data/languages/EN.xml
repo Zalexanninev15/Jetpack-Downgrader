@@ -41,7 +41,7 @@
   <RegisterGamePath>Register game path (Make game visible)</RegisterGamePath>
   <CopyGameToNewPath>Move game to another folder (Prevents auto-update and rehash)</CopyGameToNewPath>
   <Forced>Forced (ONLY for version 1.0)</Forced>
-  <EnableDirectPlay>Enable DirectPlay (ONLY for Windows 10)</EnableDirectPlay>
+  <EnableDirectPlay>Enable DirectPlay</EnableDirectPlay>
   <InstallDirectXComponents>Install DirectX components</InstallDirectXComponents>
   <InstallMod>Install this modification after downgrade</InstallMod>
   <!-- Titles -->
@@ -53,9 +53,9 @@
   <FolderSelectDialog>Select the game folder</FolderSelectDialog>
   <!-- Information messages -->
   <ModSucces>modification has been successfully installed!</ModSucces>
-  <Succes>Downgrade completed!</Succes>
   <BindingOK>The binding of the game is completed!</BindingOK>
   <ReturnUsingBackups>The original version of the game was returned successfully!</ReturnUsingBackups>
+  <Done>Done!</Done>
   <!-- Warning messages -->
   <PathNotFound>Path to the game is not found!</PathNotFound>
   <BrowserNotFound>Browser to open the link was not found! The link will be copied to the clipboard!</BrowserNotFound>
@@ -65,6 +65,7 @@
   <AboutModDamaged>Data of modification is damaged!</AboutModDamaged>
   <ModFailure>modification is not installed!</ModFailure>
   <!-- Question messages -->
+  <QEnableDirectPlay>Would you like to enable DirectPlay to launch the game? Current setting for Windows 8.1/10/11 is necessary to support old applications and games</QEnableDirectPlay>
   <WishDownloadPatches>Since the patch files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadPatches>
   <WishDownloadDirectXFiles>Since the additional DirectX files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadDirectXFiles>
   <InstallModQuestion>Do you want to install this modification after the downgrade?</InstallModQuestion>

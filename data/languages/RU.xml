@@ -39,9 +39,9 @@
   <ResetGame>Удалить GTA-SA.SET (Сброс настроек игры и предотвращение вылетов)</ResetGame>
   <RGL_GarbageCleaning>далить ненужные файлы (ТОЛЬКО для версии из Rockstar Games Launcher)</RGL_GarbageCleaning>
   <RegisterGamePath>Добавить путь в реестр Windows</RegisterGamePath>
-  <CopyGameToNewPath>Переместить игру в другую папку (Анти-апдейтер)</CopyGameToNewPath>
+  <CopyGameToNewPath>Переместить игру в другую папку (Запрет обновлений игры)</CopyGameToNewPath>
   <Forced>Принудительно (ТОЛЬКО для версии 1.0)</Forced>
-  <EnableDirectPlay>Включить DirectPlay (ТОЛЬКО для Windows 10)</EnableDirectPlay>
+  <EnableDirectPlay>Включить DirectPlay</EnableDirectPlay>
   <InstallDirectXComponents>Установить компоненты DirectX</InstallDirectXComponents>
   <InstallMod>Установить данную модификацию после даунгрейдера</InstallMod>
   <!-- Заголовки -->
@@ -53,9 +53,9 @@
   <FolderSelectDialog>Укажите папку с игрой</FolderSelectDialog>
   <!-- Сообщения с ифнормацией -->
   <ModSucces>была успешно установлена!</ModSucces>
-  <Succes>Даунгрейд завершён!</Succes>
   <BindingOK>Добавление игры в реестр успешно завершено!</BindingOK>
   <ReturnUsingBackups>Оригинальная версия игры была успешно возвращена!</ReturnUsingBackups>
+  <Done>Выполнено!</Done>
   <!-- Сообщения с предупреждениями -->
   <PathNotFound>Путь к игре не найден!</PathNotFound>
   <BrowserNotFound>Браузер для открытия ссылки не найден! Ссылка будет скопирована в буфер обмена!</BrowserNotFound>
@@ -65,6 +65,7 @@
   <AboutModDamaged>Данные модификации повреждены!</AboutModDamaged>
   <ModFailure>не установлена!</ModFailure>
   <!-- Question messages -->
+  <QEnableDirectPlay>Желаете включить DirectPlay для запуска игры? Данная настройка Windows 8.1/10/11 необходима для поддержки старых приложений и игр</QEnableDirectPlay>
   <WishDownloadPatches>Поскольку файлы патчей не были найдены, мы сейчас начнем их загрузку. Вы готовы загрузить эти файлы прямо сейчас?</WishDownloadPatches>
   <WishDownloadDirectXFiles>Поскольку дополнительные файлы DirectX не были найдены, мы сейчас начнем их загрузку. Вы готовы загрузить эти файлы прямо сейчас?</WishDownloadDirectXFiles>
   <InstallModQuestion>Вы хотите установить эту модификацию после даунгрейда?</InstallModQuestion>
