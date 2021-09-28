@@ -142,6 +142,7 @@
   <ItemGroup>
     <Content Include="app.ico" />
     <Content Include="Resources\About.png" />
+    <None Include="Resources\DirectPlay.png" />
     <Content Include="Resources\Language.png" />
     <None Include="Resources\Help.png" />
     <None Include="Resources\Logo.png" />
