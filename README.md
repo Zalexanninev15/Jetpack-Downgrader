@@ -62,8 +62,8 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 5. Select stage 3 (or press **Ctrl + S**). The console will appear and downgrade process will start... If we can't find the patch files, you'll need to download them first (that's why step 3 is called "Download patches"), only then the button with the title "Downgrade" will appear
 6. After the end, make sure that there are no errors in the console, this downgrade of the game is completed
 7. If you have selected the modifications, you still need to wait until they are fully unpacked
-8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful)
-9. If there are problems, press **F12** and start the downgrade process again
+8. After all operations are completed, a will be displayed a success message (although it may be displayed even if an error occurred somewhere, so start the game and make sure that everything was successful). If there are problems, press **F12** and start the downgrade process again
+9. Play! Run strictly file **gta_sa.exe**, or, if you ticked the box, from a shortcut on the Desktop
 
 ## Links
 
