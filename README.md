@@ -78,4 +78,4 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package and manually add reference to the library **[VitNX](https://github.com/Zalexanninev15/VitNX)**
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package and manually add reference to the library [*VitNX*](https://github.com/Zalexanninev15/VitNX)
