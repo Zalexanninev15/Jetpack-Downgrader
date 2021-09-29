@@ -30,9 +30,9 @@ namespace JetpackGUI
        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyLang));
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.AllLangs = new DarkUI.Controls.DarkComboBox();
-            this.button2 = new DarkUI.Controls.DarkButton();
+            this.darkLabel1 = new VitNX.Controls.VitNX_Label();
+            this.AllLangs = new VitNX.Controls.VitNX_ComboBox();
+            this.button2 = new VitNX.Controls.VitNX_Button();
             this.SuspendLayout();
             // 
             // darkLabel1
@@ -91,7 +91,6 @@ namespace JetpackGUI
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "First launch";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.MyLang_Load);
             this.ResumeLayout(false);
 
@@ -99,8 +98,8 @@ namespace JetpackGUI
 
         #endregion
 
-       DarkUI.Controls.DarkLabel darkLabel1;
-       DarkUI.Controls.DarkComboBox AllLangs;
-       DarkUI.Controls.DarkButton button2;
+       VitNX.Controls.VitNX_Label darkLabel1;
+       VitNX.Controls.VitNX_ComboBox AllLangs;
+       VitNX.Controls.VitNX_Button button2;
     }
 }

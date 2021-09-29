@@ -22,7 +22,7 @@ namespace JetpackGUI
     public class Props
     {
         public SettingsEditor Fields;
-        public Props() {  Fields = new SettingsEditor();  }
+        public Props() { Fields = new SettingsEditor(); }
 
         public void WriteXml()
         {

@@ -32,11 +32,11 @@ namespace JetpackGUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.darkTextBox1 = new DarkUI.Controls.DarkTextBox();
-            this.darkButton2 = new DarkUI.Controls.DarkButton();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.darkButton1 = new VitNX.Controls.VitNX_Button();
+            this.darkTextBox1 = new VitNX.Controls.VitNX_TextBox();
+            this.darkButton2 = new VitNX.Controls.VitNX_Button();
+            this.darkButton3 = new VitNX.Controls.VitNX_Button();
+            this.darkButton4 = new VitNX.Controls.VitNX_Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +47,7 @@ namespace JetpackGUI
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label3.Font = new System.Drawing.Font("Gadugi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(4, 111);
+            this.label3.Location = new System.Drawing.Point(4, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(472, 47);
             this.label3.TabIndex = 89902;
@@ -60,7 +60,7 @@ namespace JetpackGUI
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(5, 154);
+            this.label1.Location = new System.Drawing.Point(5, 157);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(471, 47);
             this.label1.TabIndex = 89902;
@@ -73,7 +73,7 @@ namespace JetpackGUI
             this.darkButton1.Location = new System.Drawing.Point(26, 340);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(96, 34);
+            this.darkButton1.Size = new System.Drawing.Size(100, 34);
             this.darkButton1.TabIndex = 89903;
             this.darkButton1.TabStop = false;
             this.darkButton1.Text = "Donate";
@@ -96,22 +96,22 @@ namespace JetpackGUI
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(128, 340);
+            this.darkButton2.Location = new System.Drawing.Point(132, 340);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(136, 34);
+            this.darkButton2.Size = new System.Drawing.Size(116, 34);
             this.darkButton2.TabIndex = 89903;
             this.darkButton2.TabStop = false;
-            this.darkButton2.Text = "Issues (GitHub)";
+            this.darkButton2.Text = "Issues";
             this.darkButton2.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(270, 340);
+            this.darkButton3.Location = new System.Drawing.Point(254, 340);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(79, 34);
+            this.darkButton3.Size = new System.Drawing.Size(95, 34);
             this.darkButton3.TabIndex = 89903;
             this.darkButton3.TabStop = false;
             this.darkButton3.Text = "GitHub";
@@ -137,13 +137,14 @@ namespace JetpackGUI
             this.pictureBox1.Size = new System.Drawing.Size(110, 110);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(469, 385);
+            this.ClientSize = new System.Drawing.Size(469, 390);
             this.Controls.Add(this.darkTextBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton4);
@@ -176,10 +177,10 @@ namespace JetpackGUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private DarkUI.Controls.DarkButton darkButton1;
-        private DarkUI.Controls.DarkTextBox darkTextBox1;
-        private DarkUI.Controls.DarkButton darkButton2;
-        private DarkUI.Controls.DarkButton darkButton3;
-        private DarkUI.Controls.DarkButton darkButton4;
+        private VitNX.Controls.VitNX_Button darkButton1;
+        private VitNX.Controls.VitNX_TextBox darkTextBox1;
+        private VitNX.Controls.VitNX_Button darkButton2;
+        private VitNX.Controls.VitNX_Button darkButton3;
+        private VitNX.Controls.VitNX_Button darkButton4;
     }
 }
