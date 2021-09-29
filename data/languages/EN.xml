@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguagesString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- What language is it? (write in English) -->
+  <Language>English</Language>
+  <!-- First launch -->
+  <FirstTitle>First launch</FirstTitle>
+  <SelectLang>Select a localization from the list</SelectLang>
+  <ApplyAndLaunch>Apply and Launch</ApplyAndLaunch>
+  <!-- Text -->
+  <Languages>Languages</Languages>
+  <Stage>Select the desired stage</Stage>
+  <OtherActions>Other actions</OtherActions>
+  <Tab1>Downgrader Settings</Tab1>
+  <PathLabel>Path to the game folder</PathLabel>
+  <CBG1>Recommended settings</CBG1>
+  <CBG2>Optional settings</CBG2>
+  <Tab2>Modifications</Tab2>
+  <List>List of modifications</List>
+  <ASILoader>ASI Loader is installed automatically when you select at least one modification!</ASILoader>
+  <AboutMod>About modification</AboutMod>
+  <ModName>Name</ModName>
+  <ModVersion>Version</ModVersion>
+  <ModAuthor>Author</ModAuthor>
+  <DescriptionMod>Description</DescriptionMod>
+  <TopicOfMod>Go to the modification topic</TopicOfMod>
+  <DownloadingModCache>Downloading cache of the mod</DownloadingModCache>
+  <Downgrade>Downgrade</Downgrade>
+  <DownloadPatches>Download patches</DownloadPatches>
+  <DownloadingPatches>Downloading patches...</DownloadingPatches>
+  <DownloadingDirectXFiles>Downloading additional DirectX files...</DownloadingDirectXFiles>
+  <ModWord>The</ModWord>
+  <Mbyte>MB</Mbyte>
+  <WishPlay>Done, enjoy the game!</WishPlay>
+  <Play>Play</Play>
+  <CloseApp>Close downgrader</CloseApp>
+  <!-- CheckBoxes -->
+  <CreateBackups>Backup original files before downgrade</CreateBackups>
+  <CreateShortcut>Make shortcut on Desktop</CreateShortcut>
+  <ResetGame>Remove GTA-SA.SET (Reset game settings and prevents crash)</ResetGame>
+  <RGL_GarbageCleaning>Remove unneeded files (ONLY for the version of the game from Rockstar Games Launcher)</RGL_GarbageCleaning>
+  <RegisterGamePath>Register game path (Make game visible)</RegisterGamePath>
+  <CopyGameToNewPath>Move game to another folder (Prevents auto-update and rehash)</CopyGameToNewPath>
+  <Forced>Forced (ONLY for version 1.0)</Forced>
+  <EnableDirectPlay>Enable DirectPlay</EnableDirectPlay>
+  <InstallDirectXComponents>Install DirectX components</InstallDirectXComponents>
+  <InstallMod>Install this modification after downgrade</InstallMod>
+  <!-- Titles -->
+  <Request>Request for download</Request>
+  <Information>Information</Information>
+  <Warning>Warning</Warning>
+  <Error>Error</Error>
+  <Question>Question</Question>
+  <FolderSelectDialog>Select the game folder</FolderSelectDialog>
+  <!-- Information messages -->
+  <ModSucces>modification has been successfully installed!</ModSucces>
+  <BindingOK>The binding of the game is completed!</BindingOK>
+  <ReturnUsingBackups>The original version of the game was returned successfully!</ReturnUsingBackups>
+  <Done>Done!</Done>
+  <!-- Warning messages -->
+  <PathNotFound>Path to the game is not found!</PathNotFound>
+  <BrowserNotFound>Browser to open the link was not found! The link will be copied to the clipboard!</BrowserNotFound>
+  <NewPath>Game (version 1.0) is now located in</NewPath>
+  <YouCanDelete>Folder with the original game remained untouched! If everything went fine, you can delete it, because you will no longer need it</YouCanDelete>
+  <!-- Error messages -->
+  <AboutModDamaged>Data of modification is damaged!</AboutModDamaged>
+  <ModFailure>modification is not installed!</ModFailure>
+  <!-- Question messages -->
+  <QEnableDirectPlay>Would you like to enable DirectPlay to launch the game? Current setting for Windows 8.1/10/11 is necessary to support old applications and games</QEnableDirectPlay>
+  <WishDownloadPatches>Since the patch files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadPatches>
+  <WishDownloadDirectXFiles>Since the additional DirectX files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadDirectXFiles>
+  <InstallModQuestion>Do you want to install this modification after the downgrade?</InstallModQuestion>
+  <WishDowngrader>Would you like to downgrade the game version to 1.0 right now, and after downgrading, install the selected modifications (if you have selected them)?</WishDowngrader>
+  <WishReturnUsingBackups>Backups of the downgrader were found (or some original files were not found) and, if you want, you can return the version of the game that was before the downgrade (installed modifications will remain). Do you want this?</WishReturnUsingBackups>
+  <WishRegGame>Would you like to register the path to the game in the system for the correct launch of mods and display in different launchers and stores?</WishRegGame>
+  <NetworkNotFound>App work in offline mode, so some features will not be available as long as there is no internet access!</NetworkNotFound>
+  <OfflineMode>Do you want to continue?</OfflineMode>
+  <!-- Debug mode -->
+  <Activation>Debug mode is activated when downgrading! Progressbar is disabled, detailed recording of events in the console is enabled!</Activation>
+  <Deactivation>Debug mode is deactivated when downgrading! Progressbar is enabled, detailed recording of events in the console is disabled!</Deactivation>
+  <!-- About -->
+  <AboutTitle>About</AboutTitle>
+  <Version>Version</Version>
+  <Authors>Created by</Authors>
+  <Zalexanninev15>programmer and creator</Zalexanninev15>
+  <VadimM>consultant</VadimM>
+  <License>License</License>
+  <Localization>Localization</Localization>
+  <LocalizationBy>English localization by Zalexanninev15</LocalizationBy>
+  <AboutDonate>Donate</AboutDonate>
+  <AboutIssues>Issues</AboutIssues>
+  <AboutSite>Site</AboutSite>
+  <AboutTopic>Topic</AboutTopic>
+</LanguagesString>

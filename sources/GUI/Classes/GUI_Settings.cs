@@ -14,7 +14,7 @@ namespace JetpackGUI
     public class GUI
     {
         public GUI_Settings Fields;
-        public GUI() {  Fields = new GUI_Settings();  }
+        public GUI() { Fields = new GUI_Settings(); }
 
         public void WriteXml()
         {

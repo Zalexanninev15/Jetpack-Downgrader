@@ -3,12 +3,12 @@
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/docs/logo.png)
 
 [![](https://img.shields.io/badge/OS-Windows-informational?logo=windows)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
+[![](https://img.shields.io/badge/.NET-Framework_4.8-4E2ACD.svg)](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 [![](https://img.shields.io/github/release/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest)
-[![](https://img.shields.io/github/release-pre/Zalexanninev15/Jetpack-Downgrader)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
+[![](https://img.shields.io/badge/versions-changelog-7D28CC.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Changelog.md)
 [![](https://img.shields.io/github/downloads/Zalexanninev15/Jetpack-Downgrader/total.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases)
 [![](https://img.shields.io/github/last-commit/Zalexanninev15/Jetpack-Downgrader/unstable.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/commits/unstable)
 [![](https://img.shields.io/github/stars/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/stargazers)
-[![](https://img.shields.io/github/issues/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/issues?q=is%3Aopen+is%3Aissue)
 [![](https://img.shields.io/github/issues-closed/Zalexanninev15/Jetpack-Downgrader.svg)](https://github.com/Zalexanninev15/Jetpack-Downgrader/issues?q=is%3Aissue+is%3Aclosed)
 [![](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -27,7 +27,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Authors
 
-* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate_and_read_news-Boosty-F0672B.svg)](https://boosty.to/maxik-zalexanninev15) [![](https://img.shields.io/badge/donate-QIWI-FF8C00.svg)](https://qiwi.com/n/ZALEXANNINEV15) [![](https://img.shields.io/badge/donate-YooMoney-8B3FFD.svg)](https://yoomoney.ru/to/410015106319420)
+* Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate-Buy_Me_a_Coffee-F94400.svg)](https://zalexanninev15.jimdofree.com/buy-me-a-coffee)
 * Vadim M. - consultant [![](https://img.shields.io/badge/donate_and_read_news-Patreon-FF424D.svg)](https://www.patreon.com/NationalPepper)
 
 ## Features
@@ -38,7 +38,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * Support for installing modifications after downgrading the game version
 * Smart checking for different versions and other aspects that will help you perform downgrades, in many cases, successfully
 * Display process of downgrade and maximum speed of operations
-* Support for localizations to different languages (GUI only)
+* Support for localizations to different languages: English, Russian (GUI only, for now)
 * Support for hotkeys (**Ctrl + O**, **Ctrl + Y**, **Ctrl + Z**, **Ctrl + S**, **F1**, **F4**, **F12**)
 
 ## Supported versions
@@ -78,4 +78,4 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need to manually or from NuGet restore/install [*DarkUI*](https://github.com/RobinPerris/DarkUI) (I added the dark titlebar of window to the MessageBox myself, but you can also add it yourself using WinAPI from [this](https://github.com/RobinPerris/DarkUI/pull/58/commits/8ad5fb733e9ce0e365833435533ac2604ddfef71) comment or manually add reference to the library **DarkUI.dll** from the Jetpack Downgrade [latest release](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest) (in the **files** folder)) and [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019](https://visualstudio.microsoft.com/vs). You also need from NuGet restore/install [*MegaApiClient*](https://www.nuget.org/packages/MegaApiClient) (with [*Newtonsoft.Json*](https://www.nuget.org/packages/Newtonsoft.Json)) package and manually add reference to the library **[VitNX](https://github.com/Zalexanninev15/VitNX)**
