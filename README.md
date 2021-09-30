@@ -72,7 +72,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 
 ## Used libraries
 
-* [DarkUI](https://github.com/Zalexanninev15/DarkUI) ([MIT License](https://github.com/RobinPerris/DarkUI/blob/master/LICENSE))
+* [VitNX](https://github.com/Zalexanninev15/VitNX) ([MIT License](https://github.com/Zalexanninev15/VitNX/blob/main/LICENSE))
 * [MegaApiClient](https://github.com/gpailler/MegaApiClient) ([MIT License](https://github.com/gpailler/MegaApiClient/blob/master/LICENSE))
 * [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) ([MIT License](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md))
 
