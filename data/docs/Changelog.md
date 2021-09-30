@@ -1,10 +1,36 @@
 # Changelog of Jetpack Downgrader
 
+## [Release] Jetpack Downgrader Version 2.3
+
+### In the next stable version, the downgrader will be moved to the GUI, and localization support for downgrader strings will also be added!
+
+### 👉 GUI Version 1.3.1
+
+- Most of the functions that I often use in my projects have moved to my [VitNX](https://github.com/Zalexanninev15/VitNX) library. This change made it possible to remove unnecessary code and optimize the existing one. This library also replaced the DarkUI library, because it has the necessary controls for WinForms
+- Added Screenshot Viewer (more convenient) for modifications
+- Added checking for updates (when launching the application)
+- Added a new type of dialog with a question icon for questions
+- Added a check for Windows < 8.1, now the checkbox with DirectPlay will not be displayed for Windows below this one. Now this possibility is available without downgrade (optional)
+- Added a [full list of versions changes](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/Changelog.md) (in repository)
+- Localizations files have been seriously improved
+- For versions != 1.0 the "Forced" checkbox is no longer displayed. If the version == 1.0, but does not have the checkbox set, then the downgrade will not be performed (the button will disappear)
+- Localizations improvements
+- Extra code was removed
+- Improved display of the language selection panel
+- Format of file for storing localizations has been changed from ZCF to XML
+- Minor edits
+
+### 👉 Downgrader Version 1.16-1
+
+- Most of the functions that I often use in my projects have moved to my [VitNX](https://github.com/Zalexanninev15/VitNX) library. This change made it possible to remove unnecessary code and optimize the existing one
+- Changed the icon so that it is not confused with the icon for the GUI
+- Minor edits
+
 ## [Release] Jetpack Downgrader Version 2.2
 
-#### Meet version 2.2! [A lot of changes have been made](https://github.com/Zalexanninev15/Jetpack-Downgrader/commit/5a54deb5efc9bd33889acb01e9246f5838c907be), so the update is necessary for everyone! I recommend a clean unpacking, without updating the previous version
+### Meet version 2.2! [A lot of changes have been made](https://github.com/Zalexanninev15/Jetpack-Downgrader/commit/5a54deb5efc9bd33889acb01e9246f5838c907be), so the update is necessary for everyone! I recommend a clean unpacking, without updating the previous version
 
-#### 👉 GUI Version 1.2.3.3
+### 👉 GUI Version 1.2.3.3
 
 - Added the About window
 - The system of settings and localizations has been rewritten. Files and code have become much easier and more convenient to edit and read
@@ -21,7 +47,7 @@
 - Fixed a bug with the language selection panel when downloading files or after the Downgrader is finished
 - Removed unnecessary and outdated code
 
-#### 👉 Downgrader Version 1.15.0.2
+### 👉 Downgrader Version 1.15.0.2
 
 - The system of settings has been rewritten. Files and code have become much easier and more convenient to edit and read
 - Improved user interaction
@@ -41,7 +67,7 @@
 
 ## [Release] Jetpack Downgrader Version 2.0
 
-#### As promised, here is a new version, this time with a graphical interface and a lot of new features. It took a really long time (2.5 months), but now I'm ready to present you a new version! 🎉 🥂 🥳 | [Official post in VK (RU)](https://vk.com/wall-119683810_15357)
+### As promised, here is a new version, this time with a graphical interface and a lot of new features. It took a really long time (2.5 months), but now I'm ready to present you a new version! 🎉 🥂 🥳 | [Official post in VK (RU)](https://vk.com/wall-119683810_15357)
 
 - Added a full-featured graphical interface-launcher with a huge number of settings for the downgrader and the game
 - The size of the patches has decreased for the second time! From 884 MB to 517 MB. For the first time, something like this happened in [version 1.10](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/1.10-PublicBeta), in which the patch size changed from 1.75 GB to 884 MB
@@ -60,15 +86,15 @@
 
 ## [Unstable Release] Jetpack Downgrader Version 2.0-rc2
 
-#### Improved version of [Release Candidate 1](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/2.0-rc). Fixed a huge number of errors, bugs and made general improvements to the interface and code. I also added support for modifications in the form of EXE installers. The changes affect many aspects, so I recommend using the new version from scratch. Patches must be downloaded in the GUI itself, there are no separate archives with patches!
+### Improved version of [Release Candidate 1](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/2.0-rc). Fixed a huge number of errors, bugs and made general improvements to the interface and code. I also added support for modifications in the form of EXE installers. The changes affect many aspects, so I recommend using the new version from scratch. Patches must be downloaded in the GUI itself, there are no separate archives with patches!
 
 ## [Unstable Release] Jetpack Downgrader Version 2.0-rc
 
-#### As promised, here is a new version, this time with a graphical interface. It took a really long time (2 months), but now I'm ready to present you a new version! 🎉🥂🥳
+### As promised, here is a new version, this time with a graphical interface. It took a really long time (2 months), but now I'm ready to present you a new version! 🎉🥂🥳
 
-#### [Guide](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/README.md) for the Release Candidate version
+### [Guide](https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/README.md) for the Release Candidate version
 
-#### 👉 Main changes
+### 👉 Main changes
 
 - Added a full-featured graphical interface-launcher with a huge number of settings for the downgrader and the game
 - The size of the patches has decreased for the second time! From 884 MB to 517 MB. For the first time, something like this happened in [version 1.10](https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/tag/1.10-PublicBeta), in which the patch size changed from 1.75 GB to 884 MB
@@ -80,7 +106,7 @@
 - Work has been done to improve the code and optimize it for 64-bit systems
 - The version calculation system has been changed, which now does not rely on the version of the downgrader. Now each component (GUI and Downgrader) has its own version, and the general version of the components assembly is recorded in the release based on the list of changes
 
-#### 👉 Other changes
+### 👉 Other changes
 
 - Added the output of a new path to the game after the end of the work
 - Folder with DirectX is not deleted, which allows you not to download the installer again when you re-use the downgrader
@@ -89,7 +115,7 @@
 - Fixed bugs
 - Changed the project name in code
 
-#### Do not try to install SA-MP from the section with modifications, now we are working on a fix!
+### Do not try to install SA-MP from the section with modifications, now we are working on a fix!
 
 ## [Unstable Release] Jetpack Downgrader Version 1.12.4
 
@@ -282,14 +308,14 @@ What changed after the first public beta https://vk.com/wall-119683810_14645 ([f
 
 ## [Release] SADRW2 Version 1.0-PublicBeta
 
-#### This version is based on version 1.3-Beta, but has several changes:
+### This version is based on version 1.3-Beta, but has several changes:
 
 - Changed the way to submit information about the app
 - Fixed code interaction issues
 
-**Post:** [Больше месяца назад я написал пост о том, что.. | Vadim M [Официальный паблик] | ВКонтакте](https://vk.com/wall-119683810_14645)
+### Post: [Больше месяца назад я написал пост о том, что.. | Vadim M [Официальный паблик] | ВКонтакте](https://vk.com/wall-119683810_14645)
 
-P.S. All information in the archive is prepared for Russian-speaking users [[Russian FAQ](https://telegra.ph/SA-Downgrader-RW2-01-31)]. I attached a cache to the release, just in case.
+**P.S. All information in the archive is prepared for Russian-speaking users [[Russian FAQ](https://telegra.ph/SA-Downgrader-RW2-01-31)]. I attached a cache to the release, just in case**
 
 ## [Unstable Release] SADRW2 Version 1.3-Beta
 
