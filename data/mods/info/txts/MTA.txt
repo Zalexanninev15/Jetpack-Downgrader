@@ -1,4 +1,4 @@
-Multi Theft Auto
+MTA
 1.5.9 (01.10.2021)
 Multi Theft Auto team
 A game engine that incorporates an extendable network play element into a proprietary commercial single-player game
