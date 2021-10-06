@@ -1,0 +1,9 @@
+MTA
+1.5.9 (01.10.2021)
+Multi Theft Auto Team
+Multi Theft Auto is a game engine that incorporates an extendable network play element into a proprietary commercial single-player game
+https://multitheftauto.com/
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr1.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr2.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr3.jpg
+https://mega.nz/file/0sszjALK#5R6VKaCjxcz3lCeSA4xWwP3uakDGhbg2zPLZbMOEn6c
