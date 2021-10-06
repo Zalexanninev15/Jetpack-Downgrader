@@ -21,7 +21,7 @@ namespace JetpackGUI
         Props config = new Props();
         GUI language = new GUI();
         XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
-        string[] mse = new string[10];
+        string[] mse = new string[30];
         string[] langs = new string[10];
         bool tabFix = false;
         bool lpFix = false;
