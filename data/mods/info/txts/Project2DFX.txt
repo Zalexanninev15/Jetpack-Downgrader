@@ -1,0 +1,9 @@
+Project2DFX
+4.4 (13.04.2015)
+ThirteenAG
+A set of plugins for GTA III, Vice City, San Andreas and GTA IV (EFLC), which adds the LOD crown effect to the game map, making the Old World much better
+https://thirteenag.github.io/p2dfx
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/Project2DFX_scr1.jpg
+https://thirteenag.github.io/screens/2dfx/p2dfx_gtasaa.jpg
+https://thirteenag.github.io/screens/2dfx/p2dfx_gtasab.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/Project2DFX.zip

@@ -1,0 +1,9 @@
+SA-MP Graphic Restore
+1.0 (04.12.2014)
+nonamenoname
+Fixes incompatibitities between SA-MP and graphic mods such as ENB and SkyGFX
+https://gtaforums.com/topic/752667-relsasamp-sampgraphicrestore/
+http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg
+http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg
+http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg
+https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SAMPGraphicRestore.zip
