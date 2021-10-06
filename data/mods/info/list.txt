@@ -1,9 +1,11 @@
 SilentPatch
-WidescreenFix
-SkyGfx
+Mod Loader
+Widescreen Fix
+SkyGFX
 Remastered GUI
+Project2DFX
+San Andreas Multiplayer
+Multi Theft Auto
 GInput
 CLEO 4
-Mod Loader
-SA-MP
-MTA
+SA-MP Graphic Restore
