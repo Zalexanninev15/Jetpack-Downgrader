@@ -1,4 +1,4 @@
-SA-MP
+San Andreas Multiplayer
 0.3.7-R4 (01.05.2015)
 San Andreas Multiplayer team
 A free Massively Multiplayer Online game mod for the PC version of Rockstar Games Grand Theft Auto: San Andreas
