@@ -1,4 +1,4 @@
-SA-MP GraphicRestore
+SA-MP Graphic Restore
 1.0 (04.12.2014)
 nonamenoname
 Fixes incompatibitities between SA-MP and graphic mods such as ENB and SkyGFX
