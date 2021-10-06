@@ -4,8 +4,8 @@ Widescreen Fix
 SkyGFX
 Remastered GUI
 Project2DFX
-SA-MP
+San Andreas Multiplayer
 MTA
 GInput
 CLEO 4
-SA-MP Graphic Restore
+SA-MP GraphicRestore
