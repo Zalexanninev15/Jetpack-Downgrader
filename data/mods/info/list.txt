@@ -8,4 +8,4 @@ San Andreas Multiplayer
 Multi Theft Auto
 GInput
 CLEO 4
-SA-MP Graphic Restore
+SAMP Graphic Restore
