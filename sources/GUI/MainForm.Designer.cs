@@ -33,11 +33,6 @@ namespace JetpackGUI
             this.progressPanel = new System.Windows.Forms.Panel();
             this.play = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.stagesPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.LangsPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.HelloUser = new System.Windows.Forms.Label();
             this.darkButton5 = new VitNX.Controls.VitNX_Button();
             this.AllProgressBar = new VitNX.Controls.VitNX_ProgressBar();
             this.PartProgressBar = new VitNX.Controls.VitNX_ProgressBar();
@@ -45,11 +40,21 @@ namespace JetpackGUI
             this.labelAllProgress = new VitNX.Controls.VitNX_Label();
             this.DebugInfo = new VitNX.Controls.VitNX_Label();
             this.labelPartProgress = new VitNX.Controls.VitNX_Label();
-            this.darkComboBox2 = new VitNX.Controls.VitNX_ComboBox();
-            this.darkLabel1 = new VitNX.Controls.VitNX_Label();
+            this.stagesPanel = new System.Windows.Forms.Panel();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.darkButton4 = new VitNX.Controls.VitNX_Button();
             this.button2 = new VitNX.Controls.VitNX_Button();
             this.button6 = new VitNX.Controls.VitNX_Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.LangsPanel = new System.Windows.Forms.Panel();
+            this.darkComboBox2 = new VitNX.Controls.VitNX_ComboBox();
+            this.darkLabel1 = new VitNX.Controls.VitNX_Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.HelloUser = new System.Windows.Forms.Label();
             this.DSPanel = new VitNX.Controls.VitNX_SectionPanel();
             this.ModsPanel = new VitNX.Controls.VitNX_SectionPanel();
             this.darkLabel2 = new VitNX.Controls.VitNX_Label();
@@ -60,11 +65,13 @@ namespace JetpackGUI
             this.darkButton8 = new VitNX.Controls.VitNX_Button();
             this.darkButton9 = new VitNX.Controls.VitNX_Button();
             this.darkButton7 = new VitNX.Controls.VitNX_Button();
+            this.ScreenShotInViewer = new System.Windows.Forms.PictureBox();
             this.darkGroupBox2 = new VitNX.Controls.VitNX_GroupBox();
             this.darkLabel4 = new VitNX.Controls.VitNX_Label();
             this.darkButton3 = new VitNX.Controls.VitNX_Button();
             this.darkButton2 = new VitNX.Controls.VitNX_Button();
             this.darkButton1 = new VitNX.Controls.VitNX_Button();
+            this.ScreenShot = new System.Windows.Forms.PictureBox();
             this.YesInstallMe = new VitNX.Controls.VitNX_CheckBox();
             this.darkLabel6 = new VitNX.Controls.VitNX_Label();
             this.darkLabel5 = new VitNX.Controls.VitNX_Label();
@@ -76,6 +83,10 @@ namespace JetpackGUI
             this.darkTitle1 = new System.Windows.Forms.Label();
             this.originalGameRestoreProgressBar = new VitNX.Controls.VitNX_ProgressBar();
             this.checkBox1 = new VitNX.Controls.VitNX_CheckBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.GamePath = new VitNX.Controls.VitNX_TextBox();
             this.checkBox2 = new VitNX.Controls.VitNX_CheckBox();
             this.checkBox9 = new VitNX.Controls.VitNX_CheckBox();
@@ -85,38 +96,28 @@ namespace JetpackGUI
             this.checkBox7 = new VitNX.Controls.VitNX_CheckBox();
             this.checkBox3 = new VitNX.Controls.VitNX_CheckBox();
             this.checkBox5 = new VitNX.Controls.VitNX_CheckBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.ScreenShotInViewer = new System.Windows.Forms.PictureBox();
-            this.ScreenShot = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.progressPanel.SuspendLayout();
             this.stagesPanel.SuspendLayout();
-            this.LangsPanel.SuspendLayout();
-            this.DSPanel.SuspendLayout();
-            this.ModsPanel.SuspendLayout();
-            this.darkGroupBox1.SuspendLayout();
-            this.ScreenShotViewer.SuspendLayout();
-            this.darkGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.LangsPanel.SuspendLayout();
+            this.DSPanel.SuspendLayout();
+            this.ModsPanel.SuspendLayout();
+            this.darkGroupBox1.SuspendLayout();
+            this.ScreenShotViewer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShotInViewer)).BeginInit();
+            this.darkGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -126,7 +127,6 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             this.SuspendLayout();
             // 
             // progressPanel
@@ -178,78 +178,6 @@ namespace JetpackGUI
             this.label3.Text = "Done, enjoy the game!";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Visible = false;
-            // 
-            // stagesPanel
-            // 
-            this.stagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stagesPanel.Controls.Add(this.pictureBox9);
-            this.stagesPanel.Controls.Add(this.pictureBox8);
-            this.stagesPanel.Controls.Add(this.darkButton4);
-            this.stagesPanel.Controls.Add(this.button2);
-            this.stagesPanel.Controls.Add(this.button6);
-            this.stagesPanel.Controls.Add(this.button1);
-            this.stagesPanel.Controls.Add(this.pictureBox2);
-            this.stagesPanel.Controls.Add(this.pictureBox4);
-            this.stagesPanel.Controls.Add(this.pictureBox3);
-            this.stagesPanel.Location = new System.Drawing.Point(-52, -8);
-            this.stagesPanel.Name = "stagesPanel";
-            this.stagesPanel.Size = new System.Drawing.Size(916, 64);
-            this.stagesPanel.TabIndex = 0;
-            this.stagesPanel.VisibleChanged += new System.EventHandler(this.stagesPanel_VisibleChanged);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(547, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 31);
-            this.button1.TabIndex = 89899;
-            this.button1.TabStop = false;
-            this.button1.Text = "3. Downgrade";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // LangsPanel
-            // 
-            this.LangsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LangsPanel.Controls.Add(this.darkComboBox2);
-            this.LangsPanel.Controls.Add(this.darkLabel1);
-            this.LangsPanel.Location = new System.Drawing.Point(662, 55);
-            this.LangsPanel.Name = "LangsPanel";
-            this.LangsPanel.Size = new System.Drawing.Size(117, 72);
-            this.LangsPanel.TabIndex = 0;
-            this.LangsPanel.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label2.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(675, 104);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 36);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Other actions";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // HelloUser
-            // 
-            this.HelloUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.HelloUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.HelloUser.Font = new System.Drawing.Font("Gadugi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelloUser.ForeColor = System.Drawing.Color.Gainsboro;
-            this.HelloUser.Location = new System.Drawing.Point(140, 126);
-            this.HelloUser.Name = "HelloUser";
-            this.HelloUser.Size = new System.Drawing.Size(452, 47);
-            this.HelloUser.TabIndex = 18;
-            this.HelloUser.Text = "Select the desired stage";
-            this.HelloUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // darkButton5
             // 
@@ -336,6 +264,143 @@ namespace JetpackGUI
             this.labelPartProgress.Text = "...";
             this.labelPartProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // stagesPanel
+            // 
+            this.stagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stagesPanel.Controls.Add(this.pictureBox9);
+            this.stagesPanel.Controls.Add(this.pictureBox8);
+            this.stagesPanel.Controls.Add(this.darkButton4);
+            this.stagesPanel.Controls.Add(this.button2);
+            this.stagesPanel.Controls.Add(this.button6);
+            this.stagesPanel.Controls.Add(this.button1);
+            this.stagesPanel.Controls.Add(this.pictureBox2);
+            this.stagesPanel.Controls.Add(this.pictureBox4);
+            this.stagesPanel.Controls.Add(this.pictureBox3);
+            this.stagesPanel.Location = new System.Drawing.Point(-52, -8);
+            this.stagesPanel.Name = "stagesPanel";
+            this.stagesPanel.Size = new System.Drawing.Size(916, 64);
+            this.stagesPanel.TabIndex = 0;
+            this.stagesPanel.VisibleChanged += new System.EventHandler(this.stagesPanel_VisibleChanged);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = global::JetpackGUI.Properties.Resources.Right;
+            this.pictureBox9.Location = new System.Drawing.Point(489, 19);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(52, 31);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 18;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::JetpackGUI.Properties.Resources.Right;
+            this.pictureBox8.Location = new System.Drawing.Point(259, 19);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(52, 31);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 18;
+            this.pictureBox8.TabStop = false;
+            // 
+            // darkButton4
+            // 
+            this.darkButton4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.darkButton4.Location = new System.Drawing.Point(547, 19);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(178, 31);
+            this.darkButton4.TabIndex = 16;
+            this.darkButton4.TabStop = false;
+            this.darkButton4.Text = "3. Download patches";
+            this.darkButton4.Visible = false;
+            this.darkButton4.VisibleChanged += new System.EventHandler(this.button1_VisibleChanged);
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(317, 19);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(5);
+            this.button2.Size = new System.Drawing.Size(166, 31);
+            this.button2.TabIndex = 16;
+            this.button2.TabStop = false;
+            this.button2.Text = "2. Modifications";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(77, 19);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(5);
+            this.button6.Size = new System.Drawing.Size(176, 31);
+            this.button6.TabIndex = 15;
+            this.button6.TabStop = false;
+            this.button6.Text = "1. Downgrader Settings";
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(547, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 31);
+            this.button1.TabIndex = 89899;
+            this.button1.TabStop = false;
+            this.button1.Text = "3. Downgrade";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::JetpackGUI.Properties.Resources.Language;
+            this.pictureBox2.Location = new System.Drawing.Point(749, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(44, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::JetpackGUI.Properties.Resources.Help;
+            this.pictureBox4.Location = new System.Drawing.Point(841, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(44, 34);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 13;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::JetpackGUI.Properties.Resources.About;
+            this.pictureBox3.Location = new System.Drawing.Point(795, 19);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(44, 34);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 13;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // LangsPanel
+            // 
+            this.LangsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LangsPanel.Controls.Add(this.darkComboBox2);
+            this.LangsPanel.Controls.Add(this.darkLabel1);
+            this.LangsPanel.Location = new System.Drawing.Point(662, 55);
+            this.LangsPanel.Name = "LangsPanel";
+            this.LangsPanel.Size = new System.Drawing.Size(117, 72);
+            this.LangsPanel.TabIndex = 0;
+            this.LangsPanel.Visible = false;
+            // 
             // darkComboBox2
             // 
             this.darkComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
@@ -359,43 +424,31 @@ namespace JetpackGUI
             this.darkLabel1.Text = "Languages";
             this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // darkButton4
+            // label2
             // 
-            this.darkButton4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(547, 21);
-            this.darkButton4.Name = "darkButton4";
-            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(178, 31);
-            this.darkButton4.TabIndex = 16;
-            this.darkButton4.TabStop = false;
-            this.darkButton4.Text = "3. Download patches";
-            this.darkButton4.Visible = false;
-            this.darkButton4.VisibleChanged += new System.EventHandler(this.button1_VisibleChanged);
-            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label2.Font = new System.Drawing.Font("Gadugi", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label2.Location = new System.Drawing.Point(675, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 36);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Other actions";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // HelloUser
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(317, 21);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(5);
-            this.button2.Size = new System.Drawing.Size(166, 31);
-            this.button2.TabIndex = 16;
-            this.button2.TabStop = false;
-            this.button2.Text = "2. Modifications";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(77, 21);
-            this.button6.Name = "button6";
-            this.button6.Padding = new System.Windows.Forms.Padding(5);
-            this.button6.Size = new System.Drawing.Size(176, 31);
-            this.button6.TabIndex = 15;
-            this.button6.TabStop = false;
-            this.button6.Text = "1. Downgrader Settings";
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.HelloUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.HelloUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.HelloUser.Font = new System.Drawing.Font("Gadugi", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelloUser.ForeColor = System.Drawing.Color.Gainsboro;
+            this.HelloUser.Location = new System.Drawing.Point(140, 126);
+            this.HelloUser.Name = "HelloUser";
+            this.HelloUser.Size = new System.Drawing.Size(452, 47);
+            this.HelloUser.TabIndex = 18;
+            this.HelloUser.Text = "Select the desired stage";
+            this.HelloUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DSPanel
             // 
@@ -551,6 +604,16 @@ namespace JetpackGUI
             this.darkButton7.Text = "B";
             this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
             // 
+            // ScreenShotInViewer
+            // 
+            this.ScreenShotInViewer.Image = global::JetpackGUI.Properties.Resources.Logo;
+            this.ScreenShotInViewer.Location = new System.Drawing.Point(15, 17);
+            this.ScreenShotInViewer.Name = "ScreenShotInViewer";
+            this.ScreenShotInViewer.Size = new System.Drawing.Size(232, 227);
+            this.ScreenShotInViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ScreenShotInViewer.TabIndex = 0;
+            this.ScreenShotInViewer.TabStop = false;
+            // 
             // darkGroupBox2
             // 
             this.darkGroupBox2.BorderColor = System.Drawing.Color.Gray;
@@ -610,6 +673,20 @@ namespace JetpackGUI
             this.darkButton1.TabStop = false;
             this.darkButton1.Text = "→";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
+            // 
+            // ScreenShot
+            // 
+            this.ScreenShot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ScreenShot.ErrorImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.ErrorImage")));
+            this.ScreenShot.Image = global::JetpackGUI.Properties.Resources.Logo;
+            this.ScreenShot.InitialImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.InitialImage")));
+            this.ScreenShot.Location = new System.Drawing.Point(332, 34);
+            this.ScreenShot.Name = "ScreenShot";
+            this.ScreenShot.Size = new System.Drawing.Size(173, 154);
+            this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ScreenShot.TabIndex = 16;
+            this.ScreenShot.TabStop = false;
+            this.ScreenShot.Click += new System.EventHandler(this.ScreenShot_Click);
             // 
             // YesInstallMe
             // 
@@ -745,6 +822,53 @@ namespace JetpackGUI
             this.checkBox1.Text = "Backup original files before downgrade";
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::JetpackGUI.Properties.Resources.DirectPlay;
+            this.pictureBox15.Location = new System.Drawing.Point(280, 246);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(27, 26);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 10;
+            this.pictureBox15.TabStop = false;
+            this.pictureBox15.Visible = false;
+            this.pictureBox15.Click += new System.EventHandler(this.pictureBox15_Click);
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::JetpackGUI.Properties.Resources.Reg;
+            this.pictureBox11.Location = new System.Drawing.Point(698, 199);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(27, 26);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 10;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Visible = false;
+            this.pictureBox11.Click += new System.EventHandler(this.pictureBox11_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::JetpackGUI.Properties.Resources.GoBack;
+            this.pictureBox10.Location = new System.Drawing.Point(698, 122);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(27, 26);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox10.TabIndex = 10;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Visible = false;
+            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(791, 43);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 22);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // GamePath
             // 
             this.GamePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
@@ -856,118 +980,6 @@ namespace JetpackGUI
             this.checkBox5.Visible = false;
             this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::JetpackGUI.Properties.Resources.Right;
-            this.pictureBox9.Location = new System.Drawing.Point(489, 21);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(52, 31);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 18;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::JetpackGUI.Properties.Resources.Right;
-            this.pictureBox8.Location = new System.Drawing.Point(259, 21);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(52, 31);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 18;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::JetpackGUI.Properties.Resources.Language;
-            this.pictureBox2.Location = new System.Drawing.Point(749, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::JetpackGUI.Properties.Resources.Help;
-            this.pictureBox4.Location = new System.Drawing.Point(841, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(44, 34);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 13;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::JetpackGUI.Properties.Resources.About;
-            this.pictureBox3.Location = new System.Drawing.Point(795, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(44, 34);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 13;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // ScreenShotInViewer
-            // 
-            this.ScreenShotInViewer.Image = global::JetpackGUI.Properties.Resources.Logo;
-            this.ScreenShotInViewer.Location = new System.Drawing.Point(15, 17);
-            this.ScreenShotInViewer.Name = "ScreenShotInViewer";
-            this.ScreenShotInViewer.Size = new System.Drawing.Size(232, 227);
-            this.ScreenShotInViewer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ScreenShotInViewer.TabIndex = 0;
-            this.ScreenShotInViewer.TabStop = false;
-            // 
-            // ScreenShot
-            // 
-            this.ScreenShot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ScreenShot.ErrorImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.ErrorImage")));
-            this.ScreenShot.Image = global::JetpackGUI.Properties.Resources.Logo;
-            this.ScreenShot.InitialImage = ((System.Drawing.Image)(resources.GetObject("ScreenShot.InitialImage")));
-            this.ScreenShot.Location = new System.Drawing.Point(332, 34);
-            this.ScreenShot.Name = "ScreenShot";
-            this.ScreenShot.Size = new System.Drawing.Size(173, 154);
-            this.ScreenShot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ScreenShot.TabIndex = 16;
-            this.ScreenShot.TabStop = false;
-            this.ScreenShot.Click += new System.EventHandler(this.ScreenShot_Click);
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::JetpackGUI.Properties.Resources.Reg;
-            this.pictureBox11.Location = new System.Drawing.Point(698, 199);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(27, 26);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 10;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Visible = false;
-            this.pictureBox11.Click += new System.EventHandler(this.pictureBox11_Click);
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::JetpackGUI.Properties.Resources.GoBack;
-            this.pictureBox10.Location = new System.Drawing.Point(698, 122);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(27, 26);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox10.TabIndex = 10;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Visible = false;
-            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(791, 43);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 22);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // pictureBox12
             // 
             this.pictureBox12.Image = global::JetpackGUI.Properties.Resources.Up;
@@ -1028,18 +1040,6 @@ namespace JetpackGUI
             this.pictureBox13.TabIndex = 15;
             this.pictureBox13.TabStop = false;
             // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::JetpackGUI.Properties.Resources.DirectPlay;
-            this.pictureBox15.Location = new System.Drawing.Point(280, 246);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(27, 26);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 10;
-            this.pictureBox15.TabStop = false;
-            this.pictureBox15.Visible = false;
-            this.pictureBox15.Click += new System.EventHandler(this.pictureBox15_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1071,6 +1071,11 @@ namespace JetpackGUI
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.progressPanel.ResumeLayout(false);
             this.stagesPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.LangsPanel.ResumeLayout(false);
             this.LangsPanel.PerformLayout();
             this.DSPanel.ResumeLayout(false);
@@ -1080,14 +1085,10 @@ namespace JetpackGUI
             this.darkGroupBox1.ResumeLayout(false);
             this.darkGroupBox1.PerformLayout();
             this.ScreenShotViewer.ResumeLayout(false);
-            this.darkGroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShotInViewer)).EndInit();
+            this.darkGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1097,7 +1098,6 @@ namespace JetpackGUI
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.ResumeLayout(false);
 
         }
