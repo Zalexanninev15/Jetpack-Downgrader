@@ -42,9 +42,9 @@ namespace JetpackGUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.darkLabel1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(18, 14);
+            this.darkLabel1.Location = new System.Drawing.Point(15, 3);
             this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(210, 16);
+            this.darkLabel1.Size = new System.Drawing.Size(219, 32);
             this.darkLabel1.TabIndex = 4;
             this.darkLabel1.Text = "Select a localization from the list";
             this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,16 +53,17 @@ namespace JetpackGUI
             // 
             this.AllLangs.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.AllLangs.FormattingEnabled = true;
-            this.AllLangs.Location = new System.Drawing.Point(21, 41);
+            this.AllLangs.Location = new System.Drawing.Point(21, 35);
             this.AllLangs.Name = "AllLangs";
             this.AllLangs.Size = new System.Drawing.Size(207, 22);
             this.AllLangs.TabIndex = 7;
+            this.AllLangs.TabStop = false;
             this.AllLangs.SelectedIndexChanged += new System.EventHandler(this.AllLangs_SelectedIndexChanged);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(21, 73);
+            this.button2.Location = new System.Drawing.Point(21, 67);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(5);
             this.button2.Size = new System.Drawing.Size(207, 30);
@@ -76,7 +77,7 @@ namespace JetpackGUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(243, 116);
+            this.ClientSize = new System.Drawing.Size(249, 116);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AllLangs);
             this.Controls.Add(this.darkLabel1);

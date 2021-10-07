@@ -31,7 +31,7 @@ namespace JetpackGUI
 
         void MyLang_Load(object sender, EventArgs e)
         {
-            this.Size = new System.Drawing.Size(263, 159);
+            this.Size = new System.Drawing.Size(265, 152);
             AllLangs.Items.Clear();
             langs = Directory.GetFiles(@Application.StartupPath + @"\files\languages", "*.xml");
             for (int i = 0; i < langs.Length; i++)
