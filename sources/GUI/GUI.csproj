@@ -41,7 +41,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <DebugType>none</DebugType>
-    <OutputPath>..\..\..\..\Desktop\JPD\</OutputPath>
+    <OutputPath>..\..\..\..\..\Desktop\JPD\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
@@ -92,7 +92,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="VitNX, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\VitNX\VitNX\bin\Release\VitNX.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\JPD\files\VitNX.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
