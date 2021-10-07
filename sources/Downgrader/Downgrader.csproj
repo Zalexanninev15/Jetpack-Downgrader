@@ -45,7 +45,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <DebugType>none</DebugType>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <OutputPath>..\..\..\..\Desktop\JPD\files\</OutputPath>
+    <OutputPath>..\..\..\..\..\Desktop\JPD\files\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>JetpackDowngrader.Program</StartupObject>
@@ -73,7 +73,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="VitNX, Version=1.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\VitNX\VitNX\bin\Release\VitNX.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\JPD\files\VitNX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
