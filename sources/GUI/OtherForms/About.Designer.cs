@@ -70,7 +70,7 @@ namespace JetpackGUI
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton1.Location = new System.Drawing.Point(26, 340);
+            this.darkButton1.Location = new System.Drawing.Point(26, 344);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(100, 34);
@@ -96,7 +96,7 @@ namespace JetpackGUI
             // darkButton2
             // 
             this.darkButton2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton2.Location = new System.Drawing.Point(132, 340);
+            this.darkButton2.Location = new System.Drawing.Point(132, 344);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(116, 34);
@@ -108,7 +108,7 @@ namespace JetpackGUI
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton3.Location = new System.Drawing.Point(254, 340);
+            this.darkButton3.Location = new System.Drawing.Point(254, 344);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton3.Size = new System.Drawing.Size(95, 34);
@@ -120,7 +120,7 @@ namespace JetpackGUI
             // darkButton4
             // 
             this.darkButton4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkButton4.Location = new System.Drawing.Point(355, 340);
+            this.darkButton4.Location = new System.Drawing.Point(355, 344);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(90, 34);
