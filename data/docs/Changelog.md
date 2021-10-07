@@ -2,7 +2,7 @@
 
 ## [Release] Jetpack Downgrader Version 2.3.0.1
 
-**This patch fixes the loading of the list of modifications. The error during loading is associated with an increase in the amount of modification information. In the patch, the number of possible modifications has been increased from 10 to 30. Appearance has also been improved, in some moments, and other minor edits have been made**
+**This patch fixes the loading of the list of modifications. The error during loading is associated with an increase in the amount of modification information. In this patch, number of possible modifications has been increased from 10 to 30. Appearance has also been improved, in some moments, and other minor edits have been made**
 
 ## [Release] Jetpack Downgrader Version 2.3
 
