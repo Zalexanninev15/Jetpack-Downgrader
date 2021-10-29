@@ -49,7 +49,7 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
 * Steam [fully supported]
 * Rockstar Games Launcher [fully supported]
 
-**Only licensed versions of the game are supported, work on pirated builds is not guaranteed and will never be added!!!**
+**Only licensed versions of the game ("clean" builds) are supported, work on pirated builds is not guaranteed and will never be added!!!**
 
 ## Usage
 
