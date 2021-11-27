@@ -45,19 +45,5 @@ namespace JetpackGUI
                 MSG[1] = LOCAL.BrowserNotFound;
             }
         }
-
-        int db = 0;
-        void pictureBox1_Click(object sender, EventArgs e)
-        {
-            if (Data.DebugMode)
-            {
-                try
-                {
-                    db += 1;
-                    if (db == 10) { WDebug wdb = new WDebug(); wdb.ShowDialog(); }
-                }
-                catch { }
-            }
-        }
     }
 }

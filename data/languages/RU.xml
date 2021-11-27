@@ -37,7 +37,7 @@
   <CreateBackups>Бэкап оригинальных файлов до даунгрейда</CreateBackups>
   <CreateShortcut>Создать ярлык на Рабочем Столе</CreateShortcut>
   <ResetGame>Удалить GTA-SA.SET (Сброс настроек игры и предотвращение вылетов)</ResetGame>
-  <RGL_GarbageCleaning>далить ненужные файлы (ТОЛЬКО для версии из Rockstar Games Launcher)</RGL_GarbageCleaning>
+  <RGL_GarbageCleaning>Удалить ненужные файлы (ТОЛЬКО для версии из Rockstar Games Launcher)</RGL_GarbageCleaning>
   <RegisterGamePath>Добавить путь в реестр Windows</RegisterGamePath>
   <CopyGameToNewPath>Переместить игру в другую папку (Запрет обновлений игры)</CopyGameToNewPath>
   <Forced>Принудительно (ТОЛЬКО для версии 1.0)</Forced>

@@ -16,7 +16,12 @@ namespace JetpackGUI
 {
     public partial class MainForm : Form
     {
-        protected override void OnHandleCreated(EventArgs e) { if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
+        protected override void OnHandleCreated(EventArgs e) 
+        {
+            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); 
+            }
+        }
 
         Props config = new Props();
         GUI language = new GUI();
@@ -48,7 +53,7 @@ namespace JetpackGUI
             try
             {
                 string[] mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
-                for (int i = 0; i < mf.Length; i++) { File.Delete(mf[i]); }
+                for (int i = 0; i < mf.Length; i++) File.Delete(mf[i]);
             }
             catch { }
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -71,10 +76,10 @@ namespace JetpackGUI
             catch
             {
                 DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[27] + " " + lc_text[28], lc_text[33]);
-                if (result == DialogResult.No) { Application.Exit(); }
+                if (result == DialogResult.No) Application.Exit();
             }
             SettingsLoader();
-            try { if (VitNX.Functions.Windows.GetCurrentVersionFromREG() < 6.3) { checkBox7.Visible = false; checkBox7.Checked = false; } }
+            try { if (Windows.GetCurrentVersionFromREG() < 6.3) { checkBox7.Visible = false; checkBox7.Checked = false; } }
             catch (Exception ex) { MessageBox.Show(ex.Message); checkBox7.Visible = false; checkBox7.Checked = false; }
         }
 
@@ -126,10 +131,10 @@ namespace JetpackGUI
                                         try
                                         {
                                             TbProgressBar.SetValue(Handle, i, modsZip.Length);
-                                            if (checkBox3.Checked == false) { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit(); }
-                                            else { Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit(); }
-                                            if (modName != "ASI_Loader") { MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]); }
-                                            if ((modName == "ASI_Loader") && (modsZip.Length == 1)) { MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]); }
+                                            if (checkBox3.Checked == false) Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
+                                            else Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit();
+                                            if (modName != "ASI_Loader") MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
+                                            if ((modName == "ASI_Loader") && (modsZip.Length == 1)) MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
                                         }
                                         catch { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgError(lc_text[6] + " \"" + modName + "\" " + lc_text[22]); }
                                     }
@@ -199,7 +204,7 @@ namespace JetpackGUI
         async void MegaDownloader(string url, string file, string label, int code)
         {
             try { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal); } catch { }
-            if (File.Exists(file)) { File.Delete(file); }
+            if (File.Exists(file)) File.Delete(file);
             var client = new MegaApiClient();
             client.LoginAnonymous();
             Uri zip_link_uri = new Uri(url);
@@ -341,7 +346,8 @@ namespace JetpackGUI
         void SelectPathToGame()
         {
             var dialog = new FolderDialog { InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), Title = lc_text[12] };
-            if (dialog.Show()) { GamePath.Text = dialog.FileName; } else { GamePath.Clear(); }
+            if (dialog.Show()) GamePath.Text = dialog.FileName; 
+            else GamePath.Clear();
         }
 
         string[] lc_text = new string[40];

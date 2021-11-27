@@ -61,3 +61,5 @@ sources/packages/ConsoleControl.1.3.0/lib/net40-client/ConsoleControl.xml
 sources/packages/ConsoleControlAPI.1.3.0/lib/net40/ConsoleControlAPI.xml
 sources/GUI/obj/Release/JetpackGUI.WDebug.resources
 sources/Downgrader/obj/Release/Downgrader.csproj.CopyComplete
+*.json
+sources/GUI/GUI.csproj.user
