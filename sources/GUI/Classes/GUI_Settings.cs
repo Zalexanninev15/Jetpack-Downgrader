@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace JetpackGUI
 {
@@ -10,11 +10,13 @@ namespace JetpackGUI
         public String LanguageCode = "EN";
         public Boolean FirstLaunch = true;
     }
-    
+
     public class GUI
     {
         public GUI_Settings Fields;
-        public GUI() { Fields = new GUI_Settings(); }
+
+        public GUI()
+        { Fields = new GUI_Settings(); }
 
         public void WriteXml()
         {
@@ -27,7 +29,7 @@ namespace JetpackGUI
             if (File.Exists(Application.StartupPath + @"\files\gui.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(GUI_Settings));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml"))  {  Fields = ser.Deserialize(reader) as GUI_Settings;  } 
+                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml")) { Fields = ser.Deserialize(reader) as GUI_Settings; }
             }
         }
     }

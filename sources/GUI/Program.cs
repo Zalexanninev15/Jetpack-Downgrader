@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace JetpackGUI
 {
-    static class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {
@@ -28,7 +28,7 @@ namespace JetpackGUI
                             if (toolkit_version != Data.JetpackDowngraderVersion) { AvailableNewVersion = true; }
                         }
                     }
-                    catch(Exception ex) { AvailableNewVersion = false; VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
+                    catch (Exception ex) { AvailableNewVersion = false; VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
                 }
                 if (AvailableNewVersion == false)
                 {
@@ -42,7 +42,7 @@ namespace JetpackGUI
                     try { System.Diagnostics.Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); } catch { VitNX.Forms.VitNX_MessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning"); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); }
                 }
             }
-            catch(Exception ex) { VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
+            catch (Exception ex) { VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
         }
     }
 }

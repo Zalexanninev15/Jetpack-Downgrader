@@ -1,14 +1,14 @@
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using Microsoft.Win32;
 using VitNX.Functions;
 
 namespace JetpackDowngrader
 {
-    class Program
+    internal class Program
     {
         [STAThread]
         public static void Main(string[] args)
@@ -39,7 +39,7 @@ namespace JetpackDowngrader
             //    using (StringReader reader = new StringReader(File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\gui.xml")))
             //    {
             //        var string_gui = (GUI_Settings)serializer.Deserialize(reader);
-            //        lgcode = string_gui.LnguageCode; 
+            //        lgcode = string_gui.LnguageCode;
             //    }
             //}
             Console.Title = "Jetpack Downgrader";
@@ -732,7 +732,7 @@ namespace JetpackDowngrader
             Console.ReadLine();
         }
 
-        static void Logger(string type, string ido, string status)
+        private static void Logger(string type, string ido, string status)
         {
             if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) { Console.ForegroundColor = ConsoleColor.Yellow; }
             if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || (status == "Installation completed successfully") || (status == "1.0") || (status == "true") || (status == "Downgrade completed!") || (status == "Done!")) { Console.ForegroundColor = ConsoleColor.Green; }
@@ -744,6 +744,7 @@ namespace JetpackDowngrader
             Console.ResetColor();
         }
 
-        static string GetMD5(string file) { return FileSystem.GetFileMD5(file); }
+        private static string GetMD5(string file)
+        { return FileSystem.GetFileMD5(file); }
     }
 }

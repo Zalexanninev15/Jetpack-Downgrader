@@ -63,3 +63,5 @@ sources/GUI/obj/Release/JetpackGUI.WDebug.resources
 sources/Downgrader/obj/Release/Downgrader.csproj.CopyComplete
 *.json
 sources/GUI/GUI.csproj.user
+sources/GUI/obj/Debug/JetpackGUI.WDebug.resources
+sources/Downgrader/obj/Debug/Downgrader.csproj.FileListAbsolute.txt

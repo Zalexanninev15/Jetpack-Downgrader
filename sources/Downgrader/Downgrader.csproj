@@ -74,7 +74,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="VitNX, Version=1.0.3.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\JPD\files\VitNX.dll</HintPath>
+      <HintPath>..\..\..\..\DEV\JPDBUILD\files\VitNX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

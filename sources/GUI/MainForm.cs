@@ -1,52 +1,66 @@
-﻿using System;
+﻿using CG.Web.MegaApiClient;
+using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using System.Net;
-using CG.Web.MegaApiClient;
-using System.Text;
-using Microsoft.Win32;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using VitNX.Forms;
-using VitNX.Win32;
 using VitNX.Functions;
+using VitNX.Win32;
 
 namespace JetpackGUI
 {
     public partial class MainForm : Form
     {
-        protected override void OnHandleCreated(EventArgs e) 
+        [DllImport("shcore.dll", SetLastError = true)]
+        public static extern int SetProcessDpiAwareness(PROCESS_DPI_AWARENESS PROCESS_DPI_UNAWARE);
+
+        public enum PROCESS_DPI_AWARENESS : int
         {
-            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); 
-            }
+            PROCESS_DPI_UNAWARE = 0,
+            PROCESS_SYSTEM_DPI_AWARE = 1,
+            PROCESS_PER_MONITOR_DPI_Aware = 2
         }
 
-        Props config = new Props();
-        GUI language = new GUI();
-        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
-        string[] mse = new string[30];
-        string[] langs = new string[10];
-        bool tabFix = false;
-        bool lpFix = false;
-        bool IsBak = false;
-        bool sp = true;
-        bool IsOnePointNull = false;
-        bool NotDone = true;
-        bool IsDD = false;
-        bool db = false;
-        string cache = @Application.StartupPath + @"\files\mods_cache";
-        string zip_link = "application/zip";
-        string[] photos_links = new string[3];
-        string site_link = "";
-        string[] fl = new string[17];
-        bool x64 = Environment.Is64BitOperatingSystem;
-        string langcode = "EN";
-
-        void MainForm_Load(object sender, EventArgs e)
+        protected override void OnHandleCreated(EventArgs e)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+        }
+
+        private Props config = new Props();
+        private GUI language = new GUI();
+        private XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
+        private string[] mse = new string[30];
+        private string[] langs = new string[10];
+        private bool tabFix = false;
+        private bool lpFix = false;
+        private bool IsBak = false;
+        private bool sp = true;
+        private bool IsOnePointNull = false;
+        private bool NotDone = true;
+        private bool IsDD = false;
+        private bool db = false;
+        private string cache = @Application.StartupPath + @"\files\mods_cache";
+        private string zip_link = "application/zip";
+        private string[] photos_links = new string[3];
+        private string site_link = "";
+        private string[] fl = new string[17];
+        private bool x64 = Environment.Is64BitOperatingSystem;
+        private string langcode = "EN";
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls13 |
+                SecurityProtocolType.Tls12 |
+                SecurityProtocolType.Tls11 |
+                SecurityProtocolType.Tls;
+            SetProcessDpiAwareness(PROCESS_DPI_AWARENESS.PROCESS_DPI_UNAWARE);
             if (!Directory.Exists(@Application.StartupPath + @"\files\patches")) { darkButton4.Visible = true; button1.Visible = false; }
             if (!Directory.Exists(cache)) { Directory.CreateDirectory(cache); }
             else { Directory.Delete(cache, true); Directory.CreateDirectory(cache); }
@@ -76,14 +90,27 @@ namespace JetpackGUI
             catch
             {
                 DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[27] + " " + lc_text[28], lc_text[33]);
-                if (result == DialogResult.No) Application.Exit();
+                if (result == DialogResult.No) 
+                    Application.Exit();
             }
             SettingsLoader();
-            try { if (Windows.GetCurrentVersionFromREG() < 6.3) { checkBox7.Visible = false; checkBox7.Checked = false; } }
-            catch (Exception ex) { MessageBox.Show(ex.Message); checkBox7.Visible = false; checkBox7.Checked = false; }
+            try 
+            { 
+                if (Windows.GetCurrentVersionFromREG() < 6.3) 
+                { 
+                    checkBox7.Visible = false;
+                    checkBox7.Checked = false;
+                } 
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message); 
+                checkBox7.Visible = false; 
+                checkBox7.Checked = false; 
+            }
         }
 
-        void SettingsLoader()
+        private void SettingsLoader()
         {
             config.ReadXml();
             checkBox1.Checked = config.Fields.CreateBackups;
@@ -97,7 +124,7 @@ namespace JetpackGUI
             checkBox5.Checked = config.Fields.Forced;
         }
 
-        void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(@Application.StartupPath + @"\files\patches"))
             {
@@ -165,43 +192,212 @@ namespace JetpackGUI
                     }
                     else { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; NotDone = true; }
                 }
-                else { try { Directory.Delete(@Application.StartupPath + @"\files\patches", true); } catch { } button1.Visible = false; darkButton4.Visible = true; NotDone = true; }
+                else
+                {
+                    try { Directory.Delete(@Application.StartupPath + @"\files\patches", true); } catch { }
+                    button1.Visible = false;
+                    darkButton4.Visible = true;
+                    NotDone = true;
+                }
             }
-            else { button1.Visible = false; darkButton4.Visible = true; NotDone = true; }
+            else
+            {
+                button1.Visible = false;
+                darkButton4.Visible = true;
+                NotDone = true;
+            }
         }
 
         //void Logger(string type, string ido, string status) { darkListView2.Items.Add(new VitNXListItem("[" + type + "]  " + ido + "=" + status)); }
 
-        static string GetMD5(string file) { try { return FileSystem.GetFileMD5(file); } catch { return "0x50 0x45"; } }
-        void darkButton6_Click(object sender, EventArgs e) { ScreenShotViewer.Visible = false; darkButton1.Visible = true; darkButton2.Visible = true; }
-        void darkButton7_Click(object sender, EventArgs e) { try { Process.Start(ScreenShotInViewer.ImageLocation); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(ScreenShotInViewer.ImageLocation); } }
-        void pictureBox1_Click(object sender, EventArgs e) { SelectPathToGame(); }
-        void checkBox2_CheckedChanged(object sender, EventArgs e) { config.Fields.CreateShortcut = checkBox2.Checked; config.WriteXml(); }
-        void checkBox1_CheckedChanged(object sender, EventArgs e) { config.Fields.CreateBackups = checkBox1.Checked; config.WriteXml(); }
-        void checkBox4_CheckedChanged(object sender, EventArgs e) { config.Fields.RGL_GarbageCleaning = checkBox4.Checked; config.WriteXml(); }
-        void checkBox6_CheckedChanged(object sender, EventArgs e) { config.Fields.RegisterGamePath = checkBox6.Checked; config.WriteXml(); }
-        public MainForm() { InitializeComponent(); KeyPreview = true; }
-        void checkBox7_VisibleChanged(object sender, EventArgs e) { pictureBox15.Visible = checkBox7.Visible; }
-        void checkBox5_CheckedChanged(object sender, EventArgs e) { config.Fields.Forced = checkBox5.Checked; config.WriteXml(); button1.Visible = checkBox5.Checked; }
-        void checkBox3_CheckedChanged(object sender, EventArgs e) { config.Fields.CopyGameToNewPath = checkBox3.Checked; config.WriteXml(); }
-        void checkBox9_CheckedChanged(object sender, EventArgs e) { config.Fields.ResetGame = checkBox9.Checked; config.WriteXml(); }
-        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start(site_link); } catch { MsgWarning(lc_text[26]); Clipboard.SetText(site_link); } }
-        void darkButton5_Click(object sender, EventArgs e) { Application.Exit(); }
-        void ScreenShot_Click(object sender, EventArgs e)  { darkButton1.Visible = false; darkButton2.Visible = false; ScreenShotInViewer.ImageLocation = ScreenShot.ImageLocation; ScreenShotViewer.Visible = true; }
-        void listBox1_MouseDown(object sender, MouseEventArgs e) { NativeFunctions.SetFocus(IntPtr.Zero); }
-        void button3_Click(object sender, EventArgs e) { try { Process.Start(GamePath.Text + @"\gta_sa.exe"); } catch { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; } }
-        void MsgInfo(string message) { VitNX_MessageBox.ShowInfo(message, lc_text[9]); }
-        void MsgWarning(string message) { VitNX_MessageBox.ShowWarning(message, lc_text[11]); }
-        void MsgError(string message) { VitNX_MessageBox.ShowError(message, lc_text[10]); }
-        void MainForm_FormClosed(object sender, FormClosedEventArgs e) { if (Directory.Exists(cache)) { Directory.Delete(cache, true); } }
-        void button1_VisibleChanged(object sender, EventArgs e) { IsDD = button1.Visible; }
-        void stagesPanel_VisibleChanged(object sender, EventArgs e) { sp = stagesPanel.Visible; }
-        void pictureBox3_Click(object sender, EventArgs e) { About about = new About(); about.ShowDialog(); }
-        void darkButton6_Click_1(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications"); } }
-        void pictureBox4_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
-        void checkBox7_CheckedChanged(object sender, EventArgs e) { config.Fields.EnableDirectPlay = checkBox7.Checked; config.WriteXml(); }
+        private static string GetMD5(string file)
+        {
+            try { return FileSystem.GetFileMD5(file); }
+            catch { return "0x50 0x45"; }
+        }
 
-        async void MegaDownloader(string url, string file, string label, int code)
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            ScreenShotViewer.Visible = false;
+            darkButton1.Visible = true;
+            darkButton2.Visible = true;
+        }
+
+        private void darkButton7_Click(object sender, EventArgs e)
+        {
+            try { Process.Start(ScreenShotInViewer.ImageLocation); } 
+            catch
+            { 
+                MsgWarning(lc_text[26]); 
+                Clipboard.SetText(ScreenShotInViewer.ImageLocation);
+            } 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            SelectPathToGame();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        { 
+            config.Fields.CreateShortcut = checkBox2.Checked;
+            config.WriteXml();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        { 
+            config.Fields.CreateBackups = checkBox1.Checked; 
+            config.WriteXml(); 
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        { 
+            config.Fields.RGL_GarbageCleaning = checkBox4.Checked;
+            config.WriteXml(); 
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        { 
+            config.Fields.RegisterGamePath = checkBox6.Checked; 
+            config.WriteXml(); 
+        }
+
+        public MainForm()
+        {
+            InitializeComponent();
+            KeyPreview = true;
+        }
+
+        private void checkBox7_VisibleChanged(object sender, EventArgs e)
+        {
+            pictureBox15.Visible = checkBox7.Visible;
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            config.Fields.Forced = checkBox5.Checked;
+            config.WriteXml();
+            button1.Visible = checkBox5.Checked;
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            config.Fields.CopyGameToNewPath = checkBox3.Checked;
+            config.WriteXml();
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            config.Fields.ResetGame = checkBox9.Checked;
+            config.WriteXml();
+        }
+
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+            try { Process.Start(site_link); }
+            catch
+            {
+                MsgWarning(lc_text[26]);
+                Clipboard.SetText(site_link);
+            }
+        }
+
+        private void darkButton5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ScreenShot_Click(object sender, EventArgs e)
+        {
+            darkButton1.Visible = false;
+            darkButton2.Visible = false;
+            ScreenShotInViewer.ImageLocation = ScreenShot.ImageLocation;
+            ScreenShotViewer.Visible = true;
+        }
+
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            NativeFunctions.SetFocus(IntPtr.Zero);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try { Process.Start(GamePath.Text + @"\gta_sa.exe"); }
+            catch
+            {
+                MsgWarning(lc_text[25]);
+                pictureBox10.Visible = false;
+                IsBak = false;
+            }
+        }
+
+        private void MsgInfo(string message)
+        {
+            VitNX_MessageBox.ShowInfo(message, lc_text[9]);
+        }
+
+        private void MsgWarning(string message)
+        {
+            VitNX_MessageBox.ShowWarning(message, lc_text[11]);
+        }
+
+        private void MsgError(string message)
+        {
+            VitNX_MessageBox.ShowError(message, lc_text[10]);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Directory.Exists(cache))
+                Directory.Delete(cache, true);
+        }
+
+        private void button1_VisibleChanged(object sender, EventArgs e)
+        {
+            IsDD = button1.Visible;
+        }
+
+        private void stagesPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            sp = stagesPanel.Visible;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
+
+        private void darkButton6_Click_1(object sender, EventArgs e)
+        {
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications"); }
+            catch
+            {
+                MsgWarning(lc_text[26]);
+                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications");
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage");
+            }
+            catch
+            {
+                MsgWarning(lc_text[26]);
+                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage");
+            }
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            config.Fields.EnableDirectPlay = checkBox7.Checked;
+            config.WriteXml();
+        }
+
+        private async void MegaDownloader(string url, string file, string label, int code)
         {
             try { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal); } catch { }
             if (File.Exists(file)) File.Delete(file);
@@ -243,7 +439,7 @@ namespace JetpackGUI
             }
         }
 
-        void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
             if (DSPanel.Visible == false)
             {
@@ -259,7 +455,7 @@ namespace JetpackGUI
             }
         }
 
-        void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -310,14 +506,15 @@ namespace JetpackGUI
             catch { MsgWarning(lc_text[27]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
         }
 
-        bool IsInstaller(string file)
+        private bool IsInstaller(string file)
         {
             var twoBytes = new byte[2];
-            using (var fileStream = File.Open(file, FileMode.Open)) { fileStream.Read(twoBytes, 0, 2); }
+            using (var fileStream = File.Open(file, FileMode.Open))
+                fileStream.Read(twoBytes, 0, 2);
             return Encoding.UTF8.GetString(twoBytes) == "MZ";
         }
 
-        void pictureBox2_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             darkComboBox2.Items.Clear();
             if (lpFix == false)
@@ -336,22 +533,30 @@ namespace JetpackGUI
                             lg = LOCAL.Language;
                         }
                         darkComboBox2.Items.Add(lg);
-                        if (langcode == new FileInfo(langs[i]).Name.Replace(".xml", "")) { darkComboBox2.SelectedItem = lg; }
+                        if (langcode == new FileInfo(langs[i]).Name.Replace(".xml", ""))
+                            darkComboBox2.SelectedItem = lg;
                     }
                 }
             }
             else { LangsPanel.Visible = false; lpFix = false; }
         }
 
-        void SelectPathToGame()
+        private void SelectPathToGame()
         {
-            var dialog = new FolderDialog { InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), Title = lc_text[12] };
-            if (dialog.Show()) GamePath.Text = dialog.FileName; 
-            else GamePath.Clear();
+            var dialog = new FolderDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                Title = lc_text[12]
+            };
+            if (dialog.Show())
+                GamePath.Text = dialog.FileName;
+            else
+                GamePath.Clear();
         }
 
-        string[] lc_text = new string[40];
-        void Translate()
+        private string[] lc_text = new string[40];
+
+        private void Translate()
         {
             language.ReadXml();
             langcode = language.Fields.LanguageCode;
@@ -438,7 +643,7 @@ namespace JetpackGUI
             catch (Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
         }
 
-        void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -449,13 +654,17 @@ namespace JetpackGUI
                 {
                     if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
                     {
-                        if (!Directory.Exists(cache + @"\zips")) { Directory.CreateDirectory(cache + @"\zips"); }
+                        if (!Directory.Exists(cache + @"\zips"))
+                            Directory.CreateDirectory(cache + @"\zips");
                         try
                         {
                             DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[15], lc_text[33]);
                             if (result == DialogResult.Yes)
                             {
-                                if (zip_link.Contains("mega.nz")) { MegaDownloader(zip_link, cache + @"\zips\" + @nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip", lc_text[3] + " \"" + @nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...", 2); }
+                                if (zip_link.Contains("mega.nz"))
+                                    MegaDownloader(zip_link,
+                                        cache + @"\zips\" + @nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip",
+                                        lc_text[3] + " \"" + @nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...", 2);
                                 else
                                 {
                                     TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
@@ -468,7 +677,11 @@ namespace JetpackGUI
                                         var r = wc.OpenRead(zip_link);
                                         labelPartProgress.Text += " (" + (Convert.ToDouble(wc.ResponseHeaders["Content-Length"]) / 1048576).ToString("#.# " + lc_text[7] + ")");
                                         r.Close();
-                                        wc.DownloadProgressChanged += (s, a) => { TbProgressBar.SetValue(Handle, a.ProgressPercentage, 100); PartProgressBar.Value = a.ProgressPercentage; };
+                                        wc.DownloadProgressChanged += (s, a) =>
+                                        {
+                                            TbProgressBar.SetValue(Handle, a.ProgressPercentage, 100);
+                                            PartProgressBar.Value = a.ProgressPercentage;
+                                        };
                                         wc.DownloadFileCompleted += (s, a) =>
                                         {
                                             PartProgressBar.Value = 0;
@@ -481,7 +694,13 @@ namespace JetpackGUI
                                 }
                             }
                         }
-                        catch (Exception ex) { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgError(lc_text[21]); MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"); TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress); }
+                        catch (Exception ex)
+                        {
+                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
+                            MsgError(lc_text[21]);
+                            MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
+                        }
                     }
                     else { YesInstallMe.Checked = true; }
                 }
@@ -489,13 +708,14 @@ namespace JetpackGUI
                 {
                     progressPanel.Visible = false;
                     stagesPanel.Visible = true;
-                    if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip")) { File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"); }
+                    if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
+                        File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
                 }
             }
             catch { MsgWarning(lc_text[27]); YesInstallMe.Checked = false; }
         }
 
-        void checkBox8_CheckedChanged(object sender, EventArgs e)
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox8.Checked == true)
             {
@@ -521,7 +741,7 @@ namespace JetpackGUI
             config.WriteXml();
         }
 
-        void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.F1) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
             if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\downgrader.xml"); }
@@ -546,7 +766,7 @@ namespace JetpackGUI
             if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.S)) { if ((IsDD == false) && (sp == true)) { button1_Click(sender, e); } }
         }
 
-        void darkButton1_Click(object sender, EventArgs e)
+        private void darkButton1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
@@ -555,7 +775,7 @@ namespace JetpackGUI
             }
         }
 
-        void darkButton2_Click(object sender, EventArgs e)
+        private void darkButton2_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
@@ -564,7 +784,7 @@ namespace JetpackGUI
             }
         }
 
-        void darkComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void darkComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < langs.Length; i++)
             {
@@ -584,7 +804,7 @@ namespace JetpackGUI
             }
         }
 
-        void darkButton4_Click(object sender, EventArgs e)
+        private void darkButton4_Click(object sender, EventArgs e)
         {
             try
             {
@@ -603,7 +823,7 @@ namespace JetpackGUI
             if (IsOnePointNull == true) { button1.Visible = false; }
         }
 
-        void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -628,7 +848,7 @@ namespace JetpackGUI
             catch (Exception ex) { MsgError(lc_text[21]); MsgError(ex.ToString()); ScreenShot.Enabled = false; zip_link = "application/zip"; }
         }
 
-        void GamePath_TextChanged(object sender, EventArgs e)
+        private void GamePath_TextChanged(object sender, EventArgs e)
         {
             if (GamePath.Text != "")
             {
@@ -649,7 +869,7 @@ namespace JetpackGUI
             else { pictureBox11.Visible = false; pictureBox10.Visible = false; IsBak = false; IsOnePointNull = false; }
         }
 
-        void pictureBox10_Click(object sender, EventArgs e)
+        private void pictureBox10_Click(object sender, EventArgs e)
         {
             DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[23], lc_text[33]);
             if (result == DialogResult.Yes)
@@ -732,7 +952,7 @@ namespace JetpackGUI
             }
         }
 
-        void pictureBox11_Click(object sender, EventArgs e)
+        private void pictureBox11_Click(object sender, EventArgs e)
         {
             DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[24], lc_text[33]);
             if (result == DialogResult.Yes)
@@ -751,13 +971,13 @@ namespace JetpackGUI
             }
         }
 
-        void progressPanel_VisibleChanged(object sender, EventArgs e)
+        private void progressPanel_VisibleChanged(object sender, EventArgs e)
         {
             if (progressPanel.Visible == true) { LangsPanel.Visible = false; HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
             else { HelloUser.Visible = true; pictureBox5.Visible = true; pictureBox6.Visible = true; pictureBox7.Visible = true; }
         }
 
-        void darkButton8_Click(object sender, EventArgs e)
+        private void darkButton8_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
@@ -766,7 +986,7 @@ namespace JetpackGUI
             }
         }
 
-        void darkButton9_Click(object sender, EventArgs e)
+        private void darkButton9_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {

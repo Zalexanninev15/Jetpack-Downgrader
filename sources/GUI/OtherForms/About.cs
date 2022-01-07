@@ -4,24 +4,39 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using VitNX.Forms;
+using VitNX.Win32;
 
 namespace JetpackGUI
 {
     public partial class About : Form
     {
-        [System.Runtime.InteropServices.DllImport("DwmApi")]
-        static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
-        protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
-        public About() { InitializeComponent(); }
-        void MsgWarning() { VitNX_MessageBox.ShowWarning(MSG[1], MSG[0]); }
-        void darkButton1_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
-        void darkButton1_Click_1(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
-        void darkButton3_Click(object sender, EventArgs e) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
-        void darkButton4_Click(object sender, EventArgs e) { try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/"); } }
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+        }
 
-        string[] MSG = new string[2];
+        public About()
+        { InitializeComponent(); }
 
-        void MyLang_Load(object sender, EventArgs e)
+        private void MsgWarning()
+        { VitNX_MessageBox.ShowWarning(MSG[1], MSG[0]); }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
+
+        private void darkButton1_Click_1(object sender, EventArgs e)
+        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
+
+        private void darkButton3_Click(object sender, EventArgs e)
+        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
+
+        private void darkButton4_Click(object sender, EventArgs e)
+        { try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/"); } }
+
+        private string[] MSG = new string[2];
+
+        private void MyLang_Load(object sender, EventArgs e)
         {
             MSG[0] = "Warning";
             this.Size = new System.Drawing.Size(485, 429);
@@ -44,6 +59,21 @@ namespace JetpackGUI
                 MSG[0] = LOCAL.Warning;
                 MSG[1] = LOCAL.BrowserNotFound;
             }
+        }
+
+        private int db = 0;
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //if (Data.DebugMode)
+            //{
+            //    try
+            //    {
+            //        db += 1;
+            //        if (db == 10) { WDebug wdb = new WDebug(); wdb.ShowDialog(); }
+            //    }
+            //    catch { }
+            //}
         }
     }
 }

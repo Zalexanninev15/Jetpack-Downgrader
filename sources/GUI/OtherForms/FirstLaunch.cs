@@ -2,22 +2,26 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using VitNX.Win32;
 
 namespace JetpackGUI
 {
     public partial class MyLang : Form
     {
-        [System.Runtime.InteropServices.DllImport("DwmApi")]
-        static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
-        protected override void OnHandleCreated(EventArgs e) { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0) { DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+        }
 
-        GUI mygui = new GUI();
-        XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
-        string[] langs = new string[10];
+        private GUI mygui = new GUI();
+        private XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
+        private string[] langs = new string[10];
 
-        public MyLang() { InitializeComponent(); }
+        public MyLang()
+        { InitializeComponent(); }
 
-        void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (AllLangs.Text != "")
             {
@@ -29,7 +33,7 @@ namespace JetpackGUI
             else { VitNX.Forms.VitNX_MessageBox.ShowInfo("You need to select a language from the list!", "Information"); }
         }
 
-        void MyLang_Load(object sender, EventArgs e)
+        private void MyLang_Load(object sender, EventArgs e)
         {
             this.Size = new System.Drawing.Size(265, 152);
             AllLangs.Items.Clear();
@@ -49,7 +53,7 @@ namespace JetpackGUI
             }
         }
 
-        void AllLangs_SelectedIndexChanged(object sender, EventArgs e)
+        private void AllLangs_SelectedIndexChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < langs.Length; i++)
             {
@@ -62,7 +66,7 @@ namespace JetpackGUI
                         {
                             mygui.Fields.LanguageCode = new FileInfo(langs[i]).Name.Replace(".xml", "");
                             mygui.WriteXml();
-                            MyLang.ActiveForm.Text = LOCAL.FirstTitle;
+                            ActiveForm.Text = LOCAL.FirstTitle;
                             darkLabel1.Text = LOCAL.SelectLang;
                             button2.Text = LOCAL.ApplyAndLaunch;
                         }

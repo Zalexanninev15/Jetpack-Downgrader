@@ -65,7 +65,7 @@
   <AboutModDamaged>Data of modification is damaged!</AboutModDamaged>
   <ModFailure>modification is not installed!</ModFailure>
   <!-- Question messages -->
-  <QEnableDirectPlay>Would you like to enable DirectPlay to launch the game? Current setting for Windows 8.1/10/11 is necessary to support old applications and games</QEnableDirectPlay>
+  <QEnableDirectPlay>Would you like to enable DirectPlay to launch the game? Current setting for Windows 8.1-11 is necessary to support old applications and games</QEnableDirectPlay>
   <WishDownloadPatches>Since the patch files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadPatches>
   <WishDownloadDirectXFiles>Since the additional DirectX files were not found, we will now start downloading them. Would you like to download this files right now?</WishDownloadDirectXFiles>
   <InstallModQuestion>Do you want to install this modification after the downgrade?</InstallModQuestion>

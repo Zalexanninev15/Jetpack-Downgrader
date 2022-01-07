@@ -419,7 +419,7 @@ namespace JetpackGUI
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel1.Location = new System.Drawing.Point(15, 10);
             this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(71, 16);
+            this.darkLabel1.Size = new System.Drawing.Size(70, 16);
             this.darkLabel1.TabIndex = 3;
             this.darkLabel1.Text = "Languages";
             this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -692,7 +692,7 @@ namespace JetpackGUI
             // 
             this.YesInstallMe.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.YesInstallMe.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.YesInstallMe.Font = new System.Drawing.Font("Meiryo", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.YesInstallMe.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.YesInstallMe.Location = new System.Drawing.Point(15, 249);
             this.YesInstallMe.Name = "YesInstallMe";
             this.YesInstallMe.Size = new System.Drawing.Size(299, 30);
@@ -707,7 +707,7 @@ namespace JetpackGUI
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel6.Location = new System.Drawing.Point(14, 89);
             this.darkLabel6.Name = "darkLabel6";
-            this.darkLabel6.Size = new System.Drawing.Size(50, 16);
+            this.darkLabel6.Size = new System.Drawing.Size(49, 16);
             this.darkLabel6.TabIndex = 3;
             this.darkLabel6.Text = "Author:";
             this.darkLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -719,7 +719,7 @@ namespace JetpackGUI
             this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel5.Location = new System.Drawing.Point(14, 64);
             this.darkLabel5.Name = "darkLabel5";
-            this.darkLabel5.Size = new System.Drawing.Size(55, 16);
+            this.darkLabel5.Size = new System.Drawing.Size(54, 16);
             this.darkLabel5.TabIndex = 3;
             this.darkLabel5.Text = "Version:";
             this.darkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -731,7 +731,7 @@ namespace JetpackGUI
             this.nameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.nameLabel.Location = new System.Drawing.Point(15, 40);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(46, 16);
+            this.nameLabel.Size = new System.Drawing.Size(45, 16);
             this.nameLabel.TabIndex = 3;
             this.nameLabel.Text = "Name:";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -755,7 +755,7 @@ namespace JetpackGUI
             this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel9.Location = new System.Drawing.Point(12, 34);
             this.darkLabel9.Name = "darkLabel9";
-            this.darkLabel9.Size = new System.Drawing.Size(123, 16);
+            this.darkLabel9.Size = new System.Drawing.Size(122, 16);
             this.darkLabel9.TabIndex = 3;
             this.darkLabel9.Text = "List of modifications";
             this.darkLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
