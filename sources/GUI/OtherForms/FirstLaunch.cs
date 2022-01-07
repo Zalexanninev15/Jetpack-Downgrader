@@ -11,7 +11,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e)
         {
             if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+                NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
         }
 
         private GUI mygui = new GUI();
@@ -19,7 +19,9 @@ namespace JetpackGUI
         private string[] langs = new string[10];
 
         public MyLang()
-        { InitializeComponent(); }
+        { 
+            InitializeComponent(); 
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {

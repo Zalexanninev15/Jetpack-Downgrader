@@ -30,7 +30,7 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e)
         {
             if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+                NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
         }
 
         private Props config = new Props();
@@ -61,13 +61,23 @@ namespace JetpackGUI
                 SecurityProtocolType.Tls11 |
                 SecurityProtocolType.Tls;
             SetProcessDpiAwareness(PROCESS_DPI_AWARENESS.PROCESS_DPI_UNAWARE);
-            if (!Directory.Exists(@Application.StartupPath + @"\files\patches")) { darkButton4.Visible = true; button1.Visible = false; }
-            if (!Directory.Exists(cache)) { Directory.CreateDirectory(cache); }
-            else { Directory.Delete(cache, true); Directory.CreateDirectory(cache); }
+            if (!Directory.Exists(@Application.StartupPath + @"\files\patches"))
+            { 
+                darkButton4.Visible = true; 
+                button1.Visible = false; 
+            }
+            if (!Directory.Exists(cache))
+                Directory.CreateDirectory(cache);
+            else 
+            { 
+                Directory.Delete(cache, true);
+                Directory.CreateDirectory(cache); 
+            }
             try
             {
                 string[] mf = Directory.GetFiles(@Application.StartupPath + @"\files", "*.zip");
-                for (int i = 0; i < mf.Length; i++) File.Delete(mf[i]);
+                for (int i = 0; i < mf.Length; i++) 
+                    File.Delete(mf[i]);
             }
             catch { }
             fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
@@ -84,7 +94,8 @@ namespace JetpackGUI
                 if ((pingReply.Status == IPStatus.HardwareError) || (pingReply.Status == IPStatus.IcmpError))
                 {
                     DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[27] + " " + lc_text[28], lc_text[33]);
-                    if (result == DialogResult.No) { Application.Exit(); }
+                    if (result == DialogResult.No)
+                        Application.Exit();
                 }
             }
             catch
@@ -130,8 +141,12 @@ namespace JetpackGUI
             {
                 NotDone = false;
                 bool all_patches = true;
-                for (int i = 2; i < fl.Length; i++) { if (!File.Exists(@Application.StartupPath + @"\files\patches" + fl[i] + ".jpp")) { all_patches = false; } }
-                if (!File.Exists(@Application.StartupPath + @"\files\patches\game.jpp")) { all_patches = false; }
+                for (int i = 2; i < fl.Length; i++) 
+                { if (!File.Exists(@Application.StartupPath + @"\files\patches" + fl[i] + ".jpp")) 
+                    all_patches = false;
+                }
+                if (!File.Exists(@Application.StartupPath + @"\files\patches\game.jpp")) 
+                    all_patches = false;
                 if (all_patches == true)
                 {
                     if (Directory.Exists(@GamePath.Text) && (File.Exists(@GamePath.Text + @"\gta_sa.exe") || File.Exists(@GamePath.Text + @"\gta-sa.exe")))
@@ -144,7 +159,11 @@ namespace JetpackGUI
                             int d = 0;
                             Process.Start(@Application.StartupPath + @"\files\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
                             string str = "jpd";
-                            foreach (Process process2 in Process.GetProcesses()) { if (!process2.ProcessName.ToLower().Contains(str.ToLower())) { d = 1; } }
+                            foreach (Process process2 in Process.GetProcesses()) 
+                            { 
+                                if (!process2.ProcessName.ToLower().Contains(str.ToLower())) 
+                                    d = 1;
+                            }
                             if ((d == 1) && Directory.Exists(cache + @"\zips"))
                             {
                                 File.WriteAllBytes(cache + @"\zips\ASI_Loader.zip", Properties.Resources.ASILoader);
@@ -158,16 +177,27 @@ namespace JetpackGUI
                                         try
                                         {
                                             TbProgressBar.SetValue(Handle, i, modsZip.Length);
-                                            if (checkBox3.Checked == false) Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
-                                            else Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit();
-                                            if (modName != "ASI_Loader") MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
-                                            if ((modName == "ASI_Loader") && (modsZip.Length == 1)) MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
+                                            if (checkBox3.Checked == false) 
+                                                Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
+                                            else
+                                                Process.Start(@Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit();
+                                            if (modName != "ASI_Loader") 
+                                                MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
+                                            if ((modName == "ASI_Loader") && (modsZip.Length == 1)) 
+                                                MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
                                         }
-                                        catch { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgError(lc_text[6] + " \"" + modName + "\" " + lc_text[22]); }
+                                        catch 
+                                        { 
+                                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
+                                            MsgError(lc_text[6] + " \"" + modName + "\" " + lc_text[22]); 
+                                        }
                                     }
                                     else
                                     {
-                                        if (checkBox3.Checked == true) { MessageBox.Show(lc_text[29] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc_text[30], lc_text[11], MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification); }
+                                        if (checkBox3.Checked == true) 
+                                        {
+                                            VitNX_MessageBox.ShowWarning(lc_text[29] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc_text[30], lc_text[11]); 
+                                        }
                                         File.Move(modsZip[i], modsZip[i].Replace(".zip", ".exe"));
                                         Process.Start(modsZip[i].Replace(".zip", ".exe")).WaitForExit();
                                         File.Move(modsZip[i].Replace(".zip", ".exe"), modsZip[i]);
@@ -177,8 +207,16 @@ namespace JetpackGUI
                             }
                             TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
                             button1.Enabled = true;
-                            if (checkBox1.Checked == true) { pictureBox10.Visible = true; IsBak = true; }
-                            if (checkBox3.Checked == false) { pictureBox10.Visible = true; IsBak = true; }
+                            if (checkBox1.Checked == true) 
+                            { 
+                                pictureBox10.Visible = true; 
+                                IsBak = true;
+                            }
+                            if (checkBox3.Checked == false) 
+                            { 
+                                pictureBox10.Visible = true;
+                                IsBak = true; 
+                            }
                             progressPanel.Visible = true;
                             stagesPanel.Visible = false;
                             labelPartProgress.Visible = false;
@@ -190,7 +228,12 @@ namespace JetpackGUI
                             darkButton5.Visible = true;
                         }
                     }
-                    else { MsgWarning(lc_text[25]); pictureBox10.Visible = false; IsBak = false; NotDone = true; }
+                    else 
+                    { 
+                        MsgWarning(lc_text[25]);
+                        pictureBox10.Visible = false;
+                        IsBak = false; NotDone = true;
+                    }
                 }
                 else
                 {
@@ -380,10 +423,7 @@ namespace JetpackGUI
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage");
-            }
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); }
             catch
             {
                 MsgWarning(lc_text[26]);
@@ -450,8 +490,16 @@ namespace JetpackGUI
             }
             else
             {
-                if (tabFix == false) { DSPanel.Visible = false; ModsPanel.Visible = false; }
-                else { tabFix = false; ModsPanel.Visible = false; }
+                if (tabFix == false) 
+                { 
+                    DSPanel.Visible = false; 
+                    ModsPanel.Visible = false; 
+                }
+                else 
+                { 
+                    tabFix = false;
+                    ModsPanel.Visible = false;
+                }
             }
         }
 
@@ -498,12 +546,30 @@ namespace JetpackGUI
                         DSPanel.Visible = true;
                         ModsPanel.Visible = true;
                     }
-                    catch { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+                    catch 
+                    { 
+                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); 
+                        MsgWarning(lc_text[27]);
+                        ModsPanel.Visible = false;
+                        DSPanel.Visible = false;
+                        tabFix = false;
+                    }
                     TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
                 }
-                else { ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+                else 
+                { 
+                    ModsPanel.Visible = false; 
+                    DSPanel.Visible = false; 
+                    tabFix = false; 
+                }
             }
-            catch { MsgWarning(lc_text[27]); ModsPanel.Visible = false; DSPanel.Visible = false; tabFix = false; }
+            catch 
+            { 
+                MsgWarning(lc_text[27]);
+                ModsPanel.Visible = false;
+                DSPanel.Visible = false;
+                tabFix = false; 
+            }
         }
 
         private bool IsInstaller(string file)
@@ -640,7 +706,12 @@ namespace JetpackGUI
                     lc_text[32] = LOCAL.Deactivation;
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); Application.Exit(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error loading the localization file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                Application.Exit(); 
+            }
         }
 
         private void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -712,7 +783,11 @@ namespace JetpackGUI
                         File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
                 }
             }
-            catch { MsgWarning(lc_text[27]); YesInstallMe.Checked = false; }
+            catch 
+            { 
+                MsgWarning(lc_text[27]);
+                YesInstallMe.Checked = false;
+            }
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
@@ -732,9 +807,16 @@ namespace JetpackGUI
                             try { MegaDownloader("https://mega.nz/file/0pFRwAqa#Arguk9cQLpXYeQgXnFfAp6cw6F5OIZFKP2tRTwNCArI", @Application.StartupPath + @"\files\ddirectx.7z", lc_text[5], 1); }
                             catch { checkBox8.Checked = false; }
                         }
-                        else { checkBox8.Checked = false; }
+                        else 
+                            checkBox8.Checked = false;
                     }
-                    catch { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); checkBox8.Checked = false; TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress); }
+                    catch
+                    { 
+                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); 
+                        MsgWarning(lc_text[27]);
+                        checkBox8.Checked = false;
+                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress); 
+                    }
                 }
             }
             config.Fields.InstallDirectXComponents = checkBox8.Checked;
@@ -747,8 +829,20 @@ namespace JetpackGUI
             if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\downgrader.xml"); }
             if (e.KeyData == Keys.F12)
             {
-                if (db == false) { MsgWarning(lc_text[31]); config.Fields.UserMode = false; config.WriteXml(); db = true; }
-                else { MsgWarning(lc_text[32]); config.Fields.UserMode = true; config.WriteXml(); db = false; }
+                if (db == false) 
+                {
+                    MsgWarning(lc_text[31]);
+                    config.Fields.UserMode = false;
+                    config.WriteXml();
+                    db = true; 
+                }
+                else
+                {
+                    MsgWarning(lc_text[32]);
+                    config.Fields.UserMode = true;
+                    config.WriteXml();
+                    db = false; 
+                }
                 Data.DebugMode = db;
             }
             if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.O))
@@ -761,17 +855,40 @@ namespace JetpackGUI
                     SelectPathToGame();
                 }
             }
-            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.Y)) { if (GamePath.Text != "") { pictureBox11_Click(sender, e); } }
-            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.Z)) { if (IsBak == true) { pictureBox10_Click(sender, e); } }
-            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.S)) { if ((IsDD == false) && (sp == true)) { button1_Click(sender, e); } }
+            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.Y)) 
+            { 
+                if (GamePath.Text != "") 
+                    pictureBox11_Click(sender, e);
+            }
+            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.Z)) 
+            { 
+                if (IsBak == true) 
+                    pictureBox10_Click(sender, e);
+            }
+            if ((e.Modifiers == Keys.Control) && (e.KeyCode == Keys.S))
+            { 
+                if ((IsDD == false) && (sp == true)) 
+                    button1_Click(sender, e);
+            }
         }
 
         private void darkButton1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
-                try { if (ScreenShot.ImageLocation == photos_links[i]) { ScreenShot.ImageLocation = photos_links[i + 1]; i = photos_links.Length + 1; } }
-                catch { ScreenShot.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+                try 
+                { 
+                    if (ScreenShot.ImageLocation == photos_links[i]) 
+                    {
+                        ScreenShot.ImageLocation = photos_links[i + 1];
+                        i = photos_links.Length + 1;
+                    } 
+                }
+                catch 
+                { 
+                    ScreenShot.ImageLocation = photos_links[i]; 
+                    i = photos_links.Length + 1; 
+                }
             }
         }
 
@@ -779,8 +896,19 @@ namespace JetpackGUI
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
-                try { if (ScreenShot.ImageLocation == photos_links[i]) { ScreenShot.ImageLocation = photos_links[i - 1]; i = photos_links.Length + 1; } }
-                catch { ScreenShot.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+                try 
+                { 
+                    if (ScreenShot.ImageLocation == photos_links[i])
+                    { 
+                        ScreenShot.ImageLocation = photos_links[i - 1]; 
+                        i = photos_links.Length + 1; 
+                    }
+                }
+                catch 
+                {
+                    ScreenShot.ImageLocation = photos_links[i]; 
+                    i = photos_links.Length + 1;
+                }
             }
         }
 
@@ -815,12 +943,28 @@ namespace JetpackGUI
                 if (result == DialogResult.Yes)
                 {
                     try { MegaDownloader("https://mega.nz/file/4tcXiSqA#8JzulAC0oABzinb7914sq2xkyxE7c6atSeMval-YWms", @Application.StartupPath + @"\files\dpatches.rar", lc_text[4], 0); }
-                    catch { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
+                    catch
+                    { 
+                        progressPanel.Visible = false; 
+                        stagesPanel.Visible = true;
+                        button1.Visible = false;
+                    }
                 }
-                else { progressPanel.Visible = false; stagesPanel.Visible = true; button1.Visible = false; }
+                else
+                { 
+                    progressPanel.Visible = false; 
+                    stagesPanel.Visible = true; 
+                    button1.Visible = false;
+                }
             }
-            catch { TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); MsgWarning(lc_text[27]); TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress); }
-            if (IsOnePointNull == true) { button1.Visible = false; }
+            catch
+            {
+                TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error); 
+                MsgWarning(lc_text[27]); 
+                TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
+            }
+            if (IsOnePointNull == true) 
+                button1.Visible = false;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -853,20 +997,70 @@ namespace JetpackGUI
             if (GamePath.Text != "")
             {
                 pictureBox11.Visible = true;
-                for (int i = 0; i < fl.Length; i++) { Data.PathToGame = GamePath.Text; if (File.Exists(GamePath.Text + fl[i] + ".jpb")) { pictureBox10.Visible = true; IsBak = true; } }
-                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin")))) { pictureBox10.Visible = true; IsBak = true; Data.PathToGame = GamePath.Text; }
+                for (int i = 0; i < fl.Length; i++) 
+                { 
+                    Data.PathToGame = GamePath.Text;
+                    if (File.Exists(GamePath.Text + fl[i] + ".jpb")) 
+                    { 
+                        pictureBox10.Visible = true; 
+                        IsBak = true; 
+                    } 
+                }
+                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || 
+                    (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && 
+                    ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || 
+                    (!File.Exists(@GamePath.Text + @"\index.bin"))))
+                { 
+                    pictureBox10.Visible = true; 
+                    IsBak = true;
+                    Data.PathToGame = GamePath.Text; 
+                }
                 if (File.Exists(GamePath.Text + @"\gta_sa.exe"))
                 {
-                    if ((GetMD5(@GamePath.Text + @"\gta_sa.exe") != "E7697A085336F974A4A6102A51223960") && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "170B3A9108687B26DA2D8901C6948A18") && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "91A9F6611ADDFB46682B56F9E247DB84") && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "9369501599574D19AC93DE41547C4EC1")) { checkBox5.Visible = false; checkBox5.Checked = false; IsOnePointNull = false; button1.Visible = true; }
-                    else { checkBox5.Visible = true; IsOnePointNull = true; button1.Visible = false; }
+                    if ((GetMD5(@GamePath.Text + @"\gta_sa.exe") != "E7697A085336F974A4A6102A51223960") 
+                        && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "170B3A9108687B26DA2D8901C6948A18")
+                        && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "91A9F6611ADDFB46682B56F9E247DB84") 
+                        && (GetMD5(@GamePath.Text + @"\gta_sa.exe") != "9369501599574D19AC93DE41547C4EC1")) 
+                    { 
+                        checkBox5.Visible = false;
+                        checkBox5.Checked = false; 
+                        IsOnePointNull = false; 
+                        button1.Visible = true; 
+                    }
+                    else 
+                    { 
+                        checkBox5.Visible = true; 
+                        IsOnePointNull = true;
+                        button1.Visible = false;
+                    }
                 }
                 else
                 {
-                    if ((GetMD5(@GamePath.Text + @"\gta-sa.exe") != "E7697A085336F974A4A6102A51223960") && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "170B3A9108687B26DA2D8901C6948A18") && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "91A9F6611ADDFB46682B56F9E247DB84") && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "9369501599574D19AC93DE41547C4EC1")) { checkBox5.Visible = false; checkBox5.Checked = false; IsOnePointNull = false; button1.Visible = true; }
-                    else { checkBox5.Visible = true; IsOnePointNull = true; button1.Visible = false; }
+                    if ((GetMD5(@GamePath.Text + @"\gta-sa.exe") != "E7697A085336F974A4A6102A51223960") 
+                        && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "170B3A9108687B26DA2D8901C6948A18") 
+                        && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "91A9F6611ADDFB46682B56F9E247DB84") 
+                        && (GetMD5(@GamePath.Text + @"\gta-sa.exe") != "9369501599574D19AC93DE41547C4EC1")) 
+                    { 
+                        checkBox5.Visible = false;
+                        checkBox5.Checked = false;
+                        IsOnePointNull = false; 
+                        button1.Visible = true; 
+                    }
+                    else
+                    { 
+                        checkBox5.Visible = true; 
+                        IsOnePointNull = true;
+                        button1.Visible = false; 
+                    }
                 }
             }
-            else { pictureBox11.Visible = false; pictureBox10.Visible = false; IsBak = false; IsOnePointNull = false; }
+            else 
+            { 
+                pictureBox11.Visible = false;
+                pictureBox10.Visible = false;
+                IsBak = false; 
+                IsOnePointNull = false; 
+            }
         }
 
         private void pictureBox10_Click(object sender, EventArgs e)
@@ -892,7 +1086,11 @@ namespace JetpackGUI
                             {
                                 if (File.Exists(@GamePath.Text + fl[i] + ".jpb"))
                                 {
-                                    try { File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal); File.Delete(@GamePath.Text + fl[i]); }
+                                    try 
+                                    {
+                                        File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal); 
+                                        File.Delete(@GamePath.Text + fl[i]); 
+                                    }
                                     catch { }
                                     try
                                     {
@@ -906,14 +1104,21 @@ namespace JetpackGUI
                                 {
                                     if (File.Exists(@GamePath.Text + fl[0]))
                                     {
-                                        try { File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal); File.Delete(@GamePath.Text + fl[i]); } catch { }
+                                        try 
+                                        { 
+                                            File.SetAttributes(@GamePath.Text + fl[i], FileAttributes.Normal);
+                                            File.Delete(@GamePath.Text + fl[i]);
+                                        } catch { }
                                         try { File.Copy(@GamePath.Text + fl[0], @GamePath.Text + fl[1]); } catch { }
                                     }
                                 }
                                 originalGameRestoreProgressBar.Value = i + 1;
                                 TbProgressBar.SetValue(Handle, i + 1, fl.Length);
                             }
-                            if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") || (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) || (!File.Exists(@GamePath.Text + @"\index.bin"))))
+                            if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") ||
+                            (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) && 
+                            ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) ||
+                            (!File.Exists(@GamePath.Text + @"\index.bin"))))
                             {
                                 TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Indeterminate);
                                 var restoreRGLfiles = new ProcessStartInfo
@@ -935,8 +1140,16 @@ namespace JetpackGUI
                     }
                     else
                     {
-                        try { File.SetAttributes(@GamePath.Text + @"\gta_sa.exe.jpb", FileAttributes.Normal); File.Delete(@GamePath.Text + @"\gta_sa.exe.jpb"); } catch { }
-                        try { File.SetAttributes(@GamePath.Text + @"\gta-sa.exe.jpb", FileAttributes.Normal); File.Delete(@GamePath.Text + @"\gta-sa.exe.jpb"); } catch { }
+                        try
+                        {
+                            File.SetAttributes(@GamePath.Text + @"\gta_sa.exe.jpb", FileAttributes.Normal);
+                            File.Delete(@GamePath.Text + @"\gta_sa.exe.jpb"); 
+                        } catch { }
+                        try 
+                        { 
+                            File.SetAttributes(@GamePath.Text + @"\gta-sa.exe.jpb", FileAttributes.Normal); 
+                            File.Delete(@GamePath.Text + @"\gta-sa.exe.jpb"); 
+                        } catch { }
                         MsgInfo(lc_text[20]);
                         pictureBox10.Visible = false;
                         IsBak = false;
@@ -973,16 +1186,40 @@ namespace JetpackGUI
 
         private void progressPanel_VisibleChanged(object sender, EventArgs e)
         {
-            if (progressPanel.Visible == true) { LangsPanel.Visible = false; HelloUser.Visible = false; pictureBox5.Visible = false; pictureBox6.Visible = false; pictureBox7.Visible = false; }
-            else { HelloUser.Visible = true; pictureBox5.Visible = true; pictureBox6.Visible = true; pictureBox7.Visible = true; }
+            if (progressPanel.Visible == true)
+            {
+                LangsPanel.Visible = false;
+                HelloUser.Visible = false;
+                pictureBox5.Visible = false;
+                pictureBox6.Visible = false; 
+                pictureBox7.Visible = false; 
+            }
+            else
+            { 
+                HelloUser.Visible = true; 
+                pictureBox5.Visible = true;
+                pictureBox6.Visible = true;
+                pictureBox7.Visible = true; 
+            }
         }
 
         private void darkButton8_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
-                try { if (ScreenShotInViewer.ImageLocation == photos_links[i]) { ScreenShotInViewer.ImageLocation = photos_links[i + 1]; i = photos_links.Length + 1; } }
-                catch { ScreenShotInViewer.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+                try 
+                { 
+                    if (ScreenShotInViewer.ImageLocation == photos_links[i])
+                    { 
+                        ScreenShotInViewer.ImageLocation = photos_links[i + 1]; 
+                        i = photos_links.Length + 1;
+                    }
+                }
+                catch
+                { 
+                    ScreenShotInViewer.ImageLocation = photos_links[i];
+                    i = photos_links.Length + 1;
+                }
             }
         }
 
@@ -990,8 +1227,19 @@ namespace JetpackGUI
         {
             for (int i = 0; i < photos_links.Length; i++)
             {
-                try { if (ScreenShotInViewer.ImageLocation == photos_links[i]) { ScreenShotInViewer.ImageLocation = photos_links[i - 1]; i = photos_links.Length + 1; } }
-                catch { ScreenShotInViewer.ImageLocation = photos_links[i]; i = photos_links.Length + 1; }
+                try 
+                { 
+                    if (ScreenShotInViewer.ImageLocation == photos_links[i])
+                    {
+                        ScreenShotInViewer.ImageLocation = photos_links[i - 1]; 
+                        i = photos_links.Length + 1; 
+                    } 
+                }
+                catch 
+                { 
+                    ScreenShotInViewer.ImageLocation = photos_links[i];
+                    i = photos_links.Length + 1; 
+                }
             }
         }
 

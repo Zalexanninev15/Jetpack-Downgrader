@@ -16,12 +16,15 @@ namespace JetpackGUI
         public GUI_Settings Fields;
 
         public GUI()
-        { Fields = new GUI_Settings(); }
+        { 
+            Fields = new GUI_Settings();
+        }
 
         public void WriteXml()
         {
             XmlSerializer ser = new XmlSerializer(typeof(GUI_Settings));
-            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\gui.xml")) { ser.Serialize(writer, Fields); }
+            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\gui.xml"))
+                ser.Serialize(writer, Fields);
         }
 
         public void ReadXml()
@@ -29,7 +32,8 @@ namespace JetpackGUI
             if (File.Exists(Application.StartupPath + @"\files\gui.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(GUI_Settings));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml")) { Fields = ser.Deserialize(reader) as GUI_Settings; }
+                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml")) 
+                    Fields = ser.Deserialize(reader) as GUI_Settings;
             }
         }
     }

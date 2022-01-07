@@ -7,16 +7,16 @@ namespace JetpackGUI
 {
     public class SettingsEditor
     {
-        public Boolean CreateBackups = false;
-        public Boolean CreateShortcut = true;
-        public Boolean ResetGame = true;
-        public Boolean RGL_GarbageCleaning = false;
-        public Boolean RegisterGamePath = false;
-        public Boolean CopyGameToNewPath = true;
-        public Boolean EnableDirectPlay = true;
-        public Boolean InstallDirectXComponents = false;
-        public Boolean Forced = false;
-        public Boolean UserMode = true;
+        public bool CreateBackups = false;
+        public bool CreateShortcut = true;
+        public bool ResetGame = true;
+        public bool RGL_GarbageCleaning = false;
+        public bool RegisterGamePath = false;
+        public bool CopyGameToNewPath = true;
+        public bool EnableDirectPlay = true;
+        public bool InstallDirectXComponents = false;
+        public bool Forced = false;
+        public bool UserMode = true;
     }
 
     public class Props
@@ -29,7 +29,8 @@ namespace JetpackGUI
         public void WriteXml()
         {
             XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\downgrader.xml")) { ser.Serialize(writer, Fields); }
+            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\downgrader.xml")) 
+                ser.Serialize(writer, Fields);
         }
 
         public void ReadXml()
@@ -37,7 +38,8 @@ namespace JetpackGUI
             if (File.Exists(Application.StartupPath + @"\files\downgrader.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\downgrader.xml")) { Fields = ser.Deserialize(reader) as SettingsEditor; }
+                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\downgrader.xml")) 
+                    Fields = ser.Deserialize(reader) as SettingsEditor;
             }
         }
     }

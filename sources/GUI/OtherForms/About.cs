@@ -13,26 +13,58 @@ namespace JetpackGUI
         protected override void OnHandleCreated(EventArgs e)
         {
             if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-            { NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); }
+                NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
         }
 
         public About()
-        { InitializeComponent(); }
+        { 
+            InitializeComponent(); 
+        }
 
         private void MsgWarning()
-        { VitNX_MessageBox.ShowWarning(MSG[1], MSG[0]); }
+        { 
+            VitNX_MessageBox.ShowWarning(MSG[1], MSG[0]); 
+        }
 
         private void darkButton1_Click(object sender, EventArgs e)
-        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } }
+        { 
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); } 
+            catch 
+            { 
+                MsgWarning(); 
+                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); 
+            } 
+        }
 
         private void darkButton1_Click_1(object sender, EventArgs e)
-        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } }
+        { 
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); } 
+            catch 
+            {
+                MsgWarning(); 
+                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); 
+            } 
+        }
 
         private void darkButton3_Click(object sender, EventArgs e)
-        { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader"); } }
+        {
+            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); }
+            catch 
+            {
+                MsgWarning();
+                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader");
+            } 
+        }
 
         private void darkButton4_Click(object sender, EventArgs e)
-        { try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); } catch { MsgWarning(); Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/"); } }
+        { 
+            try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); } 
+            catch 
+            { 
+                MsgWarning(); 
+                Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/");
+            } 
+        }
 
         private string[] MSG = new string[2];
 
