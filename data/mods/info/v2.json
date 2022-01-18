@@ -1,0 +1,123 @@
+{
+  "SilentPatch": {
+    "Name": "SilentPatch",
+    "Version": "1.1 (22.02.2020)",
+    "Author": "Silent",
+    "Description": "This game has tons of issues and bugs. This modification attempts to fix at least some of them",
+    "Site": "https://gtaforums.com/topic/669045-silentpatch",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SilentPatch_scr3.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SilentPatch.zip"
+  },
+  "ModLoader": {
+    "Name": "Mod Loader",
+    "Version": "0.3.7 (20.01.2018)",
+    "Author": "Link2012",
+    "Description": "Plugin that adds an extremely user-friendly and easy way to install and uninstall your modifications, without even messing around anything in your game installation",
+    "Site": "https://gtaforums.com/topic/669520-mod-loader",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/ModLoader_scr3.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/ModLoader.zip"
+  },
+  "WidescreenFix": {
+    "Name": "Widescreen Fix",
+    "Version": "1.0 (16.05.2020)",
+    "Author": "ThirteenAG",
+    "Description": "This game has a poor widescreen support. This modification improves widescreen resolution",
+    "Site": "https://gtaforums.com/topic/547841-gtanfsmpother-widescreen-fixes-pack",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/WidescreenFix_scr123.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/WidescreenFix.zip"
+  },
+  "SkyGFX": {
+    "Name": "SkyGFX",
+    "Version": "4.2 (08.05.2021)",
+    "Author": "aap/The Hero",
+    "Description": "Brings accurate PS2 and Xbox graphics to the PC version of San Andreas",
+    "Site": "https://gtaforums.com/topic/750681-skygfx-ps2-xbox-and-mobile-graphics-for-pc/",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SkyGFX_scr3.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SkyGfx.zip"
+  },
+  "RemasteredGUI": {
+    "Name": "Remastered GUI",
+    "Version": "1.0 (07.03.2015)",
+    "Author": "Ash_735",
+    "Description": "A package of improved textures of the game interface and game objects, some of the textures are taken from the mobile version of the game, in which the graphics quality is noticeably higher",
+    "Site": "https://www.gtagarage.com/mods/show.php?id=27017",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/RemasteredGUI_scr3.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/RemasteredGUIforSA.zip"
+  },
+  "Project2DFX": {
+    "Name": "Project2DFX",
+    "Version": "4.4 (13.04.2015)",
+    "Author": "ThirteenAG",
+    "Description": "A set of plugins for GTA III, Vice City, San Andreas and GTA IV (EFLC), which adds the LOD crown effect to the game map, making the Old World much better",
+    "Site": "https://thirteenag.github.io/p2dfx",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/Project2DFX_scr1.jpg",
+    "Screenshot1": "https://thirteenag.github.io/screens/2dfx/p2dfx_gtasaa.jpg",
+    "Screenshot2": "https://thirteenag.github.io/screens/2dfx/p2dfx_gtasab.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/Project2DFX.zip"
+  },
+  "SAMP": {
+    "Name": "San Andreas Multiplayer",
+    "Version": "0.3.7-R4 (01.05.2015)",
+    "Author": "San Andreas Multiplayer team",
+    "Description": "A free Massively Multiplayer Online game mod for the PC version of Rockstar Games Grand Theft Auto: San Andreas",
+    "Site": "https://www.sa-mp.com",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/SAMP_scr3.jpg",
+    "File": "https://files.sa-mp.com/sa-mp-0.3.7-R4-2-install.exe"
+  },
+  "MTA": {
+    "Name": "Multi Theft Auto",
+    "Version": "1.5.9 (01.10.2021)",
+    "Author": "Multi Theft Auto team",
+    "Description": "A game engine that incorporates an extendable network play element into a proprietary commercial single-player game",
+    "Site": "https://multitheftauto.com/",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/MTA_scr3.jpg",
+    "File": "https://mega.nz/file/0sszjALK#5R6VKaCjxcz3lCeSA4xWwP3uakDGhbg2zPLZbMOEn6c"
+  },
+  "GInput": {
+    "Name": "GInput",
+    "Version": "1.11 (10.02.2016)",
+    "Author": "Silent",
+    "Description": "This game has a poor gamepad support. This modification brings full XInput support for those who want to play the game with a joystick",
+    "Site": "https://gtaforums.com/topic/562765-ginput",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr1.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr2.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/GInput_scr3.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/GInput.zip"
+  },
+  "CLEO4": {
+    "Name": "CLEO 4",
+    "Version": "4.4.0 (24.10.2020)",
+    "Author": "Seemann",
+    "Description": "A hugely popular extensible plugin allowing the use of thousands of unique mods which change or expand the gameplay",
+    "Site": "https://cleo.li",
+    "Logo": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg",
+    "Screenshot1": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg",
+    "Screenshot2": "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/CLEO4_scr123.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/CLEO4.zip"
+  },
+  "SAMPGraphicRestore": {
+    "Name": "SA-MP Graphic Restore",
+    "Version": "1.0 (04.12.2014)",
+    "Author": "nonamenoname",
+    "Description": "Fixes incompatibitities between SA-MP and graphic mods such as ENB and SkyGFX",
+    "Site": "https://gtaforums.com/topic/752667-relsasamp-sampgraphicrestore",
+    "Logo": "http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg",
+    "Screenshot1": "http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg",
+    "Screenshot2": "http://www.gta-samp.ru/files/SAMPGraphicRestore.jpg",
+    "File": "https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/mods/mirror/zips/SAMPGraphicRestore.zip"
+  }
+}
