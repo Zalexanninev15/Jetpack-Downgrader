@@ -19,8 +19,8 @@ namespace JetpackGUI
         private string[] langs = new string[10];
 
         public MyLang()
-        { 
-            InitializeComponent(); 
+        {
+            InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)

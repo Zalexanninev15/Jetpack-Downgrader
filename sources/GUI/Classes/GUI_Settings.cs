@@ -16,7 +16,7 @@ namespace JetpackGUI
         public GUI_Settings Fields;
 
         public GUI()
-        { 
+        {
             Fields = new GUI_Settings();
         }
 
@@ -32,7 +32,7 @@ namespace JetpackGUI
             if (File.Exists(Application.StartupPath + @"\files\gui.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(GUI_Settings));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml")) 
+                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\gui.xml"))
                     Fields = ser.Deserialize(reader) as GUI_Settings;
             }
         }

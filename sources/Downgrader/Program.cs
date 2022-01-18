@@ -15,8 +15,8 @@ namespace JetpackDowngrader
         {
             string[] fl = new string[17];
             string[] flmd5 = new string[17];
-            int er = 0, gv = 0; 
-            bool[] settings = new bool[10]; 
+            int er = 0, gv = 0;
+            bool[] settings = new bool[10];
             string path = "";
 
             Console.ResetColor();
@@ -24,38 +24,38 @@ namespace JetpackDowngrader
             Application.SetCompatibleTextRenderingDefault(false);
             // All files for downgrading (universal)
             fl[0] = @"\gta-sa.exe";
-            fl[1] = @"\gta_sa.exe"; 
-            fl[2] = @"\audio\CONFIG\TrakLkup.dat"; 
+            fl[1] = @"\gta_sa.exe";
+            fl[2] = @"\audio\CONFIG\TrakLkup.dat";
             fl[3] = @"\audio\streams\BEATS";
             fl[4] = @"\audio\streams\CH";
             fl[5] = @"\audio\streams\CR";
             fl[6] = @"\audio\streams\CUTSCENE";
             fl[7] = @"\audio\streams\DS";
-            fl[8] = @"\audio\streams\MH"; 
-            fl[9] = @"\audio\streams\MR"; 
-            fl[10] = @"\audio\streams\RE"; 
+            fl[8] = @"\audio\streams\MH";
+            fl[9] = @"\audio\streams\MR";
+            fl[10] = @"\audio\streams\RE";
             fl[11] = @"\audio\streams\RG";
             fl[12] = @"\anim\anim.img";
-            fl[13] = @"\data\script\main.scm"; 
-            fl[14] = @"\data\script\script.img"; 
+            fl[13] = @"\data\script\main.scm";
+            fl[14] = @"\data\script\script.img";
             fl[15] = @"\models\gta_int.img";
             fl[16] = @"\models\gta3.img";
             // Original MD5 for files from game version 1.0
-            flmd5[0] = "170B3A9108687B26DA2D8901C6948A18"; 
-            flmd5[1] = "E7697A085336F974A4A6102A51223960"; 
-            flmd5[2] = "528E75D663B8BAE072A01351081A2145"; 
+            flmd5[0] = "170B3A9108687B26DA2D8901C6948A18";
+            flmd5[1] = "E7697A085336F974A4A6102A51223960";
+            flmd5[2] = "528E75D663B8BAE072A01351081A2145";
             flmd5[3] = "E26D86C7805D090D8210086876D6C35C";
-            flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F"; 
-            flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B"; 
-            flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D"; 
+            flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F";
+            flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B";
+            flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D";
             flmd5[7] = "9B4C18E4F3E82F0FEE41E30B2EA2246A";
-            flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; 
-            flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; 
-            flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; 
+            flmd5[8] = "909E7C4A7A29473E3885A96F987D7221";
+            flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2";
+            flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA";
             flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
-            flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; 
-            flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; 
-            flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; 
+            flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02";
+            flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93";
+            flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE";
             flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
             //
@@ -72,22 +72,22 @@ namespace JetpackDowngrader
             //}
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + 
+            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT" +
                 "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)" +
                 "\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n\n[App] Start of log output...");
             Console.ResetColor();
             try
             {
-                settings[0] = false; 
-                settings[1] = true; 
-                settings[2] = true; 
+                settings[0] = false;
+                settings[1] = true;
+                settings[2] = true;
                 settings[3] = false;
                 settings[4] = false;
                 settings[5] = true;
                 settings[6] = true;
-                settings[7] = false; 
-                settings[8] = false; 
+                settings[7] = false;
+                settings[8] = false;
                 settings[9] = true;
                 if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml"))
                 {
@@ -95,15 +95,15 @@ namespace JetpackDowngrader
                     using (StringReader reader = new StringReader(File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml")))
                     {
                         var bool_settings = (SettingsEditor)serializer.Deserialize(reader);
-                        settings[0] = bool_settings.CreateBackups; 
-                        settings[1] = bool_settings.CreateShortcut; 
+                        settings[0] = bool_settings.CreateBackups;
+                        settings[1] = bool_settings.CreateShortcut;
                         settings[2] = bool_settings.ResetGame;
                         settings[3] = bool_settings.RGLGarbageCleaning;
-                        settings[4] = bool_settings.RegisterGamePath; 
+                        settings[4] = bool_settings.RegisterGamePath;
                         settings[5] = bool_settings.CopyGameToNewPath;
-                        settings[6] = bool_settings.EnableDirectPlay; 
+                        settings[6] = bool_settings.EnableDirectPlay;
                         settings[7] = bool_settings.InstallDirectXComponents;
-                        settings[8] = bool_settings.Forced; 
+                        settings[8] = bool_settings.Forced;
                         settings[9] = bool_settings.UserMode;
                     }
                     Logger("App", "downgrader.xml", "true");
@@ -114,7 +114,7 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 try { path = args[0]; } catch { }
-                if (Directory.Exists(@path) == false) 
+                if (Directory.Exists(@path) == false)
                     Logger("Game", "Path", "null");
                 if ((path != "") && Directory.Exists(@path))
                 {
@@ -138,10 +138,10 @@ namespace JetpackDowngrader
                         try
                         {
                             string SteamEXEmd5 = GetMD5(SaEXE);
-                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") 
-                            { 
+                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
+                            {
                                 gv = 1;
-                                Logger("Game", "Version", "Steam"); 
+                                Logger("Game", "Version", "Steam");
                             }
                             else
                             {
@@ -150,13 +150,13 @@ namespace JetpackDowngrader
                                 try
                                 {
                                     string OtherEXEmd5 = GetMD5(SaEXE);
-                                    if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") 
-                                    { 
+                                    if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
+                                    {
                                         gv = 3;
                                         Logger("Game", "Version", "Rockstar Games Launcher");
                                     }
                                     if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
-                                        (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) 
+                                        (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
                                     {
                                         gv = 2;
                                         Logger("Game", "Version", "2.0");
@@ -171,15 +171,15 @@ namespace JetpackDowngrader
                                             (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
                                         {
                                             if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") &&
-                                                (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) 
+                                                (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
                                             {
-                                                gv = 4; 
-                                                Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                                gv = 4;
+                                                Logger("Game", "Version", "Unknown [NOT SUPPORTED]");
                                             }
-                                            else 
-                                            { 
+                                            else
+                                            {
                                                 gv = 6;
-                                                Logger("Game", "Version", "1.01"); 
+                                                Logger("Game", "Version", "1.01");
                                             }
                                         }
                                         else
@@ -192,12 +192,12 @@ namespace JetpackDowngrader
                                 catch
                                 {
                                     gv = 4;
-                                    Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                    Logger("Game", "Version", "Unknown [NOT SUPPORTED]");
                                 }
                             }
                         }
-                        catch 
-                        { 
+                        catch
+                        {
                             gv = 5;
                             er = 1;
                             Logger("Game", "Version", "Unknown [ERROR]");
@@ -209,7 +209,7 @@ namespace JetpackDowngrader
                         try
                         {
                             string OtherEXEmd5 = GetMD5(SaEXE);
-                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") 
+                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                             {
                                 gv = 1;
                                 Logger("Game", "Version", "Steam");
@@ -217,16 +217,16 @@ namespace JetpackDowngrader
                             else
                             {
                                 gv = 4;
-                                if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") 
+                                if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
                                 {
                                     gv = 3;
                                     Logger("Game", "Version", "Rockstar Games Launcher");
                                 }
                                 if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
-                                    (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) 
-                                { 
+                                    (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                {
                                     gv = 2;
-                                    Logger("Game", "Version", "2.0"); 
+                                    Logger("Game", "Version", "2.0");
                                 }
                                 if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") &&
                                     (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") &&
@@ -238,10 +238,10 @@ namespace JetpackDowngrader
                                         (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
                                     {
                                         if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") &&
-                                            (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) 
-                                        { 
+                                            (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE"))
+                                        {
                                             gv = 4;
-                                            Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                            Logger("Game", "Version", "Unknown [NOT SUPPORTED]");
                                         }
                                         else
                                         {
@@ -259,9 +259,9 @@ namespace JetpackDowngrader
                         }
                         catch
                         {
-                            gv = 5; 
-                            er = 1; 
-                            Logger("Game", "Version", "Unknown [ERROR]"); 
+                            gv = 5;
+                            er = 1;
+                            Logger("Game", "Version", "Unknown [ERROR]");
                         }
                     }
                     if ((gv == 4) || (gv == 5)) { Logger("Downgrader", "Process", "Downgrade is not possible!"); }
@@ -327,9 +327,9 @@ namespace JetpackDowngrader
                         }
                         else { Logger("DirectX", "Process", "Installation error"); }
                     }
-                    if ((settings[8] == true) && (gv == 0)) 
+                    if ((settings[8] == true) && (gv == 0))
                     {
-                        gv = 6; 
+                        gv = 6;
                         settings[8] = true;
                     }
                     if ((gv != 0) && (er == 0))
@@ -344,9 +344,9 @@ namespace JetpackDowngrader
                                 File.SetAttributes(@path + fl[1], FileAttributes.Normal);
                                 try { File.SetAttributes(@path + fl[1] + ".jpb", FileAttributes.Normal); } catch { }
                             }
-                            else 
-                            { 
-                                er = 1; 
+                            else
+                            {
+                                er = 1;
                                 Logger("Game", @path + fl[1], "false");
                             }
                         }
@@ -361,25 +361,25 @@ namespace JetpackDowngrader
                                     {
                                         File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                         try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
-                                        if (settings[9] == false) 
+                                        if (settings[9] == false)
                                         {
                                             progress.NotUsed(false);
-                                            Logger("Game", @path + fl[i], "true"); 
+                                            Logger("Game", @path + fl[i], "true");
                                         }
                                     }
-                                    else 
-                                    { 
-                                        er = 1; 
-                                        if (settings[9] == false) 
-                                        { 
+                                    else
+                                    {
+                                        er = 1;
+                                        if (settings[9] == false)
+                                        {
                                             progress.NotUsed(false);
                                             Logger("Game", @path + fl[i], "false");
-                                        } 
+                                        }
                                     }
-                                    if (settings[9] == true) 
+                                    if (settings[9] == true)
                                     {
-                                        progress.SetText("Checking files progress"); 
-                                        progress.Report((double)i / fl.Length); 
+                                        progress.SetText("Checking files progress");
+                                        progress.Report((double)i / fl.Length);
                                     }
                                 }
                             }
@@ -398,25 +398,25 @@ namespace JetpackDowngrader
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                             try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[9] == false)
-                                            { 
+                                            {
                                                 progress.NotUsed(false);
                                                 Logger("Game", @path + fl[i], "true");
                                             }
                                         }
-                                        else 
-                                        { 
-                                            er = 1; 
+                                        else
+                                        {
+                                            er = 1;
                                             if (settings[9] == false)
                                             {
-                                                progress.NotUsed(false); 
+                                                progress.NotUsed(false);
                                                 Logger("Game", @path + fl[i], "false");
-                                            } 
+                                            }
                                         }
                                     }
-                                    if (settings[9] == true) 
+                                    if (settings[9] == true)
                                     {
-                                        progress.SetText("Checking files progress"); 
-                                        progress.Report((double)i / fl.Length); 
+                                        progress.SetText("Checking files progress");
+                                        progress.Report((double)i / fl.Length);
                                     }
                                 }
                             }
@@ -435,25 +435,25 @@ namespace JetpackDowngrader
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                             try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
                                             if (settings[9] == false)
-                                            { 
-                                                progress.NotUsed(false); 
-                                                Logger("Game", @path + fl[i], "true"); 
+                                            {
+                                                progress.NotUsed(false);
+                                                Logger("Game", @path + fl[i], "true");
                                             }
                                         }
                                         else
                                         {
                                             er = 1;
-                                            if (settings[9] == false) 
-                                            { 
-                                                progress.NotUsed(false); 
-                                                Logger("Game", @path + fl[i], "false"); 
+                                            if (settings[9] == false)
+                                            {
+                                                progress.NotUsed(false);
+                                                Logger("Game", @path + fl[i], "false");
                                             }
                                         }
                                     }
-                                    if (settings[9] == true) 
-                                    { 
-                                        progress.SetText("Checking files progress"); 
-                                        progress.Report((double)i / fl.Length); 
+                                    if (settings[9] == true)
+                                    {
+                                        progress.SetText("Checking files progress");
+                                        progress.Report((double)i / fl.Length);
                                     }
                                 }
                             }
@@ -475,42 +475,42 @@ namespace JetpackDowngrader
                                         try
                                         {
                                             GameMD5 = GetMD5(@path + fl[i]);
-                                            if (settings[9] == false) 
+                                            if (settings[9] == false)
                                             {
-                                                progress.NotUsed(false); 
-                                                Logger("GameMD5", @path + fl[i], GameMD5); 
+                                                progress.NotUsed(false);
+                                                Logger("GameMD5", @path + fl[i], GameMD5);
                                             }
                                             if (GameMD5 == flmd5[i])
                                             {
                                                 fisv = true;
                                                 if (settings[9] == false)
                                                 {
-                                                    progress.NotUsed(false); 
+                                                    progress.NotUsed(false);
                                                     Logger("GameMD5", @path + fl[i], "1.0");
                                                 }
                                             }
                                             else
-                                            { 
-                                                if (settings[9] == false) 
-                                                { 
-                                                    progress.NotUsed(false); 
-                                                    Logger("GameMD5", @path + fl[i], "Higher than 1.0!"); 
+                                            {
+                                                if (settings[9] == false)
+                                                {
+                                                    progress.NotUsed(false);
+                                                    Logger("GameMD5", @path + fl[i], "Higher than 1.0!");
                                                 }
                                             }
                                         }
                                         catch
-                                        { 
+                                        {
                                             fisv = true;
                                             if (settings[9] == false)
                                             {
                                                 progress.NotUsed(false);
-                                                Logger("GameMD5", @path + fl[i], "File not found!"); 
-                                            } 
+                                                Logger("GameMD5", @path + fl[i], "File not found!");
+                                            }
                                         }
-                                        if (settings[9] == true) 
+                                        if (settings[9] == true)
                                         {
-                                            progress.SetText("MD5 verification progress"); 
-                                            progress.Report((double)i / fl.Length); 
+                                            progress.SetText("MD5 verification progress");
+                                            progress.Report((double)i / fl.Length);
                                         }
                                     }
                                 }
@@ -527,7 +527,7 @@ namespace JetpackDowngrader
                                             try
                                             {
                                                 GameMD5 = GetMD5(@path + fl[i]);
-                                                if (settings[9] == false) 
+                                                if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
                                                     Logger("GameMD5", @path + fl[i], GameMD5);
@@ -536,24 +536,24 @@ namespace JetpackDowngrader
                                                 {
                                                     fisv = true;
                                                     if (settings[9] == false)
-                                                    { 
+                                                    {
                                                         progress.NotUsed(false);
                                                         Logger("GameMD5", @path + fl[i], "1.0");
                                                     }
                                                 }
-                                                else 
-                                                { 
+                                                else
+                                                {
                                                     if (settings[9] == false)
-                                                    { 
+                                                    {
                                                         progress.NotUsed(false);
-                                                        Logger("GameMD5", @path + fl[i], "Higher than 1.0!"); 
-                                                    } 
+                                                        Logger("GameMD5", @path + fl[i], "Higher than 1.0!");
+                                                    }
                                                 }
                                             }
                                             catch
-                                            { 
-                                                fisv = true; 
-                                                if (settings[9] == false) 
+                                            {
+                                                fisv = true;
+                                                if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
                                                     Logger("GameMD5", @path + fl[i], "File not found!");
@@ -561,7 +561,7 @@ namespace JetpackDowngrader
                                             }
                                         }
                                         if (settings[9] == true)
-                                        { 
+                                        {
                                             progress.SetText("MD5 verification progress");
                                             progress.Report((double)i / fl.Length);
                                         }
@@ -582,35 +582,35 @@ namespace JetpackDowngrader
                                                 GameMD5 = GetMD5(@path + fl[i]);
                                                 if (settings[9] == false)
                                                 {
-                                                    progress.NotUsed(false); 
-                                                    Logger("GameMD5", @path + fl[i], GameMD5); 
+                                                    progress.NotUsed(false);
+                                                    Logger("GameMD5", @path + fl[i], GameMD5);
                                                 }
                                                 if (GameMD5 == flmd5[i])
                                                 {
                                                     fisv = true;
-                                                    if (settings[9] == false) 
-                                                    {
-                                                        progress.NotUsed(false);
-                                                        Logger("GameMD5", @path + fl[i], "1.0"); 
-                                                    }
-                                                }
-                                                else
-                                                { 
                                                     if (settings[9] == false)
                                                     {
                                                         progress.NotUsed(false);
-                                                        Logger("GameMD5", @path + fl[i], "Higher than 1.0!"); 
+                                                        Logger("GameMD5", @path + fl[i], "1.0");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (settings[9] == false)
+                                                    {
+                                                        progress.NotUsed(false);
+                                                        Logger("GameMD5", @path + fl[i], "Higher than 1.0!");
                                                     }
                                                 }
                                             }
-                                            catch 
-                                            { 
+                                            catch
+                                            {
                                                 fisv = true;
-                                                if (settings[9] == false) 
+                                                if (settings[9] == false)
                                                 {
-                                                    progress.NotUsed(false); 
-                                                    Logger("GameMD5", @path + fl[i], "File not found!"); 
-                                                } 
+                                                    progress.NotUsed(false);
+                                                    Logger("GameMD5", @path + fl[i], "File not found!");
+                                                }
                                             }
                                         }
                                         if (settings[9] == true)
@@ -650,12 +650,12 @@ namespace JetpackDowngrader
                                     Logger("Downgrader", "Process", "Create backups...");
                                     if (gv == 6) // 1.01
                                     {
-                                        if (File.Exists(@path + fl[1] + ".jpb")) 
+                                        if (File.Exists(@path + fl[1] + ".jpb"))
                                             File.Delete(@path + fl[1] + ".jpb");
                                         try
-                                        { 
+                                        {
                                             File.Move(@path + fl[1], @path + fl[1] + ".jpb");
-                                            Logger("GameBackup", @path + fl[1], "Done!"); 
+                                            Logger("GameBackup", @path + fl[1], "Done!");
                                         }
                                         catch
                                         {
@@ -667,10 +667,10 @@ namespace JetpackDowngrader
                                     {
                                         if (File.Exists(@path + fl[1] + ".jpb"))
                                             File.Delete(@path + fl[1] + ".jpb");
-                                        try 
-                                        { 
+                                        try
+                                        {
                                             File.Move(@path + fl[1], @path + fl[1] + ".jpb");
-                                            if (settings[9] == false) 
+                                            if (settings[9] == false)
                                                 Logger("GameBackup", @path + fl[1], "Done!");
                                         }
                                         catch { er = 1; if (settings[9] == false) { Logger("GameBackup", @path + fl[1], "File for backup wasn't found!"); } }
@@ -679,29 +679,29 @@ namespace JetpackDowngrader
                                             for (int i = 2; i < fl.Length; i++)
                                             {
                                                 progress.SetColor(ConsoleColor.Blue);
-                                                if (File.Exists(@path + fl[i] + ".jpb")) 
+                                                if (File.Exists(@path + fl[i] + ".jpb"))
                                                     File.Delete(@path + fl[i] + ".jpb");
                                                 try
                                                 {
-                                                    File.Move(@path + fl[i], @path + fl[i] + ".jpb"); 
+                                                    File.Move(@path + fl[i], @path + fl[i] + ".jpb");
                                                     if (settings[9] == false)
-                                                    { 
-                                                        progress.NotUsed(false); 
-                                                        Logger("GameBackup", @path + fl[i], "Done!"); 
+                                                    {
+                                                        progress.NotUsed(false);
+                                                        Logger("GameBackup", @path + fl[i], "Done!");
                                                     }
                                                 }
                                                 catch
-                                                { 
-                                                    er = 1; 
-                                                    if (settings[9] == false) 
+                                                {
+                                                    er = 1;
+                                                    if (settings[9] == false)
                                                     {
                                                         progress.NotUsed(false);
                                                         Logger("GameBackup", @path + fl[i], "File for backup wasn't found!");
-                                                    } 
+                                                    }
                                                 }
-                                                if (settings[9] == true) 
+                                                if (settings[9] == true)
                                                 {
-                                                    progress.SetText("Backup progress"); 
+                                                    progress.SetText("Backup progress");
                                                     progress.Report((double)i / fl.Length);
                                                 }
                                             }
@@ -709,18 +709,18 @@ namespace JetpackDowngrader
                                     }
                                     if (gv == 2) // Version 2.0
                                     {
-                                        if (File.Exists(@path + fl[1] + ".jpb")) 
+                                        if (File.Exists(@path + fl[1] + ".jpb"))
                                             File.Delete(@path + fl[1] + ".jpb");
-                                        try 
+                                        try
                                         {
-                                            File.Move(@path + fl[1], @path + fl[1] + ".jpb"); 
-                                            if (settings[9] == false) 
+                                            File.Move(@path + fl[1], @path + fl[1] + ".jpb");
+                                            if (settings[9] == false)
                                                 Logger("GameBackup", @path + fl[1], "Done!");
                                         }
-                                        catch 
-                                        { 
-                                            er = 1; 
-                                            if (settings[9] == false) 
+                                        catch
+                                        {
+                                            er = 1;
+                                            if (settings[9] == false)
                                                 Logger("GameBackup", @path + fl[1], "File for backup wasn't found!");
                                         }
                                         using (var progress = new ConsoleProgressBar())
@@ -732,23 +732,23 @@ namespace JetpackDowngrader
                                                 {
                                                     if (File.Exists(@path + fl[i] + ".jpb"))
                                                         File.Delete(@path + fl[i] + ".jpb");
-                                                    try 
-                                                    { 
-                                                        File.Move(@path + fl[i], @path + fl[i] + ".jpb"); 
+                                                    try
+                                                    {
+                                                        File.Move(@path + fl[i], @path + fl[i] + ".jpb");
                                                         if (settings[9] == false)
                                                         {
-                                                            progress.NotUsed(false); 
-                                                            Logger("GameBackup", @path + fl[i], "Done!"); 
-                                                        } 
+                                                            progress.NotUsed(false);
+                                                            Logger("GameBackup", @path + fl[i], "Done!");
+                                                        }
                                                     }
-                                                    catch 
-                                                    { 
-                                                        er = 1; 
+                                                    catch
+                                                    {
+                                                        er = 1;
                                                         if (settings[9] == false)
                                                         {
-                                                            progress.NotUsed(false); 
+                                                            progress.NotUsed(false);
                                                             Logger("GameBackup", @path + fl[i], "File for backup wasn't found!");
-                                                        } 
+                                                        }
                                                     }
                                                 }
                                                 if (settings[9] == true)
@@ -761,18 +761,18 @@ namespace JetpackDowngrader
                                     }
                                     if (gv == 1) // Steam version
                                     {
-                                        if (File.Exists(@path + fl[0] + ".jpb")) 
+                                        if (File.Exists(@path + fl[0] + ".jpb"))
                                             File.Delete(@path + fl[0] + ".jpb");
                                         try
                                         {
                                             File.Move(@path + fl[0], @path + fl[0] + ".jpb");
-                                            if (settings[9] == false) 
+                                            if (settings[9] == false)
                                                 Logger("GameBackup", @path + fl[0], "Done!");
                                         }
                                         catch
                                         {
-                                            er = 1; 
-                                            if (settings[9] == false) 
+                                            er = 1;
+                                            if (settings[9] == false)
                                                 Logger("GameBackup", @path + fl[0], "File for backup wasn't found!");
                                         }
                                         using (var progress = new ConsoleProgressBar())
@@ -782,25 +782,25 @@ namespace JetpackDowngrader
                                                 progress.SetColor(ConsoleColor.Blue);
                                                 if (i >= 2)
                                                 {
-                                                    if (File.Exists(@path + fl[i] + ".jpb")) 
+                                                    if (File.Exists(@path + fl[i] + ".jpb"))
                                                         File.Delete(@path + fl[i] + ".jpb");
                                                     try
-                                                    { 
-                                                        File.Move(@path + fl[i], @path + fl[i] + ".jpb"); 
+                                                    {
+                                                        File.Move(@path + fl[i], @path + fl[i] + ".jpb");
                                                         if (settings[9] == false)
-                                                        { 
+                                                        {
                                                             progress.NotUsed(false);
-                                                            Logger("GameBackup", @path + fl[i], "Done!"); 
-                                                        } 
+                                                            Logger("GameBackup", @path + fl[i], "Done!");
+                                                        }
                                                     }
-                                                    catch 
+                                                    catch
                                                     {
                                                         er = 1;
                                                         if (settings[9] == false)
                                                         {
-                                                            progress.NotUsed(false); 
+                                                            progress.NotUsed(false);
                                                             Logger("GameBackup", @path + fl[i], "File for backup wasn't found!");
-                                                        } 
+                                                        }
                                                     }
                                                 }
                                                 if (settings[9] == true)
@@ -811,8 +811,8 @@ namespace JetpackDowngrader
                                             }
                                         }
                                     }
-                                    if (er == 0) 
-                                        Logger("GameBackup", "All", "true"); 
+                                    if (er == 0)
+                                        Logger("GameBackup", "All", "true");
                                 }
                                 if (er == 0)
                                 {
@@ -824,7 +824,7 @@ namespace JetpackDowngrader
                                             if (!File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp"))
                                                 all_patches = false;
                                         }
-                                        if (!File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp")) 
+                                        if (!File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp"))
                                             all_patches = false;
                                         if (all_patches == true)
                                         {
@@ -845,7 +845,7 @@ namespace JetpackDowngrader
                                                 try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
                                                 try { File.Delete(@path + fl[1]); } catch { }
                                                 File.Move(@path + @"\game.jpp", @path + fl[1]);
-                                                if (settings[9] == false) 
+                                                if (settings[9] == false)
                                                     Logger("NewGame", @path + fl[1], "1.0");
                                                 if (gv == 1)
                                                 {
@@ -854,7 +854,7 @@ namespace JetpackDowngrader
                                                     try { File.SetAttributes(@path + @"\game.jpp", FileAttributes.Normal); } catch { }
                                                     try { File.Delete(@path + fl[0]); } catch { }
                                                     File.Move(@path + @"\game.jpp", @path + fl[0]);
-                                                    if (settings[9] == false) 
+                                                    if (settings[9] == false)
                                                         Logger("NewGame", @path + fl[0], "1.0");
                                                 }
                                                 if ((gv == 3) || (gv == 1))  // Rockstar Games Launcher & Steam
@@ -866,9 +866,9 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
                                                             if (settings[0] == true)
-                                                                par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"'; 
+                                                                par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
                                                             Processes.Run(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par, ProcessWindowStyle.Hidden, false, false, false, false, false);
-                                                            if (settings[0] == false) 
+                                                            if (settings[0] == false)
                                                                 File.Delete(@path + fl[i]);
                                                             File.Move(@path + fl[i] + ".temp", @path + fl[i]);
                                                             if (settings[9] == false)
@@ -878,8 +878,8 @@ namespace JetpackDowngrader
                                                             }
                                                             if (settings[9] == true)
                                                             {
-                                                                progress.SetText("Downgrade progress"); 
-                                                                progress.Report((double)i / fl.Length); 
+                                                                progress.SetText("Downgrade progress");
+                                                                progress.Report((double)i / fl.Length);
                                                             }
                                                         }
                                                     }
@@ -894,22 +894,22 @@ namespace JetpackDowngrader
                                                             if ((i >= 2) && (i > 11))
                                                             {
                                                                 string par = '"' + @path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                                if (settings[0] == true) 
+                                                                if (settings[0] == true)
                                                                     par = '"' + @path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
                                                                 Processes.Run(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par, ProcessWindowStyle.Hidden, false, false, false, false, false);
-                                                                if (settings[0] == false) 
+                                                                if (settings[0] == false)
                                                                     File.Delete(@path + fl[i]);
                                                                 File.Move(@path + fl[i] + ".temp", @path + fl[i]);
-                                                                if (settings[9] == false) 
-                                                                { 
-                                                                    progress.NotUsed(false); 
+                                                                if (settings[9] == false)
+                                                                {
+                                                                    progress.NotUsed(false);
                                                                     Logger("NewGame", @path + fl[i], "1.0");
                                                                 }
                                                             }
                                                             if (settings[9] == true)
                                                             {
                                                                 progress.SetText("Downgrade progress");
-                                                                progress.Report((double)i / fl.Length); 
+                                                                progress.Report((double)i / fl.Length);
                                                             }
                                                         }
                                                     }
@@ -919,7 +919,7 @@ namespace JetpackDowngrader
                                             if (er == 0)
                                             {
                                                 Logger("NewGame", "All", "1.0");
-                                                if (settings[0] == true) 
+                                                if (settings[0] == true)
                                                     Logger("NewGameReadOnly", "All", "true");
                                                 // Checking files after downgrade (MD5)
                                                 Logger("Downgrader", "Process", "Checking files after downgrade (MD5)...");
@@ -929,14 +929,14 @@ namespace JetpackDowngrader
                                                     {
                                                         GameMD5 = GetMD5(@path + fl[1]);
                                                         Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                                        if (GameMD5 == flmd5[0]) 
+                                                        if (GameMD5 == flmd5[0])
                                                         {
                                                             fisv = true;
-                                                            Logger("NewGameMD5", @path + fl[1], "1.0"); 
+                                                            Logger("NewGameMD5", @path + fl[1], "1.0");
                                                         }
                                                         else
                                                         {
-                                                            fisv = false; 
+                                                            fisv = false;
                                                             Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!");
                                                         }
                                                     }
@@ -951,25 +951,25 @@ namespace JetpackDowngrader
                                                     try
                                                     {
                                                         GameMD5 = GetMD5(@path + fl[1]);
-                                                        if (settings[9] == false) 
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                                        if (GameMD5 == flmd5[0]) 
+                                                        if (GameMD5 == flmd5[0])
                                                         {
-                                                            fisv = true; 
+                                                            fisv = true;
                                                             if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[1], "1.0");
                                                         }
                                                         else
-                                                        { 
-                                                            fisv = false; 
-                                                            if (settings[9] == false) 
-                                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!"); 
+                                                        {
+                                                            fisv = false;
+                                                            if (settings[9] == false)
+                                                                Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!");
                                                         }
                                                     }
                                                     catch
                                                     {
                                                         fisv = false;
-                                                        if (settings[9] == false) 
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], "File not found!");
                                                     }
                                                     using (var progress = new ConsoleProgressBar())
@@ -988,34 +988,34 @@ namespace JetpackDowngrader
                                                                 if (GameMD5 == flmd5[i])
                                                                 {
                                                                     fisv = true;
-                                                                    if (settings[9] == false) 
+                                                                    if (settings[9] == false)
                                                                     {
-                                                                        progress.NotUsed(false); 
-                                                                        Logger("NewGameMD5", @path + fl[i], "1.0"); 
+                                                                        progress.NotUsed(false);
+                                                                        Logger("NewGameMD5", @path + fl[i], "1.0");
                                                                     }
                                                                 }
                                                                 else
                                                                 {
                                                                     fisv = false;
-                                                                    if (settings[9] == false) 
+                                                                    if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
-                                                                        Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); 
+                                                                        Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!");
                                                                     }
                                                                 }
                                                             }
-                                                            catch 
-                                                            { 
-                                                                fisv = false;
-                                                                if (settings[9] == false) 
-                                                                {
-                                                                    progress.NotUsed(false); 
-                                                                    Logger("NewGameMD5", @path + fl[i], "File not found!");
-                                                                } 
-                                                            }
-                                                            if (settings[9] == true) 
+                                                            catch
                                                             {
-                                                                progress.SetText("MD5 verification progress"); 
+                                                                fisv = false;
+                                                                if (settings[9] == false)
+                                                                {
+                                                                    progress.NotUsed(false);
+                                                                    Logger("NewGameMD5", @path + fl[i], "File not found!");
+                                                                }
+                                                            }
+                                                            if (settings[9] == true)
+                                                            {
+                                                                progress.SetText("MD5 verification progress");
                                                                 progress.Report((double)i / fl.Length);
                                                             }
                                                         }
@@ -1026,24 +1026,24 @@ namespace JetpackDowngrader
                                                     try
                                                     {
                                                         GameMD5 = GetMD5(@path + fl[1]);
-                                                        if (settings[9] == false) 
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
-                                                        if (GameMD5 == flmd5[0]) 
+                                                        if (GameMD5 == flmd5[0])
                                                         {
                                                             fisv = true;
                                                             if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[1], "1.0");
                                                         }
-                                                        else 
+                                                        else
                                                         {
-                                                            fisv = false; 
-                                                            if (settings[9] == false) 
+                                                            fisv = false;
+                                                            if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!");
                                                         }
                                                     }
                                                     catch
                                                     {
-                                                        fisv = false; 
+                                                        fisv = false;
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], "File not found!");
                                                     }
@@ -1057,44 +1057,44 @@ namespace JetpackDowngrader
                                                                 try
                                                                 {
                                                                     GameMD5 = GetMD5(@path + fl[i]);
-                                                                    if (settings[9] == false) 
-                                                                    { 
+                                                                    if (settings[9] == false)
+                                                                    {
                                                                         progress.NotUsed(false);
                                                                         Logger("NewGameMD5", @path + fl[i], GameMD5);
                                                                     }
-                                                                    if (GameMD5 == flmd5[i]) 
+                                                                    if (GameMD5 == flmd5[i])
                                                                     {
-                                                                        fisv = true; 
+                                                                        fisv = true;
                                                                         if (settings[9] == false)
                                                                         {
                                                                             progress.NotUsed(false);
-                                                                            Logger("NewGameMD5", @path + fl[i], "1.0"); 
+                                                                            Logger("NewGameMD5", @path + fl[i], "1.0");
                                                                         }
                                                                     }
                                                                     else
-                                                                    { 
+                                                                    {
                                                                         fisv = false;
                                                                         if (settings[9] == false)
                                                                         {
                                                                             progress.NotUsed(false);
-                                                                            Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!"); 
+                                                                            Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!");
                                                                         }
                                                                     }
                                                                 }
                                                                 catch
                                                                 {
                                                                     fisv = false;
-                                                                    if (settings[9] == false) 
+                                                                    if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
                                                                         Logger("NewGameMD5", @path + fl[i], "File not found!");
-                                                                    } 
+                                                                    }
                                                                 }
                                                             }
                                                             if (settings[9] == true)
                                                             {
                                                                 progress.SetText("MD5 verification progress");
-                                                                progress.Report((double)i / fl.Length); 
+                                                                progress.Report((double)i / fl.Length);
                                                             }
                                                         }
                                                     }
@@ -1104,46 +1104,46 @@ namespace JetpackDowngrader
                                                     try
                                                     {
                                                         GameMD5 = GetMD5(@path + fl[0]);
-                                                        if (settings[9] == false) 
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[0], GameMD5);
-                                                        if (GameMD5 == flmd5[0]) 
+                                                        if (GameMD5 == flmd5[0])
                                                         {
-                                                            fisv = true; 
+                                                            fisv = true;
                                                             if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[0], "1.0");
                                                         }
                                                         else
                                                         {
-                                                            fisv = false; 
+                                                            fisv = false;
                                                             if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[0], "Higher than 1.0!");
                                                         }
                                                     }
                                                     catch
-                                                    { 
-                                                        fisv = false; 
-                                                        if (settings[9] == false) 
+                                                    {
+                                                        fisv = false;
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[0], "File not found!");
                                                     }
                                                     try
                                                     {
                                                         GameMD5 = GetMD5(@path + fl[1]);
-                                                        if (settings[9] == false) 
+                                                        if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
                                                         {
-                                                            fisv = true; 
-                                                            if (settings[9] == false) 
+                                                            fisv = true;
+                                                            if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[1], "1.0");
                                                         }
-                                                        else 
-                                                        { 
-                                                            fisv = false; 
-                                                            if (settings[9] == false) 
+                                                        else
+                                                        {
+                                                            fisv = false;
+                                                            if (settings[9] == false)
                                                                 Logger("NewGameMD5", @path + fl[1], "Higher than 1.0!");
                                                         }
                                                     }
-                                                    catch 
+                                                    catch
                                                     {
                                                         fisv = false;
                                                         if (settings[9] == false)
@@ -1157,43 +1157,43 @@ namespace JetpackDowngrader
                                                             try
                                                             {
                                                                 GameMD5 = GetMD5(@path + fl[i]);
-                                                                if (settings[9] == false) 
-                                                                { 
-                                                                    progress.NotUsed(false); 
+                                                                if (settings[9] == false)
+                                                                {
+                                                                    progress.NotUsed(false);
                                                                     Logger("NewGameMD5", @path + fl[i], GameMD5);
                                                                 }
-                                                                if (GameMD5 == flmd5[i]) 
-                                                                { 
-                                                                    fisv = true; 
-                                                                    if (settings[9] == false) 
+                                                                if (GameMD5 == flmd5[i])
+                                                                {
+                                                                    fisv = true;
+                                                                    if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
                                                                         Logger("NewGameMD5", @path + fl[i], "1.0");
                                                                     }
                                                                 }
-                                                                else 
+                                                                else
                                                                 {
                                                                     fisv = false;
-                                                                    if (settings[9] == false) 
+                                                                    if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
                                                                         Logger("NewGameMD5", @path + fl[i], "Higher than 1.0!");
-                                                                    } 
+                                                                    }
                                                                 }
                                                             }
-                                                            catch 
-                                                            { 
-                                                                fisv = false; 
+                                                            catch
+                                                            {
+                                                                fisv = false;
                                                                 if (settings[9] == false)
                                                                 {
                                                                     progress.NotUsed(false);
-                                                                    Logger("NewGameMD5", @path + fl[i], "File not found!"); 
-                                                                } 
+                                                                    Logger("NewGameMD5", @path + fl[i], "File not found!");
+                                                                }
                                                             }
-                                                            if (settings[9] == true) 
-                                                            { 
+                                                            if (settings[9] == true)
+                                                            {
                                                                 progress.SetText("MD5 verification progress");
-                                                                progress.Report((double)i / fl.Length); 
+                                                                progress.Report((double)i / fl.Length);
                                                             }
                                                         }
                                                     }
@@ -1211,10 +1211,10 @@ namespace JetpackDowngrader
                                                             {
                                                                 if (File.Exists(@path + @"\index.bin"))
                                                                 {
-                                                                    File.Delete(@path + @"\index.bin"); 
-                                                                    Logger("GarbageCleaning", "index.bin", "true"); 
+                                                                    File.Delete(@path + @"\index.bin");
+                                                                    Logger("GarbageCleaning", "index.bin", "true");
                                                                 }
-                                                                else 
+                                                                else
                                                                     Logger("GarbageCleaning", "index.bin", "false");
                                                             }
                                                             catch { Logger("GarbageCleaning", "index.bin", "false"); }
@@ -1224,9 +1224,9 @@ namespace JetpackDowngrader
                                                                 if (File.Exists(@path + @"\MTLX.dll"))
                                                                 {
                                                                     File.Delete(@path + @"\MTLX.dll");
-                                                                    Logger("GarbageCleaning", "MTLX.dll", "true"); 
+                                                                    Logger("GarbageCleaning", "MTLX.dll", "true");
                                                                 }
-                                                                else 
+                                                                else
                                                                     Logger("GarbageCleaning", "MTLX.dll", "false");
                                                             }
                                                             catch { Logger("GarbageCleaning", "MTLX.dll", "false"); }
@@ -1237,7 +1237,7 @@ namespace JetpackDowngrader
                                                         Logger("Downgrader", "Process", "Creating a shortcut...");
                                                         try
                                                         {
-                                                            FileSystem.CreateShortcut(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe", "gta_sa"); 
+                                                            FileSystem.CreateShortcut(@Environment.GetFolderPath(@Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", @path + @"\gta_sa.exe", "gta_sa");
                                                             Logger("Downgrader", "CreateShortcut", "true");
                                                         }
                                                         catch { Logger("Downgrader", "CreateShortcut", "false"); }
@@ -1247,10 +1247,10 @@ namespace JetpackDowngrader
                                                         Logger("Downgrader", "Process", "Adding entries to the registry...");
                                                         try
                                                         {
-                                                            if (Windows.Is64x() == true) 
-                                                            { 
-                                                                Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation"); 
-                                                                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation", "ExePath", "\"" + path + "\""); 
+                                                            if (Windows.Is64x() == true)
+                                                            {
+                                                                Registry.LocalMachine.CreateSubKey(@"SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation");
+                                                                Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Rockstar Games\GTA San Andreas\Installation", "ExePath", "\"" + path + "\"");
                                                             }
                                                             Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Rockstar Games\GTA San Andreas\Installation");
                                                             Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Rockstar Games\GTA San Andreas\Installation", "ExePath", "\"" + path + "\"");
@@ -1262,16 +1262,16 @@ namespace JetpackDowngrader
                                                         catch { Logger("Downgrader", "RegisterGamePath", "false"); }
                                                     }
                                                 }
-                                                else 
-                                                { 
-                                                    Logger("NewGameMD5", "All", "false"); 
-                                                    Logger("Downgrader", "Game", "Error checking files!"); 
+                                                else
+                                                {
+                                                    Logger("NewGameMD5", "All", "false");
+                                                    Logger("Downgrader", "Game", "Error checking files!");
                                                     Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!");
                                                 }
                                             }
                                         }
-                                        else 
-                                            Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!"); 
+                                        else
+                                            Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!");
                                     }
                                     else
                                         Logger("Downgrader", "NewGame", "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!");
@@ -1279,28 +1279,28 @@ namespace JetpackDowngrader
                                 else
                                 {
                                     Logger("GameBackup", "All", "Some game files were not found, so it is not possible to continue working!");
-                                    Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); 
+                                    Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!");
                                 }
                             }
-                            else 
-                            { 
-                                Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!!"); 
-                                Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!"); 
+                            else
+                            {
+                                Logger("GameMD5", "All", "It is impossible to determine exactly which version some files are taken from, because some of them have 1.0, and others are Higher than 1.0!!");
+                                Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!");
                             }
                         }
-                        else 
-                        { 
-                            Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!"); 
+                        else
+                        {
+                            Logger("Game", "All", "Some game files were not found, so it is not possible to continue working!");
                             Logger("Downgrader", "Game", "Please check the original files and, if necessary, reinstall the game!");
                         }
                     }
-                    if (gv == 0) 
+                    if (gv == 0)
                         Logger("Downgrader", "Process", "Downgrade is not required!");
                 }
-                else 
+                else
                     Logger("Game", "Path", "false");
             }
-            else 
+            else
                 Logger("Downgrader", "Process", "File patcher.exe was not found!");
             Logger("GamePath", "Current", @path);
             Console.ForegroundColor = ConsoleColor.Green;
@@ -1308,51 +1308,51 @@ namespace JetpackDowngrader
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Press Enter to Exit");
             Console.ResetColor();
-            VitNX.Win32.NativeFunctions.SetWindowPos(Process.GetCurrentProcess().MainWindowHandle, 
-                new IntPtr((int)VitNX.Win32.WindowPosFlags.HWND_TOPMOST), 0, 0, 0, 0, 
+            VitNX.Win32.NativeFunctions.SetWindowPos(Process.GetCurrentProcess().MainWindowHandle,
+                new IntPtr((int)VitNX.Win32.WindowPosFlags.HWND_TOPMOST), 0, 0, 0, 0,
                 (int)VitNX.Win32.WindowPosFlags.SWP_NOMOVE | (int)VitNX.Win32.WindowPosFlags.SWP_NOSIZE);
             Console.ReadLine();
         }
 
         private static void Logger(string type, string ido, string status)
         {
-            if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current"))) 
+            if ((type == "NewGameMD5") || ((type == "GamePath") && (ido == "Current")))
                 Console.ForegroundColor = ConsoleColor.Yellow;
-            if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") || 
-                (status == "Installation completed successfully") || (status == "1.0") || 
-                (status == "true") || (status == "Downgrade completed!") || 
+            if ((type == "NewGamePath") || (status == "Forced downgrade mode is used...") ||
+                (status == "Installation completed successfully") || (status == "1.0") ||
+                (status == "true") || (status == "Downgrade completed!") ||
                 (status == "Done!"))
                 Console.ForegroundColor = ConsoleColor.Green;
             if ((status == "Deleting MTLX.dll file...") || (status == "Deleting index.bin file...") ||
-                (status == "Deleting gta_sa.set (Public Documents) file...") || 
+                (status == "Deleting gta_sa.set (Public Documents) file...") ||
                 (status == "Deleting gta_sa.set (Documents) file...") || (status == "Adding entries to the registry...") ||
                 (status == "Creating a shortcut...") || (status == "Checking files after downgrade (MD5)...") ||
                 (status == "Downgrading...") || (status == "Create backups...") ||
                 (status == "Checking original files before downgrade (MD5)...") || (status == "Scanning files...") ||
                 (status == "Get version (EXE)...") || (status == "Copying the game folder before downgrading...") ||
                 (status == "App is not frozen, just busy right now...") || (status == "Downloading installer...") ||
-                (status == "Installing...") || (status == "In process...") || (status == "Preparing installer...")) 
+                (status == "Installing...") || (status == "In process...") || (status == "Preparing installer..."))
                 Console.ForegroundColor = ConsoleColor.Blue;
             if (((type == "GameMD5") && (status != "Higher than 1.0!") && (status != "1.0")) ||
-                (ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) || 
+                (ido == "Guide if DirectPlay not work") || ((type == "GamePath") && (ido == "new")) ||
                 (status == "Rockstar Games Launcher") || (status == "Steam") || (status == "1.01") ||
-                (status == "2.0")) 
+                (status == "2.0"))
                 Console.ForegroundColor = ConsoleColor.Yellow;
             if ((status == "Installation error") || ((type == "Game") && (ido == "Path") && (status == "null")) ||
                 (status == "Please make sure that you have downloaded the patches (patches folder), otherwise, the downgrader will not be able to start its work!") ||
                 (status == "File patcher.exe was not found!") || (status == "File not found!") || (status == "Higher than 1.0!") ||
                 (status == "Unknown [NOT SUPPORTED]") || (status == "Unknown [ERROR]") || (status == "false") ||
                 (status == "File for backup wasn't found!") || (status == "Please make sure that you have downloaded the patches, otherwise, the downgrader will not be able to start its work!") ||
-                (status == "Downgrade is not possible!") || (status == "An error occurred accessing the game files!")) 
+                (status == "Downgrade is not possible!") || (status == "An error occurred accessing the game files!"))
                 Console.ForegroundColor = ConsoleColor.Red;
-            if (((type == "GameMD5") && (status == "Higher than 1.0!")) || (status == "Downgrade is not required!")) 
+            if (((type == "GameMD5") && (status == "Higher than 1.0!")) || (status == "Downgrade is not required!"))
                 Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
         }
 
         private static string GetMD5(string file)
-        { 
+        {
             return FileSystem.GetFileMD5(file);
         }
     }

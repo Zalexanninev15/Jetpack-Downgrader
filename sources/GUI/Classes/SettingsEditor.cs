@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -29,7 +28,7 @@ namespace JetpackGUI
         public void WriteXml()
         {
             XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\downgrader.xml")) 
+            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\downgrader.xml"))
                 ser.Serialize(writer, Fields);
         }
 
@@ -38,7 +37,7 @@ namespace JetpackGUI
             if (File.Exists(Application.StartupPath + @"\files\downgrader.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\downgrader.xml")) 
+                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\downgrader.xml"))
                     Fields = ser.Deserialize(reader) as SettingsEditor;
             }
         }
