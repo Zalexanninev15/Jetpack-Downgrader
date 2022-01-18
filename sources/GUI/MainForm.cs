@@ -1,6 +1,8 @@
 ﻿using CG.Web.MegaApiClient;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -359,7 +361,7 @@ namespace JetpackGUI
             ScreenShotViewer.Visible = true;
         }
 
-        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        private void modsList_MouseDown(object sender, MouseEventArgs e)
         {
             NativeFunctions.SetFocus(IntPtr.Zero);
         }
@@ -515,33 +517,40 @@ namespace JetpackGUI
                 {
                     try
                     {
-                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Indeterminate);
+                        //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Indeterminate);
                         using (System.Net.WebClient mods = new System.Net.WebClient())
                         {
-                            mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/list.txt", cache + @"\list.txt");
-                            string[] modsl = File.ReadAllLines(cache + @"\list.txt", Encoding.ASCII);
-                            listBox1.Items.Clear();
-                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
-                            for (int i = 0; i < modsl.Length; i++)
-                            {
-                                if (modsl[i] != "")
-                                {
-                                    listBox1.Items.Add(modsl[i]);
-                                    mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/txts/" + modsl[i] + ".txt", cache + @"\" + modsl[i] + ".txt");
-                                    string[] ms = File.ReadAllLines(cache + "\\" + modsl[i] + ".txt", Encoding.ASCII);
-                                    // Name - 0
-                                    // Version - 1
-                                    // Author - 2
-                                    // Description - 3
-                                    // Web-site - 4
-                                    // Link to photo 1 - 5
-                                    // Link to photo 1 - 6
-                                    // Link to photo 1 - 7
-                                    // Link to ZIP with mod - 8
-                                    mse[i] = ms[0] + "|" + ms[1] + "|" + ms[2] + "|" + ms[3] + "|" + ms[4] + "|" + ms[5] + "|" + ms[6] + "|" + ms[7] + "|" + ms[8];
-                                    TbProgressBar.SetValue(Handle, i, modsl.Length);
-                                }
-                            }
+                            mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json", cache + @"\list.json");
+                            //string[] modsl = File.ReadAllLines(cache + @"\list.txt", Encoding.ASCII);
+                            string source = File.ReadAllText(cache + @"\list.json");
+                            var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
+                            modsList.Items.Clear();
+                            foreach (var data in parsed)
+                                modsList.Items.Add(data.Value.Name);
+                            
+                            //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
+                            //for (int i = 0; i < modsl.Length; i++)
+                            //{
+                            //    if (modsl[i] != "")
+                            //    {
+                            //        modsList.Items.Add(modsl[i]);
+                            //        //mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/txts/" + modsl[i] + ".txt", cache + @"\" + modsl[i] + ".txt");
+                            //        //string[] ms = File.ReadAllLines(cache + "\\" + modsl[i] + ".txt", Encoding.ASCII);
+                                    
+                            //        // Name - 0
+                            //        // Version - 1
+                            //        // Author - 2
+                            //        // Description - 3
+                            //        // Web-site - 4
+                            //        // Link to photo 1 - 5
+                            //        // Link to photo 1 - 6
+                            //        // Link to photo 1 - 7
+                            //        // Link to ZIP with mod - 8
+
+                            //        //mse[i] = ms[0] + "|" + ms[1] + "|" + ms[2] + "|" + ms[3] + "|" + ms[4] + "|" + ms[5] + "|" + ms[6] + "|" + ms[7] + "|" + ms[8];
+                            //        //TbProgressBar.SetValue(Handle, i, modsl.Length);
+                            //    }
+                            //}
                         }
                         tabFix = true;
                         DSPanel.Visible = true;
@@ -549,13 +558,13 @@ namespace JetpackGUI
                     }
                     catch
                     {
-                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
+                        //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
                         MsgWarning(lc_text[27]);
                         ModsPanel.Visible = false;
                         DSPanel.Visible = false;
                         tabFix = false;
                     }
-                    TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
+                    //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
                 }
                 else
                 {
@@ -969,15 +978,15 @@ namespace JetpackGUI
                 button1.Visible = false;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void modsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if (listBox1.Text != "")
+                if (modsList.Text != "")
                 {
                     ScreenShot.Enabled = true;
                     darkGroupBox1.Visible = true;
-                    string[] tInfo = mse[listBox1.SelectedIndex].Split('|');
+                    string[] tInfo = mse[modsList.SelectedIndex].Split('|');
                     nameLabel.Text = lc_text[0] + ": " + tInfo[0];
                     darkLabel5.Text = lc_text[1] + ": " + tInfo[1];
                     darkLabel6.Text = lc_text[2] + ": " + tInfo[2];

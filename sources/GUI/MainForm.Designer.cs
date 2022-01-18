@@ -58,7 +58,7 @@ namespace JetpackGUI
             this.DSPanel = new VitNX.Controls.VitNX_SectionPanel();
             this.ModsPanel = new VitNX.Controls.VitNX_SectionPanel();
             this.darkLabel2 = new VitNX.Controls.VitNX_Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.modsList = new System.Windows.Forms.ListBox();
             this.darkGroupBox1 = new VitNX.Controls.VitNX_GroupBox();
             this.ScreenShotViewer = new System.Windows.Forms.Panel();
             this.vitNX_Button1 = new VitNX.Controls.VitNX_Button();
@@ -482,7 +482,7 @@ namespace JetpackGUI
             // ModsPanel
             // 
             this.ModsPanel.Controls.Add(this.darkLabel2);
-            this.ModsPanel.Controls.Add(this.listBox1);
+            this.ModsPanel.Controls.Add(this.modsList);
             this.ModsPanel.Controls.Add(this.darkGroupBox1);
             this.ModsPanel.Controls.Add(this.darkButton6);
             this.ModsPanel.Controls.Add(this.darkLabel9);
@@ -505,21 +505,21 @@ namespace JetpackGUI
             this.darkLabel2.Text = "ASI Loader is installed automatically when you select at least one modification!";
             this.darkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listBox1
+            // modsList
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 62);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(241, 226);
-            this.listBox1.TabIndex = 6;
-            this.listBox1.TabStop = false;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
+            this.modsList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.modsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.modsList.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.modsList.ForeColor = System.Drawing.Color.Gainsboro;
+            this.modsList.FormattingEnabled = true;
+            this.modsList.ItemHeight = 16;
+            this.modsList.Location = new System.Drawing.Point(12, 62);
+            this.modsList.Name = "modsList";
+            this.modsList.Size = new System.Drawing.Size(241, 226);
+            this.modsList.TabIndex = 6;
+            this.modsList.TabStop = false;
+            this.modsList.SelectedIndexChanged += new System.EventHandler(this.modsList_SelectedIndexChanged);
+            this.modsList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.modsList_MouseDown);
             // 
             // darkGroupBox1
             // 
@@ -1149,7 +1149,7 @@ namespace JetpackGUI
        VitNX.Controls.VitNX_ListView darkListView2;
        System.Windows.Forms.PictureBox pictureBox8;
        System.Windows.Forms.PictureBox pictureBox9;
-       System.Windows.Forms.ListBox listBox1;
+       System.Windows.Forms.ListBox modsList;
        System.Windows.Forms.PictureBox pictureBox10;
        System.Windows.Forms.PictureBox pictureBox11;
        VitNX.Controls.VitNX_ProgressBar PartProgressBar;
