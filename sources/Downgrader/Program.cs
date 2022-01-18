@@ -13,22 +13,50 @@ namespace JetpackDowngrader
         [STAThread]
         public static void Main(string[] args)
         {
-            string[] fl = new string[17]; string[] flmd5 = new string[17]; int er = 0, gv = 0; bool[] settings = new bool[10]; string path = "";
+            string[] fl = new string[17];
+            string[] flmd5 = new string[17];
+            int er = 0, gv = 0; 
+            bool[] settings = new bool[10]; 
+            string path = "";
 
             Console.ResetColor();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // All files for downgrading (universal)
-            fl[0] = @"\gta-sa.exe"; fl[1] = @"\gta_sa.exe"; fl[2] = @"\audio\CONFIG\TrakLkup.dat"; fl[3] = @"\audio\streams\BEATS";
-            fl[4] = @"\audio\streams\CH"; fl[5] = @"\audio\streams\CR"; fl[6] = @"\audio\streams\CUTSCENE"; fl[7] = @"\audio\streams\DS";
-            fl[8] = @"\audio\streams\MH"; fl[9] = @"\audio\streams\MR"; fl[10] = @"\audio\streams\RE"; fl[11] = @"\audio\streams\RG";
-            fl[12] = @"\anim\anim.img"; fl[13] = @"\data\script\main.scm"; fl[14] = @"\data\script\script.img"; fl[15] = @"\models\gta_int.img";
+            fl[0] = @"\gta-sa.exe";
+            fl[1] = @"\gta_sa.exe"; 
+            fl[2] = @"\audio\CONFIG\TrakLkup.dat"; 
+            fl[3] = @"\audio\streams\BEATS";
+            fl[4] = @"\audio\streams\CH";
+            fl[5] = @"\audio\streams\CR";
+            fl[6] = @"\audio\streams\CUTSCENE";
+            fl[7] = @"\audio\streams\DS";
+            fl[8] = @"\audio\streams\MH"; 
+            fl[9] = @"\audio\streams\MR"; 
+            fl[10] = @"\audio\streams\RE"; 
+            fl[11] = @"\audio\streams\RG";
+            fl[12] = @"\anim\anim.img";
+            fl[13] = @"\data\script\main.scm"; 
+            fl[14] = @"\data\script\script.img"; 
+            fl[15] = @"\models\gta_int.img";
             fl[16] = @"\models\gta3.img";
             // Original MD5 for files from game version 1.0
-            flmd5[0] = "170B3A9108687B26DA2D8901C6948A18"; flmd5[1] = "E7697A085336F974A4A6102A51223960"; flmd5[2] = "528E75D663B8BAE072A01351081A2145"; flmd5[3] = "E26D86C7805D090D8210086876D6C35C";
-            flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F"; flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B"; flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D"; flmd5[7] = "9B4C18E4F3E82F0FEE41E30B2EA2246A";
-            flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
-            flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
+            flmd5[0] = "170B3A9108687B26DA2D8901C6948A18"; 
+            flmd5[1] = "E7697A085336F974A4A6102A51223960"; 
+            flmd5[2] = "528E75D663B8BAE072A01351081A2145"; 
+            flmd5[3] = "E26D86C7805D090D8210086876D6C35C";
+            flmd5[4] = "FE31259226E0B4A8A963C70840E1FE8F"; 
+            flmd5[5] = "900148B8141EA4C1E782C3A48DBFBF3B"; 
+            flmd5[6] = "C25FCAA329B3D48F197FF4ED2A1D2A4D"; 
+            flmd5[7] = "9B4C18E4F3E82F0FEE41E30B2EA2246A";
+            flmd5[8] = "909E7C4A7A29473E3885A96F987D7221"; 
+            flmd5[9] = "A1EC1CBE16DBB9F73022C6F33658ABE2"; 
+            flmd5[10] = "49B83551C684E17164F2047DCBA3E5AA"; 
+            flmd5[11] = "7491DC5325854C7117AF6E31900F38DD";
+            flmd5[12] = "3359BA8CB820299161199EE7EF3F1C02"; 
+            flmd5[13] = "60AD23E272C3B0AA937053FE3006BE93"; 
+            flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE"; 
+            flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
             //
             // todo Localization
@@ -44,18 +72,39 @@ namespace JetpackDowngrader
             //}
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n\n[App] Start of log output...");
+            Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " + 
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT" +
+                "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)" +
+                "\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n\n[App] Start of log output...");
             Console.ResetColor();
             try
             {
-                settings[0] = false; settings[1] = true; settings[2] = true; settings[3] = false; settings[4] = false; settings[5] = true; settings[6] = true; settings[7] = false; settings[8] = false; settings[9] = true;
+                settings[0] = false; 
+                settings[1] = true; 
+                settings[2] = true; 
+                settings[3] = false;
+                settings[4] = false;
+                settings[5] = true;
+                settings[6] = true;
+                settings[7] = false; 
+                settings[8] = false; 
+                settings[9] = true;
                 if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml"))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
                     using (StringReader reader = new StringReader(File.ReadAllText(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml")))
                     {
                         var bool_settings = (SettingsEditor)serializer.Deserialize(reader);
-                        settings[0] = bool_settings.CreateBackups; settings[1] = bool_settings.CreateShortcut; settings[2] = bool_settings.ResetGame; settings[3] = bool_settings.RGLGarbageCleaning; settings[4] = bool_settings.RegisterGamePath; settings[5] = bool_settings.CopyGameToNewPath; settings[6] = bool_settings.EnableDirectPlay; settings[7] = bool_settings.InstallDirectXComponents; settings[8] = bool_settings.Forced; settings[9] = bool_settings.UserMode;
+                        settings[0] = bool_settings.CreateBackups; 
+                        settings[1] = bool_settings.CreateShortcut; 
+                        settings[2] = bool_settings.ResetGame;
+                        settings[3] = bool_settings.RGLGarbageCleaning;
+                        settings[4] = bool_settings.RegisterGamePath; 
+                        settings[5] = bool_settings.CopyGameToNewPath;
+                        settings[6] = bool_settings.EnableDirectPlay; 
+                        settings[7] = bool_settings.InstallDirectXComponents;
+                        settings[8] = bool_settings.Forced; 
+                        settings[9] = bool_settings.UserMode;
                     }
                     Logger("App", "downgrader.xml", "true");
                 }
@@ -65,7 +114,8 @@ namespace JetpackDowngrader
             if (File.Exists(@Path.GetDirectoryName(@System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 try { path = args[0]; } catch { }
-                if (Directory.Exists(@path) == false) { Logger("Game", "Path", "null"); }
+                if (Directory.Exists(@path) == false) 
+                    Logger("Game", "Path", "null");
                 if ((path != "") && Directory.Exists(@path))
                 {
                     Logger("Game", "Path", "true");
@@ -88,7 +138,11 @@ namespace JetpackDowngrader
                         try
                         {
                             string SteamEXEmd5 = GetMD5(SaEXE);
-                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") { gv = 1; Logger("Game", "Version", "Steam"); }
+                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") 
+                            { 
+                                gv = 1;
+                                Logger("Game", "Version", "Steam"); 
+                            }
                             else
                             {
                                 gv = 4;
@@ -96,14 +150,37 @@ namespace JetpackDowngrader
                                 try
                                 {
                                     string OtherEXEmd5 = GetMD5(SaEXE);
-                                    if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") { gv = 3; Logger("Game", "Version", "Rockstar Games Launcher"); }
-                                    if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) { gv = 2; Logger("Game", "Version", "2.0"); }
-                                    if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                    if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") 
+                                    { 
+                                        gv = 3;
+                                        Logger("Game", "Version", "Rockstar Games Launcher");
+                                    }
+                                    if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
+                                        (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) 
                                     {
-                                        if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") && (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84") && (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
+                                        gv = 2;
+                                        Logger("Game", "Version", "2.0");
+                                    }
+                                    if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") &&
+                                        (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") &&
+                                        (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                    {
+                                        if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") &&
+                                            (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") &&
+                                            (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84") &&
+                                            (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
                                         {
-                                            if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) { gv = 4; Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); }
-                                            else { gv = 6; Logger("Game", "Version", "1.01"); }
+                                            if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") &&
+                                                (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) 
+                                            {
+                                                gv = 4; 
+                                                Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                            }
+                                            else 
+                                            { 
+                                                gv = 6;
+                                                Logger("Game", "Version", "1.01"); 
+                                            }
                                         }
                                         else
                                         {
@@ -112,10 +189,19 @@ namespace JetpackDowngrader
                                         }
                                     }
                                 }
-                                catch { gv = 4; Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); }
+                                catch
+                                {
+                                    gv = 4;
+                                    Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                }
                             }
                         }
-                        catch { gv = 5; er = 1; Logger("Game", "Version", "Unknown [ERROR]"); }
+                        catch 
+                        { 
+                            gv = 5;
+                            er = 1;
+                            Logger("Game", "Version", "Unknown [ERROR]");
+                        }
                     }
                     else
                     {
@@ -123,18 +209,45 @@ namespace JetpackDowngrader
                         try
                         {
                             string OtherEXEmd5 = GetMD5(SaEXE);
-                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") { gv = 1; Logger("Game", "Version", "Steam"); }
+                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD") 
+                            {
+                                gv = 1;
+                                Logger("Game", "Version", "Steam");
+                            }
                             else
                             {
                                 gv = 4;
-                                if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") { gv = 3; Logger("Game", "Version", "Rockstar Games Launcher"); }
-                                if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") || (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) { gv = 2; Logger("Game", "Version", "2.0"); }
-                                if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") && (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") && (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4") 
                                 {
-                                    if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") && (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") && (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84") && (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
+                                    gv = 3;
+                                    Logger("Game", "Version", "Rockstar Games Launcher");
+                                }
+                                if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
+                                    (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F")) 
+                                { 
+                                    gv = 2;
+                                    Logger("Game", "Version", "2.0"); 
+                                }
+                                if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") &&
+                                    (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") &&
+                                    (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                {
+                                    if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") &&
+                                        (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") &&
+                                        (OtherEXEmd5 != "91A9F6611ADDFB46682B56F9E247DB84") &&
+                                        (OtherEXEmd5 != "9369501599574D19AC93DE41547C4EC1"))
                                     {
-                                        if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") && (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) { gv = 4; Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); }
-                                        else { gv = 6; Logger("Game", "Version", "1.01"); }
+                                        if ((OtherEXEmd5 != "A2929A61E4D63DD3C15749B2B7ED74AE") &&
+                                            (OtherEXEmd5 != "25405921D1C47747FD01FD0BFE0A05AE")) 
+                                        { 
+                                            gv = 4;
+                                            Logger("Game", "Version", "Unknown [NOT SUPPORTED]"); 
+                                        }
+                                        else
+                                        {
+                                            gv = 6;
+                                            Logger("Game", "Version", "1.01");
+                                        }
                                     }
                                     else
                                     {
@@ -144,7 +257,12 @@ namespace JetpackDowngrader
                                 }
                             }
                         }
-                        catch { gv = 5; er = 1; Logger("Game", "Version", "Unknown [ERROR]"); }
+                        catch
+                        {
+                            gv = 5; 
+                            er = 1; 
+                            Logger("Game", "Version", "Unknown [ERROR]"); 
+                        }
                     }
                     if ((gv == 4) || (gv == 5)) { Logger("Downgrader", "Process", "Downgrade is not possible!"); }
                     if ((File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.MyDocuments) + @"\GTA San Andreas User Files\gta_sa.set")) || (File.Exists(@Environment.GetFolderPath(@Environment.SpecialFolder.CommonDocuments) + @"\GTA San Andreas User Files\gta_sa.set")))
@@ -209,7 +327,11 @@ namespace JetpackDowngrader
                         }
                         else { Logger("DirectX", "Process", "Installation error"); }
                     }
-                    if ((settings[8] == true) && (gv == 0)) { gv = 6; settings[8] = true; }
+                    if ((settings[8] == true) && (gv == 0)) 
+                    {
+                        gv = 6; 
+                        settings[8] = true;
+                    }
                     if ((gv != 0) && (er == 0))
                     {
                         // Check files
@@ -222,7 +344,11 @@ namespace JetpackDowngrader
                                 File.SetAttributes(@path + fl[1], FileAttributes.Normal);
                                 try { File.SetAttributes(@path + fl[1] + ".jpb", FileAttributes.Normal); } catch { }
                             }
-                            else { er = 1; Logger("Game", @path + fl[1], "false"); }
+                            else 
+                            { 
+                                er = 1; 
+                                Logger("Game", @path + fl[1], "false");
+                            }
                         }
                         if (gv == 3) // Rockstar Games Launcher
                         {
@@ -235,10 +361,26 @@ namespace JetpackDowngrader
                                     {
                                         File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                         try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
-                                        if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "true"); }
+                                        if (settings[9] == false) 
+                                        {
+                                            progress.NotUsed(false);
+                                            Logger("Game", @path + fl[i], "true"); 
+                                        }
                                     }
-                                    else { er = 1; if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "false"); } }
-                                    if (settings[9] == true) { progress.SetText("Checking files progress"); progress.Report((double)i / fl.Length); }
+                                    else 
+                                    { 
+                                        er = 1; 
+                                        if (settings[9] == false) 
+                                        { 
+                                            progress.NotUsed(false);
+                                            Logger("Game", @path + fl[i], "false");
+                                        } 
+                                    }
+                                    if (settings[9] == true) 
+                                    {
+                                        progress.SetText("Checking files progress"); 
+                                        progress.Report((double)i / fl.Length); 
+                                    }
                                 }
                             }
                         }
@@ -255,11 +397,27 @@ namespace JetpackDowngrader
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                             try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
-                                            if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "true"); }
+                                            if (settings[9] == false)
+                                            { 
+                                                progress.NotUsed(false);
+                                                Logger("Game", @path + fl[i], "true");
+                                            }
                                         }
-                                        else { er = 1; if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "false"); } }
+                                        else 
+                                        { 
+                                            er = 1; 
+                                            if (settings[9] == false)
+                                            {
+                                                progress.NotUsed(false); 
+                                                Logger("Game", @path + fl[i], "false");
+                                            } 
+                                        }
                                     }
-                                    if (settings[9] == true) { progress.SetText("Checking files progress"); progress.Report((double)i / fl.Length); }
+                                    if (settings[9] == true) 
+                                    {
+                                        progress.SetText("Checking files progress"); 
+                                        progress.Report((double)i / fl.Length); 
+                                    }
                                 }
                             }
                         }
@@ -276,15 +434,27 @@ namespace JetpackDowngrader
                                         {
                                             File.SetAttributes(@path + fl[i], FileAttributes.Normal);
                                             try { File.SetAttributes(@path + fl[i] + ".jpb", FileAttributes.Normal); } catch { }
-                                            if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "true"); }
+                                            if (settings[9] == false)
+                                            { 
+                                                progress.NotUsed(false); 
+                                                Logger("Game", @path + fl[i], "true"); 
+                                            }
                                         }
                                         else
                                         {
                                             er = 1;
-                                            if (settings[9] == false) { progress.NotUsed(false); Logger("Game", @path + fl[i], "false"); }
+                                            if (settings[9] == false) 
+                                            { 
+                                                progress.NotUsed(false); 
+                                                Logger("Game", @path + fl[i], "false"); 
+                                            }
                                         }
                                     }
-                                    if (settings[9] == true) { progress.SetText("Checking files progress"); progress.Report((double)i / fl.Length); }
+                                    if (settings[9] == true) 
+                                    { 
+                                        progress.SetText("Checking files progress"); 
+                                        progress.Report((double)i / fl.Length); 
+                                    }
                                 }
                             }
                         }

@@ -19,7 +19,7 @@
 
 ## Description
 
-App for downgrading the game Grand Theft Auto: San Andreas to version 1.0
+App for downgrading the game Grand Theft Auto: San Andreas to version 1.0 (**not for Grand Theft Auto: The Trilogy – The Definitive Edition**)
 
 ## System requirements
 
