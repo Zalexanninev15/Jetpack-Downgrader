@@ -25,16 +25,24 @@ namespace JetpackGUI
                         using (WebClient wc = new WebClient())
                         {
                             string toolkit_version = wc.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/Version.txt");
-                            if (toolkit_version != Data.JetpackDowngraderVersion) { AvailableNewVersion = true; }
+                            if (toolkit_version != Data.JetpackDowngraderVersion) 
+                                AvailableNewVersion = true;
                         }
                     }
-                    catch (Exception ex) { AvailableNewVersion = false; VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
+                    catch (Exception ex)
+                    {
+                        AvailableNewVersion = false;
+                        VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); 
+                    }
                 }
                 if (AvailableNewVersion == false)
                 {
                     GUI mygui = new GUI();
                     mygui.ReadXml();
-                    if (mygui.Fields.FirstLaunch == false) { Application.Run(new MainForm()); } else { Application.Run(new MyLang()); }
+                    if (mygui.Fields.FirstLaunch == false)
+                        Application.Run(new MainForm());
+                    else
+                        Application.Run(new MyLang());
                 }
                 else
                 {
