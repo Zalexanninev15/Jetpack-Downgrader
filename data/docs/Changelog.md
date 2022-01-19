@@ -63,7 +63,7 @@
 ## [Release] Jetpack Downgrader Version 2.1
 
 - Added a button to close the application after the end of the downgrade
-- Algorithm for storing settings has been changed. Now the folder is not clogged **C:\Users%username%\AppData\Local**. Check the path **C:\Users%username%\AppData\Local\Zalexanninev15** and delete this folder
+- Algorithm for storing settings has been changed. Now the folder is not clogged **C:\Users\%username%\AppData\Local**. Check the path **C:\Users\%username%\AppData\Local\Zalexanninev15** and delete this folder
 - Functionality of showing progress on the taskbar in Windows has been completely rewritten. Now additional libraries are not required (which has slightly reduced the size of the overall project release), the native WinAPI is used instead
 - Updated localizations + fixed a bug with the downgrade start button in the Russian localization
 - Improving interaction with GUI
