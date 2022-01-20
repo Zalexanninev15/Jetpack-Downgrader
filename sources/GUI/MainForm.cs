@@ -38,7 +38,6 @@ namespace JetpackGUI
         private Props config = new Props();
         private GUI language = new GUI();
         private XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
-        private string[] mse = new string[30];
         private string[] langs = new string[10];
         private bool tabFix = false;
         private bool lpFix = false;
@@ -520,14 +519,13 @@ namespace JetpackGUI
                         //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Indeterminate);
                         using (System.Net.WebClient mods = new System.Net.WebClient())
                         {
-                            mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json", cache + @"\list.json");
+                            string source = mods.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json");
                             //string[] modsl = File.ReadAllLines(cache + @"\list.txt", Encoding.ASCII);
-                            string source = File.ReadAllText(cache + @"\list.json");
                             var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
                             modsList.Items.Clear();
                             foreach (var data in parsed)
                                 modsList.Items.Add(data.Value.Name);
-                            
+
                             //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
                             //for (int i = 0; i < modsl.Length; i++)
                             //{
@@ -536,7 +534,7 @@ namespace JetpackGUI
                             //        modsList.Items.Add(modsl[i]);
                             //        //mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/txts/" + modsl[i] + ".txt", cache + @"\" + modsl[i] + ".txt");
                             //        //string[] ms = File.ReadAllLines(cache + "\\" + modsl[i] + ".txt", Encoding.ASCII);
-                                    
+
                             //        // Name - 0
                             //        // Version - 1
                             //        // Author - 2
@@ -982,25 +980,43 @@ namespace JetpackGUI
         {
             try
             {
-                if (modsList.Text != "")
+                Ping ping = new Ping();
+                PingReply pingReply = null;
+                pingReply = ping.Send("github.com");
+                using (System.Net.WebClient mods = new System.Net.WebClient())
                 {
-                    ScreenShot.Enabled = true;
-                    darkGroupBox1.Visible = true;
-                    string[] tInfo = mse[modsList.SelectedIndex].Split('|');
-                    nameLabel.Text = lc_text[0] + ": " + tInfo[0];
-                    darkLabel5.Text = lc_text[1] + ": " + tInfo[1];
-                    darkLabel6.Text = lc_text[2] + ": " + tInfo[2];
-                    darkLabel4.Text = tInfo[3];
-                    site_link = tInfo[4];
-                    ScreenShot.ImageLocation = tInfo[5];
-                    photos_links[0] = ScreenShot.ImageLocation;
-                    photos_links[1] = tInfo[6];
-                    photos_links[2] = tInfo[7];
-                    zip_link = tInfo[8];
-                    YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                    string source = mods.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json");
+                    var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
+                    foreach (var data in parsed)
+                    {
+                        if (modsList.Text == data.Value.Name)
+                        {
+                            ScreenShot.Enabled = true;
+                            darkGroupBox1.Visible = true;
+                            nameLabel.Text = lc_text[0] + ": " + data.Value.Name;
+                            darkLabel5.Text = lc_text[1] + ": " + data.Value.Version;
+                            darkLabel6.Text = lc_text[2] + ": " + data.Value.Author;
+                            darkLabel4.Text = data.Value.Description;
+                            site_link = data.Value.Site;
+                            ScreenShot.ImageLocation = data.Value.Logo;
+                            photos_links[0] = ScreenShot.ImageLocation;
+                            photos_links[1] = data.Value.Screenshot1;
+                            photos_links[2] = data.Value.Screenshot2;
+                            zip_link = data.Value.File;
+                            YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                        }
+                    }
                 }
             }
-            catch (Exception ex) { MsgError(lc_text[21]); MsgError(ex.ToString()); ScreenShot.Enabled = false; zip_link = "application/zip"; }
+            catch
+            {
+                MsgError(lc_text[21]);
+                ModsPanel.Visible = false;
+                DSPanel.Visible = false;
+                tabFix = false;
+                ScreenShot.Enabled = false;
+                zip_link = "application/zip";
+            }
         }
 
         private void GamePath_TextChanged(object sender, EventArgs e)

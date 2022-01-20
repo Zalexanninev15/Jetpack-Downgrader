@@ -116,6 +116,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OtherForms\ChooseGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtherForms\ChooseGame.Designer.cs">
+      <DependentUpon>ChooseGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="OtherForms\About.cs">
       <SubType>Form</SubType>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OtherForms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherForms\ChooseGame.resx">
+      <DependentUpon>ChooseGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OtherForms\FirstLaunch.resx">
       <DependentUpon>FirstLaunch.cs</DependentUpon>
