@@ -33,6 +33,7 @@
   <WishPlay>Приятной игры!</WishPlay>
   <Play>Играть</Play>
   <CloseApp>Закрыть приложение</CloseApp>
+  <Downloaded>Скачано:</Downloaded>
   <!-- Флажки -->
   <CreateBackups>Бэкап оригинальных файлов до даунгрейда</CreateBackups>
   <CreateShortcut>Создать ярлык на Рабочем Столе</CreateShortcut>
@@ -64,7 +65,7 @@
   <!-- Сообщения с ошибками -->
   <AboutModDamaged>Данные модификации повреждены!</AboutModDamaged>
   <ModFailure>не установлена!</ModFailure>
-  <!-- Question messages -->
+  <!-- Сообщения с вопросами -->
   <QEnableDirectPlay>Желаете включить DirectPlay для запуска игры? Данная настройка для Windows 8.1-11 необходима для поддержки старых приложений и игр</QEnableDirectPlay>
   <WishDownloadPatches>Поскольку файлы патчей не были найдены, мы сейчас начнем их загрузку. Вы готовы загрузить эти файлы прямо сейчас?</WishDownloadPatches>
   <WishDownloadDirectXFiles>Поскольку дополнительные файлы DirectX не были найдены, мы сейчас начнем их загрузку. Вы готовы загрузить эти файлы прямо сейчас?</WishDownloadDirectXFiles>

@@ -451,10 +451,14 @@ namespace JetpackGUI
             progressPanel.Visible = true;
             stagesPanel.Visible = false;
             PartProgressBar.Value = 0;
+            PartProgressBar.CustomText = "";
             IProgress<double> ph = new Progress<double>(x =>
             {
                 PartProgressBar.Value = (int)x;
                 try { TbProgressBar.SetValue(Handle, (int)x, 100); } catch { }
+                // ToDo 
+                // Add text with Mb of downloaded file 
+                // PartProgressBar.CustomText = $"{lc_text[35]} {(int)x} {lc_text[7]}";
             });
             await client.DownloadFileAsync(zip_link_uri, file, ph);
             client.Logout();
@@ -516,39 +520,13 @@ namespace JetpackGUI
                 {
                     try
                     {
-                        //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Indeterminate);
                         using (System.Net.WebClient mods = new System.Net.WebClient())
                         {
                             string source = mods.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json");
-                            //string[] modsl = File.ReadAllLines(cache + @"\list.txt", Encoding.ASCII);
                             var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
                             modsList.Items.Clear();
                             foreach (var data in parsed)
                                 modsList.Items.Add(data.Value.Name);
-
-                            //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
-                            //for (int i = 0; i < modsl.Length; i++)
-                            //{
-                            //    if (modsl[i] != "")
-                            //    {
-                            //        modsList.Items.Add(modsl[i]);
-                            //        //mods.DownloadFile("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/txts/" + modsl[i] + ".txt", cache + @"\" + modsl[i] + ".txt");
-                            //        //string[] ms = File.ReadAllLines(cache + "\\" + modsl[i] + ".txt", Encoding.ASCII);
-
-                            //        // Name - 0
-                            //        // Version - 1
-                            //        // Author - 2
-                            //        // Description - 3
-                            //        // Web-site - 4
-                            //        // Link to photo 1 - 5
-                            //        // Link to photo 1 - 6
-                            //        // Link to photo 1 - 7
-                            //        // Link to ZIP with mod - 8
-
-                            //        //mse[i] = ms[0] + "|" + ms[1] + "|" + ms[2] + "|" + ms[3] + "|" + ms[4] + "|" + ms[5] + "|" + ms[6] + "|" + ms[7] + "|" + ms[8];
-                            //        //TbProgressBar.SetValue(Handle, i, modsl.Length);
-                            //    }
-                            //}
                         }
                         tabFix = true;
                         DSPanel.Visible = true;
@@ -556,13 +534,11 @@ namespace JetpackGUI
                     }
                     catch
                     {
-                        //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
                         MsgWarning(lc_text[27]);
                         ModsPanel.Visible = false;
                         DSPanel.Visible = false;
                         tabFix = false;
                     }
-                    //TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
                 }
                 else
                 {
@@ -668,6 +644,7 @@ namespace JetpackGUI
                     label3.Text = LOCAL.WishPlay;
                     play.Text = LOCAL.Play;
                     darkButton5.Text = LOCAL.CloseApp;
+                    lc_text[35] = LOCAL.Downloaded;
                     // CheckBoxes loading
                     checkBox1.Text = LOCAL.CreateBackups;
                     checkBox2.Text = LOCAL.CreateShortcut;
@@ -724,78 +701,89 @@ namespace JetpackGUI
 
         private void darkCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            try
+            if (YesInstallMe.Checked == false)
             {
-                Ping ping = new Ping();
-                PingReply pingReply = null;
-                pingReply = ping.Send("github.com");
-                if (YesInstallMe.Checked == true)
+                progressPanel.Visible = false;
+                stagesPanel.Visible = true;
+                if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
+                    File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+            }
+            else
+            {
+                try
                 {
-                    if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
+                    Ping ping = new Ping();
+                    PingReply pingReply = null;
+                    pingReply = ping.Send("github.com");
+                    if (YesInstallMe.Checked == true)
                     {
-                        if (!Directory.Exists(cache + @"\zips"))
-                            Directory.CreateDirectory(cache + @"\zips");
-                        try
+                        if (!File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
                         {
-                            DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[15], lc_text[33]);
-                            if (result == DialogResult.Yes)
+                            if (!Directory.Exists(cache + @"\zips"))
+                                Directory.CreateDirectory(cache + @"\zips");
+                            try
                             {
-                                if (zip_link.Contains("mega.nz"))
-                                    MegaDownloader(zip_link,
-                                        cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip",
-                                        lc_text[3] + " \"" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...", 2);
-                                else
+                                DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[15], lc_text[33]);
+                                if (result == DialogResult.Yes)
                                 {
-                                    TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
-                                    progressPanel.Visible = true;
-                                    stagesPanel.Visible = false;
-                                    labelPartProgress.Text = lc_text[3] + " \"" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...";
-                                    PartProgressBar.Value = 0;
-                                    using (System.Net.WebClient wc = new System.Net.WebClient())
+                                    if (zip_link.Contains("mega.nz"))
+                                        MegaDownloader(zip_link,
+                                            cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip",
+                                            lc_text[3] + " \"" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...", 2);
+                                    else
                                     {
-                                        var r = wc.OpenRead(zip_link);
-                                        if ((Convert.ToInt64(wc.ResponseHeaders["Content-Length"]) / 1048576) >= 2)
-                                            labelPartProgress.Text += " (" + (Convert.ToDouble(wc.ResponseHeaders["Content-Length"]) / 1048576).ToString("#.# " + lc_text[7] + ")");
-                                        r.Close();
-                                        wc.DownloadProgressChanged += (s, a) =>
+                                        TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Normal);
+                                        progressPanel.Visible = true;
+                                        stagesPanel.Visible = false;
+                                        labelPartProgress.Text = lc_text[3] + " \"" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...";
+                                        PartProgressBar.Value = 0;
+                                        PartProgressBar.VisualMode = VitNX.Controls.VitNX_ProgressBarDisplayMode.TextAndCurrProgress;
+                                        using (System.Net.WebClient wc = new System.Net.WebClient())
                                         {
-                                            TbProgressBar.SetValue(Handle, a.ProgressPercentage, 100);
-                                            PartProgressBar.Value = a.ProgressPercentage;
-                                        };
-                                        wc.DownloadFileCompleted += (s, a) =>
-                                        {
-                                            PartProgressBar.Value = 0;
-                                            progressPanel.Visible = false;
-                                            stagesPanel.Visible = true;
-                                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
-                                        };
-                                        wc.DownloadFileAsync(new Uri(zip_link), @cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                                            var sum = 0L;
+                                            long prev = 0;
+                                            var r = wc.OpenRead(zip_link);
+                                            if ((Convert.ToInt64(wc.ResponseHeaders["Content-Length"]) / 1048576) >= 2)
+                                                labelPartProgress.Text += " (" + (Convert.ToDouble(wc.ResponseHeaders["Content-Length"]) / 1048576).ToString("#.# " + lc_text[7] + ")");
+                                            r.Close();
+                                            wc.DownloadProgressChanged += (s, a) =>
+                                            {
+                                                var diff = a.BytesReceived - prev;
+                                                sum += diff;
+                                                prev = a.BytesReceived;
+                                                TbProgressBar.SetValue(Handle, a.ProgressPercentage, 100);
+                                                PartProgressBar.Value = a.ProgressPercentage;
+                                                PartProgressBar.CustomText = $"{lc_text[35]} {sum / 1048576} {lc_text[7]}";
+                                            };
+                                            wc.DownloadFileCompleted += (s, a) =>
+                                            {
+                                                PartProgressBar.Value = 0;
+                                                progressPanel.Visible = false;
+                                                stagesPanel.Visible = true;
+                                                TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
+                                                PartProgressBar.VisualMode = VitNX.Controls.VitNX_ProgressBarDisplayMode.Percentage;
+                                            };
+                                            wc.DownloadFileTaskAsync(new Uri(zip_link), @cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                                        }
                                     }
                                 }
                             }
+                            catch (Exception ex)
+                            {
+                                TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
+                                MsgError(lc_text[21]);
+                                MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                                TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.Error);
-                            MsgError(lc_text[21]);
-                            MsgError(ex.ToString() + "\nFile: " + cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
-                            TbProgressBar.SetState(Handle, TbProgressBar.TaskbarStates.NoProgress);
-                        }
+                        else { YesInstallMe.Checked = true; }
                     }
-                    else { YesInstallMe.Checked = true; }
                 }
-                if (YesInstallMe.Checked == false)
+                catch
                 {
-                    progressPanel.Visible = false;
-                    stagesPanel.Visible = true;
-                    if (File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip"))
-                        File.Delete(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                    MsgWarning(lc_text[27]);
+                    YesInstallMe.Checked = false;
                 }
-            }
-            catch
-            {
-                MsgWarning(lc_text[27]);
-                YesInstallMe.Checked = false;
             }
         }
 
@@ -834,8 +822,20 @@ namespace JetpackGUI
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.F1) { try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } catch { MsgWarning(lc_text[26]); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); } }
-            if (e.KeyData == Keys.F4) { Process.Start("notepad.exe", @Application.StartupPath + @"\files\downgrader.xml"); }
+            if (e.KeyData == Keys.F1)
+            {
+                try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage"); }
+                catch
+                {
+                    MsgWarning(lc_text[26]);
+                    Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage");
+                }
+            }
+            if (e.KeyData == Keys.F4)
+            {
+                try { Process.Start("notepad", @Application.StartupPath + @"\files\downgrader.xml"); }
+                catch { Process.Start(@Application.StartupPath + @"\files\downgrader.xml"); }
+            }
             if (e.KeyData == Keys.F12)
             {
                 if (db == false)

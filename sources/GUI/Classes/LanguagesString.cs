@@ -95,6 +95,9 @@ namespace JetpackGUI
         [XmlElement(ElementName = "CloseApp")]
         public string CloseApp { get; set; }
 
+        [XmlElement(ElementName = "Downloaded")]
+        public string Downloaded { get; set; }
+
         [XmlElement(ElementName = "CreateBackups")]
         public string CreateBackups { get; set; }
 
