@@ -34,6 +34,7 @@
   <Play>Играть</Play>
   <CloseApp>Закрыть приложение</CloseApp>
   <Downloaded>Скачано:</Downloaded>
+  <Progress>Прогресс</Progress>
   <!-- Флажки -->
   <CreateBackups>Бэкап оригинальных файлов до даунгрейда</CreateBackups>
   <CreateShortcut>Создать ярлык на Рабочем Столе</CreateShortcut>

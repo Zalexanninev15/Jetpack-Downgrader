@@ -393,8 +393,12 @@ namespace JetpackGUI
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Directory.Exists(cache))
-                Directory.Delete(cache, true);
+            try
+            {
+                if (Directory.Exists(cache))
+                    Directory.Delete(cache, true);
+            }
+            catch { }
         }
 
         private void button1_VisibleChanged(object sender, EventArgs e)
@@ -645,6 +649,7 @@ namespace JetpackGUI
                     play.Text = LOCAL.Play;
                     darkButton5.Text = LOCAL.CloseApp;
                     lc_text[35] = LOCAL.Downloaded;
+                    lc_text[36] = LOCAL.Progress;
                     // CheckBoxes loading
                     checkBox1.Text = LOCAL.CreateBackups;
                     checkBox2.Text = LOCAL.CreateShortcut;
@@ -737,7 +742,7 @@ namespace JetpackGUI
                                         stagesPanel.Visible = false;
                                         labelPartProgress.Text = lc_text[3] + " \"" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + "\"...";
                                         PartProgressBar.Value = 0;
-                                        PartProgressBar.VisualMode = VitNX.Controls.VitNX_ProgressBarDisplayMode.TextAndCurrProgress;
+                                        PartProgressBar.VisualMode = VitNX.Controls.VitNX_ProgressBarDisplayMode.TextAndPercentage;
                                         using (System.Net.WebClient wc = new System.Net.WebClient())
                                         {
                                             var sum = 0L;
@@ -753,7 +758,7 @@ namespace JetpackGUI
                                                 prev = a.BytesReceived;
                                                 TbProgressBar.SetValue(Handle, a.ProgressPercentage, 100);
                                                 PartProgressBar.Value = a.ProgressPercentage;
-                                                PartProgressBar.CustomText = $"{lc_text[35]} {sum / 1048576} {lc_text[7]}";
+                                                PartProgressBar.CustomText = $"{lc_text[35]} {sum / 1048576} {lc_text[7]}  {lc_text[36]}";
                                             };
                                             wc.DownloadFileCompleted += (s, a) =>
                                             {

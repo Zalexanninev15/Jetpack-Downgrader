@@ -15,7 +15,7 @@ namespace JetpackDowngrader
         {
             string[] fl = new string[17];
             string[] flmd5 = new string[17];
-            int er = 0, gv = 0;
+            int er, gv;
             bool[] settings = new bool[10];
             string path = "";
 
@@ -120,6 +120,7 @@ namespace JetpackDowngrader
                 {
                     Logger("Game", "Path", "true");
                     //
+                    // Versions detector by Zalexanninev15
                     // gv[number] - version
                     // 0 - 1.0
                     // 1 - Steam
@@ -137,7 +138,7 @@ namespace JetpackDowngrader
                     {
                         try
                         {
-                            string SteamEXEmd5 = GetMD5(SaEXE);
+                            string SteamEXEmd5 = FileSystem.GetFileMD5(SaEXE);
                             if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                             {
                                 gv = 1;
@@ -149,7 +150,7 @@ namespace JetpackDowngrader
                                 SaEXE = @path + @"\gta_sa.exe";
                                 try
                                 {
-                                    string OtherEXEmd5 = GetMD5(SaEXE);
+                                    string OtherEXEmd5 = FileSystem.GetFileMD5(SaEXE);
                                     if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
                                     {
                                         gv = 3;
@@ -208,7 +209,7 @@ namespace JetpackDowngrader
                         SaEXE = @path + @"\gta_sa.exe";
                         try
                         {
-                            string OtherEXEmd5 = GetMD5(SaEXE);
+                            string OtherEXEmd5 = FileSystem.GetFileMD5(SaEXE);
                             if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
                             {
                                 gv = 1;
@@ -474,7 +475,7 @@ namespace JetpackDowngrader
                                         progress.SetColor(ConsoleColor.Blue);
                                         try
                                         {
-                                            GameMD5 = GetMD5(@path + fl[i]);
+                                            GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                             if (settings[9] == false)
                                             {
                                                 progress.NotUsed(false);
@@ -526,7 +527,7 @@ namespace JetpackDowngrader
                                         {
                                             try
                                             {
-                                                GameMD5 = GetMD5(@path + fl[i]);
+                                                GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                                 if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
@@ -579,7 +580,7 @@ namespace JetpackDowngrader
                                         {
                                             try
                                             {
-                                                GameMD5 = GetMD5(@path + fl[i]);
+                                                GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                                 if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
@@ -927,7 +928,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        GameMD5 = FileSystem.GetFileMD5(@path + fl[1]);
                                                         Logger("NewGameMD5", @path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
                                                         {
@@ -950,7 +951,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        GameMD5 = FileSystem.GetFileMD5(@path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -979,7 +980,7 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             try
                                                             {
-                                                                GameMD5 = GetMD5(@path + fl[i]);
+                                                                GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                                                 if (settings[9] == false)
                                                                 {
                                                                     progress.NotUsed(false);
@@ -1025,7 +1026,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        GameMD5 = FileSystem.GetFileMD5(@path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1056,7 +1057,7 @@ namespace JetpackDowngrader
                                                             {
                                                                 try
                                                                 {
-                                                                    GameMD5 = GetMD5(@path + fl[i]);
+                                                                    GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                                                     if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
@@ -1103,7 +1104,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = GetMD5(@path + fl[0]);
+                                                        GameMD5 = FileSystem.GetFileMD5(@path + fl[0]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[0], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1127,7 +1128,7 @@ namespace JetpackDowngrader
                                                     }
                                                     try
                                                     {
-                                                        GameMD5 = GetMD5(@path + fl[1]);
+                                                        GameMD5 = FileSystem.GetFileMD5(@path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", @path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1156,7 +1157,7 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             try
                                                             {
-                                                                GameMD5 = GetMD5(@path + fl[i]);
+                                                                GameMD5 = FileSystem.GetFileMD5(@path + fl[i]);
                                                                 if (settings[9] == false)
                                                                 {
                                                                     progress.NotUsed(false);
@@ -1349,11 +1350,6 @@ namespace JetpackDowngrader
                 Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("[" + type + "] " + ido + "=" + status);
             Console.ResetColor();
-        }
-
-        private static string GetMD5(string file)
-        {
-            return FileSystem.GetFileMD5(file);
         }
     }
 }

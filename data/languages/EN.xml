@@ -34,6 +34,7 @@
   <Play>Play</Play>
   <CloseApp>Close downgrader</CloseApp>
   <Downloaded>Downloaded:</Downloaded>
+  <Progress>Progress</Progress>
   <!-- CheckBoxes -->
   <CreateBackups>Backup original files before downgrade</CreateBackups>
   <CreateShortcut>Make shortcut on Desktop</CreateShortcut>

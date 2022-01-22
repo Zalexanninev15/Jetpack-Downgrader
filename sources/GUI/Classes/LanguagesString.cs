@@ -98,6 +98,9 @@ namespace JetpackGUI
         [XmlElement(ElementName = "Downloaded")]
         public string Downloaded { get; set; }
 
+        [XmlElement(ElementName = "Progress")]
+        public string Progress { get; set; }
+
         [XmlElement(ElementName = "CreateBackups")]
         public string CreateBackups { get; set; }
 
