@@ -15,7 +15,7 @@ namespace JetpackDowngrader
         {
             string[] fl = new string[17];
             string[] flmd5 = new string[17];
-            int er, gv;
+            int er = 0, gv = 0;
             bool[] settings = new bool[10];
             string path = "";
 

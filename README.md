@@ -21,11 +21,6 @@
 
 App for downgrading the game Grand Theft Auto: San Andreas to version 1.0 (**not for Grand Theft Auto: The Trilogy – The Definitive Edition**)
 
-## System requirements
-
-* **OS:** Windows 7 or higher
-* **Additional:** .NET Framework 4.8
-
 ## Authors
 
 * Zalexanninev15 - programmer and creator [![](https://img.shields.io/badge/donate-Buy_Me_a_Coffee-F94400.svg)](https://zalexanninev15.jimdofree.com/buy-me-a-coffee)
@@ -41,6 +36,11 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0 (**not
 * Display process of downgrade and maximum speed of operations
 * Support for localizations to different languages: English, Russian (GUI only, for now)
 * Support for hotkeys (**Ctrl + O**, **Ctrl + Y**, **Ctrl + Z**, **Ctrl + S**, **F1**, **F4**, **F12**)
+
+## System requirements
+
+* **OS:** Windows 7 or higher
+* **Additional:** .NET Framework 4.8
 
 ## Supported versions
 
@@ -79,4 +79,4 @@ App for downgrading the game Grand Theft Auto: San Andreas to version 1.0 (**not
 
 ## Build
 
-Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio 2019 or newer](https://visualstudio.microsoft.com/vs)
+Open solution *Jetpack Downgrader* and compile all projects using [Visual Studio](https://visualstudio.microsoft.com/vs)

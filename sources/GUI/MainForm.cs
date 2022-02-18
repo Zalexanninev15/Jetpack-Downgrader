@@ -1038,15 +1038,15 @@ namespace JetpackGUI
                         IsBak = true;
                     }
                 }
-                if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") ||
-                    (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) &&
-                    ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) ||
-                    (!File.Exists(@GamePath.Text + @"\index.bin"))))
-                {
-                    pictureBox10.Visible = true;
-                    IsBak = true;
-                    Data.PathToGame = GamePath.Text;
-                }
+                //if (((GetMD5(@GamePath.Text + @"\gta_sa.exe") == "6687A315558935B3FC80CDBFF04437A4") ||
+                //    (GetMD5(@GamePath.Text + @"\gta-sa.exe") == "6687A315558935B3FC80CDBFF04437A4")) &&
+                //    ((!File.Exists(@GamePath.Text + @"\MTLX.dll")) ||
+                //    (!File.Exists(@GamePath.Text + @"\index.bin"))))
+                //{
+                //    pictureBox10.Visible = true;
+                //    IsBak = true;
+                //    Data.PathToGame = GamePath.Text;
+                //}
                 if (File.Exists(GamePath.Text + @"\gta_sa.exe"))
                 {
                     if ((GetMD5(@GamePath.Text + @"\gta_sa.exe") != "E7697A085336F974A4A6102A51223960")

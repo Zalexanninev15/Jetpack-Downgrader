@@ -255,11 +255,11 @@ namespace JetpackGUI
             // 
             // labelPartProgress
             // 
-            this.labelPartProgress.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPartProgress.Font = new System.Drawing.Font("Arial", 9.75F);
             this.labelPartProgress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.labelPartProgress.Location = new System.Drawing.Point(136, 160);
+            this.labelPartProgress.Location = new System.Drawing.Point(150, 163);
             this.labelPartProgress.Name = "labelPartProgress";
-            this.labelPartProgress.Size = new System.Drawing.Size(541, 25);
+            this.labelPartProgress.Size = new System.Drawing.Size(513, 16);
             this.labelPartProgress.TabIndex = 7;
             this.labelPartProgress.Text = "...";
             this.labelPartProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
