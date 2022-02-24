@@ -1,6 +1,9 @@
 ﻿using CG.Web.MegaApiClient;
+
 using Microsoft.Win32;
+
 using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+
 using VitNX.Forms;
 using VitNX.Functions;
 using VitNX.Win32;
@@ -367,12 +371,25 @@ namespace JetpackGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            try { Process.Start(GamePath.Text + @"\gta_sa.exe"); }
-            catch
+            if (!checkBox3.Checked)
             {
-                MsgWarning(lc_text[25]);
-                pictureBox10.Visible = false;
-                IsBak = false;
+                try { Process.Start(GamePath.Text + @"\gta_sa.exe"); }
+                catch
+                {
+                    MsgWarning(lc_text[25]);
+                    pictureBox10.Visible = false;
+                    IsBak = false;
+                }
+            }
+            else
+            {
+                try { Process.Start(GamePath.Text + @"_Downgraded\gta_sa.exe"); }
+                catch
+                {
+                    MsgWarning(lc_text[25]);
+                    pictureBox10.Visible = false;
+                    IsBak = false;
+                }
             }
         }
 
