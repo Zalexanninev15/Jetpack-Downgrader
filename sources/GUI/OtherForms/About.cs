@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using VitNX.Forms;
-using VitNX.Win32;
+
+using VitNX.Functions.Windows.Win32;
+using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
+using VitNX.Functions.Windows.Apps;
 
 namespace JetpackGUI
 {
@@ -12,8 +13,8 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-                NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            if (Import.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+                Import.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
         }
 
         public About()
@@ -28,41 +29,37 @@ namespace JetpackGUI
 
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues"); }
-            catch
+            if (!Processes.OpenLink(Urls.GitHubAppIssues))
             {
                 MsgWarning();
-                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/issues");
+                Clipboard.SetText(Urls.GitHubAppIssues);
             }
         }
 
         private void darkButton1_Click_1(object sender, EventArgs e)
         {
-            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors"); }
-            catch
+            if (!Processes.OpenLink(Urls.GitHubAppAuthors))
             {
                 MsgWarning();
-                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader#authors");
+                Clipboard.SetText(Urls.GitHubAppAuthors);
             }
         }
 
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader"); }
-            catch
+            if (!Processes.OpenLink(Urls.GitHub))
             {
                 MsgWarning();
-                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader");
+                Clipboard.SetText(Urls.GitHub);
             }
         }
 
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            try { Process.Start("https://gtaforums.com/topic/969056-jetpack-downgrader"); }
-            catch
+            if (!Processes.OpenLink(Urls.GTAForums))
             {
                 MsgWarning();
-                Clipboard.SetText("https://gtaforums.com/topic/969056-jetpack-downgrader/");
+                Clipboard.SetText(Urls.GTAForums);
             }
         }
 
@@ -76,7 +73,7 @@ namespace JetpackGUI
             language.ReadXml();
             string langcode = language.Fields.LanguageCode;
             XmlSerializer lzol = new XmlSerializer(typeof(LanguagesString));
-            using (StringReader reader = new StringReader(File.ReadAllText(@Application.StartupPath + @"\files\languages\" + langcode + ".xml")))
+            using (StringReader reader = new StringReader(File.ReadAllText($@"{Application.StartupPath}\files\languages\{langcode}.xml")))
             {
                 var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                 Text = LOCAL.AboutTitle;
@@ -91,21 +88,6 @@ namespace JetpackGUI
                 MSG[0] = LOCAL.Warning;
                 MSG[1] = LOCAL.BrowserNotFound;
             }
-        }
-
-        private int db = 0;
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            //if (Data.DebugMode)
-            //{
-            //    try
-            //    {
-            //        db += 1;
-            //        if (db == 10) { WDebug wdb = new WDebug(); wdb.ShowDialog(); }
-            //    }
-            //    catch { }
-            //}
         }
     }
 }

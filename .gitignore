@@ -67,3 +67,4 @@ sources/GUI/obj/Debug/JetpackGUI.WDebug.resources
 sources/Downgrader/obj/Debug/Downgrader.csproj.FileListAbsolute.txt
 sources/GUI/obj/Release/JetpackGUI.ChooseGame.resources
 sources/GUI/obj/Release/build.force
+sources/Downgrader/obj/Release/build.force

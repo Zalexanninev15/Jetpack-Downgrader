@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Net;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
+
+using VitNX.Functions.Common.Information;
+using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
 
 namespace JetpackGUI
 {
@@ -19,15 +20,14 @@ namespace JetpackGUI
                 {
                     try
                     {
-                        Ping ping = new Ping();
-                        PingReply pingReply = null;
-                        pingReply = ping.Send("github.com");
-                        using (WebClient wc = new WebClient())
+                        if (Internet.IsHaveInternet("github.com") == Internet.INTERNET_STATUS.CONNECTED)
                         {
-                            string toolkit_version = wc.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/Version.txt");
+                            string toolkit_version = VitNX.Functions.Common.Web.DataFromSites.DownloadString(Data.NewVersionDetector, Application.ProductVersion);
                             if (toolkit_version != Data.JetpackDowngraderVersion)
                                 AvailableNewVersion = true;
                         }
+                        else
+                            AvailableNewVersion = false;
                     }
                     catch { AvailableNewVersion = false; }
                 }
@@ -42,11 +42,15 @@ namespace JetpackGUI
                 }
                 else
                 {
-                    VitNX.Forms.VitNX_MessageBox.ShowInfo("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
-                    try { System.Diagnostics.Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); } catch { VitNX.Forms.VitNX_MessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning"); Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/releases/latest"); }
+                    VitNX_MessageBox.ShowInfo("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
+                    if (!VitNX.Functions.Windows.Apps.Processes.OpenLink(Urls.Release))
+                    {
+                        VitNX_MessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning");
+                        Clipboard.SetText(Urls.Release);
+                    }
                 }
             }
-            catch (Exception ex) { VitNX.Forms.VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
+            catch (Exception ex) { VitNX_MessageBox.ShowError(ex.ToString(), "Error"); }
         }
     }
 }

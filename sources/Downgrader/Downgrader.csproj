@@ -72,9 +72,8 @@
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="VitNX, Version=1.0.3.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DEV\JPDBUILD\files\VitNX.dll</HintPath>
+    <Reference Include="VitNX2">
+      <HintPath>..\..\..\VitNX\source\VitNX\bin\Debug\VitNX2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

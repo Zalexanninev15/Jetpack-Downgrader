@@ -1,8 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using VitNX.Win32;
+
+using VitNX.Functions.Windows.Win32;
 
 namespace JetpackGUI
 {
@@ -10,8 +9,8 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            if (NativeFunctions.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-                NativeFunctions.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            if (Import.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
+                Import.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
         }
 
         private GUI mygui = new GUI();
@@ -23,12 +22,10 @@ namespace JetpackGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void MyLang_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
