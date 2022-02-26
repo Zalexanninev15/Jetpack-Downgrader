@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using System.Reflection;
 
 using VitNX.Functions.Common;
 using VitNX.Functions.Common.Information;
@@ -67,10 +68,10 @@ namespace JetpackDowngrader
             //
             // todo Localization
             //string lgcode = "EN";
-            //if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\gui.xml"))
+            //if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\gui.xml"))
             //{
             //    XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
-            //    using (StringReader reader = new StringReader(File.ReadAllText(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\gui.xml")))
+            //    using (StringReader reader = new StringReader(File.ReadAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\gui.xml")))
             //    {
             //        var string_gui = (GUI_Settings)serializer.Deserialize(reader);
             //        lgcode = string_gui.LnguageCode;
@@ -79,7 +80,7 @@ namespace JetpackDowngrader
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " +
-                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT" +
+                Assembly.GetExecutingAssembly().GetName().Version.ToString() + "\n[JPD] License: MIT" +
                 "\n[JPD] Authors: Zalexanninev15 (programmer and creator) & Vadim M. (consultant)" +
                 "\n[JPD] GitHub: https://github.com/Zalexanninev15/Jetpack-Downgrader\n\n[App] Start of log output...");
             Console.ResetColor();
@@ -95,10 +96,10 @@ namespace JetpackDowngrader
                 settings[7] = false;
                 settings[8] = false;
                 settings[9] = true;
-                if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml"))
+                if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml"))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
-                    using (StringReader reader = new StringReader(File.ReadAllText(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml")))
+                    using (StringReader reader = new StringReader(File.ReadAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\downgrader.xml")))
                     {
                         var bool_settings = (SettingsEditor)serializer.Deserialize(reader);
                         settings[0] = bool_settings.CreateBackups;
@@ -117,7 +118,7 @@ namespace JetpackDowngrader
                 else { Logger("App", "downgrader.xml", "false"); }
             }
             catch { Logger("App", "downgrader.xml", "false"); }
-            if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
+            if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patcher.exe"))
             {
                 try { path = args[0]; } catch { }
                 if (Directory.Exists(path) == false)
@@ -306,13 +307,13 @@ namespace JetpackDowngrader
                         Logger("DirectPlay", "Enabled", "In process...");
                         try
                         {
-                            if (settings[9] == true) { Processes.Execute("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart"); }
+                            if (settings[9] == true) { Processes.RunAW("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart", false); }
                             else { Process.Start("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart").WaitForExit(); }
                         }
                         catch { Logger("DirectPlay", "Enabled", "Error"); }
                         try
                         {
-                            if (settings[9] == true) { Processes.Execute("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all"); }
+                            if (settings[9] == true) { Processes.RunAW("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all", false); }
                             else { Process.Start("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all").WaitForExit(); }
                         }
                         catch { Logger("DirectPlay", "Enabled", "Error"); }
@@ -321,13 +322,13 @@ namespace JetpackDowngrader
                     }
                     if ((settings[7] == true) && (gv != 5))
                     {
-                        if (Directory.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX"))
+                        if (Directory.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\DirectX"))
                         {
                             try
                             {
                                 Logger("DirectX", "Process", "Installing...");
                                 Logger("DirectX", "Process", "App is not frozen, just busy right now...");
-                                Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
+                                Process.Start(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\DirectX\DXSETUP.exe", "/silent").WaitForExit();
                                 Logger("DirectX", "Process", "Installation completed successfully");
                             }
                             catch { Logger("DirectX", "Process", "Installation error"); }
@@ -823,15 +824,15 @@ namespace JetpackDowngrader
                                 }
                                 if (er == 0)
                                 {
-                                    if (Directory.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches"))
+                                    if (Directory.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches"))
                                     {
                                         bool all_patches = true;
                                         for (int i = 2; i < fl.Length; i++)
                                         {
-                                            if (!File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp"))
+                                            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp"))
                                                 all_patches = false;
                                         }
-                                        if (!File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp"))
+                                        if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches\game.jpp"))
                                             all_patches = false;
                                         if (all_patches == true)
                                         {
@@ -841,8 +842,8 @@ namespace JetpackDowngrader
                                                 // For All Versions | EXE
                                                 var restoreRGLfiles = new ProcessStartInfo
                                                 {
-                                                    FileName = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\7z.exe",
-                                                    Arguments = "x \"" + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + path + "\" -y",
+                                                    FileName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\7z.exe",
+                                                    Arguments = "x \"" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\patches\\game.jpp\" -o\"" + path + "\" -y",
                                                     UseShellExecute = false,
                                                     CreateNoWindow = true,
                                                 };
@@ -871,10 +872,10 @@ namespace JetpackDowngrader
                                                         for (int i = 2; i < fl.Length; i++)
                                                         {
                                                             progress.SetColor(ConsoleColor.Blue);
-                                                            string par = '"' + path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                            string par = '"' + path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
                                                             if (settings[0] == true)
-                                                                par = '"' + path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                            Processes.Execute(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par);
+                                                                par = '"' + path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                            Processes.RunAW(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par, false);
                                                             if (settings[0] == false)
                                                                 File.Delete(path + fl[i]);
                                                             File.Move(path + fl[i] + ".temp", path + fl[i]);
@@ -900,10 +901,10 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             if ((i >= 2) && (i > 11))
                                                             {
-                                                                string par = '"' + path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                                string par = '"' + path + fl[i] + '"' + " " + '"' + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
                                                                 if (settings[0] == true)
-                                                                    par = '"' + path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
-                                                                Processes.Execute(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par);
+                                                                    par = '"' + path + fl[i] + ".jpb" + '"' + " " + '"' + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patches" + fl[i] + ".jpp" + '"' + " " + '"' + path + fl[i] + ".temp" + '"';
+                                                                Processes.RunAW(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\patcher.exe", @par, false);
                                                                 if (settings[0] == false)
                                                                     File.Delete(path + fl[i]);
                                                                 File.Move(path + fl[i] + ".temp", path + fl[i]);

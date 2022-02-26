@@ -52,7 +52,6 @@
   <Warning>Warning</Warning>
   <Error>Error</Error>
   <Question>Question</Question>
-  <FolderSelectDialog>Select the game folder</FolderSelectDialog>
   <!-- Information messages -->
   <ModSucces>modification has been successfully installed!</ModSucces>
   <BindingOK>The binding of the game is completed!</BindingOK>

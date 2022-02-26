@@ -52,7 +52,6 @@
   <Warning>Предупреждение</Warning>
   <Error>Ошибка</Error>
   <Question>Вопрос</Question>
-  <FolderSelectDialog>Укажите папку с игрой</FolderSelectDialog>
   <!-- Сообщения с ифнормацией -->
   <ModSucces>была успешно установлена!</ModSucces>
   <BindingOK>Добавление игры в реестр успешно завершено!</BindingOK>

@@ -149,9 +149,6 @@ namespace JetpackGUI
         [XmlElement(ElementName = "Done")]
         public string Done { get; set; }
 
-        [XmlElement(ElementName = "FolderSelectDialog")]
-        public string FolderSelectDialog { get; set; }
-
         [XmlElement(ElementName = "WishDownloadPatches")]
         public string WishDownloadPatches { get; set; }
 

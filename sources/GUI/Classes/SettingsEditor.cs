@@ -28,16 +28,16 @@ namespace JetpackGUI
         public void WriteXml()
         {
             XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-            using (TextWriter writer = new StreamWriter(Application.StartupPath + @"\files\downgrader.xml"))
+            using (TextWriter writer = new StreamWriter($@"{Application.StartupPath}\files\downgrader.xml"))
                 ser.Serialize(writer, Fields);
         }
 
         public void ReadXml()
         {
-            if (File.Exists(Application.StartupPath + @"\files\downgrader.xml"))
+            if (File.Exists($@"{Application.StartupPath}\files\downgrader.xml"))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(SettingsEditor));
-                using (TextReader reader = new StreamReader(Application.StartupPath + @"\files\downgrader.xml"))
+                using (TextReader reader = new StreamReader($@"{Application.StartupPath}\files\downgrader.xml"))
                     Fields = ser.Deserialize(reader) as SettingsEditor;
             }
         }

@@ -7,6 +7,7 @@
         public static bool DebugMode { get; set; }
         public static string NewVersionDetector { get; } = "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/Version.txt";
         public static string GitHubPing { get; } = "github.com";
+        public static string Mods { get; } = "https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json";
     }
 
     public class ModsData
@@ -29,6 +30,7 @@
         public static string GTAForums { get; } = "https://gtaforums.com/topic/969056-jetpack-downgrader";
         public static string GitHubAppUsage { get; } = "https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#usage";
         public static string GitHubAppAuthors { get; } = "https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/main/README.md#authors";
+        public static string GitHubAppAddMods { get; } = "https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications";
         public static string GitHubAppIssues { get; } = "https://github.com/Zalexanninev15/Jetpack-Downgrader/issues";
     }
 }

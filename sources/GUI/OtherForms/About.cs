@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-using VitNX.Functions.Windows.Win32;
 using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
 using VitNX.Functions.Windows.Apps;
 
@@ -13,8 +12,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            if (Import.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-                Import.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         public About()

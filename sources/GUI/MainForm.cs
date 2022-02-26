@@ -26,8 +26,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            if (Import.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-                Import.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         private Props config = new Props();
@@ -42,7 +41,7 @@ namespace JetpackGUI
         private bool NotDone = true;
         private bool IsDD = false;
         private bool db = false;
-        private string cache = Application.StartupPath + @"\files\mods_cache";
+        private string cache = $@"{Application.StartupPath}\files\mods_cache";
         private string zip_link = "application/zip";
         private string[] photos_links = new string[3];
         private string site_link = "";
@@ -53,7 +52,7 @@ namespace JetpackGUI
         {
             ServicePointManager.SecurityProtocol = VitNX.Functions.Common.Web.Config.UseProtocols();
             Import.SetProcessDpiAwareness(Enums.PROCESS_DPI_AWARENESS.PROCESS_DPI_UNAWARE);
-            if (!Directory.Exists(Application.StartupPath + @"\files\patches"))
+            if (!Directory.Exists($@"{Application.StartupPath}\files\patches"))
             {
                 darkButton4.Visible = true;
                 button1.Visible = false;
@@ -67,7 +66,7 @@ namespace JetpackGUI
             }
             try
             {
-                string[] mf = Directory.GetFiles(Application.StartupPath + @"\files", "*.zip");
+                string[] mf = Directory.GetFiles($@"{Application.StartupPath}\files", "*.zip");
                 for (int i = 0; i < mf.Length; i++)
                     File.Delete(mf[i]);
             }
@@ -127,16 +126,16 @@ namespace JetpackGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(Application.StartupPath + @"\files\patches"))
+            if (Directory.Exists($@"{Application.StartupPath}\files\patches"))
             {
                 NotDone = false;
                 bool all_patches = true;
                 for (int i = 2; i < fl.Length; i++)
                 {
-                    if (!File.Exists(Application.StartupPath + @"\files\patches" + fl[i] + ".jpp"))
+                    if (!File.Exists($@"{Application.StartupPath}\files\patches{fl[i]}.jpp"))
                         all_patches = false;
                 }
-                if (!File.Exists(Application.StartupPath + @"\files\patches\game.jpp"))
+                if (!File.Exists($@"{Application.StartupPath}\files\patches\game.jpp"))
                     all_patches = false;
                 if (all_patches == true)
                 {
@@ -148,7 +147,7 @@ namespace JetpackGUI
                             TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Indeterminate);
                             button1.Enabled = false;
                             int d = 0;
-                            Process.Start(Application.StartupPath + @"\files\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
+                            Process.Start($@"{Application.StartupPath}\files\jpd.exe", "\"" + GamePath.Text + "\"").WaitForExit();
                             string str = "jpd";
                             foreach (Process process2 in Process.GetProcesses())
                             {
@@ -157,21 +156,21 @@ namespace JetpackGUI
                             }
                             if ((d == 1) && Directory.Exists(cache + @"\zips"))
                             {
-                                File.WriteAllBytes(cache + @"\zips\ASI_Loader.zip", Properties.Resources.ASILoader);
+                                File.WriteAllBytes($@"{cache}\zips\ASI_Loader.zip", Properties.Resources.ASILoader);
                                 string[] modsZip = Directory.GetFiles(cache + @"\zips", "*.zip");
                                 TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Normal);
                                 for (int i = 0; i < modsZip.Length; i++)
                                 {
                                     string modName = new FileInfo(modsZip[i]).Name.Replace(".zip", "");
-                                    if (IsInstaller(modsZip[i]) == false)
+                                    if (FileSystem.IsPeExe(modsZip[i]) == false)
                                     {
                                         try
                                         {
                                             TaskBarProgressBar.SetValue(Handle, i, modsZip.Length);
                                             if (checkBox3.Checked == false)
-                                                Process.Start(Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
+                                                Process.Start($@"{Application.StartupPath}\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "\" -y").WaitForExit();
                                             else
-                                                Process.Start(Application.StartupPath + @"\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit();
+                                                Process.Start($@"{Application.StartupPath}\files\7z.exe", "x \"" + modsZip[i] + "\" -o\"" + GamePath.Text + "_Downgraded\" -y").WaitForExit();
                                             if (modName != "ASI_Loader")
                                                 MsgInfo(lc_text[6] + " \"" + modName + "\" " + lc_text[17]);
                                             if ((modName == "ASI_Loader") && (modsZip.Length == 1))
@@ -186,9 +185,7 @@ namespace JetpackGUI
                                     else
                                     {
                                         if (checkBox3.Checked == true)
-                                        {
                                             VitNX_MessageBox.ShowWarning(lc_text[29] + ": \"" + GamePath.Text + "_Downgraded\"!\n" + lc_text[30], lc_text[11]);
-                                        }
                                         File.Move(modsZip[i], modsZip[i].Replace(".zip", ".exe"));
                                         Process.Start(modsZip[i].Replace(".zip", ".exe")).WaitForExit();
                                         File.Move(modsZip[i].Replace(".zip", ".exe"), modsZip[i]);
@@ -228,7 +225,7 @@ namespace JetpackGUI
                 }
                 else
                 {
-                    try { Directory.Delete(Application.StartupPath + @"\files\patches", true); } catch { }
+                    try { Directory.Delete($@"{Application.StartupPath}\files\patches", true); } catch { }
                     button1.Visible = false;
                     darkButton4.Visible = true;
                     NotDone = true;
@@ -358,7 +355,7 @@ namespace JetpackGUI
         {
             if (!checkBox3.Checked)
             {
-                try { Process.Start(GamePath.Text + @"\gta_sa.exe"); }
+                try { Process.Start($@"{GamePath.Text}\gta_sa.exe"); }
                 catch
                 {
                     MsgWarning(lc_text[25]);
@@ -368,7 +365,7 @@ namespace JetpackGUI
             }
             else
             {
-                try { Process.Start(GamePath.Text + @"_Downgraded\gta_sa.exe"); }
+                try { Process.Start($@"{GamePath.Text}_Downgraded\gta_sa.exe"); }
                 catch
                 {
                     MsgWarning(lc_text[25]);
@@ -421,18 +418,16 @@ namespace JetpackGUI
 
         private void darkButton6_Click_1(object sender, EventArgs e)
         {
-            try { Process.Start("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications"); }
-            catch
+            if (!Processes.OpenLink(Urls.GitHubAppAddMods))
             {
                 MsgWarning(lc_text[26]);
-                Clipboard.SetText("https://github.com/Zalexanninev15/Jetpack-Downgrader/blob/unstable/data/docs/AddNewData.md#add-new-modifications");
+                Clipboard.SetText(Urls.GitHubAppAddMods);
             }
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            try { Process.Start(Urls.GitHubAppUsage); }
-            catch
+            if (!Processes.OpenLink(Urls.GitHubAppUsage))
             {
                 MsgWarning(lc_text[26]);
                 Clipboard.SetText(Urls.GitHubAppUsage);
@@ -474,7 +469,7 @@ namespace JetpackGUI
                 if (code == 0)
                 {
                     try { TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Indeterminate); } catch { }
-                    Process.Start(Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
+                    Process.Start($@"{Application.StartupPath}\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
                     darkButton4.Visible = false;
                     button1.Visible = true;
@@ -483,7 +478,7 @@ namespace JetpackGUI
                 if (code == 1)
                 {
                     try { TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Indeterminate); } catch { }
-                    Process.Start(Application.StartupPath + @"\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
+                    Process.Start($@"{Application.StartupPath}\files\7z.exe", "x \"" + file + "\" -o\"" + Application.StartupPath + "\\files\" -y").WaitForExit();
                     File.Delete(file);
                     try { TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.NoProgress); } catch { }
                 }
@@ -520,28 +515,34 @@ namespace JetpackGUI
         {
             try
             {
-                Ping ping = new Ping();
-                PingReply pingReply = null;
-                pingReply = ping.Send(Data.GitHubPing);
-                if (ModsPanel.Visible == false)
+                if (Internet.IsHaveInternet(Data.GitHubPing) == Internet.INTERNET_STATUS.CONNECTED)
                 {
-                    try
+                    if (ModsPanel.Visible == false)
                     {
-                        using (System.Net.WebClient mods = new System.Net.WebClient())
+                        try
                         {
-                            string source = mods.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json");
-                            var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
-                            modsList.Items.Clear();
-                            foreach (var data in parsed)
-                                modsList.Items.Add(data.Value.Name);
+                            using (System.Net.WebClient mods = new System.Net.WebClient())
+                            {
+                                string source = mods.DownloadString(Data.Mods);
+                                var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
+                                modsList.Items.Clear();
+                                foreach (var data in parsed)
+                                    modsList.Items.Add(data.Value.Name);
+                            }
+                            tabFix = true;
+                            DSPanel.Visible = true;
+                            ModsPanel.Visible = true;
                         }
-                        tabFix = true;
-                        DSPanel.Visible = true;
-                        ModsPanel.Visible = true;
+                        catch
+                        {
+                            MsgWarning(lc_text[27]);
+                            ModsPanel.Visible = false;
+                            DSPanel.Visible = false;
+                            tabFix = false;
+                        }
                     }
-                    catch
+                    else
                     {
-                        MsgWarning(lc_text[27]);
                         ModsPanel.Visible = false;
                         DSPanel.Visible = false;
                         tabFix = false;
@@ -549,6 +550,7 @@ namespace JetpackGUI
                 }
                 else
                 {
+                    MsgWarning(lc_text[27]);
                     ModsPanel.Visible = false;
                     DSPanel.Visible = false;
                     tabFix = false;
@@ -563,14 +565,6 @@ namespace JetpackGUI
             }
         }
 
-        private bool IsInstaller(string file)
-        {
-            var twoBytes = new byte[2];
-            using (var fileStream = File.Open(file, FileMode.Open))
-                fileStream.Read(twoBytes, 0, 2);
-            return Encoding.UTF8.GetString(twoBytes) == "MZ";
-        }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             darkComboBox2.Items.Clear();
@@ -578,7 +572,7 @@ namespace JetpackGUI
             {
                 LangsPanel.Visible = true;
                 lpFix = true;
-                langs = Directory.GetFiles(Application.StartupPath + @"\files\languages", "*.xml");
+                langs = Directory.GetFiles($@"{Application.StartupPath}\files\languages", "*.xml");
                 for (int i = 0; i < langs.Length; i++)
                 {
                     if (langs[i] != "")
@@ -615,7 +609,7 @@ namespace JetpackGUI
             langcode = language.Fields.LanguageCode;
             try
             {
-                using (StringReader reader = new StringReader(File.ReadAllText(Application.StartupPath + @"\files\languages\" + langcode + ".xml")))
+                using (StringReader reader = new StringReader(File.ReadAllText($@"{Application.StartupPath}\files\languages\{langcode}.xml")))
                 {
                     var LOCAL = (LanguagesString)lzol.Deserialize(reader);
                     // Text loading
@@ -666,7 +660,7 @@ namespace JetpackGUI
                     lc_text[11] = LOCAL.Warning;
                     lc_text[10] = LOCAL.Error;
                     lc_text[33] = LOCAL.Question;
-                    lc_text[12] = LOCAL.FolderSelectDialog;
+                    // For new lc: lc_text[12] = 
                     // Information messages loading
                     lc_text[17] = LOCAL.ModSucces;
                     lc_text[19] = LOCAL.BindingOK;
@@ -768,6 +762,8 @@ namespace JetpackGUI
                                         }
                                     }
                                 }
+                                else
+                                    YesInstallMe.Checked = false;
                             }
                             catch (Exception ex)
                             {
@@ -797,14 +793,14 @@ namespace JetpackGUI
         {
             if (checkBox8.Checked == true)
             {
-                if (!Directory.Exists(Application.StartupPath + @"\files\DirectX"))
+                if (!Directory.Exists($@"{Application.StartupPath}\files\DirectX"))
                 {
                     try
                     {
                         DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[14], lc_text[33]);
                         if (result == DialogResult.Yes && Internet.IsHaveInternet(Data.GitHubPing) == Internet.INTERNET_STATUS.CONNECTED)
                         {
-                            try { MegaDownloader("https://mega.nz/file/0pFRwAqa#Arguk9cQLpXYeQgXnFfAp6cw6F5OIZFKP2tRTwNCArI", Application.StartupPath + @"\files\ddirectx.7z", lc_text[5], 1); }
+                            try { MegaDownloader("https://mega.nz/file/0pFRwAqa#Arguk9cQLpXYeQgXnFfAp6cw6F5OIZFKP2tRTwNCArI", $@"{Application.StartupPath}\files\ddirectx.7z", lc_text[5], 1); }
                             catch { checkBox8.Checked = false; }
                         }
                         else
@@ -841,8 +837,8 @@ namespace JetpackGUI
             }
             if (e.KeyData == Keys.F4)
             {
-                try { Processes.Run("notepad", Application.StartupPath + @"\files\downgrader.xml"); }
-                catch { Processes.Run(Application.StartupPath + @"\files\downgrader.xml"); }
+                try { Processes.Run("notepad", $@"{Application.StartupPath}\files\downgrader.xml"); }
+                catch { Processes.Run($@"{Application.StartupPath}\files\downgrader.xml"); }
             }
             if (e.KeyData == Keys.F12)
             {
@@ -953,14 +949,20 @@ namespace JetpackGUI
         {
             try
             {
-                Ping ping = new Ping();
-                PingReply pingReply = null;
-                pingReply = ping.Send(Data.GitHubPing);
-                DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[13], lc_text[33]);
-                if (result == DialogResult.Yes)
+                if (Internet.IsHaveInternet(Data.GitHubPing) == Internet.INTERNET_STATUS.CONNECTED)
                 {
-                    try { MegaDownloader("https://mega.nz/file/4tcXiSqA#8JzulAC0oABzinb7914sq2xkyxE7c6atSeMval-YWms", Application.StartupPath + @"\files\dpatches.rar", lc_text[4], 0); }
-                    catch
+                    DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[13], lc_text[33]);
+                    if (result == DialogResult.Yes)
+                    {
+                        try { MegaDownloader("https://mega.nz/file/4tcXiSqA#8JzulAC0oABzinb7914sq2xkyxE7c6atSeMval-YWms", $@"{Application.StartupPath}\files\dpatches.rar", lc_text[4], 0); }
+                        catch
+                        {
+                            progressPanel.Visible = false;
+                            stagesPanel.Visible = true;
+                            button1.Visible = false;
+                        }
+                    }
+                    else
                     {
                         progressPanel.Visible = false;
                         stagesPanel.Visible = true;
@@ -969,9 +971,9 @@ namespace JetpackGUI
                 }
                 else
                 {
-                    progressPanel.Visible = false;
-                    stagesPanel.Visible = true;
-                    button1.Visible = false;
+                    TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Error);
+                    MsgWarning(lc_text[27]);
+                    TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.NoProgress);
                 }
             }
             catch
@@ -988,32 +990,41 @@ namespace JetpackGUI
         {
             try
             {
-                Ping ping = new Ping();
-                PingReply pingReply = null;
-                pingReply = ping.Send(Data.GitHubPing);
-                using (System.Net.WebClient mods = new System.Net.WebClient())
+                if (Internet.IsHaveInternet(Data.GitHubPing) == Internet.INTERNET_STATUS.CONNECTED)
                 {
-                    string source = mods.DownloadString("https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/info/v2.json");
-                    var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
-                    foreach (var data in parsed)
+                    using (System.Net.WebClient mods = new System.Net.WebClient())
                     {
-                        if (modsList.Text == data.Value.Name)
+                        string source = mods.DownloadString(Data.Mods);
+                        var parsed = JsonConvert.DeserializeObject<Dictionary<string, ModsData>>(source);
+                        foreach (var data in parsed)
                         {
-                            ScreenShot.Enabled = true;
-                            darkGroupBox1.Visible = true;
-                            nameLabel.Text = lc_text[0] + ": " + data.Value.Name;
-                            darkLabel5.Text = lc_text[1] + ": " + data.Value.Version;
-                            darkLabel6.Text = lc_text[2] + ": " + data.Value.Author;
-                            darkLabel4.Text = data.Value.Description;
-                            site_link = data.Value.Site;
-                            ScreenShot.ImageLocation = data.Value.Logo;
-                            photos_links[0] = ScreenShot.ImageLocation;
-                            photos_links[1] = data.Value.Screenshot1;
-                            photos_links[2] = data.Value.Screenshot2;
-                            zip_link = data.Value.File;
-                            YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                            if (modsList.Text == data.Value.Name)
+                            {
+                                ScreenShot.Enabled = true;
+                                darkGroupBox1.Visible = true;
+                                nameLabel.Text = lc_text[0] + ": " + data.Value.Name;
+                                darkLabel5.Text = lc_text[1] + ": " + data.Value.Version;
+                                darkLabel6.Text = lc_text[2] + ": " + data.Value.Author;
+                                darkLabel4.Text = data.Value.Description;
+                                site_link = data.Value.Site;
+                                ScreenShot.ImageLocation = data.Value.Logo;
+                                photos_links[0] = ScreenShot.ImageLocation;
+                                photos_links[1] = data.Value.Screenshot1;
+                                photos_links[2] = data.Value.Screenshot2;
+                                zip_link = data.Value.File;
+                                YesInstallMe.Checked = File.Exists(cache + @"\zips\" + nameLabel.Text.Replace(lc_text[0] + ": ", "") + ".zip");
+                            }
                         }
                     }
+                }
+                else
+                {
+                    MsgError(lc_text[21]);
+                    ModsPanel.Visible = false;
+                    DSPanel.Visible = false;
+                    tabFix = false;
+                    ScreenShot.Enabled = false;
+                    zip_link = "application/zip";
                 }
             }
             catch
@@ -1159,7 +1170,7 @@ namespace JetpackGUI
                                 TaskBarProgressBar.SetState(Handle, Enums.TASKBAR_STATES.Indeterminate);
                                 var restoreRGLfiles = new ProcessStartInfo
                                 {
-                                    FileName = Application.StartupPath + @"\files\7z.exe",
+                                    FileName = $@"{Application.StartupPath}\files\7z.exe",
                                     Arguments = "x \"" + Application.StartupPath + "\\files\\rgl.jpbc\" -o\"" + @GamePath.Text + "\" -y",
                                     UseShellExecute = false,
                                     CreateNoWindow = true,
@@ -1286,8 +1297,8 @@ namespace JetpackGUI
             DialogResult result = VitNX_MessageBox.ShowQuestion(lc_text[18], lc_text[33]);
             if (result == DialogResult.Yes)
             {
-                try { Processes.Execute("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart"); } catch { }
-                try { Processes.Execute("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all"); } catch { }
+                try { Processes.RunAW("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart", false); } catch { }
+                try { Processes.RunAW("dism", "/Online /enable-feature /FeatureName:\"DirectPlay\" /NoRestart /all", false); } catch { }
                 MsgInfo(lc_text[34]);
             }
         }

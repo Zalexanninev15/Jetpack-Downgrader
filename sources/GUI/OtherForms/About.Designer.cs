@@ -6,7 +6,7 @@ namespace JetpackGUI
         /// <summary>
         /// Required designer variable.
         /// </summary>
-       System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -27,16 +27,16 @@ namespace JetpackGUI
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-       void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(About));
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.darkButton1 = new VitNX.Controls.VitNX_Button();
-            this.darkTextBox1 = new VitNX.Controls.VitNX_TextBox();
-            this.darkButton2 = new VitNX.Controls.VitNX_Button();
-            this.darkButton3 = new VitNX.Controls.VitNX_Button();
-            this.darkButton4 = new VitNX.Controls.VitNX_Button();
+            this.darkButton1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.darkTextBox1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_TextBox();
+            this.darkButton2 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.darkButton3 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.darkButton4 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -176,10 +176,10 @@ namespace JetpackGUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private VitNX.Controls.VitNX_Button darkButton1;
-        private VitNX.Controls.VitNX_TextBox darkTextBox1;
-        private VitNX.Controls.VitNX_Button darkButton2;
-        private VitNX.Controls.VitNX_Button darkButton3;
-        private VitNX.Controls.VitNX_Button darkButton4;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button darkButton1;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_TextBox darkTextBox1;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button darkButton2;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button darkButton3;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button darkButton4;
     }
 }

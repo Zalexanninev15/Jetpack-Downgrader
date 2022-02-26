@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-using VitNX.Functions.Windows.Win32;
 using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
 
 namespace JetpackGUI
@@ -12,8 +11,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            if (Import.DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0)
-                Import.DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4);
+            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         private GUI mygui = new GUI();
@@ -41,7 +39,7 @@ namespace JetpackGUI
         {
             this.Size = new System.Drawing.Size(265, 152);
             AllLangs.Items.Clear();
-            langs = Directory.GetFiles(Application.StartupPath + @"\files\languages", "*.xml");
+            langs = Directory.GetFiles($@"{Application.StartupPath}\files\languages", "*.xml");
             for (int i = 0; i < langs.Length; i++)
             {
                 if (langs[i] != "")

@@ -6,7 +6,7 @@ namespace JetpackGUI
         /// <summary>
         /// Required designer variable.
         /// </summary>
-       System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -27,18 +27,18 @@ namespace JetpackGUI
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-       void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyLang));
-            this.darkLabel1 = new VitNX.Controls.VitNX_Label();
-            this.AllLangs = new VitNX.Controls.VitNX_ComboBox();
-            this.button2 = new VitNX.Controls.VitNX_Button();
+            this.darkLabel1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Label();
+            this.AllLangs = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_ComboBox();
+            this.button2 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
             this.SuspendLayout();
             // 
             // darkLabel1
             // 
-            this.darkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.darkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.darkLabel1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -99,8 +99,8 @@ namespace JetpackGUI
 
         #endregion
 
-       VitNX.Controls.VitNX_Label darkLabel1;
-       VitNX.Controls.VitNX_ComboBox AllLangs;
-       VitNX.Controls.VitNX_Button button2;
+        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Label darkLabel1;
+        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_ComboBox AllLangs;
+        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button button2;
     }
 }

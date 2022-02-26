@@ -6,7 +6,7 @@ namespace JetpackGUI
         /// <summary>
         /// Required designer variable.
         /// </summary>
-       System.ComponentModel.IContainer components = null;
+        System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -27,14 +27,14 @@ namespace JetpackGUI
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-       void InitializeComponent()
+        void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseGame));
             this.label3 = new System.Windows.Forms.Label();
-            this.vitNX_Button1 = new VitNX.Controls.VitNX_Button();
-            this.vitNX_Button2 = new VitNX.Controls.VitNX_Button();
-            this.vitNX_Button3 = new VitNX.Controls.VitNX_Button();
-            this.vitNX_Button4 = new VitNX.Controls.VitNX_Button();
+            this.vitNX_Button1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.vitNX_Button2 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.vitNX_Button3 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.vitNX_Button4 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
             this.SuspendLayout();
             // 
             // label3
@@ -127,9 +127,9 @@ namespace JetpackGUI
 
         #endregion
         private System.Windows.Forms.Label label3;
-        private VitNX.Controls.VitNX_Button vitNX_Button1;
-        private VitNX.Controls.VitNX_Button vitNX_Button2;
-        private VitNX.Controls.VitNX_Button vitNX_Button3;
-        private VitNX.Controls.VitNX_Button vitNX_Button4;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button1;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button2;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button3;
+        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button4;
     }
 }
