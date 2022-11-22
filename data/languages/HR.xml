@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguagesString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- What language is it? (write in English) -->
+  <Language>Croatian</Language>
+  <!-- First launch -->
+  <FirstTitle>Prvo pokretanje</FirstTitle>
+  <SelectLang>Odaberite lokalizaciju sa popisa</SelectLang>
+  <ApplyAndLaunch>Primijenite i pokrenite</ApplyAndLaunch>
+  <!-- Text -->
+  <Languages>Jezici</Languages>
+  <Stage>Odaberite željenu fazu</Stage>
+  <OtherActions>Druge radnje</OtherActions>
+  <Tab1>Postavke unazaditelja</Tab1>
+  <PathLabel>Put do mape igre</PathLabel>
+  <CBG1>Preporučene postavke</CBG1>
+  <CBG2>Izborne postavke</CBG2>
+  <Tab2>Modifikacije</Tab2>
+  <List>Popis modifikacija</List>
+  <ASILoader>ASI Loader se automatski instalira kada odaberete barem jednu modifikaciju!</ASILoader>
+  <AboutMod>O modifikaciji</AboutMod>
+  <ModName>Ime</ModName>
+  <ModVersion>Verzija</ModVersion>
+  <ModAuthor>Autor</ModAuthor>
+  <DescriptionMod>Opis</DescriptionMod>
+  <TopicOfMod>Idite na temu modifikacije</TopicOfMod>
+  <DownloadingModCache>Preuzimanje predmemorije moda</DownloadingModCache>
+  <Downgrade>Unazadite</Downgrade>
+  <DownloadPatches>Preuzmite zakrpe</DownloadPatches>
+  <DownloadingPatches>Preuzimanje zakrpi...</DownloadingPatches>
+  <DownloadingDirectXFiles>Preuzimanje dodatnih DirectX datoteka...</DownloadingDirectXFiles>
+  <ModWord>Modifikacija</ModWord>
+  <Mbyte>MB</Mbyte>
+  <WishPlay>Završeno, uživajte u igri!</WishPlay>
+  <Play>Igrajte</Play>
+  <CloseApp>Zatvorite unazaditelj</CloseApp>
+  <!-- CheckBoxes -->
+  <CreateBackups>Napravite sigurnosnu kopiju originalnih datoteka prije korištenja unazaditelja</CreateBackups>
+  <CreateShortcut>Napravite prečac na radnoj površini</CreateShortcut>
+  <ResetGame>Uklonite GTA-SA.SET (resetirajte postavke igre i spriječite rušenja)</ResetGame>
+  <RGL_GarbageCleaning>Uklonite nepotrebne datoteke (SAMO za verziju igre sa Rockstar Games Launchera)</RGL_GarbageCleaning>
+  <RegisterGamePath>Registrirajte put igre (učinite igru vidljivom)</RegisterGamePath>
+  <CopyGameToNewPath>Premjestite igru u drugu mapu (spriječava automatsko ažuriranje i ponavljanje)</CopyGameToNewPath>
+  <Forced>Prisilno (SAMO za verziju 1.0)</Forced>
+  <EnableDirectPlay>Omogućite DirectPlay</EnableDirectPlay>
+  <InstallDirectXComponents>Instalirajte DirectX komponente</InstallDirectXComponents>
+  <InstallMod>Instalirajte ovu modifikaciju nakon korištenja unazaditelja</InstallMod>
+  <!-- Titles -->
+  <Request>Zahtjev za preuzimanje</Request>
+  <Information>Informacija</Information>
+  <Warning>Upozorenje</Warning>
+  <Error>Pogreška</Error>
+  <Question>Pitanje</Question>
+  <FolderSelectDialog>Odaberite mapu igre</FolderSelectDialog>
+  <!-- Information messages -->
+  <ModSucces>modifikacija je uspješno instalirana!</ModSucces>
+  <BindingOK>Uvezivanje igre je završeno!</BindingOK>
+  <ReturnUsingBackups>Originalna verzija igre je uspješno vraćena!</ReturnUsingBackups>
+  <Done>Završeno!</Done>
+  <!-- Warning messages -->
+  <PathNotFound>Put do igre nije pronađen!</PathNotFound>
+  <BrowserNotFound>Preglednik za otvaranje veze nije pronađen! Veza će se kopirati u međuspremnik!</BrowserNotFound>
+  <NewPath>Igra (verzija 1.0) se sada nalazi u</NewPath>
+  <YouCanDelete>Mapa s originalnom igrom je ostala netaknuta! Ako je sve prošlo u redu, možete ju obrisati jer vam više neće trebati</YouCanDelete>
+  <!-- Error messages -->
+  <AboutModDamaged>Podaci modifikacije su oštećeni!</AboutModDamaged>
+  <ModFailure>modifikacija nije instalirana!</ModFailure>
+  <!-- Question messages -->
+  <QEnableDirectPlay>Želite li omogućiti DirectPlay za pokretanje igre? Trenutna postavka za Windows 8.1/10/11 je neophodna za podršku starim aplikacijama i igrama</QEnableDirectPlay>
+  <WishDownloadPatches>Budući da datoteke zakrpe nisu pronađene, sada ćemo ih početi preuzimati. Želite li odmah preuzeti ove datoteke?</WishDownloadPatches>
+  <WishDownloadDirectXFiles>Budući da dodatne DirectX datoteke nisu pronađene, sada ćemo ih početi preuzimati. Želite li odmah preuzeti ove datoteke?</WishDownloadDirectXFiles>
+  <InstallModQuestion>Želite li instalirati ovu modifikaciju nakon korištenja unazaditelja?</InstallModQuestion>
+  <WishDowngrader>Želite li odmah unazaditi verziju igre na 1.0, a nakon toga, instalirati odabrane modifikacije (ako ste ih odabrali)?</WishDowngrader>
+  <WishReturnUsingBackups>Pronađene su sigurnosne kopije unazaditelja (ili neke originalne datoteke nisu pronađene) i, ako želite, možete vratiti verziju igre koja je bila prije korištenja unazaditelja (intalirane modifikacije će ostati). Želite li ovo?</WishReturnUsingBackups>
+  <WishRegGame>Želite li registrirati put do igre u sustavu za ispravno pokretanje modova i prikaza u različitim pokretačima i trgovinama?</WishRegGame>
+  <NetworkNotFound>Aplikacija radi u izvanmrežnom načinu, tako da neke značajke neće biti dostupne sve dok nema pristupa internetu!</NetworkNotFound>
+  <OfflineMode>Želite li nastaviti?</OfflineMode>
+  <!-- Debug mode -->
+  <Activation>Način za otklanjanje pogrešaka je aktiviran prilikom korištenja unazaditelja! Traka napretka je onemogućena, detaljno snimanje događaja u konzoli je omogućeno!</Activation>
+  <Deactivation>Način za otklanjanje pogrešaka je aktiviran prilikom korištenja unazaditelja! Traka napretka je onemogućena, detaljno snimanje događaja u konzoli je onemogućeno!</Deactivation>
+  <!-- About -->
+  <AboutTitle>O</AboutTitle>
+  <Version>Verzija</Version>
+  <Authors>Napravili</Authors>
+  <Zalexanninev15>programer i kreator</Zalexanninev15>
+  <VadimM>konzultant</VadimM>
+  <License>Licenca</License>
+  <Localization>Lokalizacija</Localization>
+  <LocalizationBy>Lokalizacija na hrvatski: TheKreator</LocalizationBy>
+  <AboutDonate>Donirajte</AboutDonate>
+  <AboutIssues>Problemi</AboutIssues>
+  <AboutSite>GitHub</AboutSite>
+  <AboutTopic>Tema</AboutTopic>
+</LanguagesString>
