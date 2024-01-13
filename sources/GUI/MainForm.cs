@@ -1,24 +1,18 @@
 ﻿using CG.Web.MegaApiClient;
-
 using Microsoft.Win32;
-
 using Newtonsoft.Json;
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-
-using VitNX.Functions.Common;
-using VitNX.Functions.Common.Information;
-using VitNX.Functions.Windows.Apps;
-using VitNX.Functions.Windows.Controllers;
-using VitNX.Functions.Windows.Win32;
-using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
+using VitNX.Functions.AppsAndProcesses;
+using VitNX.Functions.Information;
+using VitNX.Functions.Win32;
+using VitNX.Functions.WinControllers;
+using VitNX.UI.ControlsV1.Forms;
 
 namespace JetpackGUI
 {
@@ -26,7 +20,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
+            VitNX.Functions.WindowAndControls.Window.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         private Props config = new Props();
@@ -50,7 +44,7 @@ namespace JetpackGUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ServicePointManager.SecurityProtocol = VitNX.Functions.Common.Web.Config.UseProtocols();
+            ServicePointManager.SecurityProtocol = VitNX.Functions.Web.Config.UseProtocols();
             Import.SetProcessDpiAwareness(Enums.PROCESS_DPI_AWARENESS.PROCESS_DPI_UNAWARE);
             if (!Directory.Exists($@"{Application.StartupPath}\files\patches"))
             {
@@ -162,7 +156,7 @@ namespace JetpackGUI
                                 for (int i = 0; i < modsZip.Length; i++)
                                 {
                                     string modName = new FileInfo(modsZip[i]).Name.Replace(".zip", "");
-                                    if (FileSystem.IsPeExe(modsZip[i]) == false)
+                                    if (VitNX.Functions.FileSystem.File.IsPeExe(modsZip[i]) == false)
                                     {
                                         try
                                         {
@@ -243,7 +237,7 @@ namespace JetpackGUI
 
         private static string GetMD5(string file)
         {
-            try { return FileSystem.GetFileMD5(file); }
+            try { return VitNX.Functions.FileSystem.File.GetMD5(file); }
             catch { return "0x50 0x45"; }
         }
 
@@ -377,7 +371,7 @@ namespace JetpackGUI
 
         private void MsgInfo(string message)
         {
-            VitNX_MessageBox.ShowInfo(message, lc_text[9]);
+            VitNX_MessageBox.ShowInformation(message, lc_text[9]);
         }
 
         private void MsgWarning(string message)

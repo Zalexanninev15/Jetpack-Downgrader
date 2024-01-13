@@ -7,11 +7,12 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.Reflection;
 
-using VitNX.Functions.Common;
-using VitNX.Functions.Common.Information;
-using VitNX.Functions.Windows.Apps;
-using VitNX.Functions.Windows.Win32;
+using VitNX.Functions.Information;
+using VitNX.Functions.AppsAndProcesses;
+using VitNX.Functions.Win32;
+using VitNX.Functions.FileSystem;
 using VitNX.UI.Console.ProgressBar;
+using File = System.IO.File;
 
 namespace JetpackDowngrader
 {
@@ -65,18 +66,6 @@ namespace JetpackDowngrader
             flmd5[14] = "9598B82CF1E5AE7A8558057A01F6F2CE";
             flmd5[15] = "DBE7E372D55914C39EB1D565E8707C8C";
             flmd5[16] = "9282E0DF8D7EEE3C4A49B44758DD694D";
-            //
-            // todo Localization
-            //string lgcode = "EN";
-            //if (File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\gui.xml"))
-            //{
-            //    XmlSerializer serializer = new XmlSerializer(typeof(SettingsEditor));
-            //    using (StringReader reader = new StringReader(File.ReadAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\gui.xml")))
-            //    {
-            //        var string_gui = (GUI_Settings)serializer.Deserialize(reader);
-            //        lgcode = string_gui.LnguageCode;
-            //    }
-            //}
             Console.Title = "Jetpack Downgrader";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("[JPD] App: Jetpack Downgrader\n[JPD] Version: " +
@@ -141,12 +130,16 @@ namespace JetpackDowngrader
                     string SaEXE = path + @"\gta-sa.exe";
                     Logger("GamePath", "Current", path);
                     Logger("Downgrader", "Process", "Get version (EXE)...");
+
+                    // TODO
+                    // VERSION GERMAN - D9CB35C898D3298CA904A63E10EE18D7
+
                     if (File.Exists(SaEXE))
                     {
                         try
                         {
-                            string SteamEXEmd5 = FileSystem.GetFileMD5(SaEXE);
-                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
+                            string SteamEXEmd5 = VitNX.Functions.FileSystem.File.GetMD5(SaEXE);
+                            if (SteamEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD" || SteamEXEmd5 == "D9CB35C898D3298CA904A63E10EE18D7")
                             {
                                 gv = 1;
                                 Logger("Game", "Version", "Steam");
@@ -157,21 +150,23 @@ namespace JetpackDowngrader
                                 SaEXE = path + @"\gta_sa.exe";
                                 try
                                 {
-                                    string OtherEXEmd5 = FileSystem.GetFileMD5(SaEXE);
+                                    string OtherEXEmd5 = VitNX.Functions.FileSystem.File.GetMD5(SaEXE);
                                     if (OtherEXEmd5 == "6687A315558935B3FC80CDBFF04437A4")
                                     {
                                         gv = 3;
                                         Logger("Game", "Version", "Rockstar Games Launcher");
                                     }
                                     if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
-                                        (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                        (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F") || 
+                                        (OtherEXEmd5 == "D9CB35C898D3298CA904A63E10EE18D7"))
                                     {
                                         gv = 2;
                                         Logger("Game", "Version", "2.0");
                                     }
                                     if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") &&
                                         (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") &&
-                                        (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                        (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && 
+                                        (OtherEXEmd5 != "D9CB35C898D3298CA904A63E10EE18D7"))
                                     {
                                         if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") &&
                                             (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") &&
@@ -216,8 +211,8 @@ namespace JetpackDowngrader
                         SaEXE = path + @"\gta_sa.exe";
                         try
                         {
-                            string OtherEXEmd5 = FileSystem.GetFileMD5(SaEXE);
-                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD")
+                            string OtherEXEmd5 = VitNX.Functions.FileSystem.File.GetMD5(SaEXE);
+                            if (OtherEXEmd5 == "5BFD4DD83989A8264DE4B8E771F237FD" || OtherEXEmd5 == "D9CB35C898D3298CA904A63E10EE18D7")
                             {
                                 gv = 1;
                                 Logger("Game", "Version", "Steam");
@@ -230,15 +225,17 @@ namespace JetpackDowngrader
                                     gv = 3;
                                     Logger("Game", "Version", "Rockstar Games Launcher");
                                 }
-                                if ((OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373") ||
-                                    (OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                if (OtherEXEmd5 == "BF25C28E9F6C13BD2D9E28F151899373" ||
+                                    OtherEXEmd5 == "4E99D762F44B1D5E7652DFA7E73D6B6F" || 
+                                    OtherEXEmd5 == "D9CB35C898D3298CA904A63E10EE18D7")
                                 {
                                     gv = 2;
                                     Logger("Game", "Version", "2.0");
                                 }
                                 if ((OtherEXEmd5 != "6687A315558935B3FC80CDBFF04437A4") &&
                                     (OtherEXEmd5 != "BF25C28E9F6C13BD2D9E28F151899373") &&
-                                    (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F"))
+                                    (OtherEXEmd5 != "4E99D762F44B1D5E7652DFA7E73D6B6F") && 
+                                    (OtherEXEmd5 != "D9CB35C898D3298CA904A63E10EE18D7"))
                                 {
                                     if ((OtherEXEmd5 != "E7697A085336F974A4A6102A51223960") &&
                                         (OtherEXEmd5 != "170B3A9108687B26DA2D8901C6948A18") &&
@@ -482,7 +479,7 @@ namespace JetpackDowngrader
                                         progress.SetColor(ConsoleColor.Blue);
                                         try
                                         {
-                                            GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                            GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                             if (settings[9] == false)
                                             {
                                                 progress.NotUsed(false);
@@ -534,7 +531,7 @@ namespace JetpackDowngrader
                                         {
                                             try
                                             {
-                                                GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                                GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                                 if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
@@ -587,7 +584,7 @@ namespace JetpackDowngrader
                                         {
                                             try
                                             {
-                                                GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                                GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                                 if (settings[9] == false)
                                                 {
                                                     progress.NotUsed(false);
@@ -645,7 +642,7 @@ namespace JetpackDowngrader
                                     try
                                     {
                                         try { Directory.Delete(path + "_Downgraded", true); } catch { }
-                                        FileSystem.CopyFolder(path, path + "_Downgraded");
+                                        Folder.Copy(path, path + "_Downgraded");
                                         path = path + "_Downgraded";
                                         Logger("NewGamePath", "Path", path);
                                     }
@@ -935,7 +932,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = FileSystem.GetFileMD5(path + fl[1]);
+                                                        GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[1]);
                                                         Logger("NewGameMD5", path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
                                                         {
@@ -958,7 +955,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = FileSystem.GetFileMD5(path + fl[1]);
+                                                        GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -987,7 +984,7 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             try
                                                             {
-                                                                GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                                                GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                                                 if (settings[9] == false)
                                                                 {
                                                                     progress.NotUsed(false);
@@ -1033,7 +1030,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = FileSystem.GetFileMD5(path + fl[1]);
+                                                        GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1064,7 +1061,7 @@ namespace JetpackDowngrader
                                                             {
                                                                 try
                                                                 {
-                                                                    GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                                                    GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                                                     if (settings[9] == false)
                                                                     {
                                                                         progress.NotUsed(false);
@@ -1111,7 +1108,7 @@ namespace JetpackDowngrader
                                                 {
                                                     try
                                                     {
-                                                        GameMD5 = FileSystem.GetFileMD5(path + fl[0]);
+                                                        GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[0]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", path + fl[0], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1135,7 +1132,7 @@ namespace JetpackDowngrader
                                                     }
                                                     try
                                                     {
-                                                        GameMD5 = FileSystem.GetFileMD5(path + fl[1]);
+                                                        GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[1]);
                                                         if (settings[9] == false)
                                                             Logger("NewGameMD5", path + fl[1], GameMD5);
                                                         if (GameMD5 == flmd5[0])
@@ -1164,7 +1161,7 @@ namespace JetpackDowngrader
                                                             progress.SetColor(ConsoleColor.Blue);
                                                             try
                                                             {
-                                                                GameMD5 = FileSystem.GetFileMD5(path + fl[i]);
+                                                                GameMD5 = VitNX.Functions.FileSystem.File.GetMD5(path + fl[i]);
                                                                 if (settings[9] == false)
                                                                 {
                                                                     progress.NotUsed(false);
@@ -1245,7 +1242,7 @@ namespace JetpackDowngrader
                                                         Logger("Downgrader", "Process", "Creating a shortcut...");
                                                         try
                                                         {
-                                                            FileSystem.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", path + @"\gta_sa.exe", "gta_sa");
+                                                            VitNX.Functions.FileSystem.File.CreateShortcut(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\GTA San Andreas 1.0.lnk", path + @"\gta_sa.exe", "gta_sa");
                                                             Logger("Downgrader", "CreateShortcut", "true");
                                                         }
                                                         catch { Logger("Downgrader", "CreateShortcut", "false"); }
@@ -1317,8 +1314,8 @@ namespace JetpackDowngrader
             Console.WriteLine("Press Enter to Exit");
             Console.ResetColor();
             Import.SetWindowPos(Process.GetCurrentProcess().MainWindowHandle,
-                new IntPtr((int)Enums.WindowPosFlags.HWND_TOPMOST), 0, 0, 0, 0,
-                (int)Enums.WindowPosFlags.SWP_NOMOVE | (int)Enums.WindowPosFlags.SWP_NOSIZE);
+                new IntPtr((int)Constants.HWND_TOPMOST), 0, 0, 0, 0,
+                (int)0X2 | (int)1);
             Console.ReadLine();
         }
 

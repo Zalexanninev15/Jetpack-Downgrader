@@ -30,9 +30,9 @@ namespace JetpackGUI
         void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyLang));
-            this.darkLabel1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Label();
-            this.AllLangs = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_ComboBox();
-            this.button2 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.darkLabel1 = new VitNX.UI.ControlsV1.Controls.VitNX_Label();
+            this.AllLangs = new VitNX.UI.ControlsV1.Controls.VitNX_ComboBox();
+            this.button2 = new VitNX.UI.ControlsV1.Controls.VitNX_Button();
             this.SuspendLayout();
             // 
             // darkLabel1
@@ -99,8 +99,8 @@ namespace JetpackGUI
 
         #endregion
 
-        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Label darkLabel1;
-        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_ComboBox AllLangs;
-        VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button button2;
+        VitNX.UI.ControlsV1.Controls.VitNX_Label darkLabel1;
+        VitNX.UI.ControlsV1.Controls.VitNX_ComboBox AllLangs;
+        VitNX.UI.ControlsV1.Controls.VitNX_Button button2;
     }
 }

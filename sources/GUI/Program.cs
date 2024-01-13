@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using VitNX.Functions.Common.Information;
-using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
+using VitNX.Functions.Information;
+using VitNX.UI.ControlsV1.Forms;
 
 namespace JetpackGUI
 {
@@ -22,7 +22,7 @@ namespace JetpackGUI
                     {
                         if (Internet.IsHaveInternet("github.com") == Internet.INTERNET_STATUS.CONNECTED)
                         {
-                            string toolkit_version = VitNX.Functions.Common.Web.DataFromSites.DownloadString(Data.NewVersionDetector, Application.ProductVersion);
+                            string toolkit_version = VitNX.Functions.Web.DataFromSites.DownloadString(Data.NewVersionDetector, Application.ProductVersion);
                             if (toolkit_version != Data.JetpackDowngraderVersion)
                                 AvailableNewVersion = true;
                         }
@@ -42,8 +42,8 @@ namespace JetpackGUI
                 }
                 else
                 {
-                    VitNX_MessageBox.ShowInfo("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
-                    if (!VitNX.Functions.Windows.Apps.Processes.OpenLink(Urls.Release))
+                    VitNX_MessageBox.ShowInformation("An update is available!\nNow you will be redirected to the download page of the latest version", "Information");
+                    if (!VitNX.Functions.AppsAndProcesses.Processes.OpenLink(Urls.Release))
                     {
                         VitNX_MessageBox.ShowWarning("Browser to open the link was not found! The link will be copied to the clipboard!", "Warning");
                         Clipboard.SetText(Urls.Release);

@@ -2,9 +2,9 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using VitNX.Functions.AppsAndProcesses;
+using VitNX.UI.ControlsV1.Forms;
 
-using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
-using VitNX.Functions.Windows.Apps;
 
 namespace JetpackGUI
 {
@@ -12,7 +12,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
+            VitNX.Functions.WindowAndControls.Window.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         public About()

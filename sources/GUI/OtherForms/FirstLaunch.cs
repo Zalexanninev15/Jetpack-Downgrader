@@ -2,8 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-
-using VitNX.UI.ControlsV1.BasedOnDarkUI.Forms;
+using VitNX.UI.ControlsV1.Forms;
 
 namespace JetpackGUI
 {
@@ -11,7 +10,7 @@ namespace JetpackGUI
     {
         protected override void OnHandleCreated(EventArgs e)
         {
-            VitNX.Functions.Windows.WindowSAndControls.WindowS.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
+            VitNX.Functions.WindowAndControls.Window.SetWindowsTenAndHighStyleForWinFormTitleToDark(Handle);
         }
 
         private GUI mygui = new GUI();
@@ -32,7 +31,7 @@ namespace JetpackGUI
                 System.Threading.Tasks.Task.Delay(300);
                 Application.Restart();
             }
-            else { VitNX_MessageBox.ShowInfo("You need to select a language from the list!", "Information"); }
+            else { VitNX_MessageBox.ShowInformation("You need to select a language from the list!", "Information"); }
         }
 
         private void MyLang_Load(object sender, EventArgs e)

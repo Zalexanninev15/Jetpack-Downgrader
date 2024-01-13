@@ -31,10 +31,10 @@ namespace JetpackGUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseGame));
             this.label3 = new System.Windows.Forms.Label();
-            this.vitNX_Button1 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
-            this.vitNX_Button2 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
-            this.vitNX_Button3 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
-            this.vitNX_Button4 = new VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button();
+            this.vitNX_Button1 = new VitNX.UI.ControlsV1.Controls.VitNX_Button();
+            this.vitNX_Button2 = new VitNX.UI.ControlsV1.Controls.VitNX_Button();
+            this.vitNX_Button3 = new VitNX.UI.ControlsV1.Controls.VitNX_Button();
+            this.vitNX_Button4 = new VitNX.UI.ControlsV1.Controls.VitNX_Button();
             this.SuspendLayout();
             // 
             // label3
@@ -127,9 +127,9 @@ namespace JetpackGUI
 
         #endregion
         private System.Windows.Forms.Label label3;
-        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button1;
-        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button2;
-        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button3;
-        private VitNX.UI.ControlsV1.BasedOnDarkUI.Controls.VitNX_Button vitNX_Button4;
+        private VitNX.UI.ControlsV1.Controls.VitNX_Button vitNX_Button1;
+        private VitNX.UI.ControlsV1.Controls.VitNX_Button vitNX_Button2;
+        private VitNX.UI.ControlsV1.Controls.VitNX_Button vitNX_Button3;
+        private VitNX.UI.ControlsV1.Controls.VitNX_Button vitNX_Button4;
     }
 }
