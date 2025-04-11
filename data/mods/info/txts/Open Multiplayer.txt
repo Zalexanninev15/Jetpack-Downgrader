@@ -3,7 +3,7 @@ v1.5.2 (09.01.2025)
 Open Multiplayer team
 A multiplayer mod for Grand Theft Auto: San Andreas that is fully backwards compatible with San Andreas Multiplayer.
 https://open.mp/
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/OpenMP_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/OpenMP_scr123.jpg
-https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/unstable/data/mods/mirror/pics/OpenMP_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/mirror/pics/OpenMP_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/mirror/pics/OpenMP_scr123.jpg
+https://raw.githubusercontent.com/Zalexanninev15/Jetpack-Downgrader/main/data/mods/mirror/pics/OpenMP_scr123.jpg
 https://github.com/openmultiplayer/launcher/releases/latest/download/omp-launcher-setup.exe
