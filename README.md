@@ -1,6 +1,7 @@
 # Jetpack Downgrader
 
 ![alt](https://github.com/Zalexanninev15/Jetpack-Downgrader/raw/unstable/data/docs/logo.png)
+
 [![](https://img.shields.io/badge/platform-Windows-informational)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
 [![](https://img.shields.io/badge/written_on-.NET_Framework_4.8-512BD4.svg?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 [![](https://img.shields.io/badge/written_on-C%23-%23239120.svg?logo=sharp&logoColor=white)](https://github.com/Zalexanninev15/Jetpack-Downgrader)
